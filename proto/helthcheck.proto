@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+package gateway;
+
+service HealthCheck {
+  rpc Get(Empty) returns (HealthCheckResponse) {
+    option (google.api.http) = {
+      get: "/healthcheck"
+    };
+  }
+}
+
+message Empty {}
+
+message HealthCheckResponse {
+  bool ok = 1;
+}
