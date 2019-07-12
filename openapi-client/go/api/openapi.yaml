@@ -1,0 +1,29 @@
+openapi: 3.0.1
+info:
+  title: proto/helthcheck.proto
+  version: version not set
+servers:
+- url: /
+paths:
+  /healthcheck:
+    get:
+      operationId: Get
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayHealthCheckResponse'
+          description: A successful response.
+      tags:
+      - HealthCheck
+components:
+  schemas:
+    gatewayHealthCheckResponse:
+      example:
+        ok: true
+      properties:
+        ok:
+          format: boolean
+          type: boolean
+      type: object
