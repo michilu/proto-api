@@ -1,7 +1,19 @@
 syntax = "proto3";
 
+import "google/rpc/code.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+
 package proto;
 
-message HealthCheckResponse {
-  bool ok = 1;
+message Request {
+  string id = 1 [(grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {
+    pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+    min_length: 1
+  }, (validator.field) = {string_not_empty: true}];
+}
+
+message Response {
+  google.rpc.Code code = 1 [(validator.field) = {is_in_enum: true}];
+  string message = 2;
 }

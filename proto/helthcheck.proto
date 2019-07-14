@@ -6,10 +6,10 @@ import "proto/message.proto";
 
 package proto;
 
-service HealthCheck {
-  rpc Get(google.protobuf.Empty) returns (HealthCheckResponse) {
+service healthCheck {
+  rpc healthCheck(google.protobuf.Empty) returns (Response) {
     option (google.api.http) = {
-      get: "/healthcheck"
+      get: "/healthCheck"
     };
   }
 }
