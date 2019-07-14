@@ -38,6 +38,8 @@ String parameterToString(dynamic value) {
     return '';
   } else if (value is DateTime) {
     return value.toUtc().toIso8601String();
+  } else if (value is RpcCode) {
+    return RpcCodeTypeTransformer().encode(value).toString();
   } else {
     return value.toString();
   }

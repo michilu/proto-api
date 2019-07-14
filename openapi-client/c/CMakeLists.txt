@@ -8,7 +8,7 @@ set(CMAKE_CXX_VISIBILITY_PRESET default)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN OFF)
 set(CMAKE_BUILD_TYPE Debug)
 
-set(pkgName "proto/helthcheck/proto")
+set(pkgName "an_example_of_generating_swagger_via_grpc_ecosystem/")
 
 find_package(CURL 7.58.0 REQUIRED)
 if(CURL_FOUND)
@@ -23,7 +23,10 @@ set(SRCS
     src/apiKey.c
     src/apiClient.c
     external/cJSON.c
-    model/gateway_health_check_response.c
+    model/proto_request.c
+    model/proto_response.c
+    model/rpc_code.c
+    api/ExampleAPI.c
     api/HealthCheckAPI.c
 
 )
@@ -33,7 +36,10 @@ set(HDRS
     include/list.h
     include/keyValuePair.h
     external/cJSON.h
-    model/gateway_health_check_response.h
+    model/proto_request.h
+    model/proto_response.h
+    model/rpc_code.h
+    api/ExampleAPI.h
     api/HealthCheckAPI.h
 
 )

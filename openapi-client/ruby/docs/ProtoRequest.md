@@ -1,17 +1,17 @@
-# OpenapiClient::GatewayHealthCheckResponse
+# OpenapiClient::ProtoRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ok** | **Boolean** |  | [optional] 
+**id** | **String** |  | [optional] 
 
 ## Code Sample
 
 ```ruby
 require 'OpenapiClient'
 
-instance = OpenapiClient::GatewayHealthCheckResponse.new(ok: null)
+instance = OpenapiClient::ProtoRequest.new(id: null)
 ```
 
 

@@ -11,8 +11,8 @@
     snprintf(dst, 256, "%ld", (long int)(src));\
 }while(0)
 
-gateway_health_check_response_t*
-HealthCheckAPI_get(apiClient_t *apiClient)
+proto_response_t*
+HealthCheckAPI_healthCheck(apiClient_t *apiClient)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -22,9 +22,9 @@ HealthCheckAPI_get(apiClient_t *apiClient)
     char      *localVarBodyParameters = NULL;
 
     // create the path
-    long sizeOfPath = strlen("/healthcheck")+1;
+    long sizeOfPath = strlen("/healthCheck")+1;
     char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/healthcheck");
+    snprintf(localVarPath, sizeOfPath, "/healthCheck");
 
 
 
@@ -44,7 +44,7 @@ HealthCheckAPI_get(apiClient_t *apiClient)
     }
     //nonprimitive not container
     cJSON *HealthCheckAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    gateway_health_check_response_t *elementToReturn = gateway_health_check_response_parseFromJSON(HealthCheckAPIlocalVarJSON);
+    proto_response_t *elementToReturn = proto_response_parseFromJSON(HealthCheckAPIlocalVarJSON);
     cJSON_Delete(HealthCheckAPIlocalVarJSON);
     if(elementToReturn == NULL) {
         // return 0;

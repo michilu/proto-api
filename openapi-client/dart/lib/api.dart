@@ -13,9 +13,12 @@ part 'auth/api_key_auth.dart';
 part 'auth/oauth.dart';
 part 'auth/http_basic_auth.dart';
 
+part 'api/example_api.dart';
 part 'api/health_check_api.dart';
 
-part 'model/gateway_health_check_response.dart';
+part 'model/proto_request.dart';
+part 'model/proto_response.dart';
+part 'model/rpc_code.dart';
 
 
 ApiClient defaultApiClient = ApiClient();

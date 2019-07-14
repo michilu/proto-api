@@ -15,11 +15,19 @@ apiClient_t *apiClient_create() {
     apiClient->basePath = "http://localhost";
     apiClient->dataReceived = NULL;
     apiClient->response_code = 0;
+    apiClient->apiKeys = NULL;
+    apiClient->accessToken = NULL;
 
     return apiClient;
 }
 
 void apiClient_free(apiClient_t *apiClient) {
+    if(apiClient->accessToken) {
+        list_free(apiClient->apiKeys);
+    }
+    if(apiClient->accessToken) {
+        free(apiClient->accessToken);
+    }
     free(apiClient);
     curl_global_cleanup();
 }
@@ -279,6 +287,21 @@ void apiClient_invoke(apiClient_t    *apiClient,
                 free(headerValueToWrite);
             }
         }
+        // this would only be generated for apiKey authentication
+        if (apiClient->apiKeys != NULL)
+        {
+        list_ForEach(listEntry, apiClient->apiKeys) {
+        keyValuePair_t *apiKey = listEntry->data;
+        if((apiKey->key != NULL) &&
+           (apiKey->value != NULL) )
+        {
+            char *headerValueToWrite = assembleHeaderField(
+                apiKey->key, apiKey->value);
+            curl_slist_append(headers, headerValueToWrite);
+            free(headerValueToWrite);
+        }
+        }
+        }
 
         char *targetUrl =
             assembleTargetUrl(apiClient->basePath,
@@ -295,6 +318,13 @@ void apiClient_invoke(apiClient_t    *apiClient,
         curl_easy_setopt(handle, CURLOPT_HTTPHEADER, headers);
         curl_easy_setopt(handle, CURLOPT_VERBOSE, 0); // to get curl debug msg 0: to disable, 1L:to enable
 
+        // this would only be generated for OAuth2 authentication
+        if(apiClient->accessToken != NULL) {
+            // curl_easy_setopt(handle, CURLOPT_HTTPAUTH, CURLAUTH_BEARER);
+            curl_easy_setopt(handle,
+                             CURLOPT_XOAUTH2_BEARER,
+                             apiClient->accessToken);
+        }
 
         if(bodyParameters != NULL) {
             postData(handle, bodyParameters);

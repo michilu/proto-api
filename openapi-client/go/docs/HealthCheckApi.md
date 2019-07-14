@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Get**](HealthCheckApi.md#Get) | **Get** /healthcheck | 
+[**HealthCheck**](HealthCheckApi.md#HealthCheck) | **Get** /healthCheck | 
 
 
 
-## Get
+## HealthCheck
 
-> GatewayHealthCheckResponse Get(ctx, )
+> ProtoResponse HealthCheck(ctx, )
 
 
 ### Required Parameters
@@ -19,11 +19,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GatewayHealthCheckResponse**](gatewayHealthCheckResponse.md)
+[**ProtoResponse**](protoResponse.md)
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

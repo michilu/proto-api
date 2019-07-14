@@ -20,6 +20,8 @@ class ApiClient {
 
   ApiClient({this.basePath = "http://localhost"}) {
     // Setup authentications (key: authentication name, value: authentication).
+    _authentications['ApiKeyAuth'] = ApiKeyAuth("header", "X-API-Key");
+    _authentications['OAuth2'] = OAuth();
   }
 
   void addDefaultHeader(String key, String value) {
@@ -37,8 +39,16 @@ class ApiClient {
           return value is bool ? value : '$value'.toLowerCase() == 'true';
         case 'double':
           return value is double ? value : double.parse('$value');
-        case 'GatewayHealthCheckResponse':
-          return GatewayHealthCheckResponse.fromJson(value);
+        case 'ProtoRequest':
+          return ProtoRequest.fromJson(value);
+        case 'ProtoResponse':
+          return ProtoResponse.fromJson(value);
+        case 'RpcCode':
+          // Enclose the value in a list so that Dartson can use a transformer
+          // to decode it.
+          final listValue = [value];
+          final List<dynamic> listResult = dson.map(listValue, []);
+          return listResult[0];
         default:
           {
             Match match;

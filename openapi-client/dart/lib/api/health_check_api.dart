@@ -10,13 +10,13 @@ class HealthCheckApi {
   /// 
   ///
   /// 
-  Future<GatewayHealthCheckResponse> callGet() async {
+  Future<ProtoResponse> healthCheck() async {
     Object postBody;
 
     // verify required params are set
 
     // create path and map variables
-    String path = "/healthcheck".replaceAll("{format}","json");
+    String path = "/healthCheck".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
@@ -26,7 +26,7 @@ class HealthCheckApi {
     List<String> contentTypes = [];
 
     String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
+    List<String> authNames = ["ApiKeyAuth", "OAuth2"];
 
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -49,7 +49,7 @@ class HealthCheckApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'GatewayHealthCheckResponse') as GatewayHealthCheckResponse;
+      return apiClient.deserialize(_decodeBodyBytes(response), 'ProtoResponse') as ProtoResponse;
     } else {
       return null;
     }

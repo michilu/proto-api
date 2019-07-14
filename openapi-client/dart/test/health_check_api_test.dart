@@ -7,8 +7,8 @@ void main() {
   var instance = new HealthCheckApi();
 
   group('tests for HealthCheckApi', () {
-    //Future<GatewayHealthCheckResponse> callGet() async 
-    test('test callGet', () async {
+    //Future<ProtoResponse> healthCheck() async 
+    test('test healthCheck', () async {
       // TODO
     });
 
