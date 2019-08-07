@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server RpcCode"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a RpcCode"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  RpcCode {
+    title = RpcCode
+    description = RpcCode
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  RpcCode {
+    title = RpcCode
+    description = RpcCode
+    implements = openapi_server.resourceTypes.RpcCode
+
+  }
+}
