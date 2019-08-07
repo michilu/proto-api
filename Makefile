@@ -1,6 +1,7 @@
 SHELL:=/usr/bin/env bash
 
-all: $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,c dart go python ruby)) grpc/python/.keep
+all: $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,c dart go python ruby)) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,python-aiohttp python-blueplanet python-flask)) grpc/python/.keep
+
 
 GO:=go
 GOPATH:=$(shell $(GO) env GOPATH)
@@ -19,6 +20,9 @@ grpc/python/.keep :$(PROTO)
 	touch $@
 
 openapi-client/% :apidocs.swagger.json
+	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
+	touch $@
+openapi-server/% :apidocs.swagger.json
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
 	touch $@
 
