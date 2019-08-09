@@ -33,3 +33,6 @@ apidocs.swagger.json: $(PROTO)
   -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
   --swagger_out=logtostderr=true,allow_merge=true:. \
   $(PROTO)
+
+apidocs.swagger.yaml: apidocs.swagger.json
+	yq r $< > $@

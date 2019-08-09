@@ -16,3 +16,6 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-o
   - curl or ...
 3. Add paths of the third-party libraries to `-I` option of `protoc` command in `apidocs.swagger.json` target in Makefile.
   - ex) `-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis`
+
+# Dependencies
+- [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
