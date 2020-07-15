@@ -9,24 +9,20 @@ For more information, please visit [https://github.com/michilu/proto-openapi](ht
 
 ## Requirements
 
-Dart 1.20.0 or later OR Flutter 0.0.20 or later
+Dart 2.0 or later
 
 ## Installation & Usage
 
 ### Github
-If this Dart package is published to Github, please include the following in pubspec.yaml
+If this Dart package is published to Github, add the following dependency to your pubspec.yaml
 ```
-name: openapi
-version: 1.0.0
-description: OpenAPI API client
 dependencies:
   openapi:
     git: https://github.com/GIT_USER_ID/GIT_REPO_ID.git
-      version: 'any'
 ```
 
 ### Local
-To use the package in your local drive, please include the following in pubspec.yaml
+To use the package in your local drive, add the following dependency to your pubspec.yaml
 ```
 dependencies:
   openapi:
@@ -51,9 +47,9 @@ import 'package:openapi/api.dart';
 // TODO Configure OAuth2 access token for authorization: OAuth2
 //defaultApiClient.getAuthentication<OAuth>('OAuth2').accessToken = 'YOUR_ACCESS_TOKEN';
 
-var api_instance = new ExampleApi();
+var api_instance = ExampleApi();
 var id = id_example; // String | 
-var body = new ProtoRequest(); // ProtoRequest | 
+var body = ProtoRequest(); // ProtoRequest | 
 
 try {
     var result = api_instance.query(id, body);
@@ -70,15 +66,15 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleApi* | [**query**](docs//ExampleApi.md#query) | **POST** /v1/example/{id} | 
-*HealthCheckApi* | [**healthCheck**](docs//HealthCheckApi.md#healthcheck) | **GET** /healthCheck | 
+*ExampleApi* | [**query**](doc//ExampleApi.md#query) | **POST** /v1/example/{id} | 
+*HealthCheckApi* | [**healthCheck**](doc//HealthCheckApi.md#healthcheck) | **GET** /healthCheck | 
 
 
 ## Documentation For Models
 
- - [ProtoRequest](docs//ProtoRequest.md)
- - [ProtoResponse](docs//ProtoResponse.md)
- - [RpcCode](docs//RpcCode.md)
+ - [ProtoRequest](doc//ProtoRequest.md)
+ - [ProtoResponse](doc//ProtoResponse.md)
+ - [RpcCode](doc//RpcCode.md)
 
 
 ## Documentation For Authorization

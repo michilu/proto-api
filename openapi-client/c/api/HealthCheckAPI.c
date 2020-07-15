@@ -11,6 +11,7 @@
     snprintf(dst, 256, "%ld", (long int)(src));\
 }while(0)
 
+
 proto_response_t*
 HealthCheckAPI_healthCheck(apiClient_t *apiClient)
 {
@@ -53,6 +54,8 @@ HealthCheckAPI_healthCheck(apiClient_t *apiClient)
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
     }
     
     

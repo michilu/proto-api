@@ -20,7 +20,7 @@ paths:
     get:
       operationId: healthCheck
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -44,7 +44,7 @@ paths:
               $ref: '#/components/schemas/protoRequest'
         required: true
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:

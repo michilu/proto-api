@@ -35,7 +35,6 @@ class RpcCode(Model):
     INTERNAL = "INTERNAL"
     UNAVAILABLE = "UNAVAILABLE"
     DATA_LOSS = "DATA_LOSS"
-
     def __init__(self):  # noqa: E501
         """RpcCode - a model defined in OpenAPI
 

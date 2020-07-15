@@ -13,6 +13,7 @@ Method | HTTP request | Description
 > ProtoResponse Query(ctx, id, body)
 
 
+
 ### Required Parameters
 
 

@@ -8,7 +8,20 @@ set(CMAKE_CXX_VISIBILITY_PRESET default)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN OFF)
 set(CMAKE_BUILD_TYPE Debug)
 
-set(pkgName "an_example_of_generating_swagger_via_grpc_ecosystem/")
+find_package(OpenSSL)
+
+if (OPENSSL_FOUND)
+	message (STATUS "OPENSSL found")
+	set (CMAKE_C_FLAGS "-DOPENSSL")
+	include_directories(${OPENSSL_INCLUDE_DIR})
+	include_directories(${OPENSSL_INCLUDE_DIRS})
+	link_directories(${OPENSSL_LIBRARIES})
+	message(STATUS "Using OpenSSL ${OPENSSL_VERSION}")
+else() 
+	message (STATUS "OpenSSL Not found.")
+endif()
+
+set(pkgName "an_example_of_generating_swagger_via_grpc_ecosystem_")
 
 find_package(CURL 7.58.0 REQUIRED)
 if(CURL_FOUND)
@@ -22,7 +35,9 @@ set(SRCS
     src/list.c
     src/apiKey.c
     src/apiClient.c
+    src/binary.c
     external/cJSON.c
+    model/object.c
     model/proto_request.c
     model/proto_response.c
     model/rpc_code.c
@@ -34,8 +49,10 @@ set(SRCS
 set(HDRS
     include/apiClient.h
     include/list.h
+    include/binary.h
     include/keyValuePair.h
     external/cJSON.h
+    model/object.h
     model/proto_request.h
     model/proto_response.h
     model/rpc_code.h
@@ -59,11 +76,9 @@ set(HDRS "")
 ## This section shows how to use the above compiled libary to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-PetAPI.c
-#    unit-tests/manual-StoreAPI.c
-#    unit-tests/manual-UserAPI.c
-#    unit-tests/manual-order.c
-#    unit-tests/manual-user.c)
+#    unit-tests/manual-ExampleAPI.c
+#    unit-tests/manual-HealthCheckAPI.c
+#)
 
 ##set header files
 #set(HDRS

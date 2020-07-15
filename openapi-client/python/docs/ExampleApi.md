@@ -21,27 +21,45 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
-configuration = openapi_client.Configuration()
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+configuration = openapi_client.Configuration(
+    host = "http://localhost",
+    api_key = {
+        'X-API-Key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-API-Key'] = 'Bearer'
-configuration = openapi_client.Configuration()
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = openapi_client.Configuration(
+    host = "http://localhost"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to http://localhost
-configuration.host = "http://localhost"
-# Create an instance of the API class
-api_instance = openapi_client.ExampleApi(openapi_client.ApiClient(configuration))
-id = 'id_example' # str | 
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.ExampleApi(api_client)
+    id = 'id_example' # str | 
 body = openapi_client.ProtoRequest() # ProtoRequest | 
 
-try:
-    api_response = api_instance.query(id, body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ExampleApi->query: %s\n" % e)
+    try:
+        api_response = api_instance.query(id, body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ExampleApi->query: %s\n" % e)
 ```
 
 * OAuth Authentication (OAuth2):
@@ -51,27 +69,45 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
-configuration = openapi_client.Configuration()
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
 # Configure API key authorization: ApiKeyAuth
-configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+configuration = openapi_client.Configuration(
+    host = "http://localhost",
+    api_key = {
+        'X-API-Key': 'YOUR_API_KEY'
+    }
+)
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['X-API-Key'] = 'Bearer'
-configuration = openapi_client.Configuration()
+
 # Configure OAuth2 access token for authorization: OAuth2
+configuration = openapi_client.Configuration(
+    host = "http://localhost"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# Defining host is optional and default to http://localhost
-configuration.host = "http://localhost"
-# Create an instance of the API class
-api_instance = openapi_client.ExampleApi(openapi_client.ApiClient(configuration))
-id = 'id_example' # str | 
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.ExampleApi(api_client)
+    id = 'id_example' # str | 
 body = openapi_client.ProtoRequest() # ProtoRequest | 
 
-try:
-    api_response = api_instance.query(id, body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ExampleApi->query: %s\n" % e)
+    try:
+        api_response = api_instance.query(id, body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ExampleApi->query: %s\n" % e)
 ```
 
 ### Parameters

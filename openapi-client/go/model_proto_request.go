@@ -9,7 +9,7 @@
  */
 
 package openapi
-
+// ProtoRequest struct for ProtoRequest
 type ProtoRequest struct {
 	Id string `json:"id,omitempty"`
 }

@@ -15,16 +15,10 @@ class ProtoResponse {
 
   ProtoResponse.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['code'] == null) {
-      code = null;
-    } else {
-      code = new RpcCode.fromJson(json['code']);
-    }
-    if (json['message'] == null) {
-      message = null;
-    } else {
-          message = json['message'];
-    }
+    code = (json['code'] == null) ?
+      null :
+      RpcCode.fromJson(json['code']);
+    message = json['message'];
   }
 
   Map<String, dynamic> toJson() {
@@ -37,15 +31,26 @@ class ProtoResponse {
   }
 
   static List<ProtoResponse> listFromJson(List<dynamic> json) {
-    return json == null ? new List<ProtoResponse>() : json.map((value) => new ProtoResponse.fromJson(value)).toList();
+    return json == null ? List<ProtoResponse>() : json.map((value) => ProtoResponse.fromJson(value)).toList();
   }
 
   static Map<String, ProtoResponse> mapFromJson(Map<String, dynamic> json) {
-    var map = new Map<String, ProtoResponse>();
+    var map = Map<String, ProtoResponse>();
     if (json != null && json.isNotEmpty) {
-      json.forEach((String key, dynamic value) => map[key] = new ProtoResponse.fromJson(value));
+      json.forEach((String key, dynamic value) => map[key] = ProtoResponse.fromJson(value));
     }
     return map;
+  }
+
+  // maps a json object with a list of ProtoResponse-objects as value to a dart map
+  static Map<String, List<ProtoResponse>> mapListFromJson(Map<String, dynamic> json) {
+    var map = Map<String, List<ProtoResponse>>();
+     if (json != null && json.isNotEmpty) {
+       json.forEach((String key, dynamic value) {
+         map[key] = ProtoResponse.listFromJson(value);
+       });
+     }
+     return map;
   }
 }
 

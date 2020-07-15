@@ -11,8 +11,9 @@
     snprintf(dst, 256, "%ld", (long int)(src));\
 }while(0)
 
+
 proto_response_t*
-ExampleAPI_query(apiClient_t *apiClient ,char * id ,proto_request_t * body)
+ExampleAPI_query(apiClient_t *apiClient, char * id , proto_request_t * body )
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -73,6 +74,8 @@ ExampleAPI_query(apiClient_t *apiClient ,char * id ,proto_request_t * body)
     //return type
     if (apiClient->dataReceived) {
         free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
     }
     
     

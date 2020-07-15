@@ -7,10 +7,10 @@ class HealthCheckApi {
 
   HealthCheckApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// 
+  ///  with HTTP info returned
   ///
   /// 
-  Future<ProtoResponse> healthCheck() async {
+  Future<Response> healthCheckWithHttpInfo() async {
     Object postBody;
 
     // verify required params are set
@@ -25,12 +25,12 @@ class HealthCheckApi {
 
     List<String> contentTypes = [];
 
-    String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
+    String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
     List<String> authNames = ["ApiKeyAuth", "OAuth2"];
 
-    if(contentType.startsWith("multipart/form-data")) {
+    if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
-      MultipartRequest mp = new MultipartRequest(null, null);
+      MultipartRequest mp = MultipartRequest(null, null);
       if(hasFields)
         postBody = mp;
     }
@@ -43,15 +43,23 @@ class HealthCheckApi {
                                              postBody,
                                              headerParams,
                                              formParams,
-                                             contentType,
+                                             nullableContentType,
                                              authNames);
+    return response;
+  }
 
+  /// 
+  ///
+  /// 
+  Future<ProtoResponse> healthCheck() async {
+    Response response = await healthCheckWithHttpInfo();
     if(response.statusCode >= 400) {
-      throw new ApiException(response.statusCode, _decodeBodyBytes(response));
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
       return apiClient.deserialize(_decodeBodyBytes(response), 'ProtoResponse') as ProtoResponse;
     } else {
       return null;
     }
   }
+
 }

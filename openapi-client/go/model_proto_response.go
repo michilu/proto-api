@@ -9,7 +9,7 @@
  */
 
 package openapi
-
+// ProtoResponse struct for ProtoResponse
 type ProtoResponse struct {
 	Code RpcCode `json:"code,omitempty"`
 	Message string `json:"message,omitempty"`

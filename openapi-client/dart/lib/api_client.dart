@@ -10,7 +10,7 @@ class QueryParam {
 class ApiClient {
 
   String basePath;
-  var client = BrowserClient();
+  var client = Client();
 
   Map<String, String> _defaultHeaderMap = {};
   Map<String, Authentication> _authentications = {};
@@ -44,11 +44,7 @@ class ApiClient {
         case 'ProtoResponse':
           return ProtoResponse.fromJson(value);
         case 'RpcCode':
-          // Enclose the value in a list so that Dartson can use a transformer
-          // to decode it.
-          final listValue = [value];
-          final List<dynamic> listResult = dson.map(listValue, []);
-          return listResult[0];
+          return new RpcCodeTypeTransformer().decode(value);
         default:
           {
             Match match;
@@ -98,7 +94,7 @@ class ApiClient {
                              Object body,
                              Map<String, String> headerParams,
                              Map<String, String> formParams,
-                             String contentType,
+                             String nullableContentType,
                              List<String> authNames) async {
 
     _updateParamsForAuth(authNames, queryParams, headerParams);
@@ -114,7 +110,10 @@ class ApiClient {
     String url = basePath + path + queryString;
 
     headerParams.addAll(_defaultHeaderMap);
-    headerParams['Content-Type'] = contentType;
+    if (nullableContentType != null) {
+      final contentType = nullableContentType;
+      headerParams['Content-Type'] = contentType;
+    }
 
     if(body is MultipartRequest) {
       var request = MultipartRequest(method, Uri.parse(url));
@@ -125,18 +124,21 @@ class ApiClient {
       var response = await client.send(request);
       return Response.fromStream(response);
     } else {
-      var msgBody = contentType == "application/x-www-form-urlencoded" ? formParams : serialize(body);
+      var msgBody = nullableContentType == "application/x-www-form-urlencoded" ? formParams : serialize(body);
+      final nullableHeaderParams = (headerParams.isEmpty)? null: headerParams;
       switch(method) {
         case "POST":
-          return client.post(url, headers: headerParams, body: msgBody);
+          return client.post(url, headers: nullableHeaderParams, body: msgBody);
         case "PUT":
-          return client.put(url, headers: headerParams, body: msgBody);
+          return client.put(url, headers: nullableHeaderParams, body: msgBody);
         case "DELETE":
-          return client.delete(url, headers: headerParams);
+          return client.delete(url, headers: nullableHeaderParams);
         case "PATCH":
-          return client.patch(url, headers: headerParams, body: msgBody);
+          return client.patch(url, headers: nullableHeaderParams, body: msgBody);
+        case "HEAD":
+          return client.head(url, headers: nullableHeaderParams);
         default:
-          return client.get(url, headers: headerParams);
+          return client.get(url, headers: nullableHeaderParams);
       }
     }
   }

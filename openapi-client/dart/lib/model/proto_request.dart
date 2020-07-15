@@ -12,11 +12,7 @@ class ProtoRequest {
 
   ProtoRequest.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    if (json['id'] == null) {
-      id = null;
-    } else {
-          id = json['id'];
-    }
+    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -27,15 +23,26 @@ class ProtoRequest {
   }
 
   static List<ProtoRequest> listFromJson(List<dynamic> json) {
-    return json == null ? new List<ProtoRequest>() : json.map((value) => new ProtoRequest.fromJson(value)).toList();
+    return json == null ? List<ProtoRequest>() : json.map((value) => ProtoRequest.fromJson(value)).toList();
   }
 
   static Map<String, ProtoRequest> mapFromJson(Map<String, dynamic> json) {
-    var map = new Map<String, ProtoRequest>();
+    var map = Map<String, ProtoRequest>();
     if (json != null && json.isNotEmpty) {
-      json.forEach((String key, dynamic value) => map[key] = new ProtoRequest.fromJson(value));
+      json.forEach((String key, dynamic value) => map[key] = ProtoRequest.fromJson(value));
     }
     return map;
+  }
+
+  // maps a json object with a list of ProtoRequest-objects as value to a dart map
+  static Map<String, List<ProtoRequest>> mapListFromJson(Map<String, dynamic> json) {
+    var map = Map<String, List<ProtoRequest>>();
+     if (json != null && json.isNotEmpty) {
+       json.forEach((String key, dynamic value) {
+         map[key] = ProtoRequest.listFromJson(value);
+       });
+     }
+     return map;
   }
 }
 

@@ -7,18 +7,18 @@ class ExampleApi {
 
   ExampleApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  /// 
+  ///  with HTTP info returned
   ///
   /// 
-  Future<ProtoResponse> query(String id, ProtoRequest body) async {
+  Future<Response> queryWithHttpInfo(String id, ProtoRequest body) async {
     Object postBody = body;
 
     // verify required params are set
     if(id == null) {
-     throw new ApiException(400, "Missing required param: id");
+     throw ApiException(400, "Missing required param: id");
     }
     if(body == null) {
-     throw new ApiException(400, "Missing required param: body");
+     throw ApiException(400, "Missing required param: body");
     }
 
     // create path and map variables
@@ -31,12 +31,12 @@ class ExampleApi {
 
     List<String> contentTypes = ["application/json"];
 
-    String contentType = contentTypes.isNotEmpty ? contentTypes[0] : "application/json";
+    String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
     List<String> authNames = ["ApiKeyAuth", "OAuth2"];
 
-    if(contentType.startsWith("multipart/form-data")) {
+    if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
-      MultipartRequest mp = new MultipartRequest(null, null);
+      MultipartRequest mp = MultipartRequest(null, null);
       if(hasFields)
         postBody = mp;
     }
@@ -49,15 +49,23 @@ class ExampleApi {
                                              postBody,
                                              headerParams,
                                              formParams,
-                                             contentType,
+                                             nullableContentType,
                                              authNames);
+    return response;
+  }
 
+  /// 
+  ///
+  /// 
+  Future<ProtoResponse> query(String id, ProtoRequest body) async {
+    Response response = await queryWithHttpInfo(id, body);
     if(response.statusCode >= 400) {
-      throw new ApiException(response.statusCode, _decodeBodyBytes(response));
+      throw ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {
       return apiClient.deserialize(_decodeBodyBytes(response), 'ProtoResponse') as ProtoResponse;
     } else {
       return null;
     }
   }
+
 }
