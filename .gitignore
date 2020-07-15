@@ -1,4 +1,4 @@
+*.lock
 /.venv
-/Pipfile.lock
-/vendor
 /go.sum
+/vendor
