@@ -20,4 +20,5 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-o
 # Dependencies
 
 - [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
-- [pypa/pipenv: Python Development Workflow for Humans\.](https://github.com/pypa/pipenv) `$ brew install pipenv`
+- [openapitools/openapi-generator-cli Tags - Docker Hub](https://hub.docker.com/r/openapitools/openapi-generator-cli/tags?ordering=name)
+- [pypa/pipenv: Python Development Workflow for Humans.](https://github.com/pypa/pipenv) `$ brew install pipenv`
