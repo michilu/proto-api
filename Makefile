@@ -4,10 +4,15 @@ all: $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,c dart g
 
 
 GO:=go
+GOM:=GO111MODULE=on $(GO)
 GOPATH:=$(shell $(GO) env GOPATH)
 
 PROTO_DIR:=proto
 PROTO:=$(shell find $(PROTO_DIR) -type d -name .git -prune -or -type d -name vendor -prune -or -type f -name "*.proto" -print)
+PROTO_GO:=$(shell find $(PROTO_DIR) -type f -name "*.go" -print)
+
+vendor: go.mod $(PROTO_GO)
+	$(GOM) mod vendor
 
 .venv:
 	pipenv install --dev
@@ -29,7 +34,7 @@ openapi-server/% :apidocs.swagger.json
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
 	touch $@
 
-apidocs.swagger.json: $(PROTO)
+apidocs.swagger.json: $(PROTO) vendor
 	protoc -I/usr/local/include -I. \
   -Ivendor \
   -I$(GOPATH)/src \
