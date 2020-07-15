@@ -1,5 +1,5 @@
 SHELL:=/usr/bin/env bash
-OPENAPI_GENERATOR_CLI_VERSION=v4.3.1
+OPENAPI_GENERATOR_CLI_VERSION?=v4.3.1
 
 all: $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,c dart go python ruby)) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,python-aiohttp python-blueplanet python-flask)) grpc/python/.keep
 
