@@ -18,4 +18,6 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-o
   - ex) `-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis`
 
 # Dependencies
+
 - [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
+- [pypa/pipenv: Python Development Workflow for Humans\.](https://github.com/pypa/pipenv) `$ brew install pipenv`

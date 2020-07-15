@@ -9,7 +9,10 @@ GOPATH:=$(shell $(GO) env GOPATH)
 PROTO_DIR:=proto
 PROTO:=$(shell find $(PROTO_DIR) -type d -name .git -prune -or -type d -name vendor -prune -or -type f -name "*.proto" -print)
 
-grpc/python/.keep :$(PROTO)
+.venv:
+	pipenv install --dev
+
+grpc/python/.keep :.venv $(PROTO)
 	mkdir -p $(shell dirname $@)
 	pipenv run python -m grpc_tools.protoc \
   -I. \
