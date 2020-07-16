@@ -1,4 +1,4 @@
-module github.com/michilu/proto-openapi
+module github.com/michilu/proto-api
 
 go 1.14
 

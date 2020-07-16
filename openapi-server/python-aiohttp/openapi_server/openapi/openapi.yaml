@@ -2,10 +2,10 @@ openapi: 3.0.1
 info:
   contact:
     email: none@example.com
-    url: https://github.com/michilu/proto-openapi
+    url: https://github.com/michilu/proto-api
   license:
     name: Apache-2.0
-    url: https://github.com/michilu/proto-openapi/blob/master/LICENSE
+    url: https://github.com/michilu/proto-api/blob/master/LICENSE
   title: An example of generating swagger via gRPC ecosystem.
   version: "1.0"
 servers:

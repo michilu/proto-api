@@ -4,12 +4,12 @@
     "title": "An example of generating swagger via gRPC ecosystem.",
     "version": "1.0",
     "contact": {
-      "url": "https://github.com/michilu/proto-openapi",
+      "url": "https://github.com/michilu/proto-api",
       "email": "none@example.com"
     },
     "license": {
       "name": "Apache-2.0",
-      "url": "https://github.com/michilu/proto-openapi/blob/master/LICENSE"
+      "url": "https://github.com/michilu/proto-api/blob/master/LICENSE"
     }
   },
   "schemes": [
