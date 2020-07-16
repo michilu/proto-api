@@ -1,0 +1,6 @@
+# https://github.com/uber/prototool/
+protoc:
+  version: 3.9.0
+  includes:
+  - proto
+  - buf-roots

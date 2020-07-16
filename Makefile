@@ -40,7 +40,7 @@ openapi-server/% :apidocs.swagger.json
 	touch $@
 
 apidocs.swagger.json: $(PROTO) vendor
-	-prototool format $(PROTO_DIR)
+	prototool format --overwrite $(PROTO_DIR)
 	protoc -I/usr/local/include -I. \
   -Ivendor \
   -I$(GOPATH)/src \
