@@ -3,7 +3,6 @@ import 'package:test/test.dart';
 
 // tests for RpcCode
 void main() {
-  var instance = new Pet();
 
   group('test RpcCode', () {
 

@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 /// tests for ExampleApi
 void main() {
-  var instance = new ExampleApi();
+  var instance = ExampleApi();
 
   group('tests for ExampleApi', () {
     //Future<ProtoResponse> query(String id, ProtoRequest body) async 

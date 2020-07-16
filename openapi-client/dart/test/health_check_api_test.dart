@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 /// tests for HealthCheckApi
 void main() {
-  var instance = new HealthCheckApi();
+  var instance = HealthCheckApi();
 
   group('tests for HealthCheckApi', () {
     //Future<ProtoResponse> healthCheck() async 

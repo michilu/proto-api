@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 // tests for ProtoRequest
 void main() {
-  var instance = new Pet();
+    var instance = new ProtoRequest();
 
   group('test ProtoRequest', () {
     // String id (default value: null)

@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 // tests for ProtoResponse
 void main() {
-  var instance = new Pet();
+    var instance = new ProtoResponse();
 
   group('test ProtoResponse', () {
     // RpcCode code (default value: null)
