@@ -1,7 +1,9 @@
 SHELL:=/usr/bin/env bash
 OPENAPI_GENERATOR_CLI_VERSION?=v4.3.1
+OPENAPI_CLIENT?=c dart go python ruby
+OPENAPI_SERVER?=python-aiohttp python-blueplanet python-flask
 
-all: apidocs.swagger.yaml grpc/python/.keep $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,c dart go python ruby)) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,python-aiohttp python-blueplanet python-flask))
+all: apidocs.swagger.yaml grpc/python/.keep $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT))) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))
 
 
 GO:=go
