@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-import "google/api/annotations.proto";
-import "protoc-gen-swagger/options/annotations.proto";
-import "proto/message.proto";
-
 package proto;
+
+import "google/api/annotations.proto";
+import "message.proto";
+import "protoc-gen-swagger/options/annotations.proto";
 
 service example {
   rpc query(Request) returns (Response) {
@@ -15,14 +15,13 @@ service example {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
       security: {
         security_requirement: {
-          key: "ApiKeyAuth";
-          value: {}
+          key: "ApiKeyAuth"
         }
         security_requirement: {
-          key: "OAuth2";
+          key: "OAuth2"
           value: {
-            scope: "read";
-            scope: "write";
+            scope: "read"
+            scope: "write"
           }
         }
       }

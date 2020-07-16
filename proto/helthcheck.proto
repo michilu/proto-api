@@ -1,10 +1,10 @@
 syntax = "proto3";
 
+package proto;
+
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
-import "proto/message.proto";
-
-package proto;
+import "message.proto";
 
 service healthCheck {
   rpc healthCheck(google.protobuf.Empty) returns (Response) {
