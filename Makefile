@@ -31,9 +31,11 @@ grpc/python/.keep :.venv $(PROTO)
 	touch $@
 
 openapi-client/% :apidocs.swagger.json
+	rm -rf $(dir $@)
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
 	touch $@
 openapi-server/% :apidocs.swagger.json
+	rm -rf $(dir $@)
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
 	touch $@
 
