@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package proto;
+package proto.v1;
 
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
   info: {
@@ -52,18 +52,18 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
       }
     }
   }
-  security: {
-    security_requirement: {
-      key: "OAuth2"
-      value: {
-        scope: "read"
-        scope: "write"
-      }
-    }
-    security_requirement: {
-      key: "ApiKeyAuth"
-    }
-  }
+  //security: {
+  //  security_requirement: {
+  //    key: "OAuth2"
+  //    value: {
+  //      scope: "read"
+  //      scope: "write"
+  //    }
+  //  }
+  //  security_requirement: {
+  //    key: "ApiKeyAuth"
+  //  }
+  //}
 };
 
 import "protoc-gen-swagger/options/annotations.proto";

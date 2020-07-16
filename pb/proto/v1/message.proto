@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package proto.v1;
+
+import "github.com/mwitkow/go-proto-validators/validator.proto";
+import "google/rpc/code.proto";
+
+message Response {
+  google.rpc.Code code = 1 [
+    (validator.field) = {
+      is_in_enum: true
+    }
+  ];
+  string message = 2;
+}
