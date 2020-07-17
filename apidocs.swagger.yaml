@@ -18,22 +18,22 @@ produces:
 paths:
   /healthCheck:
     get:
-      operationId: healthCheck
+      operationId: HealthCheck
       responses:
         "200":
           description: A successful response.
           schema:
-            $ref: '#/definitions/protoResponse'
+            $ref: '#/definitions/v1HealthCheckServiceHealthCheckResponse'
       tags:
-      - healthCheck
+      - HealthCheckService
   /v1/example/{id}:
     post:
-      operationId: query
+      operationId: Query
       responses:
         "200":
           description: A successful response.
           schema:
-            $ref: '#/definitions/protoResponse'
+            $ref: '#/definitions/v1ExampleServiceQueryResponse'
       parameters:
       - name: id
         in: path
@@ -43,23 +43,16 @@ paths:
         in: body
         required: true
         schema:
-          $ref: '#/definitions/protoRequest'
+          $ref: '#/definitions/v1ExampleServiceQueryRequest'
       tags:
-      - example
+      - ExampleService
       security:
       - ApiKeyAuth: []
         OAuth2:
         - read
         - write
 definitions:
-  protoRequest:
-    type: object
-    properties:
-      id:
-        type: string
-        minLength: 1
-        pattern: '[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}'
-  protoResponse:
+  protov1Response:
     type: object
     properties:
       code:
@@ -88,7 +81,7 @@ definitions:
     - DATA_LOSS
     default: OK
     description: |-
-      The canonical error codes for Google APIs.
+      The canonical error codes for gRPC APIs.
 
 
       Sometimes multiple error codes may apply.  Services should return
@@ -206,7 +199,8 @@ definitions:
       HTTP Mapping: 500 Internal Server Error
        - UNAVAILABLE: The service is currently unavailable.  This is most likely a
       transient condition, which can be corrected by retrying with
-      a backoff.
+      a backoff. Note that it is not always safe to retry
+      non-idempotent operations.
 
       See the guidelines above for deciding between `FAILED_PRECONDITION`,
       `ABORTED`, and `UNAVAILABLE`.
@@ -215,6 +209,23 @@ definitions:
        - DATA_LOSS: Unrecoverable data loss or corruption.
 
       HTTP Mapping: 500 Internal Server Error
+  v1ExampleServiceQueryRequest:
+    type: object
+    properties:
+      id:
+        type: string
+        minLength: 1
+        pattern: '[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}'
+  v1ExampleServiceQueryResponse:
+    type: object
+    properties:
+      value:
+        $ref: '#/definitions/protov1Response'
+  v1HealthCheckServiceHealthCheckResponse:
+    type: object
+    properties:
+      value:
+        $ref: '#/definitions/protov1Response'
 securityDefinitions:
   ApiKeyAuth:
     type: apiKey
