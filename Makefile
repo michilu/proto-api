@@ -15,8 +15,10 @@ PB_VALIDATE_GO:=$(PROTO:.proto=.pb.validate.go)
 GOSRC:=$(PB_GO) $(PB_VALIDATE_GO)
 BUF_IMAGE:=buf-image.bin
 
+.PHONY: all
 all: apidocs.swagger.yaml $(GOSRC) grpc/python/.keep $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT))) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))
 
+.PHONY: clean
 clean:
 	find $(PROTO_DIR) -name "*.pb*.go" -delete
 	rm -rf\
@@ -26,6 +28,8 @@ clean:
  ;
 
 $(BUF_IMAGE): $(PROTO) vendor
+	buf check lint
+	prototool format --overwrite $(PROTO_DIR)
 	buf image build -o $@
 
 vendor: go.mod $(PROTO_GO)
@@ -58,8 +62,6 @@ grpc/python/.keep :.venv $(PROTO)
 	touch $@
 
 apidocs.swagger.json: $(BUF_IMAGE)
-	buf check lint
-	prototool format --overwrite $(PROTO_DIR)
 	( type protoc > /dev/null 2>&1 ) && protoc\
  --descriptor_set_in=$<\
  --swagger_out=logtostderr=true,allow_merge=true:.\

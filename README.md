@@ -1,5 +1,5 @@
 # proto-api
-An example of generating swagger via gRPC ecosystem.
+An example of generating gRPC, GraphQL, and OpenAPI via proto ecosystem.
 
 # swagger
 https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-api/master/apidocs.swagger.json
