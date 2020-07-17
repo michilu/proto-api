@@ -31,13 +31,15 @@ build:
 	pipenv install --dev
 
 grpc/python/.keep :.venv $(PROTO)
-	mkdir -p $(shell dirname $@)
-	pipenv run python -m grpc_tools.protoc \
-  -I. \
-  -I$(GOPATH)/src \
-  -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway \
-  -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-  --python_out=$(shell dirname $@) --grpc_python_out=$(shell dirname $@) $(PROTO)
+	target=$(shell dirname $@)\
+ ;rm -rf $${target}\
+ ;mkdir -p $${target}\
+ ;pipenv run python -m grpc_tools.protoc\
+ -Ibuf-roots\
+ -Ipb\
+ --python_out=$${target}\
+ --grpc_python_out=$${target}\
+ $(PROTO)
 	touch $@
 
 $(BUF_IMAGE): $(PROTO) vendor
