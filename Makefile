@@ -18,7 +18,7 @@ BUF_IMAGE:=buf-image.bin
 all: apidocs.swagger.yaml $(GOSRC) grpc/python/.keep $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT))) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))
 
 clean:
-	$(shell find $(PROTO_DIR) -name "*.pb*.go" -delete)
+	find $(PROTO_DIR) -name "*.pb*.go" -delete
 	rm -rf\
  grpc/python\
  openapi-client\
