@@ -12,7 +12,8 @@ PROTO:=$(shell find $(PROTO_DIR) -type d -name .git -prune -or -type d -name ven
 PROTO_GO:=$(shell find $(PROTO_DIR) -type f -name "*.go" -print)
 PB_GO:=$(PROTO:.proto=.pb.go)
 PB_VALIDATE_GO:=$(PROTO:.proto=.pb.validate.go)
-GOSRC:=$(PB_GO) $(PB_VALIDATE_GO)
+PB_GQLGEN_GO:=$(PROTO:.proto=.gqlgen.pb.go)
+GOSRC:=$(PB_GO) $(PB_VALIDATE_GO) $(PB_GQLGEN_GO)
 BUF_IMAGE:=buf-image.bin
 GRAPH_DIR:=graph
 GRAPHQLS:=$(patsubst $(PROTO_DIR)/%.proto,$(GRAPH_DIR)/%.pb.graphqls,$(PROTO))
@@ -45,11 +46,18 @@ vendor: go.mod $(PROTO_GO)
  --descriptor_set_in=$(BUF_IMAGE)\
  --go_out=$(PROTO_DIR)\
  $(patsubst $(PROTO_DIR)/%,%,$<)
+
 %.pb.validate.go: %.proto
 	( type protoc > /dev/null 2>&1 ) && protoc\
  --descriptor_set_in=$(BUF_IMAGE)\
  --validate_out="lang=go:$(PROTO_DIR)"\
  $(patsubst $(PROTO_DIR)/%,%,$<)
+
+%.gqlgen.pb.go: %.proto
+	( type protoc > /dev/null 2>&1 ) && protoc\
+ --descriptor_set_in=$(BUF_IMAGE)\
+ --gogqlgen_out=gogoimport=false,paths=source_relative:$(PROTO_DIR)\
+ $(patsubst $(PROTO_DIR)/%,%,$(PROTO))
 
 $(GRAPH_DIR):
 	mkdir -p $@
