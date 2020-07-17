@@ -40,22 +40,16 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:openapi/api.dart';
 
-// TODO Configure API key authorization: ApiKeyAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure OAuth2 access token for authorization: OAuth2
-//defaultApiClient.getAuthentication<OAuth>('OAuth2').accessToken = 'YOUR_ACCESS_TOKEN';
 
-var api_instance = ExampleApi();
+var api_instance = ExampleServiceApi();
 var id = id_example; // String | 
-var body = ProtoRequest(); // ProtoRequest | 
+var body = V1ExampleServiceQueryRequest(); // V1ExampleServiceQueryRequest | 
 
 try {
     var result = api_instance.query(id, body);
     print(result);
 } catch (e) {
-    print("Exception when calling ExampleApi->query: $e\n");
+    print("Exception when calling ExampleServiceApi->query: $e\n");
 }
 
 ```
@@ -66,15 +60,17 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleApi* | [**query**](doc//ExampleApi.md#query) | **POST** /v1/example/{id} | 
-*HealthCheckApi* | [**healthCheck**](doc//HealthCheckApi.md#healthcheck) | **GET** /healthCheck | 
+*ExampleServiceApi* | [**query**](doc//ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
+*HealthCheckServiceApi* | [**healthCheck**](doc//HealthCheckServiceApi.md#healthcheck) | **GET** /healthCheck | 
 
 
 ## Documentation For Models
 
- - [ProtoRequest](doc//ProtoRequest.md)
- - [ProtoResponse](doc//ProtoResponse.md)
+ - [Protov1Response](doc//Protov1Response.md)
  - [RpcCode](doc//RpcCode.md)
+ - [V1ExampleServiceQueryRequest](doc//V1ExampleServiceQueryRequest.md)
+ - [V1ExampleServiceQueryResponse](doc//V1ExampleServiceQueryResponse.md)
+ - [V1HealthCheckServiceHealthCheckResponse](doc//V1HealthCheckServiceHealthCheckResponse.md)
 
 
 ## Documentation For Authorization

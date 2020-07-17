@@ -1,0 +1,41 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server Protov1Response"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a Protov1Response"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  RpcCode = openapi_server.resourceTypes.RpcCode
+}
+resourceTypes {
+
+  Protov1Response {
+    title = Protov1Response
+    description = Protov1Response
+    derivedFrom = Root
+    properties {
+        code {
+          type = RpcCode
+          description = ""
+          optional = false
+        }
+        message {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  Protov1Response {
+    title = Protov1Response
+    description = Protov1Response
+    implements = openapi_server.resourceTypes.Protov1Response
+
+  }
+}

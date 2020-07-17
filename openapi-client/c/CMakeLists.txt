@@ -38,11 +38,13 @@ set(SRCS
     src/binary.c
     external/cJSON.c
     model/object.c
-    model/proto_request.c
-    model/proto_response.c
+    model/protov1_response.c
     model/rpc_code.c
-    api/ExampleAPI.c
-    api/HealthCheckAPI.c
+    model/v1_example_service_query_request.c
+    model/v1_example_service_query_response.c
+    model/v1_health_check_service_health_check_response.c
+    api/ExampleServiceAPI.c
+    api/HealthCheckServiceAPI.c
 
 )
 
@@ -53,11 +55,13 @@ set(HDRS
     include/keyValuePair.h
     external/cJSON.h
     model/object.h
-    model/proto_request.h
-    model/proto_response.h
+    model/protov1_response.h
     model/rpc_code.h
-    api/ExampleAPI.h
-    api/HealthCheckAPI.h
+    model/v1_example_service_query_request.h
+    model/v1_example_service_query_response.h
+    model/v1_health_check_service_health_check_response.h
+    api/ExampleServiceAPI.h
+    api/HealthCheckServiceAPI.h
 
 )
 
@@ -76,8 +80,8 @@ set(HDRS "")
 ## This section shows how to use the above compiled libary to compile the source files
 ## set source files
 #set(SRCS
-#    unit-tests/manual-ExampleAPI.c
-#    unit-tests/manual-HealthCheckAPI.c
+#    unit-tests/manual-ExampleServiceAPI.c
+#    unit-tests/manual-HealthCheckServiceAPI.c
 #)
 
 ##set header files

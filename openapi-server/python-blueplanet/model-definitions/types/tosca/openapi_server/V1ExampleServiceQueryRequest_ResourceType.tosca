@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server V1ExampleServiceQueryRequest"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a V1ExampleServiceQueryRequest"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  import re = openapi_server.resourceTypes.import re
+}
+resourceTypes {
+
+  V1ExampleServiceQueryRequest {
+    title = V1ExampleServiceQueryRequest
+    description = V1ExampleServiceQueryRequest
+    derivedFrom = Root
+    properties {
+        id {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  V1ExampleServiceQueryRequest {
+    title = V1ExampleServiceQueryRequest
+    description = V1ExampleServiceQueryRequest
+    implements = openapi_server.resourceTypes.V1ExampleServiceQueryRequest
+
+  }
+}

@@ -15,6 +15,6 @@ Rails.application.routes.draw do
     match full_path, to: "#{opts.fetch(:controller_name)}##{opts[:action_name]}", via: http_method
   end
 
-  add_openapi_route 'POST', '/v1/example/{id}', controller_name: 'example', action_name: 'query'
-  add_openapi_route 'GET', '/healthCheck', controller_name: 'health_check', action_name: 'health_check'
+  add_openapi_route 'POST', '/v1/example/{id}', controller_name: 'example_service', action_name: 'query'
+  add_openapi_route 'GET', '/healthCheck', controller_name: 'health_check_service', action_name: 'health_check'
 end

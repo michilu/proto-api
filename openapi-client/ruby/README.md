@@ -57,26 +57,15 @@ Please follow the [installation](#installation) procedure and then run the follo
 # Load the gem
 require 'openapi_client'
 
-# Setup authorization
-OpenapiClient.configure do |config|
-  # Configure API key authorization: ApiKeyAuth
-  config.api_key['X-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-Key'] = 'Bearer'
-
-  # Configure OAuth2 access token for authorization: OAuth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = OpenapiClient::ExampleApi.new
+api_instance = OpenapiClient::ExampleServiceApi.new
 id = 'id_example' # String | 
-body = OpenapiClient::ProtoRequest.new # ProtoRequest | 
+body = OpenapiClient::V1ExampleServiceQueryRequest.new # V1ExampleServiceQueryRequest | 
 
 begin
   result = api_instance.query(id, body)
   p result
 rescue OpenapiClient::ApiError => e
-  puts "Exception when calling ExampleApi->query: #{e}"
+  puts "Exception when calling ExampleServiceApi->query: #{e}"
 end
 
 ```
@@ -87,15 +76,17 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*OpenapiClient::ExampleApi* | [**query**](docs/ExampleApi.md#query) | **POST** /v1/example/{id} | 
-*OpenapiClient::HealthCheckApi* | [**health_check**](docs/HealthCheckApi.md#health_check) | **GET** /healthCheck | 
+*OpenapiClient::ExampleServiceApi* | [**query**](docs/ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
+*OpenapiClient::HealthCheckServiceApi* | [**health_check**](docs/HealthCheckServiceApi.md#health_check) | **GET** /healthCheck | 
 
 
 ## Documentation for Models
 
- - [OpenapiClient::ProtoRequest](docs/ProtoRequest.md)
- - [OpenapiClient::ProtoResponse](docs/ProtoResponse.md)
+ - [OpenapiClient::Protov1Response](docs/Protov1Response.md)
  - [OpenapiClient::RpcCode](docs/RpcCode.md)
+ - [OpenapiClient::V1ExampleServiceQueryRequest](docs/V1ExampleServiceQueryRequest.md)
+ - [OpenapiClient::V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)
+ - [OpenapiClient::V1HealthCheckServiceHealthCheckResponse](docs/V1HealthCheckServiceHealthCheckResponse.md)
 
 
 ## Documentation for Authorization

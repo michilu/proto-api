@@ -10,11 +10,6 @@ info:
   version: "1.0"
 servers:
 - url: /
-security:
-- ApiKeyAuth: []
-  OAuth2:
-  - read
-  - write
 paths:
   /healthCheck:
     get:
@@ -24,11 +19,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/protoResponse'
+                $ref: '#/components/schemas/v1HealthCheckServiceHealthCheckResponse'
           description: A successful response.
       tags:
-      - healthCheck
-      x-openapi-router-controller: openapi_server.controllers.health_check_controller
+      - HealthCheckService
+      x-openapi-router-controller: openapi_server.controllers.health_check_service_controller
   /v1/example/{id}:
     post:
       operationId: query
@@ -42,7 +37,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/protoRequest'
+              $ref: '#/components/schemas/v1ExampleServiceQueryRequest'
         required: true
         x-body-name: body
       responses:
@@ -50,27 +45,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/protoResponse'
+                $ref: '#/components/schemas/v1ExampleServiceQueryResponse'
           description: A successful response.
-      security:
-      - ApiKeyAuth: []
-        OAuth2:
-        - read
-        - write
       tags:
-      - example
+      - ExampleService
       x-codegen-request-body-name: body
-      x-openapi-router-controller: openapi_server.controllers.example_controller
+      x-openapi-router-controller: openapi_server.controllers.example_service_controller
 components:
   schemas:
-    protoRequest:
-      properties:
-        id:
-          minLength: 1
-          pattern: '[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}'
-          type: string
-      type: object
-    protoResponse:
+    protov1Response:
       example:
         message: message
       properties:
@@ -82,7 +65,7 @@ components:
     rpcCode:
       default: OK
       description: |-
-        The canonical error codes for Google APIs.
+        The canonical error codes for gRPC APIs.
 
 
         Sometimes multiple error codes may apply.  Services should return
@@ -200,7 +183,8 @@ components:
         HTTP Mapping: 500 Internal Server Error
          - UNAVAILABLE: The service is currently unavailable.  This is most likely a
         transient condition, which can be corrected by retrying with
-        a backoff.
+        a backoff. Note that it is not always safe to retry
+        non-idempotent operations.
 
         See the guidelines above for deciding between `FAILED_PRECONDITION`,
         `ABORTED`, and `UNAVAILABLE`.
@@ -228,6 +212,29 @@ components:
       - UNAVAILABLE
       - DATA_LOSS
       type: string
+    v1ExampleServiceQueryRequest:
+      properties:
+        id:
+          minLength: 1
+          pattern: '[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}'
+          type: string
+      type: object
+    v1ExampleServiceQueryResponse:
+      example:
+        value:
+          message: message
+      properties:
+        value:
+          $ref: '#/components/schemas/protov1Response'
+      type: object
+    v1HealthCheckServiceHealthCheckResponse:
+      example:
+        value:
+          message: message
+      properties:
+        value:
+          $ref: '#/components/schemas/protov1Response'
+      type: object
   securitySchemes:
     ApiKeyAuth:
       in: header

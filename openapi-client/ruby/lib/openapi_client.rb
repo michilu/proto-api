@@ -17,13 +17,15 @@ require 'openapi_client/version'
 require 'openapi_client/configuration'
 
 # Models
-require 'openapi_client/models/proto_request'
-require 'openapi_client/models/proto_response'
+require 'openapi_client/models/protov1_response'
 require 'openapi_client/models/rpc_code'
+require 'openapi_client/models/v1_example_service_query_request'
+require 'openapi_client/models/v1_example_service_query_response'
+require 'openapi_client/models/v1_health_check_service_health_check_response'
 
 # APIs
-require 'openapi_client/api/example_api'
-require 'openapi_client/api/health_check_api'
+require 'openapi_client/api/example_service_api'
+require 'openapi_client/api/health_check_service_api'
 
 module OpenapiClient
   class << self

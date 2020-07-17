@@ -1,2 +1,2 @@
-export * from './ExampleApi';
-export * from './HealthCheckApi';
+export * from './ExampleServiceApi';
+export * from './HealthCheckServiceApi';

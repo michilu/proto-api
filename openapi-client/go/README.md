@@ -33,15 +33,17 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleApi* | [**Query**](docs/ExampleApi.md#query) | **Post** /v1/example/{id} | 
-*HealthCheckApi* | [**HealthCheck**](docs/HealthCheckApi.md#healthcheck) | **Get** /healthCheck | 
+*ExampleServiceApi* | [**Query**](docs/ExampleServiceApi.md#query) | **Post** /v1/example/{id} | 
+*HealthCheckServiceApi* | [**HealthCheck**](docs/HealthCheckServiceApi.md#healthcheck) | **Get** /healthCheck | 
 
 
 ## Documentation For Models
 
- - [ProtoRequest](docs/ProtoRequest.md)
- - [ProtoResponse](docs/ProtoResponse.md)
+ - [Protov1Response](docs/Protov1Response.md)
  - [RpcCode](docs/RpcCode.md)
+ - [V1ExampleServiceQueryRequest](docs/V1ExampleServiceQueryRequest.md)
+ - [V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)
+ - [V1HealthCheckServiceHealthCheckResponse](docs/V1HealthCheckServiceHealthCheckResponse.md)
 
 
 ## Documentation For Authorization
