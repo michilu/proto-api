@@ -20,6 +20,7 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
 # Dependencies
 
 - [Buf: A new way of working with Protocol Buffers.](https://buf.build/docs/installation)
+- [danielvladco/go-proto-gql: Protoc plugins for generating graphql schema and quickly create servers](https://github.com/danielvladco/go-proto-gql)
 - [gRPC – Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/) `$ brew install protobuf`
 - [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
 - [openapitools/openapi-generator-cli Tags - Docker Hub](https://hub.docker.com/r/openapitools/openapi-generator-cli/tags?ordering=name)
