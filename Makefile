@@ -16,9 +16,11 @@ GOSRC:=$(PB_GO) $(PB_VALIDATE_GO)
 BUF_IMAGE:=buf-image.bin
 GRAPH_DIR:=graph
 GRAPHQLS:=$(patsubst $(PROTO_DIR)/%.proto,$(GRAPH_DIR)/%.pb.graphqls,$(PROTO))
+GQLGEN:=$(patsubst $(PROTO_DIR)/%.proto,$(GRAPH_DIR)/%.gqlgen.pb.yml,$(PROTO))
+GRAPH:=$(GRAPHQLS) $(GQLGEN)
 
 .PHONY: all
-all: apidocs.swagger.yaml $(GOSRC) $(GRAPHQLS) grpc/python/.keep $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT))) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))
+all: apidocs.swagger.yaml $(GOSRC) $(GRAPH) grpc/python/.keep $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT))) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))
 
 .PHONY: clean
 clean:
@@ -56,6 +58,12 @@ $(GRAPHQLS): $(GRAPH_DIR) $(BUF_IMAGE)
 	( type protoc > /dev/null 2>&1 ) && protoc\
  --descriptor_set_in=$(BUF_IMAGE)\
  --gql_out=paths=source_relative:$(GRAPH_DIR)\
+ $(patsubst $(PROTO_DIR)/%,%,$(PROTO))
+
+$(GQLGEN): $(GRAPH_DIR) $(BUF_IMAGE)
+	( type protoc > /dev/null 2>&1 ) && protoc\
+ --descriptor_set_in=$(BUF_IMAGE)\
+ --gqlgencfg_out=paths=source_relative:$(GRAPH_DIR)\
  $(patsubst $(PROTO_DIR)/%,%,$(PROTO))
 
 .venv:
