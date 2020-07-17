@@ -11,14 +11,14 @@ PROTO_DIR:=pb
 PROTO:=$(shell find $(PROTO_DIR) -type d -name .git -prune -or -type d -name vendor -prune -or -type f -name "*.proto" -print)
 PROTO_GO:=$(shell find $(PROTO_DIR) -type f -name "*.go" -print)
 PB_GO:=$(PROTO:.proto=.pb.go)
-VALIDATE_PB_GO:=$(PROTO:.proto=.validate.pb.go)
-GOSRC:=$(PB_GO) $(VALIDATE_PB_GO)
+PB_VALIDATE_GO:=$(PROTO:.proto=.pb.validate.go)
+GOSRC:=$(PB_GO) $(PB_VALIDATE_GO)
 BUF_IMAGE:=buf-image.bin
 
 all: apidocs.swagger.yaml $(GOSRC) grpc/python/.keep $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT))) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))
 
 clean:
-	$(shell find $(PROTO_DIR) -name "*.pb.go" -delete)
+	$(shell find $(PROTO_DIR) -name "*.pb*.go" -delete)
 	rm -rf\
  grpc/python\
  openapi-client\
@@ -37,11 +37,10 @@ vendor: go.mod $(PROTO_GO)
  --descriptor_set_in=$(BUF_IMAGE)\
  --go_out=$(PROTO_DIR)\
  $(patsubst $(PROTO_DIR)/%,%,$<)
-%.validate.pb.go: %.proto
-	d=$(dir $<);\
- ( type protoc > /dev/null 2>&1 ) && protoc\
+%.pb.validate.go: %.proto
+	( type protoc > /dev/null 2>&1 ) && protoc\
  --descriptor_set_in=$(BUF_IMAGE)\
- --validate_out="lang=go:$$d"\
+ --validate_out="lang=go:$(PROTO_DIR)"\
  $(patsubst $(PROTO_DIR)/%,%,$<)
 
 .venv:
