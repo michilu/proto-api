@@ -11,9 +11,9 @@ PROTO_DIR:=pb
 PROTO:=$(shell find $(PROTO_DIR) -type d -name .git -prune -or -type d -name vendor -prune -or -type f -name "*.proto" -print)
 PROTO_GO:=$(shell find $(PROTO_DIR) -type f -name "*.go" -print)
 PB_GO:=$(PROTO:.proto=.pb.go)
-PB_VALIDATE_GO:=$(PROTO:.proto=.pb.validate.go)
-PB_GQLGEN_GO:=$(PROTO:.proto=.gqlgen.pb.go)
-GOSRC:=$(PB_GO) $(PB_VALIDATE_GO) $(PB_GQLGEN_GO)
+PB_GO_VALIDATE:=$(PROTO:.proto=.pb.validate.go)
+PB_GO_GQLGEN:=$(PROTO:.proto=.gqlgen.pb.go)
+GOSRC:=$(PB_GO) $(PB_GO_VALIDATE) $(PB_GO_GQLGEN)
 BUF_IMAGE:=buf-image.bin
 GRAPH_DIR:=graph
 GRAPHQLS:=$(patsubst $(PROTO_DIR)/%.proto,$(GRAPH_DIR)/%.pb.graphqls,$(PROTO))
