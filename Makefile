@@ -27,6 +27,7 @@ all: apidocs.swagger.yaml $(GOSRC) $(GRAPH) grpc/python/.keep $(addprefix openap
 clean:
 	find $(PROTO_DIR) -name "*.pb*.go" -delete
 	rm -rf\
+ graph\
  grpc/python\
  openapi-client\
  openapi-server\
