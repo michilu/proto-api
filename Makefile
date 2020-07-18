@@ -21,7 +21,13 @@ GQLGEN:=$(patsubst $(PROTO_DIR)/%.proto,$(GRAPH_DIR)/%.gqlgen.pb.yml,$(PROTO))
 GRAPH:=$(GRAPHQLS) $(GQLGEN)
 
 .PHONY: all
-all: apidocs.swagger.yaml $(GOSRC) $(GRAPH) grpc/python/.keep $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT))) $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))
+all:\
+ apidocs.swagger.yaml\
+ $(GOSRC)\
+ $(GRAPH)\
+ grpc/python/.keep\
+ $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT)))\
+ $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))\
 
 .PHONY: clean
 clean:
