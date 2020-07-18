@@ -1,0 +1,16 @@
+schema:
+- helthcheck.pb.graphqls
+exec:
+  filename: exec.go
+model:
+  filename: models.go
+models:
+  Code:
+    model:
+    - google.golang.org/genproto/googleapis/rpc/code.Code
+  HealthCheckServiceHealthCheckResponse:
+    model:
+    - proto/v1.HealthCheckServiceHealthCheckResponse
+  Response:
+    model:
+    - proto/v1.Response

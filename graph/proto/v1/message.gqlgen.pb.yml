@@ -1,0 +1,6 @@
+schema:
+- message.pb.graphqls
+exec:
+  filename: exec.go
+model:
+  filename: models.go
