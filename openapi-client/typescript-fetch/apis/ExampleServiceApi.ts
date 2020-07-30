@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import {
+    RuntimeError,
+    RuntimeErrorFromJSON,
+    RuntimeErrorToJSON,
     V1ExampleServiceQueryRequest,
     V1ExampleServiceQueryRequestFromJSON,
     V1ExampleServiceQueryRequestToJSON,
@@ -23,7 +26,7 @@ import {
     V1ExampleServiceQueryResponseToJSON,
 } from '../models';
 
-export interface QueryRequest {
+export interface ExampleServiceQueryRequest {
     id: string;
     body: V1ExampleServiceQueryRequest;
 }
@@ -35,13 +38,13 @@ export class ExampleServiceApi extends runtime.BaseAPI {
 
     /**
      */
-    async queryRaw(requestParameters: QueryRequest): Promise<runtime.ApiResponse<V1ExampleServiceQueryResponse>> {
+    async exampleServiceQueryRaw(requestParameters: ExampleServiceQueryRequest): Promise<runtime.ApiResponse<V1ExampleServiceQueryResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling query.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling exampleServiceQuery.');
         }
 
         if (requestParameters.body === null || requestParameters.body === undefined) {
-            throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling query.');
+            throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling exampleServiceQuery.');
         }
 
         const queryParameters: runtime.HTTPQuery = {};
@@ -49,6 +52,19 @@ export class ExampleServiceApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-API-Key"] = this.configuration.apiKey("X-API-Key"); // ApiKeyAuth authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            // oauth required
+            if (typeof this.configuration.accessToken === 'function') {
+                headerParameters["Authorization"] = this.configuration.accessToken("OAuth2", ["read", "write"]);
+            } else {
+                headerParameters["Authorization"] = this.configuration.accessToken;
+            }
+        }
 
         const response = await this.request({
             path: `/v1/example/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
@@ -63,8 +79,8 @@ export class ExampleServiceApi extends runtime.BaseAPI {
 
     /**
      */
-    async query(requestParameters: QueryRequest): Promise<V1ExampleServiceQueryResponse> {
-        const response = await this.queryRaw(requestParameters);
+    async exampleServiceQuery(requestParameters: ExampleServiceQueryRequest): Promise<V1ExampleServiceQueryResponse> {
+        const response = await this.exampleServiceQueryRaw(requestParameters);
         return await response.value();
     }
 

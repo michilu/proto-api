@@ -37,12 +37,12 @@ class HealthCheckServiceApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def health_check(self, **kwargs):  # noqa: E501
-        """health_check  # noqa: E501
+    def health_check_service_health_check(self, **kwargs):  # noqa: E501
+        """health_check_service_health_check  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.health_check(async_req=True)
+        >>> thread = api.health_check_service_health_check(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -58,14 +58,14 @@ class HealthCheckServiceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.health_check_with_http_info(**kwargs)  # noqa: E501
+        return self.health_check_service_health_check_with_http_info(**kwargs)  # noqa: E501
 
-    def health_check_with_http_info(self, **kwargs):  # noqa: E501
-        """health_check  # noqa: E501
+    def health_check_service_health_check_with_http_info(self, **kwargs):  # noqa: E501
+        """health_check_service_health_check  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.health_check_with_http_info(async_req=True)
+        >>> thread = api.health_check_service_health_check_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
@@ -100,7 +100,7 @@ class HealthCheckServiceApi(object):
             if key not in all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method health_check" % key
+                    " to method health_check_service_health_check" % key
                 )
             local_var_params[key] = val
         del local_var_params['kwargs']
@@ -122,7 +122,7 @@ class HealthCheckServiceApi(object):
             ['application/json'])  # noqa: E501
 
         # Authentication setting
-        auth_settings = []  # noqa: E501
+        auth_settings = ['ApiKeyAuth', 'OAuth2']  # noqa: E501
 
         return self.api_client.call_api(
             '/healthCheck', 'GET',

@@ -57,15 +57,26 @@ Please follow the [installation](#installation) procedure and then run the follo
 # Load the gem
 require 'openapi_client'
 
+# Setup authorization
+OpenapiClient.configure do |config|
+  # Configure API key authorization: ApiKeyAuth
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
+
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
 api_instance = OpenapiClient::ExampleServiceApi.new
 id = 'id_example' # String | 
 body = OpenapiClient::V1ExampleServiceQueryRequest.new # V1ExampleServiceQueryRequest | 
 
 begin
-  result = api_instance.query(id, body)
+  result = api_instance.example_service_query(id, body)
   p result
 rescue OpenapiClient::ApiError => e
-  puts "Exception when calling ExampleServiceApi->query: #{e}"
+  puts "Exception when calling ExampleServiceApi->example_service_query: #{e}"
 end
 
 ```
@@ -76,14 +87,16 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*OpenapiClient::ExampleServiceApi* | [**query**](docs/ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
-*OpenapiClient::HealthCheckServiceApi* | [**health_check**](docs/HealthCheckServiceApi.md#health_check) | **GET** /healthCheck | 
+*OpenapiClient::ExampleServiceApi* | [**example_service_query**](docs/ExampleServiceApi.md#example_service_query) | **POST** /v1/example/{id} | 
+*OpenapiClient::HealthCheckServiceApi* | [**health_check_service_health_check**](docs/HealthCheckServiceApi.md#health_check_service_health_check) | **GET** /healthCheck | 
 
 
 ## Documentation for Models
 
+ - [OpenapiClient::ProtobufAny](docs/ProtobufAny.md)
  - [OpenapiClient::Protov1Response](docs/Protov1Response.md)
  - [OpenapiClient::RpcCode](docs/RpcCode.md)
+ - [OpenapiClient::RuntimeError](docs/RuntimeError.md)
  - [OpenapiClient::V1ExampleServiceQueryRequest](docs/V1ExampleServiceQueryRequest.md)
  - [OpenapiClient::V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)
  - [OpenapiClient::V1HealthCheckServiceHealthCheckResponse](docs/V1HealthCheckServiceHealthCheckResponse.md)

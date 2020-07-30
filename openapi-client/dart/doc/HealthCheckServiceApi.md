@@ -9,25 +9,31 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**healthCheck**](HealthCheckServiceApi.md#healthCheck) | **GET** /healthCheck | 
+[**healthCheckServiceHealthCheck**](HealthCheckServiceApi.md#healthCheckServiceHealthCheck) | **GET** /healthCheck | 
 
 
-# **healthCheck**
-> V1HealthCheckServiceHealthCheckResponse healthCheck()
+# **healthCheckServiceHealthCheck**
+> V1HealthCheckServiceHealthCheckResponse healthCheckServiceHealthCheck()
 
 
 
 ### Example 
 ```dart
 import 'package:openapi/api.dart';
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+// TODO Configure OAuth2 access token for authorization: OAuth2
+//defaultApiClient.getAuthentication<OAuth>('OAuth2').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = HealthCheckServiceApi();
 
 try { 
-    var result = api_instance.healthCheck();
+    var result = api_instance.healthCheckServiceHealthCheck();
     print(result);
 } catch (e) {
-    print("Exception when calling HealthCheckServiceApi->healthCheck: $e\n");
+    print("Exception when calling HealthCheckServiceApi->healthCheckServiceHealthCheck: $e\n");
 }
 ```
 
@@ -40,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

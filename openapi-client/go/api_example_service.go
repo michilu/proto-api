@@ -27,13 +27,13 @@ var (
 type ExampleServiceApiService service
 
 /*
-Query Method for Query
+ExampleServiceQuery Method for ExampleServiceQuery
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id
  * @param body
 @return V1ExampleServiceQueryResponse
 */
-func (a *ExampleServiceApiService) Query(ctx _context.Context, id string, body V1ExampleServiceQueryRequest) (V1ExampleServiceQueryResponse, *_nethttp.Response, error) {
+func (a *ExampleServiceApiService) ExampleServiceQuery(ctx _context.Context, id string, body V1ExampleServiceQueryRequest) (V1ExampleServiceQueryResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -70,6 +70,18 @@ func (a *ExampleServiceApiService) Query(ctx _context.Context, id string, body V
 	}
 	// body params
 	localVarPostBody = &body
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+			localVarHeaderParams["X-API-Key"] = key
+		}
+	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -91,6 +103,13 @@ func (a *ExampleServiceApiService) Query(ctx _context.Context, id string, body V
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+			var v RuntimeError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

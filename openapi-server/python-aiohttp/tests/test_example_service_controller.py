@@ -4,12 +4,13 @@ import pytest
 import json
 from aiohttp import web
 
+from openapi_server.models.runtime_error import RuntimeError
 from openapi_server.models.v1_example_service_query_request import V1ExampleServiceQueryRequest
 from openapi_server.models.v1_example_service_query_response import V1ExampleServiceQueryResponse
 
 
-async def test_query(client):
-    """Test case for query
+async def test_example_service_query(client):
+    """Test case for example_service_query
 
     
     """
@@ -17,6 +18,8 @@ async def test_query(client):
     headers = { 
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'ApiKeyAuth': 'special-key',
+        'Authorization': 'Bearer special-key',
     }
     response = await client.request(
         method='POST',

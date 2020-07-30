@@ -23,8 +23,8 @@ module OpenapiClient
     # @param body [V1ExampleServiceQueryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [V1ExampleServiceQueryResponse]
-    def query(id, body, opts = {})
-      data, _status_code, _headers = query_with_http_info(id, body, opts)
+    def example_service_query(id, body, opts = {})
+      data, _status_code, _headers = example_service_query_with_http_info(id, body, opts)
       data
     end
 
@@ -32,17 +32,17 @@ module OpenapiClient
     # @param body [V1ExampleServiceQueryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(V1ExampleServiceQueryResponse, Integer, Hash)>] V1ExampleServiceQueryResponse data, response status code and response headers
-    def query_with_http_info(id, body, opts = {})
+    def example_service_query_with_http_info(id, body, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ExampleServiceApi.query ...'
+        @api_client.config.logger.debug 'Calling API: ExampleServiceApi.example_service_query ...'
       end
       # verify the required parameter 'id' is set
       if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling ExampleServiceApi.query"
+        fail ArgumentError, "Missing the required parameter 'id' when calling ExampleServiceApi.example_service_query"
       end
       # verify the required parameter 'body' is set
       if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling ExampleServiceApi.query"
+        fail ArgumentError, "Missing the required parameter 'body' when calling ExampleServiceApi.example_service_query"
       end
       # resource path
       local_var_path = '/v1/example/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
@@ -67,7 +67,7 @@ module OpenapiClient
       return_type = opts[:return_type] || 'V1ExampleServiceQueryResponse' 
 
       # auth_names
-      auth_names = opts[:auth_names] || []
+      auth_names = opts[:auth_names] || ['ApiKeyAuth', 'OAuth2']
 
       new_options = opts.merge(
         :header_params => header_params,
@@ -80,7 +80,7 @@ module OpenapiClient
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ExampleServiceApi#query\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ExampleServiceApi#example_service_query\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

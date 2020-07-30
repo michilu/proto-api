@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Query**](ExampleServiceApi.md#Query) | **Post** /v1/example/{id} | 
+[**ExampleServiceQuery**](ExampleServiceApi.md#ExampleServiceQuery) | **Post** /v1/example/{id} | 
 
 
 
-## Query
+## ExampleServiceQuery
 
-> V1ExampleServiceQueryResponse Query(ctx, id, body)
+> V1ExampleServiceQueryResponse ExampleServiceQuery(ctx, id, body)
 
 
 
@@ -29,7 +29,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

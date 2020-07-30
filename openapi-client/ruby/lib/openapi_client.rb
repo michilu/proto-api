@@ -17,8 +17,10 @@ require 'openapi_client/version'
 require 'openapi_client/configuration'
 
 # Models
+require 'openapi_client/models/protobuf_any'
 require 'openapi_client/models/protov1_response'
 require 'openapi_client/models/rpc_code'
+require 'openapi_client/models/runtime_error'
 require 'openapi_client/models/v1_example_service_query_request'
 require 'openapi_client/models/v1_example_service_query_response'
 require 'openapi_client/models/v1_health_check_service_health_check_response'

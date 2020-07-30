@@ -38,8 +38,10 @@ set(SRCS
     src/binary.c
     external/cJSON.c
     model/object.c
+    model/protobuf_any.c
     model/protov1_response.c
     model/rpc_code.c
+    model/runtime_error.c
     model/v1_example_service_query_request.c
     model/v1_example_service_query_response.c
     model/v1_health_check_service_health_check_response.c
@@ -55,8 +57,10 @@ set(HDRS
     include/keyValuePair.h
     external/cJSON.h
     model/object.h
+    model/protobuf_any.h
     model/protov1_response.h
     model/rpc_code.h
+    model/runtime_error.h
     model/v1_example_service_query_request.h
     model/v1_example_service_query_response.h
     model/v1_health_check_service_health_check_response.h

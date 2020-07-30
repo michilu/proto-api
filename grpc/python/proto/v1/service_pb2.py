@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x16proto/v1/service.proto\x12\x08proto.v1\x1a\x36github.com/mwitkow/go-proto-validators/validator.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x16proto/v1/message.proto\x1a,protoc-gen-swagger/options/annotations.proto\"\x87\x01\n\x1a\x45xampleServiceQueryRequest\x12i\n\x02id\x18\x01 \x01(\tB]\x92\x41Q\x80\x01\x01\x8a\x01K[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\xe2\xdf\x1f\x05X\x01\x90\x01\x04\"@\n\x1b\x45xampleServiceQueryResponse\x12!\n\x05value\x18\x01 \x01(\x0b\x32\x12.proto.v1.Response2\x83\x01\n\x0e\x45xampleService\x12q\n\x05Query\x12$.proto.v1.ExampleServiceQueryRequest\x1a%.proto.v1.ExampleServiceQueryResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\"\x10/v1/example/{id}:\x01*b\x06proto3'
+  serialized_pb=b'\n\x16proto/v1/service.proto\x12\x08proto.v1\x1a\x36github.com/mwitkow/go-proto-validators/validator.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x16proto/v1/message.proto\x1a,protoc-gen-swagger/options/annotations.proto\"\x87\x01\n\x1a\x45xampleServiceQueryRequest\x12i\n\x02id\x18\x01 \x01(\tB]\x92\x41Q\x80\x01\x01\x8a\x01K[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\xe2\xdf\x1f\x05X\x01\x90\x01\x04\"@\n\x1b\x45xampleServiceQueryResponse\x12!\n\x05value\x18\x01 \x01(\x0b\x32\x12.proto.v1.Response2\xb2\x01\n\x0e\x45xampleService\x12\x9f\x01\n\x05Query\x12$.proto.v1.ExampleServiceQueryRequest\x1a%.proto.v1.ExampleServiceQueryResponse\"I\x82\xd3\xe4\x93\x02\x15\"\x10/v1/example/{id}:\x01*\x92\x41+b)\n\x0e\n\nApiKeyAuth\x12\x00\n\x17\n\x06OAuth2\x12\r\n\x04read\n\x05writeb\x06proto3'
   ,
   dependencies=[github_dot_com_dot_mwitkow_dot_go__proto__validators_dot_validator__pb2.DESCRIPTOR,google_dot_api_dot_annotations__pb2.DESCRIPTOR,proto_dot_v1_dot_message__pb2.DESCRIPTOR,protoc__gen__swagger_dot_options_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -123,7 +123,7 @@ _EXAMPLESERVICE = _descriptor.ServiceDescriptor(
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
   serialized_start=397,
-  serialized_end=528,
+  serialized_end=575,
   methods=[
   _descriptor.MethodDescriptor(
     name='Query',
@@ -132,7 +132,7 @@ _EXAMPLESERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_EXAMPLESERVICEQUERYREQUEST,
     output_type=_EXAMPLESERVICEQUERYRESPONSE,
-    serialized_options=b'\202\323\344\223\002\025\"\020/v1/example/{id}:\001*',
+    serialized_options=b'\202\323\344\223\002\025\"\020/v1/example/{id}:\001*\222A+b)\n\016\n\nApiKeyAuth\022\000\n\027\n\006OAuth2\022\r\n\004read\n\005write',
     create_key=_descriptor._internal_create_key,
   ),
 ])

@@ -7,8 +7,8 @@ void main() {
   var instance = HealthCheckServiceApi();
 
   group('tests for HealthCheckServiceApi', () {
-    //Future<V1HealthCheckServiceHealthCheckResponse> healthCheck() async 
-    test('test healthCheck', () async {
+    //Future<V1HealthCheckServiceHealthCheckResponse> healthCheckServiceHealthCheck() async 
+    test('test healthCheckServiceHealthCheck', () async {
       // TODO
     });
 

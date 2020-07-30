@@ -10,7 +10,7 @@ class ExampleServiceApi {
   ///  with HTTP info returned
   ///
   /// 
-  Future<Response> queryWithHttpInfo(String id, V1ExampleServiceQueryRequest body) async {
+  Future<Response> exampleServiceQueryWithHttpInfo(String id, V1ExampleServiceQueryRequest body) async {
     Object postBody = body;
 
     // verify required params are set
@@ -32,7 +32,7 @@ class ExampleServiceApi {
     List<String> contentTypes = ["application/json"];
 
     String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    List<String> authNames = [];
+    List<String> authNames = ["ApiKeyAuth", "OAuth2"];
 
     if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -57,8 +57,8 @@ class ExampleServiceApi {
   /// 
   ///
   /// 
-  Future<V1ExampleServiceQueryResponse> query(String id, V1ExampleServiceQueryRequest body) async {
-    Response response = await queryWithHttpInfo(id, body);
+  Future<V1ExampleServiceQueryResponse> exampleServiceQuery(String id, V1ExampleServiceQueryRequest body) async {
+    Response response = await exampleServiceQueryWithHttpInfo(id, body);
     if(response.statusCode >= 400) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {

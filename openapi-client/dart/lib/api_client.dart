@@ -39,10 +39,14 @@ class ApiClient {
           return value is bool ? value : '$value'.toLowerCase() == 'true';
         case 'double':
           return value is double ? value : double.parse('$value');
+        case 'ProtobufAny':
+          return ProtobufAny.fromJson(value);
         case 'Protov1Response':
           return Protov1Response.fromJson(value);
         case 'RpcCode':
           return new RpcCodeTypeTransformer().decode(value);
+        case 'RuntimeError':
+          return RuntimeError.fromJson(value);
         case 'V1ExampleServiceQueryRequest':
           return V1ExampleServiceQueryRequest.fromJson(value);
         case 'V1ExampleServiceQueryResponse':

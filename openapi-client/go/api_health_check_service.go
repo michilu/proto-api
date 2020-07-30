@@ -26,11 +26,11 @@ var (
 type HealthCheckServiceApiService service
 
 /*
-HealthCheck Method for HealthCheck
+HealthCheckServiceHealthCheck Method for HealthCheckServiceHealthCheck
  * @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return V1HealthCheckServiceHealthCheckResponse
 */
-func (a *HealthCheckServiceApiService) HealthCheck(ctx _context.Context) (V1HealthCheckServiceHealthCheckResponse, *_nethttp.Response, error) {
+func (a *HealthCheckServiceApiService) HealthCheckServiceHealthCheck(ctx _context.Context) (V1HealthCheckServiceHealthCheckResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -63,6 +63,18 @@ func (a *HealthCheckServiceApiService) HealthCheck(ctx _context.Context) (V1Heal
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+			localVarHeaderParams["X-API-Key"] = key
+		}
+	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -84,6 +96,13 @@ func (a *HealthCheckServiceApiService) HealthCheck(ctx _context.Context) (V1Heal
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+			var v RuntimeError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

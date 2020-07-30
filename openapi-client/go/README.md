@@ -33,14 +33,16 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleServiceApi* | [**Query**](docs/ExampleServiceApi.md#query) | **Post** /v1/example/{id} | 
-*HealthCheckServiceApi* | [**HealthCheck**](docs/HealthCheckServiceApi.md#healthcheck) | **Get** /healthCheck | 
+*ExampleServiceApi* | [**ExampleServiceQuery**](docs/ExampleServiceApi.md#exampleservicequery) | **Post** /v1/example/{id} | 
+*HealthCheckServiceApi* | [**HealthCheckServiceHealthCheck**](docs/HealthCheckServiceApi.md#healthcheckservicehealthcheck) | **Get** /healthCheck | 
 
 
 ## Documentation For Models
 
+ - [ProtobufAny](docs/ProtobufAny.md)
  - [Protov1Response](docs/Protov1Response.md)
  - [RpcCode](docs/RpcCode.md)
+ - [RuntimeError](docs/RuntimeError.md)
  - [V1ExampleServiceQueryRequest](docs/V1ExampleServiceQueryRequest.md)
  - [V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)
  - [V1HealthCheckServiceHealthCheckResponse](docs/V1HealthCheckServiceHealthCheckResponse.md)

@@ -13,7 +13,7 @@
 
 
 v1_example_service_query_response_t*
-ExampleServiceAPI_query(apiClient_t *apiClient, char * id , v1_example_service_query_request_t * body )
+ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , v1_example_service_query_request_t * body )
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -62,6 +62,9 @@ ExampleServiceAPI_query(apiClient_t *apiClient, char * id , v1_example_service_q
 
     if (apiClient->response_code == 200) {
         printf("%s\n","A successful response.");
+    }
+    if (apiClient->response_code == 0) {
+        printf("%s\n","An unexpected error response");
     }
     //nonprimitive not container
     cJSON *ExampleServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);

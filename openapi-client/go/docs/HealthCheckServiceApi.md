@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**HealthCheck**](HealthCheckServiceApi.md#HealthCheck) | **Get** /healthCheck | 
+[**HealthCheckServiceHealthCheck**](HealthCheckServiceApi.md#HealthCheckServiceHealthCheck) | **Get** /healthCheck | 
 
 
 
-## HealthCheck
+## HealthCheckServiceHealthCheck
 
-> V1HealthCheckServiceHealthCheckResponse HealthCheck(ctx, )
+> V1HealthCheckServiceHealthCheckResponse HealthCheckServiceHealthCheck(ctx, )
 
 
 
@@ -24,7 +24,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth), [OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 

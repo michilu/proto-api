@@ -59,6 +59,26 @@ configuration = openapi_client.Configuration(
     host = "http://localhost"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration = openapi_client.Configuration(
+    host = "http://localhost",
+    api_key = {
+        'X-API-Key': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = openapi_client.Configuration(
+    host = "http://localhost"
+)
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 
 # Enter a context with an instance of the API client
@@ -69,10 +89,10 @@ with openapi_client.ApiClient(configuration) as api_client:
 body = openapi_client.V1ExampleServiceQueryRequest() # V1ExampleServiceQueryRequest | 
 
     try:
-        api_response = api_instance.query(id, body)
+        api_response = api_instance.example_service_query(id, body)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ExampleServiceApi->query: %s\n" % e)
+        print("Exception when calling ExampleServiceApi->example_service_query: %s\n" % e)
     
 ```
 
@@ -82,14 +102,16 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleServiceApi* | [**query**](docs/ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
-*HealthCheckServiceApi* | [**health_check**](docs/HealthCheckServiceApi.md#health_check) | **GET** /healthCheck | 
+*ExampleServiceApi* | [**example_service_query**](docs/ExampleServiceApi.md#example_service_query) | **POST** /v1/example/{id} | 
+*HealthCheckServiceApi* | [**health_check_service_health_check**](docs/HealthCheckServiceApi.md#health_check_service_health_check) | **GET** /healthCheck | 
 
 
 ## Documentation For Models
 
+ - [ProtobufAny](docs/ProtobufAny.md)
  - [Protov1Response](docs/Protov1Response.md)
  - [RpcCode](docs/RpcCode.md)
+ - [RuntimeError](docs/RuntimeError.md)
  - [V1ExampleServiceQueryRequest](docs/V1ExampleServiceQueryRequest.md)
  - [V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)
  - [V1HealthCheckServiceHealthCheckResponse](docs/V1HealthCheckServiceHealthCheckResponse.md)

@@ -32,12 +32,12 @@ describe 'ExampleServiceApi' do
     end
   end
 
-  # unit tests for query
+  # unit tests for example_service_query
   # @param id 
   # @param body 
   # @param [Hash] opts the optional parameters
   # @return [V1ExampleServiceQueryResponse]
-  describe 'query test' do
+  describe 'example_service_query test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

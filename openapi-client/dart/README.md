@@ -40,16 +40,22 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:openapi/api.dart';
 
+// TODO Configure API key authorization: ApiKeyAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
+// TODO Configure OAuth2 access token for authorization: OAuth2
+//defaultApiClient.getAuthentication<OAuth>('OAuth2').accessToken = 'YOUR_ACCESS_TOKEN';
 
 var api_instance = ExampleServiceApi();
 var id = id_example; // String | 
 var body = V1ExampleServiceQueryRequest(); // V1ExampleServiceQueryRequest | 
 
 try {
-    var result = api_instance.query(id, body);
+    var result = api_instance.exampleServiceQuery(id, body);
     print(result);
 } catch (e) {
-    print("Exception when calling ExampleServiceApi->query: $e\n");
+    print("Exception when calling ExampleServiceApi->exampleServiceQuery: $e\n");
 }
 
 ```
@@ -60,14 +66,16 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleServiceApi* | [**query**](doc//ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
-*HealthCheckServiceApi* | [**healthCheck**](doc//HealthCheckServiceApi.md#healthcheck) | **GET** /healthCheck | 
+*ExampleServiceApi* | [**exampleServiceQuery**](doc//ExampleServiceApi.md#exampleservicequery) | **POST** /v1/example/{id} | 
+*HealthCheckServiceApi* | [**healthCheckServiceHealthCheck**](doc//HealthCheckServiceApi.md#healthcheckservicehealthcheck) | **GET** /healthCheck | 
 
 
 ## Documentation For Models
 
+ - [ProtobufAny](doc//ProtobufAny.md)
  - [Protov1Response](doc//Protov1Response.md)
  - [RpcCode](doc//RpcCode.md)
+ - [RuntimeError](doc//RuntimeError.md)
  - [V1ExampleServiceQueryRequest](doc//V1ExampleServiceQueryRequest.md)
  - [V1ExampleServiceQueryResponse](doc//V1ExampleServiceQueryResponse.md)
  - [V1HealthCheckServiceHealthCheckResponse](doc//V1HealthCheckServiceHealthCheckResponse.md)

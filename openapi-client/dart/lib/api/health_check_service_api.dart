@@ -10,7 +10,7 @@ class HealthCheckServiceApi {
   ///  with HTTP info returned
   ///
   /// 
-  Future<Response> healthCheckWithHttpInfo() async {
+  Future<Response> healthCheckServiceHealthCheckWithHttpInfo() async {
     Object postBody;
 
     // verify required params are set
@@ -26,7 +26,7 @@ class HealthCheckServiceApi {
     List<String> contentTypes = [];
 
     String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    List<String> authNames = [];
+    List<String> authNames = ["ApiKeyAuth", "OAuth2"];
 
     if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
@@ -51,8 +51,8 @@ class HealthCheckServiceApi {
   /// 
   ///
   /// 
-  Future<V1HealthCheckServiceHealthCheckResponse> healthCheck() async {
-    Response response = await healthCheckWithHttpInfo();
+  Future<V1HealthCheckServiceHealthCheckResponse> healthCheckServiceHealthCheck() async {
+    Response response = await healthCheckServiceHealthCheckWithHttpInfo();
     if(response.statusCode >= 400) {
       throw ApiException(response.statusCode, _decodeBodyBytes(response));
     } else if(response.body != null) {

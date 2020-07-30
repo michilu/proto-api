@@ -32,10 +32,10 @@ describe 'HealthCheckServiceApi' do
     end
   end
 
-  # unit tests for health_check
+  # unit tests for health_check_service_health_check
   # @param [Hash] opts the optional parameters
   # @return [V1HealthCheckServiceHealthCheckResponse]
-  describe 'health_check test' do
+  describe 'health_check_service_health_check test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

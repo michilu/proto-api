@@ -21,16 +21,16 @@ module OpenapiClient
     end
     # @param [Hash] opts the optional parameters
     # @return [V1HealthCheckServiceHealthCheckResponse]
-    def health_check(opts = {})
-      data, _status_code, _headers = health_check_with_http_info(opts)
+    def health_check_service_health_check(opts = {})
+      data, _status_code, _headers = health_check_service_health_check_with_http_info(opts)
       data
     end
 
     # @param [Hash] opts the optional parameters
     # @return [Array<(V1HealthCheckServiceHealthCheckResponse, Integer, Hash)>] V1HealthCheckServiceHealthCheckResponse data, response status code and response headers
-    def health_check_with_http_info(opts = {})
+    def health_check_service_health_check_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: HealthCheckServiceApi.health_check ...'
+        @api_client.config.logger.debug 'Calling API: HealthCheckServiceApi.health_check_service_health_check ...'
       end
       # resource path
       local_var_path = '/healthCheck'
@@ -53,7 +53,7 @@ module OpenapiClient
       return_type = opts[:return_type] || 'V1HealthCheckServiceHealthCheckResponse' 
 
       # auth_names
-      auth_names = opts[:auth_names] || []
+      auth_names = opts[:auth_names] || ['ApiKeyAuth', 'OAuth2']
 
       new_options = opts.merge(
         :header_params => header_params,
@@ -66,7 +66,7 @@ module OpenapiClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: HealthCheckServiceApi#health_check\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: HealthCheckServiceApi#health_check_service_health_check\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
