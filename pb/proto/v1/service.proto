@@ -14,18 +14,18 @@ service ExampleService {
       body: "*"
     };
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
-      //security: {
-      //  security_requirement: {
-      //    key: "ApiKeyAuth"
-      //  }
-      //  security_requirement: {
-      //    key: "OAuth2"
-      //    value: {
-      //      scope: "read"
-      //      scope: "write"
-      //    }
-      //  }
-      //}
+      security: {
+        security_requirement: {
+          key: "ApiKeyAuth"
+        }
+        security_requirement: {
+          key: "OAuth2"
+          value: {
+            scope: "read"
+            scope: "write"
+          }
+        }
+      }
     };
   }
 }
