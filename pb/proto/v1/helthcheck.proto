@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package proto.v1;
 
+option go_package = "pb/proto/v1";
+
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 import "proto/v1/message.proto";

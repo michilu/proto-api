@@ -55,13 +55,13 @@ vendor: go.mod $(PROTO_GO)
 %.pb.go: %.proto
 	( type protoc > /dev/null 2>&1 ) && protoc\
  --descriptor_set_in=$(BUF_IMAGE)\
- --go_out=$(PROTO_DIR)\
+ --go_out=.\
  $(patsubst $(PROTO_DIR)/%,%,$<)
 
 %.pb.validate.go: %.proto
 	( type protoc > /dev/null 2>&1 ) && protoc\
  --descriptor_set_in=$(BUF_IMAGE)\
- --validate_out="lang=go:$(PROTO_DIR)"\
+ --validate_out="lang=go:."\
  $(patsubst $(PROTO_DIR)/%,%,$<)
 
 %.gqlgen.pb.go: %.proto
@@ -86,7 +86,8 @@ $(GQLGEN): $(GRAPH_DIR) $(BUF_IMAGE)
  $(patsubst $(PROTO_DIR)/%,%,$(PROTO))
 
 gqlgen.yml: $(GQLGEN)
-	yq merge $@ $(GQLGEN) > $@.tmp
+	[ -f $@ ] || echo 'schema:' > $@
+	yq merge $(GQLGEN) $@ > $@.tmp
 	mv $@.tmp $@
 
 .venv:
