@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='proto/v1/helthcheck.proto',
   package='proto.v1',
   syntax='proto3',
-  serialized_options=None,
+  serialized_options=b'Z\013pb/proto/v1',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x19proto/v1/helthcheck.proto\x12\x08proto.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x16proto/v1/message.proto\"J\n%HealthCheckServiceHealthCheckResponse\x12!\n\x05value\x18\x01 \x01(\x0b\x32\x12.proto.v1.Response2\x82\x01\n\x12HealthCheckService\x12l\n\x0bHealthCheck\x12\x16.google.protobuf.Empty\x1a/.proto.v1.HealthCheckServiceHealthCheckResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\x12\x0c/healthCheckb\x06proto3'
+  serialized_pb=b'\n\x19proto/v1/helthcheck.proto\x12\x08proto.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x16proto/v1/message.proto\"J\n%HealthCheckServiceHealthCheckResponse\x12!\n\x05value\x18\x01 \x01(\x0b\x32\x12.proto.v1.Response2\x82\x01\n\x12HealthCheckService\x12l\n\x0bHealthCheck\x12\x16.google.protobuf.Empty\x1a/.proto.v1.HealthCheckServiceHealthCheckResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\x12\x0c/healthCheckB\rZ\x0bpb/proto/v1b\x06proto3'
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,proto_dot_v1_dot_message__pb2.DESCRIPTOR,])
 
@@ -72,6 +72,7 @@ HealthCheckServiceHealthCheckResponse = _reflection.GeneratedProtocolMessageType
 _sym_db.RegisterMessage(HealthCheckServiceHealthCheckResponse)
 
 
+DESCRIPTOR._options = None
 
 _HEALTHCHECKSERVICE = _descriptor.ServiceDescriptor(
   name='HealthCheckService',

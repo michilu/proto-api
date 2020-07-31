@@ -10,7 +10,7 @@ models:
     - google.golang.org/genproto/googleapis/rpc/code.Code
   HealthCheckServiceHealthCheckResponse:
     model:
-    - proto/v1.HealthCheckServiceHealthCheckResponse
+    - pb/proto/v1.HealthCheckServiceHealthCheckResponse
   Response:
     model:
-    - proto/v1.Response
+    - pb/proto/v1.Response

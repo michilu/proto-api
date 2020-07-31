@@ -19,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='proto/v1/message.proto',
   package='proto.v1',
   syntax='proto3',
-  serialized_options=None,
+  serialized_options=b'Z\013pb/proto/v1',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x16proto/v1/message.proto\x12\x08proto.v1\x1a\x36github.com/mwitkow/go-proto-validators/validator.proto\x1a\x15google/rpc/code.proto\"D\n\x08Response\x12\'\n\x04\x63ode\x18\x01 \x01(\x0e\x32\x10.google.rpc.CodeB\x07\xe2\xdf\x1f\x03\x88\x01\x01\x12\x0f\n\x07message\x18\x02 \x01(\tb\x06proto3'
+  serialized_pb=b'\n\x16proto/v1/message.proto\x12\x08proto.v1\x1a\x36github.com/mwitkow/go-proto-validators/validator.proto\x1a\x15google/rpc/code.proto\"D\n\x08Response\x12\'\n\x04\x63ode\x18\x01 \x01(\x0e\x32\x10.google.rpc.CodeB\x07\xe2\xdf\x1f\x03\x88\x01\x01\x12\x0f\n\x07message\x18\x02 \x01(\tB\rZ\x0bpb/proto/v1b\x06proto3'
   ,
   dependencies=[github_dot_com_dot_mwitkow_dot_go__proto__validators_dot_validator__pb2.DESCRIPTOR,google_dot_rpc_dot_code__pb2.DESCRIPTOR,])
 
@@ -78,5 +78,6 @@ Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Messag
 _sym_db.RegisterMessage(Response)
 
 
+DESCRIPTOR._options = None
 _RESPONSE.fields_by_name['code']._options = None
 # @@protoc_insertion_point(module_scope)
