@@ -39,15 +39,13 @@ clean:
  openapi-server\
  ;
 
-$(BUF_IMAGE): $(PROTO)
+$(BUF_IMAGE): vendor $(PROTO)
 	buf check lint
 	prototool format --overwrite $(PROTO_DIR)
 	buf image build -o $@
 
-$(PB_GO): $(BUF_IMAGE)
-$(PB_GO_VALIDATE): $(BUF_IMAGE)
-$(PB_GO_GQLGEN): $(BUF_IMAGE)
 
+.PHONY: vendor
 vendor: go.mod $(PROTO_GO)
 	$(GOM) mod $@
 	git checkout $@
