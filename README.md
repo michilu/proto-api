@@ -25,7 +25,7 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
 - [grpc\-gateway/protoc\-gen\-swagger at master · grpc\-ecosystem/grpc\-gateway](https://github.com/grpc-ecosystem/grpc-gateway/tree/master/protoc-gen-swagger) `$ go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger`
 - [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
 - [openapitools/openapi-generator-cli Tags - Docker Hub](https://hub.docker.com/r/openapitools/openapi-generator-cli/tags?ordering=name)
-- [pypa/pipenv: Python Development Workflow for Humans.](https://github.com/pypa/pipenv) `$ brew install pipenv`
+- [Poetry - Python dependency management and packaging made easy](https://python-poetry.org/)
 - [uber/prototool: Your Swiss Army Knife for Protocol Buffers](https://github.com/uber/prototool/)
 
 # sync subtree

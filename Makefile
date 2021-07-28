@@ -89,12 +89,12 @@ gqlgen.yml: $(GQLGEN)
 	mv $@.tmp $@
 
 .venv:
-	pipenv install --dev
+	poetry install
 
 grpc/python/.keep :.venv $(PROTO)
 	target=$(shell dirname $@)\
  ;mkdir -p $${target}\
- ;pipenv run python -m grpc_tools.protoc\
+ ;poetry run python -m grpc_tools.protoc\
  -Ibuf-roots\
  -Ipb\
  --python_out=$${target}\
