@@ -54,6 +54,7 @@ class ExampleService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -62,4 +63,4 @@ class ExampleService(object):
             proto_dot_v1_dot_service__pb2.ExampleServiceQueryRequest.SerializeToString,
             proto_dot_v1_dot_service__pb2.ExampleServiceQueryResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -55,6 +55,7 @@ class HealthCheckService(object):
             options=(),
             channel_credentials=None,
             call_credentials=None,
+            insecure=False,
             compression=None,
             wait_for_ready=None,
             timeout=None,
@@ -63,4 +64,4 @@ class HealthCheckService(object):
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             proto_dot_v1_dot_helthcheck__pb2.HealthCheckServiceHealthCheckResponse.FromString,
             options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
