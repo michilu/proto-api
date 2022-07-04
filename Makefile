@@ -85,7 +85,8 @@ $(GQLGEN): $(GRAPH_DIR) $(BUF_IMAGE)
 
 gqlgen.yml: $(GQLGEN)
 	[ -f $@ ] || echo 'schema:' > $@
-	yq merge $(GQLGEN) $@ > $@.tmp
+	yq eval-all '. as $$item ireduce ({}; . * $$item )' $(GQLGEN) $@ > $@.tmp
+	yq --inplace --prettyPrint eval 'sort_keys(..)' $@.tmp
 	mv $@.tmp $@
 
 .venv:
@@ -109,7 +110,7 @@ apidocs.swagger.json: $(BUF_IMAGE)
  $(patsubst $(PROTO_DIR)/%,%,$(PROTO))
 
 apidocs.swagger.yaml: apidocs.swagger.json
-	yq r $< > $@
+	yq --prettyPrint eval $< > $@
 
 openapi-client/% :apidocs.swagger.json
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)

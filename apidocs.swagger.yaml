@@ -9,12 +9,12 @@ info:
     name: Apache-2.0
     url: https://github.com/michilu/proto-api/blob/master/LICENSE
 schemes:
-- https
-- wss
+  - https
+  - wss
 consumes:
-- application/json
+  - application/json
 produces:
-- application/json
+  - application/json
 paths:
   /healthCheck:
     get:
@@ -29,7 +29,7 @@ paths:
           schema:
             $ref: '#/definitions/runtimeError'
       tags:
-      - HealthCheckService
+        - HealthCheckService
   /v1/example/{id}:
     post:
       operationId: ExampleService_Query
@@ -43,22 +43,22 @@ paths:
           schema:
             $ref: '#/definitions/runtimeError'
       parameters:
-      - name: id
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/v1ExampleServiceQueryRequest'
+        - name: id
+          in: path
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/v1ExampleServiceQueryRequest'
       tags:
-      - ExampleService
+        - ExampleService
       security:
-      - ApiKeyAuth: []
-        OAuth2:
-        - read
-        - write
+        - ApiKeyAuth: []
+          OAuth2:
+            - read
+            - write
 definitions:
   protobufAny:
     type: object
@@ -96,8 +96,7 @@ definitions:
       value:
         type: string
         format: byte
-        description: Must be a valid serialized protocol buffer of the above specified
-          type.
+        description: Must be a valid serialized protocol buffer of the above specified type.
     description: |-
       `Any` contains an arbitrary serialized protocol buffer message along with a
       URL that describes the type of the serialized message.
@@ -188,23 +187,23 @@ definitions:
   rpcCode:
     type: string
     enum:
-    - OK
-    - CANCELLED
-    - UNKNOWN
-    - INVALID_ARGUMENT
-    - DEADLINE_EXCEEDED
-    - NOT_FOUND
-    - ALREADY_EXISTS
-    - PERMISSION_DENIED
-    - UNAUTHENTICATED
-    - RESOURCE_EXHAUSTED
-    - FAILED_PRECONDITION
-    - ABORTED
-    - OUT_OF_RANGE
-    - UNIMPLEMENTED
-    - INTERNAL
-    - UNAVAILABLE
-    - DATA_LOSS
+      - OK
+      - CANCELLED
+      - UNKNOWN
+      - INVALID_ARGUMENT
+      - DEADLINE_EXCEEDED
+      - NOT_FOUND
+      - ALREADY_EXISTS
+      - PERMISSION_DENIED
+      - UNAUTHENTICATED
+      - RESOURCE_EXHAUSTED
+      - FAILED_PRECONDITION
+      - ABORTED
+      - OUT_OF_RANGE
+      - UNIMPLEMENTED
+      - INTERNAL
+      - UNAVAILABLE
+      - DATA_LOSS
     default: OK
     description: |-
       The canonical error codes for gRPC APIs.
@@ -381,7 +380,7 @@ securityDefinitions:
       read: Grants read access
       write: Grants write access
 security:
-- ApiKeyAuth: []
-  OAuth2:
-  - read
-  - write
+  - ApiKeyAuth: []
+    OAuth2:
+      - read
+      - write
