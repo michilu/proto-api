@@ -18,7 +18,7 @@ import {
     RpcCodeFromJSON,
     RpcCodeFromJSONTyped,
     RpcCodeToJSON,
-} from './';
+} from './RpcCode';
 
 /**
  * 
@@ -68,5 +68,4 @@ export function Protov1ResponseToJSON(value?: Protov1Response | null): any {
         'message': value.message,
     };
 }
-
 

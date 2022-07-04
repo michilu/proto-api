@@ -60,9 +60,9 @@ require 'openapi_client'
 # Setup authorization
 OpenapiClient.configure do |config|
   # Configure API key authorization: ApiKeyAuth
-  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-Key'] = 'Bearer'
+  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: OAuth2
   config.access_token = 'YOUR ACCESS TOKEN'

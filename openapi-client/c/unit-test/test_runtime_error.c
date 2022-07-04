@@ -25,14 +25,14 @@ runtime_error_t* instantiate_runtime_error(int include_optional) {
       "0",
       56,
       "0",
-      list_create()
+      list_createList()
     );
   } else {
     runtime_error = runtime_error_create(
       "0",
       56,
       "0",
-      list_create()
+      list_createList()
     );
   }
 

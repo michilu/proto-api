@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include "HealthCheckServiceAPI.h"
 
-
+#define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
 #define intToStr(dst, src) \
     do {\
@@ -18,7 +18,7 @@ HealthCheckServiceAPI_healthCheckServiceHealthCheck(apiClient_t *apiClient)
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_create();
+    list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
 
@@ -63,11 +63,12 @@ HealthCheckServiceAPI_healthCheckServiceHealthCheck(apiClient_t *apiClient)
     
     
     
-    list_free(localVarHeaderType);
+    list_freeList(localVarHeaderType);
     
     free(localVarPath);
     return elementToReturn;
 end:
+    free(localVarPath);
     return NULL;
 
 }

@@ -28,11 +28,13 @@ an_example_of_generating_swagger_via_grpc_ecosystem__protov1_response__e protov1
 
 
 typedef struct protov1_response_t {
+    rpc_code_t *code; // custom
     char *message; // string
 
 } protov1_response_t;
 
 protov1_response_t *protov1_response_create(
+    rpc_code_t *code,
     char *message
 );
 

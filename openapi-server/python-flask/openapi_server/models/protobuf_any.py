@@ -23,11 +23,11 @@ class ProtobufAny(Model):
         :param type_url: The type_url of this ProtobufAny.  # noqa: E501
         :type type_url: str
         :param value: The value of this ProtobufAny.  # noqa: E501
-        :type value: bytearray
+        :type value: str
         """
         self.openapi_types = {
             'type_url': str,
-            'value': bytearray
+            'value': str
         }
 
         self.attribute_map = {
@@ -79,7 +79,7 @@ class ProtobufAny(Model):
         Must be a valid serialized protocol buffer of the above specified type.  # noqa: E501
 
         :return: The value of this ProtobufAny.
-        :rtype: bytearray
+        :rtype: str
         """
         return self._value
 
@@ -90,7 +90,7 @@ class ProtobufAny(Model):
         Must be a valid serialized protocol buffer of the above specified type.  # noqa: E501
 
         :param value: The value of this ProtobufAny.
-        :type value: bytearray
+        :type value: str
         """
         if value is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', value):  # noqa: E501
             raise ValueError("Invalid value for `value`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")  # noqa: E501

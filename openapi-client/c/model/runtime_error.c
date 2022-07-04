@@ -29,12 +29,21 @@ void runtime_error_free(runtime_error_t *runtime_error) {
         return ;
     }
     listEntry_t *listEntry;
-    free(runtime_error->error);
-    free(runtime_error->message);
-    list_ForEach(listEntry, runtime_error->details) {
-        protobuf_any_free(listEntry->data);
+    if (runtime_error->error) {
+        free(runtime_error->error);
+        runtime_error->error = NULL;
     }
-    list_free(runtime_error->details);
+    if (runtime_error->message) {
+        free(runtime_error->message);
+        runtime_error->message = NULL;
+    }
+    if (runtime_error->details) {
+        list_ForEach(listEntry, runtime_error->details) {
+            protobuf_any_free(listEntry->data);
+        }
+        list_freeList(runtime_error->details);
+        runtime_error->details = NULL;
+    }
     free(runtime_error);
 }
 
@@ -132,7 +141,7 @@ runtime_error_t *runtime_error_parseFromJSON(cJSON *runtime_errorJSON){
         goto end; //nonprimitive container
     }
 
-    detailsList = list_create();
+    detailsList = list_createList();
 
     cJSON_ArrayForEach(details_local_nonprimitive,details )
     {

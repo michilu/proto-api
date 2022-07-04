@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include "ExampleServiceAPI.h"
 
-
+#define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
 #define intToStr(dst, src) \
     do {\
@@ -18,8 +18,8 @@ ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , v1_exa
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_create();
-    list_t *localVarContentType = list_create();
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
 
     // create the path
@@ -41,7 +41,7 @@ ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , v1_exa
 
 
     // Body Param
-    cJSON *localVarSingleItemJSON_body;
+    cJSON *localVarSingleItemJSON_body = NULL;
     if (body != NULL)
     {
         //string
@@ -83,14 +83,18 @@ ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , v1_exa
     
     
     
-    list_free(localVarHeaderType);
-    list_free(localVarContentType);
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
     free(localVarPath);
     free(localVarToReplace_id);
-    cJSON_Delete(localVarSingleItemJSON_body);
+    if (localVarSingleItemJSON_body) {
+        cJSON_Delete(localVarSingleItemJSON_body);
+        localVarSingleItemJSON_body = NULL;
+    }
     free(localVarBodyParameters);
     return elementToReturn;
 end:
+    free(localVarPath);
     return NULL;
 
 }

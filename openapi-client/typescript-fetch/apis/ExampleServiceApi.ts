@@ -38,7 +38,7 @@ export class ExampleServiceApi extends runtime.BaseAPI {
 
     /**
      */
-    async exampleServiceQueryRaw(requestParameters: ExampleServiceQueryRequest): Promise<runtime.ApiResponse<V1ExampleServiceQueryResponse>> {
+    async exampleServiceQueryRaw(requestParameters: ExampleServiceQueryRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<V1ExampleServiceQueryResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling exampleServiceQuery.');
         }
@@ -47,7 +47,7 @@ export class ExampleServiceApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling exampleServiceQuery.');
         }
 
-        const queryParameters: runtime.HTTPQuery = {};
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -59,11 +59,7 @@ export class ExampleServiceApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            if (typeof this.configuration.accessToken === 'function') {
-                headerParameters["Authorization"] = this.configuration.accessToken("OAuth2", ["read", "write"]);
-            } else {
-                headerParameters["Authorization"] = this.configuration.accessToken;
-            }
+            headerParameters["Authorization"] = await this.configuration.accessToken("OAuth2", ["read", "write"]);
         }
 
         const response = await this.request({
@@ -72,15 +68,15 @@ export class ExampleServiceApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
             body: V1ExampleServiceQueryRequestToJSON(requestParameters.body),
-        });
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => V1ExampleServiceQueryResponseFromJSON(jsonValue));
     }
 
     /**
      */
-    async exampleServiceQuery(requestParameters: ExampleServiceQueryRequest): Promise<V1ExampleServiceQueryResponse> {
-        const response = await this.exampleServiceQueryRaw(requestParameters);
+    async exampleServiceQuery(requestParameters: ExampleServiceQueryRequest, initOverrides?: RequestInit): Promise<V1ExampleServiceQueryResponse> {
+        const response = await this.exampleServiceQueryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

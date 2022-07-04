@@ -47,15 +47,15 @@ import 'package:openapi/api.dart';
 // TODO Configure OAuth2 access token for authorization: OAuth2
 //defaultApiClient.getAuthentication<OAuth>('OAuth2').accessToken = 'YOUR_ACCESS_TOKEN';
 
-var api_instance = ExampleServiceApi();
-var id = id_example; // String | 
-var body = V1ExampleServiceQueryRequest(); // V1ExampleServiceQueryRequest | 
+final api_instance = ExampleServiceApi();
+final id = id_example; // String | 
+final body = V1ExampleServiceQueryRequest(); // V1ExampleServiceQueryRequest | 
 
 try {
-    var result = api_instance.exampleServiceQuery(id, body);
+    final result = api_instance.exampleServiceQuery(id, body);
     print(result);
 } catch (e) {
-    print("Exception when calling ExampleServiceApi->exampleServiceQuery: $e\n");
+    print('Exception when calling ExampleServiceApi->exampleServiceQuery: $e\n');
 }
 
 ```
@@ -104,5 +104,4 @@ Class | Method | HTTP request | Description
 ## Author
 
 none@example.com
-
 

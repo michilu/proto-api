@@ -7,7 +7,7 @@
 
 protobuf_any_t *protobuf_any_create(
     char *type_url,
-    char value
+    char *value
     ) {
     protobuf_any_t *protobuf_any_local_var = malloc(sizeof(protobuf_any_t));
     if (!protobuf_any_local_var) {
@@ -25,7 +25,14 @@ void protobuf_any_free(protobuf_any_t *protobuf_any) {
         return ;
     }
     listEntry_t *listEntry;
-    free(protobuf_any->type_url);
+    if (protobuf_any->type_url) {
+        free(protobuf_any->type_url);
+        protobuf_any->type_url = NULL;
+    }
+    if (protobuf_any->value) {
+        free(protobuf_any->value);
+        protobuf_any->value = NULL;
+    }
     free(protobuf_any);
 }
 
@@ -42,8 +49,8 @@ cJSON *protobuf_any_convertToJSON(protobuf_any_t *protobuf_any) {
 
     // protobuf_any->value
     if(protobuf_any->value) { 
-    if(cJSON_AddNumberToObject(item, "value", protobuf_any->value) == NULL) {
-    goto fail; //Byte
+    if(cJSON_AddStringToObject(item, "value", protobuf_any->value) == NULL) {
+    goto fail; //ByteArray
     }
      } 
 
@@ -71,16 +78,16 @@ protobuf_any_t *protobuf_any_parseFromJSON(cJSON *protobuf_anyJSON){
     // protobuf_any->value
     cJSON *value = cJSON_GetObjectItemCaseSensitive(protobuf_anyJSON, "value");
     if (value) { 
-    if(!cJSON_IsNumber(value))
+    if(!cJSON_IsString(value))
     {
-    goto end; //Byte
+    goto end; //ByteArray
     }
     }
 
 
     protobuf_any_local_var = protobuf_any_create (
         type_url ? strdup(type_url->valuestring) : NULL,
-        value ? value->valueint : 0
+        value ? strdup(value->valuestring) : NULL
         );
 
     return protobuf_any_local_var;

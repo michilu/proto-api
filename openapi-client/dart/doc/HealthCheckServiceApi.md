@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**healthCheckServiceHealthCheck**](HealthCheckServiceApi.md#healthCheckServiceHealthCheck) | **GET** /healthCheck | 
+[**healthCheckServiceHealthCheck**](HealthCheckServiceApi.md#healthcheckservicehealthcheck) | **GET** /healthCheck | 
 
 
 # **healthCheckServiceHealthCheck**
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 
-### Example 
+### Example
 ```dart
 import 'package:openapi/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
@@ -27,13 +27,13 @@ import 'package:openapi/api.dart';
 // TODO Configure OAuth2 access token for authorization: OAuth2
 //defaultApiClient.getAuthentication<OAuth>('OAuth2').accessToken = 'YOUR_ACCESS_TOKEN';
 
-var api_instance = HealthCheckServiceApi();
+final api_instance = HealthCheckServiceApi();
 
-try { 
-    var result = api_instance.healthCheckServiceHealthCheck();
+try {
+    final result = api_instance.healthCheckServiceHealthCheck();
     print(result);
 } catch (e) {
-    print("Exception when calling HealthCheckServiceApi->healthCheckServiceHealthCheck: $e\n");
+    print('Exception when calling HealthCheckServiceApi->healthCheckServiceHealthCheck: $e\n');
 }
 ```
 

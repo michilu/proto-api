@@ -45,4 +45,3 @@ def validate_scope_OAuth2(required_scopes, token_scopes):
     """
     return set(required_scopes).issubset(set(token_scopes))
 
-

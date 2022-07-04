@@ -1,27 +1,37 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:openapi/api.dart';
 import 'package:test/test.dart';
 
 // tests for RuntimeError
 void main() {
-    var instance = new RuntimeError();
+  final instance = RuntimeError();
 
   group('test RuntimeError', () {
-    // String error (default value: null)
+    // String error
     test('to test the property `error`', () async {
       // TODO
     });
 
-    // int code (default value: null)
+    // int code
     test('to test the property `code`', () async {
       // TODO
     });
 
-    // String message (default value: null)
+    // String message
     test('to test the property `message`', () async {
       // TODO
     });
 
-    // List<ProtobufAny> details (default value: [])
+    // List<ProtobufAny> details (default value: const [])
     test('to test the property `details`', () async {
       // TODO
     });

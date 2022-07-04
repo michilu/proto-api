@@ -54,4 +54,3 @@ export function V1ExampleServiceQueryRequestToJSON(value?: V1ExampleServiceQuery
     };
 }
 
-

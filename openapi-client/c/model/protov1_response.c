@@ -23,6 +23,7 @@ an_example_of_generating_swagger_via_grpc_ecosystem__protov1_response__e codepro
 }
 
 protov1_response_t *protov1_response_create(
+    rpc_code_t *code,
     char *message
     ) {
     protov1_response_t *protov1_response_local_var = malloc(sizeof(protov1_response_t));
@@ -41,7 +42,14 @@ void protov1_response_free(protov1_response_t *protov1_response) {
         return ;
     }
     listEntry_t *listEntry;
-    free(protov1_response->message);
+    if (protov1_response->code) {
+        rpc_code_free(protov1_response->code);
+        protov1_response->code = NULL;
+    }
+    if (protov1_response->message) {
+        free(protov1_response->message);
+        protov1_response->message = NULL;
+    }
     free(protov1_response);
 }
 
@@ -50,6 +58,14 @@ cJSON *protov1_response_convertToJSON(protov1_response_t *protov1_response) {
 
     // protov1_response->code
     
+    cJSON *code_local_JSON = rpc_code_convertToJSON(protov1_response->code);
+    if(code_local_JSON == NULL) {
+        goto fail; // custom
+    }
+    cJSON_AddItemToObject(item, "code", code_local_JSON);
+    if(item->child == NULL) {
+        goto fail;
+    }
     
 
 
@@ -72,8 +88,13 @@ protov1_response_t *protov1_response_parseFromJSON(cJSON *protov1_responseJSON){
 
     protov1_response_t *protov1_response_local_var = NULL;
 
+    // define the local variable for protov1_response->code
+    rpc_code_t *code_local_nonprim = NULL;
+
     // protov1_response->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(protov1_responseJSON, "code");
+    if (code) { 
+    code_local_nonprim = rpc_code_parseFromJSON(code); //custom
     }
 
     // protov1_response->message
@@ -87,11 +108,16 @@ protov1_response_t *protov1_response_parseFromJSON(cJSON *protov1_responseJSON){
 
 
     protov1_response_local_var = protov1_response_create (
+        code ? code_local_nonprim : NULL,
         message ? strdup(message->valuestring) : NULL
         );
 
     return protov1_response_local_var;
 end:
+    if (code_local_nonprim) {
+        rpc_code_free(code_local_nonprim);
+        code_local_nonprim = NULL;
+    }
     return NULL;
 
 }

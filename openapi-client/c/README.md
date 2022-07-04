@@ -40,7 +40,7 @@ This will compile the generated code and create a library in the build folder wh
 mkdir build
 cd build
 // To install library to specific location, use following commands
-cmake -DCMAKE_INSTALL_PREFIX=/pathtolocaiton ..
+cmake -DCMAKE_INSTALL_PREFIX=/pathtolocation ..
 // for normal install use following command
 cmake ..
 make
@@ -50,14 +50,58 @@ sudo make install
 Considering the test/source code which uses the API is written in main.c(respective api include is written and all objects necessary are defined and created)
 
 To compile main.c(considering the file is present in build folder) use following command
--L - locaiton of the library(not required if cmake with normal installation is performed)
+-L - location of the library(not required if cmake with normal installation is performed)
 -l library name
 ```bash
 gcc main.c -L. -lan_example_of_generating_swagger_via_grpc_ecosystem_ -o main
 ```
 Once compiled, you can run it with ``` ./main ```
 
-Note: You don't need to specify includes for models and include folder seperately as they are path linked. You just have to import the api.h file in your code, the include linking will work.
+Note: You don't need to specify includes for models and include folder separately as they are path linked. You just have to import the api.h file in your code, the include linking will work.
+
+## Documentation for API Endpoints
+
+All URIs are relative to *http://localhost*
+
+Category | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+*ExampleServiceAPI* | [**ExampleServiceAPI_exampleServiceQuery**](docs/ExampleServiceAPI.md#ExampleServiceAPI_exampleServiceQuery) | **POST** /v1/example/{id} | 
+*HealthCheckServiceAPI* | [**HealthCheckServiceAPI_healthCheckServiceHealthCheck**](docs/HealthCheckServiceAPI.md#HealthCheckServiceAPI_healthCheckServiceHealthCheck) | **GET** /healthCheck | 
+
+
+## Documentation for Models
+
+ - [protobuf_any_t](docs/protobuf_any.md)
+ - [protov1_response_t](docs/protov1_response.md)
+ - [rpc_code_t](docs/rpc_code.md)
+ - [runtime_error_t](docs/runtime_error.md)
+ - [v1_example_service_query_request_t](docs/v1_example_service_query_request.md)
+ - [v1_example_service_query_response_t](docs/v1_example_service_query_response.md)
+ - [v1_health_check_service_health_check_response_t](docs/v1_health_check_service_health_check_response.md)
+
+
+## Documentation for Authorization
+
+
+### ApiKeyAuth
+
+- **Type**: API key
+
+- **API key parameter name**: X-API-Key
+- **Location**: HTTP header
+
+
+### OAuth2
+
+
+- **Type**: OAuth
+- **Flow**: accessCode
+- **Authorization URL**: https://example.com/oauth/authorize
+- **Scopes**: 
+  - admin: Grants read and write access to administrative information
+  - read: Grants read access
+  - write: Grants write access
+
 
 ## Author
 

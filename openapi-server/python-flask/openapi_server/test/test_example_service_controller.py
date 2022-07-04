@@ -20,7 +20,7 @@ class TestExampleServiceController(BaseTestCase):
 
         
         """
-        body = {}
+        body = openapi_server.V1ExampleServiceQueryRequest()
         headers = { 
             'Accept': 'application/json',
             'Content-Type': 'application/json',

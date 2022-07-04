@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**exampleServiceQuery**](ExampleServiceApi.md#exampleServiceQuery) | **POST** /v1/example/{id} | 
+[**exampleServiceQuery**](ExampleServiceApi.md#exampleservicequery) | **POST** /v1/example/{id} | 
 
 
 # **exampleServiceQuery**
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 
-### Example 
+### Example
 ```dart
 import 'package:openapi/api.dart';
 // TODO Configure API key authorization: ApiKeyAuth
@@ -27,15 +27,15 @@ import 'package:openapi/api.dart';
 // TODO Configure OAuth2 access token for authorization: OAuth2
 //defaultApiClient.getAuthentication<OAuth>('OAuth2').accessToken = 'YOUR_ACCESS_TOKEN';
 
-var api_instance = ExampleServiceApi();
-var id = id_example; // String | 
-var body = V1ExampleServiceQueryRequest(); // V1ExampleServiceQueryRequest | 
+final api_instance = ExampleServiceApi();
+final id = id_example; // String | 
+final body = V1ExampleServiceQueryRequest(); // V1ExampleServiceQueryRequest | 
 
-try { 
-    var result = api_instance.exampleServiceQuery(id, body);
+try {
+    final result = api_instance.exampleServiceQuery(id, body);
     print(result);
 } catch (e) {
-    print("Exception when calling ExampleServiceApi->exampleServiceQuery: $e\n");
+    print('Exception when calling ExampleServiceApi->exampleServiceQuery: $e\n');
 }
 ```
 
@@ -43,7 +43,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**|  | [default to null]
+ **id** | **String**|  | 
  **body** | [**V1ExampleServiceQueryRequest**](V1ExampleServiceQueryRequest.md)|  | 
 
 ### Return type

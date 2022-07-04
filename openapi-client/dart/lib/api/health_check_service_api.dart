@@ -1,65 +1,61 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
 part of openapi.api;
 
 
-
 class HealthCheckServiceApi {
-  final ApiClient apiClient;
-
   HealthCheckServiceApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
-  ///  with HTTP info returned
-  ///
-  /// 
+  final ApiClient apiClient;
+
+  /// Performs an HTTP 'GET /healthCheck' operation and returns the [Response].
   Future<Response> healthCheckServiceHealthCheckWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/healthCheck';
+
+    // ignore: prefer_final_locals
     Object postBody;
 
-    // verify required params are set
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    // create path and map variables
-    String path = "/healthCheck".replaceAll("{format}","json");
+    const authNames = <String>['ApiKeyAuth', 'OAuth2'];
+    const contentTypes = <String>[];
 
-    // query params
-    List<QueryParam> queryParams = [];
-    Map<String, String> headerParams = {};
-    Map<String, String> formParams = {};
 
-    List<String> contentTypes = [];
-
-    String nullableContentType = contentTypes.isNotEmpty ? contentTypes[0] : null;
-    List<String> authNames = ["ApiKeyAuth", "OAuth2"];
-
-    if(nullableContentType != null && nullableContentType.startsWith("multipart/form-data")) {
-      bool hasFields = false;
-      MultipartRequest mp = MultipartRequest(null, null);
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-    }
-
-    var response = await apiClient.invokeAPI(path,
-                                             'GET',
-                                             queryParams,
-                                             postBody,
-                                             headerParams,
-                                             formParams,
-                                             nullableContentType,
-                                             authNames);
-    return response;
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
   }
 
-  /// 
-  ///
-  /// 
   Future<V1HealthCheckServiceHealthCheckResponse> healthCheckServiceHealthCheck() async {
-    Response response = await healthCheckServiceHealthCheckWithHttpInfo();
-    if(response.statusCode >= 400) {
-      throw ApiException(response.statusCode, _decodeBodyBytes(response));
-    } else if(response.body != null) {
-      return apiClient.deserialize(_decodeBodyBytes(response), 'V1HealthCheckServiceHealthCheckResponse') as V1HealthCheckServiceHealthCheckResponse;
-    } else {
-      return null;
+    final response = await healthCheckServiceHealthCheckWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'V1HealthCheckServiceHealthCheckResponse',) as V1HealthCheckServiceHealthCheckResponse;
+    
+    }
+    return Future<V1HealthCheckServiceHealthCheckResponse>.value();
   }
-
 }

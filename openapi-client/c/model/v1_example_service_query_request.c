@@ -23,7 +23,10 @@ void v1_example_service_query_request_free(v1_example_service_query_request_t *v
         return ;
     }
     listEntry_t *listEntry;
-    free(v1_example_service_query_request->id);
+    if (v1_example_service_query_request->id) {
+        free(v1_example_service_query_request->id);
+        v1_example_service_query_request->id = NULL;
+    }
     free(v1_example_service_query_request);
 }
 

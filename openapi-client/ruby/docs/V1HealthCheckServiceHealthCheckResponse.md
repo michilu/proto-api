@@ -2,16 +2,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**value** | [**Protov1Response**](Protov1Response.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **value** | [**Protov1Response**](Protov1Response.md) |  | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'OpenapiClient'
+require 'openapi_client'
 
-instance = OpenapiClient::V1HealthCheckServiceHealthCheckResponse.new(value: null)
+instance = OpenapiClient::V1HealthCheckServiceHealthCheckResponse.new(
+  value: null
+)
 ```
-
 

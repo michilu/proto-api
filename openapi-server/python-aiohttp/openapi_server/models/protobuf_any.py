@@ -15,7 +15,7 @@ class ProtobufAny(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, type_url: str=None, value: bytearray=None):
+    def __init__(self, type_url: str=None, value: str=None):
         """ProtobufAny - a model defined in OpenAPI
 
         :param type_url: The type_url of this ProtobufAny.
@@ -23,7 +23,7 @@ class ProtobufAny(Model):
         """
         self.openapi_types = {
             'type_url': str,
-            'value': bytearray
+            'value': str
         }
 
         self.attribute_map = {
@@ -73,7 +73,7 @@ class ProtobufAny(Model):
         Must be a valid serialized protocol buffer of the above specified type.
 
         :return: The value of this ProtobufAny.
-        :rtype: bytearray
+        :rtype: str
         """
         return self._value
 
@@ -84,7 +84,7 @@ class ProtobufAny(Model):
         Must be a valid serialized protocol buffer of the above specified type.
 
         :param value: The value of this ProtobufAny.
-        :type value: bytearray
+        :type value: str
         """
         if value is not None and not re.search(r'^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$', value):
             raise ValueError("Invalid value for `value`, must be a follow pattern or equal to `/^(?:[A-Za-z0-9+\/]{4})*(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=)?$/`")

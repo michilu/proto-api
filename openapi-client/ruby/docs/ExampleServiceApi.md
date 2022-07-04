@@ -2,29 +2,28 @@
 
 All URIs are relative to *http://localhost*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**example_service_query**](ExampleServiceApi.md#example_service_query) | **POST** /v1/example/{id} | 
-
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**example_service_query**](ExampleServiceApi.md#example_service_query) | **POST** /v1/example/{id} |  |
 
 
 ## example_service_query
 
-> V1ExampleServiceQueryResponse example_service_query(id, body)
+> <V1ExampleServiceQueryResponse> example_service_query(id, body)
 
 
 
-### Example
+### Examples
 
 ```ruby
-# load the gem
+require 'time'
 require 'openapi_client'
 # setup authorization
 OpenapiClient.configure do |config|
   # Configure API key authorization: ApiKeyAuth
-  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  config.api_key['ApiKeyAuth'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-Key'] = 'Bearer'
+  # config.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
   # Configure OAuth2 access token for authorization: OAuth2
   config.access_token = 'YOUR ACCESS TOKEN'
@@ -35,20 +34,38 @@ id = 'id_example' # String |
 body = OpenapiClient::V1ExampleServiceQueryRequest.new # V1ExampleServiceQueryRequest | 
 
 begin
+  
   result = api_instance.example_service_query(id, body)
   p result
 rescue OpenapiClient::ApiError => e
-  puts "Exception when calling ExampleServiceApi->example_service_query: #{e}"
+  puts "Error when calling ExampleServiceApi->example_service_query: #{e}"
+end
+```
+
+#### Using the example_service_query_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<V1ExampleServiceQueryResponse>, Integer, Hash)> example_service_query_with_http_info(id, body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.example_service_query_with_http_info(id, body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <V1ExampleServiceQueryResponse>
+rescue OpenapiClient::ApiError => e
+  puts "Error when calling ExampleServiceApi->example_service_query_with_http_info: #{e}"
 end
 ```
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
- **body** | [**V1ExampleServiceQueryRequest**](V1ExampleServiceQueryRequest.md)|  | 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** |  |  |
+| **body** | [**V1ExampleServiceQueryRequest**](V1ExampleServiceQueryRequest.md) |  |  |
 
 ### Return type
 

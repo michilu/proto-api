@@ -145,23 +145,23 @@
  * @enum {string}
  */
 export enum RpcCode {
-    OK = 'OK',
-    CANCELLED = 'CANCELLED',
-    UNKNOWN = 'UNKNOWN',
-    INVALIDARGUMENT = 'INVALID_ARGUMENT',
-    DEADLINEEXCEEDED = 'DEADLINE_EXCEEDED',
-    NOTFOUND = 'NOT_FOUND',
-    ALREADYEXISTS = 'ALREADY_EXISTS',
-    PERMISSIONDENIED = 'PERMISSION_DENIED',
-    UNAUTHENTICATED = 'UNAUTHENTICATED',
-    RESOURCEEXHAUSTED = 'RESOURCE_EXHAUSTED',
-    FAILEDPRECONDITION = 'FAILED_PRECONDITION',
-    ABORTED = 'ABORTED',
-    OUTOFRANGE = 'OUT_OF_RANGE',
-    UNIMPLEMENTED = 'UNIMPLEMENTED',
-    INTERNAL = 'INTERNAL',
-    UNAVAILABLE = 'UNAVAILABLE',
-    DATALOSS = 'DATA_LOSS'
+    Ok = 'OK',
+    Cancelled = 'CANCELLED',
+    Unknown = 'UNKNOWN',
+    InvalidArgument = 'INVALID_ARGUMENT',
+    DeadlineExceeded = 'DEADLINE_EXCEEDED',
+    NotFound = 'NOT_FOUND',
+    AlreadyExists = 'ALREADY_EXISTS',
+    PermissionDenied = 'PERMISSION_DENIED',
+    Unauthenticated = 'UNAUTHENTICATED',
+    ResourceExhausted = 'RESOURCE_EXHAUSTED',
+    FailedPrecondition = 'FAILED_PRECONDITION',
+    Aborted = 'ABORTED',
+    OutOfRange = 'OUT_OF_RANGE',
+    Unimplemented = 'UNIMPLEMENTED',
+    Internal = 'INTERNAL',
+    Unavailable = 'UNAVAILABLE',
+    DataLoss = 'DATA_LOSS'
 }
 
 export function RpcCodeFromJSON(json: any): RpcCode {

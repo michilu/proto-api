@@ -10,17 +10,48 @@ Method | HTTP request | Description
 
 ## HealthCheckServiceHealthCheck
 
-> V1HealthCheckServiceHealthCheckResponse HealthCheckServiceHealthCheck(ctx, )
+> V1HealthCheckServiceHealthCheckResponse HealthCheckServiceHealthCheck(ctx).Execute()
 
 
 
-### Required Parameters
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HealthCheckServiceApi.HealthCheckServiceHealthCheck(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HealthCheckServiceApi.HealthCheckServiceHealthCheck``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `HealthCheckServiceHealthCheck`: V1HealthCheckServiceHealthCheckResponse
+    fmt.Fprintf(os.Stdout, "Response from `HealthCheckServiceApi.HealthCheckServiceHealthCheck`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 This endpoint does not need any parameter.
 
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiHealthCheckServiceHealthCheckRequest struct via the builder pattern
+
+
 ### Return type
 
-[**V1HealthCheckServiceHealthCheckResponse**](v1HealthCheckServiceHealthCheckResponse.md)
+[**V1HealthCheckServiceHealthCheckResponse**](V1HealthCheckServiceHealthCheckResponse.md)
 
 ### Authorization
 

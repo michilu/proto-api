@@ -20,13 +20,13 @@ typedef struct protobuf_any_t protobuf_any_t;
 
 typedef struct protobuf_any_t {
     char *type_url; // string
-    char value; //Byte
+    char *value; //ByteArray
 
 } protobuf_any_t;
 
 protobuf_any_t *protobuf_any_create(
     char *type_url,
-    char value
+    char *value
 );
 
 void protobuf_any_free(protobuf_any_t *protobuf_any);

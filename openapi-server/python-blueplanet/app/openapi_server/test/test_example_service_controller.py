@@ -19,7 +19,7 @@ class TestExampleServiceController(BaseTestCase):
 
         
         """
-        body = {}
+        body = openapi_server.V1ExampleServiceQueryRequest()
         response = self.client.open(
             '/v1/example/{id}'.format(id='id_example'),
             method='POST',

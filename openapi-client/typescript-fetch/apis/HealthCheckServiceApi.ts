@@ -30,8 +30,8 @@ export class HealthCheckServiceApi extends runtime.BaseAPI {
 
     /**
      */
-    async healthCheckServiceHealthCheckRaw(): Promise<runtime.ApiResponse<V1HealthCheckServiceHealthCheckResponse>> {
-        const queryParameters: runtime.HTTPQuery = {};
+    async healthCheckServiceHealthCheckRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<V1HealthCheckServiceHealthCheckResponse>> {
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -41,11 +41,7 @@ export class HealthCheckServiceApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
-            if (typeof this.configuration.accessToken === 'function') {
-                headerParameters["Authorization"] = this.configuration.accessToken("OAuth2", ["read", "write"]);
-            } else {
-                headerParameters["Authorization"] = this.configuration.accessToken;
-            }
+            headerParameters["Authorization"] = await this.configuration.accessToken("OAuth2", ["read", "write"]);
         }
 
         const response = await this.request({
@@ -53,15 +49,15 @@ export class HealthCheckServiceApi extends runtime.BaseAPI {
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-        });
+        }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => V1HealthCheckServiceHealthCheckResponseFromJSON(jsonValue));
     }
 
     /**
      */
-    async healthCheckServiceHealthCheck(): Promise<V1HealthCheckServiceHealthCheckResponse> {
-        const response = await this.healthCheckServiceHealthCheckRaw();
+    async healthCheckServiceHealthCheck(initOverrides?: RequestInit): Promise<V1HealthCheckServiceHealthCheckResponse> {
+        const response = await this.healthCheckServiceHealthCheckRaw(initOverrides);
         return await response.value();
     }
 

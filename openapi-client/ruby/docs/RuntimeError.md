@@ -2,22 +2,23 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**error** | **String** |  | [optional] 
-**code** | **Integer** |  | [optional] 
-**message** | **String** |  | [optional] 
-**details** | [**Array&lt;ProtobufAny&gt;**](ProtobufAny.md) |  | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **error** | **String** |  | [optional] |
+| **code** | **Integer** |  | [optional] |
+| **message** | **String** |  | [optional] |
+| **details** | [**Array&lt;ProtobufAny&gt;**](ProtobufAny.md) |  | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'OpenapiClient'
+require 'openapi_client'
 
-instance = OpenapiClient::RuntimeError.new(error: null,
-                                 code: null,
-                                 message: null,
-                                 details: null)
+instance = OpenapiClient::RuntimeError.new(
+  error: null,
+  code: null,
+  message: null,
+  details: null
+)
 ```
-
 

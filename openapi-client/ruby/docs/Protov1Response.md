@@ -2,18 +2,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**code** | [**RpcCode**](RpcCode.md) |  | [optional] 
-**message** | **String** |  | [optional] 
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **code** | [**RpcCode**](RpcCode.md) |  | [optional][default to &#39;OK&#39;] |
+| **message** | **String** |  | [optional] |
 
-## Code Sample
+## Example
 
 ```ruby
-require 'OpenapiClient'
+require 'openapi_client'
 
-instance = OpenapiClient::Protov1Response.new(code: null,
-                                 message: null)
+instance = OpenapiClient::Protov1Response.new(
+  code: null,
+  message: null
+)
 ```
-
 

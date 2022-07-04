@@ -402,3 +402,4 @@ components:
             write: Grants write access
           tokenUrl: https://example.com/oauth/token
       type: oauth2
+x-original-swagger-version: "2.0"

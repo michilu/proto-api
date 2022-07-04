@@ -18,7 +18,7 @@ import {
     Protov1ResponseFromJSON,
     Protov1ResponseFromJSONTyped,
     Protov1ResponseToJSON,
-} from './';
+} from './Protov1Response';
 
 /**
  * 
@@ -60,5 +60,4 @@ export function V1ExampleServiceQueryResponseToJSON(value?: V1ExampleServiceQuer
         'value': Protov1ResponseToJSON(value.value),
     };
 }
-
 

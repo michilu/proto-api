@@ -26,4 +26,3 @@ def validate_scope_OAuth2(required_scopes: List[str], token_scopes: List[str]) -
     """ Validate required scopes are included in token scope """
     return set(required_scopes).issubset(set(token_scopes))
 
-

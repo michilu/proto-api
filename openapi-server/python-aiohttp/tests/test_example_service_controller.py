@@ -14,7 +14,7 @@ async def test_example_service_query(client):
 
     
     """
-    body = {}
+    body = openapi_server.V1ExampleServiceQueryRequest()
     headers = { 
         'Accept': 'application/json',
         'Content-Type': 'application/json',

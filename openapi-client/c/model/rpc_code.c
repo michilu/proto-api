@@ -33,9 +33,9 @@ fail:
     return NULL;
 }
 
-rpc_code_rpc_code_e rpc_code_rpc_code_parseFromJSON(cJSON *rpc_codeJSON) {
-    rpc_code_rpc_code_e *rpc_code = NULL;
-    rpc_code_rpc_code_e rpc_codeVariable;
+an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e rpc_code_rpc_code_parseFromJSON(cJSON *rpc_codeJSON) {
+    an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e *rpc_code = NULL;
+    an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e rpc_codeVariable;
     cJSON *rpc_codeVar = cJSON_GetObjectItemCaseSensitive(rpc_codeJSON, "rpc_code");
     if(!cJSON_IsString(rpc_codeVar) || (rpc_codeVar->valuestring == NULL)){
         goto end;

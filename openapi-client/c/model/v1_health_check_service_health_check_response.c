@@ -23,7 +23,10 @@ void v1_health_check_service_health_check_response_free(v1_health_check_service_
         return ;
     }
     listEntry_t *listEntry;
-    protov1_response_free(v1_health_check_service_health_check_response->value);
+    if (v1_health_check_service_health_check_response->value) {
+        protov1_response_free(v1_health_check_service_health_check_response->value);
+        v1_health_check_service_health_check_response->value = NULL;
+    }
     free(v1_health_check_service_health_check_response);
 }
 
@@ -54,9 +57,11 @@ v1_health_check_service_health_check_response_t *v1_health_check_service_health_
 
     v1_health_check_service_health_check_response_t *v1_health_check_service_health_check_response_local_var = NULL;
 
+    // define the local variable for v1_health_check_service_health_check_response->value
+    protov1_response_t *value_local_nonprim = NULL;
+
     // v1_health_check_service_health_check_response->value
     cJSON *value = cJSON_GetObjectItemCaseSensitive(v1_health_check_service_health_check_responseJSON, "value");
-    protov1_response_t *value_local_nonprim = NULL;
     if (value) { 
     value_local_nonprim = protov1_response_parseFromJSON(value); //nonprimitive
     }
@@ -68,6 +73,10 @@ v1_health_check_service_health_check_response_t *v1_health_check_service_health_
 
     return v1_health_check_service_health_check_response_local_var;
 end:
+    if (value_local_nonprim) {
+        protov1_response_free(value_local_nonprim);
+        value_local_nonprim = NULL;
+    }
     return NULL;
 
 }
