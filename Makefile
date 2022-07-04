@@ -1,6 +1,6 @@
 SHELL:=/usr/bin/env bash
 OPENAPI_GENERATOR_CLI_VERSION?=v5.4.0
-OPENAPI_CLIENT?=c dart go python-legacy ruby typescript-fetch
+OPENAPI_CLIENT?=c dart go python-legacy ruby typescript-angular
 OPENAPI_SERVER?=python-aiohttp python-blueplanet python-flask ruby-on-rails
 
 GO:=go
