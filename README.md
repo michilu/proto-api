@@ -12,7 +12,7 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
 ## Adding dependencies
 1. Import third-party libraries to proto file.
 2. Get the third-party libraries to your workspace.
-  - `go get ...`
+  - `go install ...`
   - curl or ...
 3. Add paths of the third-party libraries to `-I` option of `protoc` command in `apidocs.swagger.json` target in Makefile.
   - ex) `-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis`
