@@ -5,28 +5,27 @@ An example of generating gRPC, GraphQL, and OpenAPI via proto ecosystem.
 https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-api/master/apidocs.swagger.json
 
 # refs
-- [grpc-gateway/a_bit_of_everything.proto at master · grpc-ecosystem/grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway/blob/master/examples/proto/examplepb/a_bit_of_everything.proto)
-
-# How to
-
-## Adding dependencies
-1. Import third-party libraries to proto file.
-2. Get the third-party libraries to your workspace.
-  - `go install ...`
-  - curl or ...
-3. Add paths of the third-party libraries to `-I` option of `protoc` command in `apidocs.swagger.json` target in Makefile.
-  - ex) `-I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis`
+- [grpc-gateway/a_bit_of_everything.proto at master · grpc-ecosystem/grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway/blob/master/examples/internal/proto/examplepb/a_bit_of_everything.proto)
 
 # Dependencies
 
-- [Buf: A new way of working with Protocol Buffers.](https://buf.build/docs/installation) `$ go install github.com/bufbuild/buf/cmd/buf@v0.18.1`
-- [danielvladco/go-proto-gql: Protoc plugins for generating graphql schema and quickly create servers](https://github.com/danielvladco/go-proto-gql)
+## proto
+- [Buf: A new way of working with Protocol Buffers.](https://buf.build/docs/installation)
+- [protocolbuffers/protobuf-go: Go support for Google's protocol buffers](https://github.com/protocolbuffers/protobuf-go) `$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest`
+- [envoyproxy/protoc-gen-validate: protoc plugin to generate polyglot message validators](https://github.com/envoyproxy/protoc-gen-validate) `$ go install github.com/envoyproxy/protoc-gen-validate@latest`
+
+## gRPC
 - [gRPC – Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/) `$ brew install protobuf`
-- [grpc\-gateway/protoc\-gen\-swagger at master · grpc\-ecosystem/grpc\-gateway](https://github.com/grpc-ecosystem/grpc-gateway/tree/master/protoc-gen-swagger) `$ go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger`
-- [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
+
+## GraphQL
+- [danielvladco/go-proto-gql: Protoc plugins for generating graphql schema and quickly create servers](https://github.com/danielvladco/go-proto-gql/tree/v0.7.3)
+  - `$ go install github.com/danielvladco/go-proto-gql/protoc-gen-gogqlgen@v0.7.3`
+  - `$ go install github.com/danielvladco/go-proto-gql/protoc-gen-gql@v0.7.3`
+  - `$ go install github.com/danielvladco/go-proto-gql/protoc-gen-gqlgencfg@v0.7.3`
+  
+## OpenAPI
 - [openapitools/openapi-generator-cli Tags - Docker Hub](https://hub.docker.com/r/openapitools/openapi-generator-cli/tags?ordering=name)
-- [Poetry - Python dependency management and packaging made easy](https://python-poetry.org/)
-- [uber/prototool: Your Swiss Army Knife for Protocol Buffers](https://github.com/uber/prototool/)
+- [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
 
 # sync subtree
 

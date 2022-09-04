@@ -1,5 +1,5 @@
 SHELL:=/usr/bin/env bash
-OPENAPI_GENERATOR_CLI_VERSION?=v5.4.0
+OPENAPI_GENERATOR_CLI_VERSION?=latest
 OPENAPI_CLIENT?=c dart go python-legacy ruby typescript-angular
 OPENAPI_SERVER?=python-aiohttp python-blueplanet python-flask ruby-on-rails
 
@@ -8,7 +8,7 @@ GOM:=GO111MODULE=on $(GO)
 GOPATH:=$(shell $(GO) env GOPATH)
 
 PROTO_DIR:=pb
-PROTO:=$(shell find $(PROTO_DIR) -type d -name .git -prune -or -type d -name vendor -prune -or -type f -name "*.proto" -print)
+PROTO:=$(shell find $(PROTO_DIR) -type d -name .git -prune -or -type f -name "*.proto" -print)
 PROTO_GO:=$(shell find $(PROTO_DIR) -type f -name "*.go" -print)
 PB_GO:=$(PROTO:.proto=.pb.go)
 PB_GO_VALIDATE:=$(PROTO:.proto=.pb.validate.go)
@@ -23,6 +23,7 @@ GRAPH:=$(GRAPHQLS) $(GQLGEN) gqlgen.yml
 .PHONY: all
 all:\
  apidocs.swagger.yaml\
+ $(BUF_IMAGE)\
  $(GOSRC)\
  $(GRAPH)\
  grpc/python/.keep\
@@ -32,37 +33,27 @@ all:\
 .PHONY: clean
 clean:
 	find $(PROTO_DIR) -name "*.pb*.go" -delete
+	find . -type f -name "*.swagger.*" -delete
 	rm -rf\
+ $(BUF_IMAGE)\
  graph\
  grpc/python\
  openapi-client\
  openapi-server\
  ;
 
-$(BUF_IMAGE): vendor $(PROTO)
-	buf check lint
-	prototool format --overwrite $(PROTO_DIR)
-	buf image build -o $@
-
-
-.PHONY: vendor
-vendor: go.mod $(PROTO_GO)
-	$(GOM) mod $@
-	git checkout $@
+$(BUF_IMAGE): $(PROTO)
+	buf lint
+	buf format --write $(PROTO_DIR)
+	buf build -o $@
 
 %.pb.go: %.proto
-	( type protoc > /dev/null 2>&1 ) && protoc\
- --descriptor_set_in=$(BUF_IMAGE)\
- --go_out=.\
- $(patsubst $(PROTO_DIR)/%,%,$<)
+	buf generate
 
 %.pb.validate.go: %.proto
-	( type protoc > /dev/null 2>&1 ) && protoc\
- --descriptor_set_in=$(BUF_IMAGE)\
- --validate_out="lang=go:."\
- $(patsubst $(PROTO_DIR)/%,%,$<)
+	buf generate
 
-%.gqlgen.pb.go: %.proto
+%.gqlgen.pb.go: %.proto $(BUF_IMAGE)
 	( type protoc > /dev/null 2>&1 ) && protoc\
  --descriptor_set_in=$(BUF_IMAGE)\
  --gogqlgen_out=gogoimport=false,paths=source_relative:$(PROTO_DIR)\
@@ -89,32 +80,21 @@ gqlgen.yml: $(GQLGEN)
 	yq --inplace --prettyPrint eval 'sort_keys(..)' $@.tmp
 	mv $@.tmp $@
 
-.venv:
-	poetry install
-
-grpc/python/.keep :.venv $(PROTO)
+grpc/python/.keep: $(PROTO)
 	target=$(shell dirname $@)\
  ;mkdir -p $${target}\
- ;poetry run python -m grpc_tools.protoc\
- -Ibuf-roots\
- -Ipb\
- --python_out=$${target}\
- --grpc_python_out=$${target}\
- $(PROTO)
+ ;buf generate
 	touch $@
 
-apidocs.swagger.json: $(BUF_IMAGE)
-	( type protoc > /dev/null 2>&1 ) && protoc\
- --descriptor_set_in=$<\
- --swagger_out=logtostderr=true,allow_merge=true:.\
- $(patsubst $(PROTO_DIR)/%,%,$(PROTO))
+apidocs.swagger.json: $(PROTO)
+	buf generate
 
 apidocs.swagger.yaml: apidocs.swagger.json
 	yq --prettyPrint eval $< > $@
 
-openapi-client/% :apidocs.swagger.json
+openapi-client/%: apidocs.swagger.json
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
 	touch $@
-openapi-server/% :apidocs.swagger.json
+openapi-server/%: apidocs.swagger.json
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
 	touch $@
