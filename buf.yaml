@@ -1,6 +1,0 @@
-build:
-  roots:
-    - buf-roots
-    - pb
-lint:
-  rpc_allow_google_protobuf_empty_requests: true

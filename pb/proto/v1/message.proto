@@ -2,16 +2,12 @@ syntax = "proto3";
 
 package proto.v1;
 
+import "google/rpc/code.proto";
+import "validate/validate.proto";
+
 option go_package = "pb/proto/v1";
 
-import "github.com/mwitkow/go-proto-validators/validator.proto";
-import "google/rpc/code.proto";
-
 message Response {
-  google.rpc.Code code = 1 [
-    (validator.field) = {
-      is_in_enum: true
-    }
-  ];
+  google.rpc.Code code = 1 [(validate.rules).enum.defined_only = true];
   string message = 2;
 }
