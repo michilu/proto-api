@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ExampleServiceQuery**](ExampleServiceApi.md#ExampleServiceQuery) | **Post** /v1/example/{id} | 
+[**Query**](ExampleServiceApi.md#Query) | **Post** /v1/example/{id} | 
 
 
 
-## ExampleServiceQuery
+## Query
 
-> V1ExampleServiceQueryResponse ExampleServiceQuery(ctx, id).Body(body).Execute()
+> V1ExampleServiceQueryResponse Query(ctx, id).Body(body).Execute()
 
 
 
@@ -32,13 +32,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExampleServiceApi.ExampleServiceQuery(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.ExampleServiceApi.Query(context.Background(), id).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExampleServiceApi.ExampleServiceQuery``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ExampleServiceApi.Query``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ExampleServiceQuery`: V1ExampleServiceQueryResponse
-    fmt.Fprintf(os.Stdout, "Response from `ExampleServiceApi.ExampleServiceQuery`: %v\n", resp)
+    // response from `Query`: V1ExampleServiceQueryResponse
+    fmt.Fprintf(os.Stdout, "Response from `ExampleServiceApi.Query`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiExampleServiceQueryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiQueryRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

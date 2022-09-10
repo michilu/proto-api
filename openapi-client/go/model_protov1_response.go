@@ -17,8 +17,8 @@ import (
 
 // Protov1Response struct for Protov1Response
 type Protov1Response struct {
-	Code *RpcCode `json:"code,omitempty"`
-	Message *string `json:"message,omitempty"`
+	Code    *RpcCode `json:"code,omitempty"`
+	Message *string  `json:"message,omitempty"`
 }
 
 // NewProtov1Response instantiates a new Protov1Response object
@@ -152,5 +152,3 @@ func (v *NullableProtov1Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

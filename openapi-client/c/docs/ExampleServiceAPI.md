@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ExampleServiceAPI_exampleServiceQuery**](ExampleServiceAPI.md#ExampleServiceAPI_exampleServiceQuery) | **POST** /v1/example/{id} | 
+[**ExampleServiceAPI_query**](ExampleServiceAPI.md#ExampleServiceAPI_query) | **POST** /v1/example/{id} | 
 
 
-# **ExampleServiceAPI_exampleServiceQuery**
+# **ExampleServiceAPI_query**
 ```c
-v1_example_service_query_response_t* ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id, v1_example_service_query_request_t * body);
+v1_example_service_query_response_t* ExampleServiceAPI_query(apiClient_t *apiClient, char * id, v1_example_service_query_request_t * body);
 ```
 
 ### Parameters

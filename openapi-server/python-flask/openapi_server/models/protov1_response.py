@@ -35,8 +35,8 @@ class Protov1Response(Model):
             'message': 'message'
         }
 
-        self._code = code
-        self._message = message
+        self.code = code
+        self.message = message
 
     @classmethod
     def from_dict(cls, dikt) -> 'Protov1Response':

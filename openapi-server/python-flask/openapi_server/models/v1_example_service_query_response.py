@@ -31,7 +31,7 @@ class V1ExampleServiceQueryResponse(Model):
             'value': 'value'
         }
 
-        self._value = value
+        self.value = value
 
     @classmethod
     def from_dict(cls, dikt) -> 'V1ExampleServiceQueryResponse':

@@ -8,10 +8,8 @@ api/HealthCheckServiceAPI.c
 api/HealthCheckServiceAPI.h
 docs/ExampleServiceAPI.md
 docs/HealthCheckServiceAPI.md
-docs/protobuf_any.md
 docs/protov1_response.md
 docs/rpc_code.md
-docs/runtime_error.md
 docs/v1_example_service_query_request.md
 docs/v1_example_service_query_response.md
 docs/v1_health_check_service_health_check_response.md
@@ -25,14 +23,10 @@ include/list.h
 libcurl.licence
 model/object.c
 model/object.h
-model/protobuf_any.c
-model/protobuf_any.h
 model/protov1_response.c
 model/protov1_response.h
 model/rpc_code.c
 model/rpc_code.h
-model/runtime_error.c
-model/runtime_error.h
 model/v1_example_service_query_request.c
 model/v1_example_service_query_request.h
 model/v1_example_service_query_response.c
@@ -44,10 +38,8 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_protobuf_any.c
 unit-test/test_protov1_response.c
 unit-test/test_rpc_code.c
-unit-test/test_runtime_error.c
 unit-test/test_v1_example_service_query_request.c
 unit-test/test_v1_example_service_query_response.c
 unit-test/test_v1_health_check_service_health_check_response.c

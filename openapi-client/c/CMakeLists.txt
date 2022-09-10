@@ -34,12 +34,17 @@ set(PROJECT_VERSION_MAJOR 0)
 set(PROJECT_VERSION_MINOR 0)
 set(PROJECT_VERSION_PATCH 1)
 
-find_package(CURL 7.58.0 REQUIRED)
-if(CURL_FOUND)
+if( (DEFINED CURL_INCLUDE_DIR) AND (DEFINED CURL_LIBRARIES))
     include_directories(${CURL_INCLUDE_DIR})
     set(PLATFORM_LIBRARIES ${PLATFORM_LIBRARIES} ${CURL_LIBRARIES} )
-else(CURL_FOUND)
-    message(FATAL_ERROR "Could not find the CURL library and development files.")
+else()
+    find_package(CURL 7.58.0 REQUIRED)
+    if(CURL_FOUND)
+        include_directories(${CURL_INCLUDE_DIR})
+        set(PLATFORM_LIBRARIES ${PLATFORM_LIBRARIES} ${CURL_LIBRARIES} )
+    else(CURL_FOUND)
+        message(FATAL_ERROR "Could not find the CURL library and development files.")
+    endif()
 endif()
 
 set(SRCS
@@ -49,10 +54,8 @@ set(SRCS
     src/binary.c
     external/cJSON.c
     model/object.c
-    model/protobuf_any.c
     model/protov1_response.c
     model/rpc_code.c
-    model/runtime_error.c
     model/v1_example_service_query_request.c
     model/v1_example_service_query_response.c
     model/v1_health_check_service_health_check_response.c
@@ -68,10 +71,8 @@ set(HDRS
     include/keyValuePair.h
     external/cJSON.h
     model/object.h
-    model/protobuf_any.h
     model/protov1_response.h
     model/rpc_code.h
-    model/runtime_error.h
     model/v1_example_service_query_request.h
     model/v1_example_service_query_response.h
     model/v1_health_check_service_health_check_response.h

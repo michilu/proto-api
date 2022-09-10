@@ -112,5 +112,3 @@ func (v *NullableV1HealthCheckServiceHealthCheckResponse) UnmarshalJSON(src []by
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

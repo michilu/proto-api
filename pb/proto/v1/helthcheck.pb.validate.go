@@ -11,11 +11,12 @@ import (
 	"net/mail"
 	"net/url"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 	"unicode/utf8"
 
-	"github.com/golang/protobuf/ptypes"
+	"google.golang.org/protobuf/types/known/anypb"
 )
 
 // ensure the imports are used
@@ -30,21 +31,53 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = ptypes.DynamicAny{}
+	_ = anypb.Any{}
+	_ = sort.Sort
 )
-
-// define the regex for a UUID once up-front
-var _helthcheck_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
 
 // Validate checks the field values on HealthCheckServiceHealthCheckResponse
 // with the rules defined in the proto definition for this message. If any
-// rules are violated, an error is returned.
+// rules are violated, the first error encountered is returned, or nil if
+// there are no violations.
 func (m *HealthCheckServiceHealthCheckResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on HealthCheckServiceHealthCheckResponse
+// with the rules defined in the proto definition for this message. If any
+// rules are violated, the result is a list of violation errors wrapped in
+// HealthCheckServiceHealthCheckResponseMultiError, or nil if none found.
+func (m *HealthCheckServiceHealthCheckResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *HealthCheckServiceHealthCheckResponse) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
 
-	if v, ok := interface{}(m.GetValue()).(interface{ Validate() error }); ok {
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetValue()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, HealthCheckServiceHealthCheckResponseValidationError{
+					field:  "Value",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, HealthCheckServiceHealthCheckResponseValidationError{
+					field:  "Value",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetValue()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
 			return HealthCheckServiceHealthCheckResponseValidationError{
 				field:  "Value",
@@ -54,8 +87,30 @@ func (m *HealthCheckServiceHealthCheckResponse) Validate() error {
 		}
 	}
 
+	if len(errors) > 0 {
+		return HealthCheckServiceHealthCheckResponseMultiError(errors)
+	}
+
 	return nil
 }
+
+// HealthCheckServiceHealthCheckResponseMultiError is an error wrapping
+// multiple validation errors returned by
+// HealthCheckServiceHealthCheckResponse.ValidateAll() if the designated
+// constraints aren't met.
+type HealthCheckServiceHealthCheckResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m HealthCheckServiceHealthCheckResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m HealthCheckServiceHealthCheckResponseMultiError) AllErrors() []error { return m }
 
 // HealthCheckServiceHealthCheckResponseValidationError is the validation error
 // returned by HealthCheckServiceHealthCheckResponse.Validate if the

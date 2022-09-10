@@ -57,7 +57,7 @@ cJSON *protov1_response_convertToJSON(protov1_response_t *protov1_response) {
     cJSON *item = cJSON_CreateObject();
 
     // protov1_response->code
-    
+    if(protov1_response->code != an_example_of_generating_swagger_via_grpc_ecosystem__protov1_response__NULL) {
     cJSON *code_local_JSON = rpc_code_convertToJSON(protov1_response->code);
     if(code_local_JSON == NULL) {
         goto fail; // custom
@@ -66,15 +66,15 @@ cJSON *protov1_response_convertToJSON(protov1_response_t *protov1_response) {
     if(item->child == NULL) {
         goto fail;
     }
-    
+    }
 
 
     // protov1_response->message
-    if(protov1_response->message) { 
+    if(protov1_response->message) {
     if(cJSON_AddStringToObject(item, "message", protov1_response->message) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
     return item;
 fail:

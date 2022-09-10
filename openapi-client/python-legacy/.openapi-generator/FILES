@@ -5,10 +5,8 @@
 README.md
 docs/ExampleServiceApi.md
 docs/HealthCheckServiceApi.md
-docs/ProtobufAny.md
 docs/Protov1Response.md
 docs/RpcCode.md
-docs/RuntimeError.md
 docs/V1ExampleServiceQueryRequest.md
 docs/V1ExampleServiceQueryResponse.md
 docs/V1HealthCheckServiceHealthCheckResponse.md
@@ -21,10 +19,8 @@ openapi_client/api_client.py
 openapi_client/configuration.py
 openapi_client/exceptions.py
 openapi_client/models/__init__.py
-openapi_client/models/protobuf_any.py
 openapi_client/models/protov1_response.py
 openapi_client/models/rpc_code.py
-openapi_client/models/runtime_error.py
 openapi_client/models/v1_example_service_query_request.py
 openapi_client/models/v1_example_service_query_response.py
 openapi_client/models/v1_health_check_service_health_check_response.py
@@ -36,10 +32,8 @@ test-requirements.txt
 test/__init__.py
 test/test_example_service_api.py
 test/test_health_check_service_api.py
-test/test_protobuf_any.py
 test/test_protov1_response.py
 test/test_rpc_code.py
-test/test_runtime_error.py
 test/test_v1_example_service_query_request.py
 test/test_v1_example_service_query_response.py
 test/test_v1_health_check_service_health_check_response.py

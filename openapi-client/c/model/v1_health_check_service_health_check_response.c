@@ -34,7 +34,7 @@ cJSON *v1_health_check_service_health_check_response_convertToJSON(v1_health_che
     cJSON *item = cJSON_CreateObject();
 
     // v1_health_check_service_health_check_response->value
-    if(v1_health_check_service_health_check_response->value) { 
+    if(v1_health_check_service_health_check_response->value) {
     cJSON *value_local_JSON = protov1_response_convertToJSON(v1_health_check_service_health_check_response->value);
     if(value_local_JSON == NULL) {
     goto fail; //model
@@ -43,7 +43,7 @@ cJSON *v1_health_check_service_health_check_response_convertToJSON(v1_health_che
     if(item->child == NULL) {
     goto fail;
     }
-     } 
+    }
 
     return item;
 fail:

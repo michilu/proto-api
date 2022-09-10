@@ -65,16 +65,14 @@ All URIs are relative to *http://localhost*
 
 Category | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleServiceAPI* | [**ExampleServiceAPI_exampleServiceQuery**](docs/ExampleServiceAPI.md#ExampleServiceAPI_exampleServiceQuery) | **POST** /v1/example/{id} | 
-*HealthCheckServiceAPI* | [**HealthCheckServiceAPI_healthCheckServiceHealthCheck**](docs/HealthCheckServiceAPI.md#HealthCheckServiceAPI_healthCheckServiceHealthCheck) | **GET** /healthCheck | 
+*ExampleServiceAPI* | [**ExampleServiceAPI_query**](docs/ExampleServiceAPI.md#ExampleServiceAPI_query) | **POST** /v1/example/{id} | 
+*HealthCheckServiceAPI* | [**HealthCheckServiceAPI_healthCheck**](docs/HealthCheckServiceAPI.md#HealthCheckServiceAPI_healthCheck) | **GET** /healthCheck | 
 
 
 ## Documentation for Models
 
- - [protobuf_any_t](docs/protobuf_any.md)
  - [protov1_response_t](docs/protov1_response.md)
  - [rpc_code_t](docs/rpc_code.md)
- - [runtime_error_t](docs/runtime_error.md)
  - [v1_example_service_query_request_t](docs/v1_example_service_query_request.md)
  - [v1_example_service_query_response_t](docs/v1_example_service_query_response.md)
  - [v1_health_check_service_health_check_response_t](docs/v1_health_check_service_health_check_response.md)

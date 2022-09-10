@@ -9,7 +9,7 @@ For more information, please visit [https://github.com/michilu/proto-api](https:
 
 ## Requirements
 
-Dart 2.0 or later
+Dart 2.12 or later
 
 ## Installation & Usage
 
@@ -52,10 +52,10 @@ final id = id_example; // String |
 final body = V1ExampleServiceQueryRequest(); // V1ExampleServiceQueryRequest | 
 
 try {
-    final result = api_instance.exampleServiceQuery(id, body);
+    final result = api_instance.query(id, body);
     print(result);
 } catch (e) {
-    print('Exception when calling ExampleServiceApi->exampleServiceQuery: $e\n');
+    print('Exception when calling ExampleServiceApi->query: $e\n');
 }
 
 ```
@@ -66,16 +66,14 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleServiceApi* | [**exampleServiceQuery**](doc//ExampleServiceApi.md#exampleservicequery) | **POST** /v1/example/{id} | 
-*HealthCheckServiceApi* | [**healthCheckServiceHealthCheck**](doc//HealthCheckServiceApi.md#healthcheckservicehealthcheck) | **GET** /healthCheck | 
+*ExampleServiceApi* | [**query**](doc//ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
+*HealthCheckServiceApi* | [**healthCheck**](doc//HealthCheckServiceApi.md#healthcheck) | **GET** /healthCheck | 
 
 
 ## Documentation For Models
 
- - [ProtobufAny](doc//ProtobufAny.md)
  - [Protov1Response](doc//Protov1Response.md)
  - [RpcCode](doc//RpcCode.md)
- - [RuntimeError](doc//RuntimeError.md)
  - [V1ExampleServiceQueryRequest](doc//V1ExampleServiceQueryRequest.md)
  - [V1ExampleServiceQueryResponse](doc//V1ExampleServiceQueryResponse.md)
  - [V1HealthCheckServiceHealthCheckResponse](doc//V1HealthCheckServiceHealthCheckResponse.md)

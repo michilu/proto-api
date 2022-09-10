@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**HealthCheckServiceAPI_healthCheckServiceHealthCheck**](HealthCheckServiceAPI.md#HealthCheckServiceAPI_healthCheckServiceHealthCheck) | **GET** /healthCheck | 
+[**HealthCheckServiceAPI_healthCheck**](HealthCheckServiceAPI.md#HealthCheckServiceAPI_healthCheck) | **GET** /healthCheck | 
 
 
-# **HealthCheckServiceAPI_healthCheckServiceHealthCheck**
+# **HealthCheckServiceAPI_healthCheck**
 ```c
-v1_health_check_service_health_check_response_t* HealthCheckServiceAPI_healthCheckServiceHealthCheck(apiClient_t *apiClient);
+v1_health_check_service_health_check_response_t* HealthCheckServiceAPI_healthCheck(apiClient_t *apiClient);
 ```
 
 ### Parameters

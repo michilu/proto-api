@@ -34,11 +34,11 @@ cJSON *v1_example_service_query_request_convertToJSON(v1_example_service_query_r
     cJSON *item = cJSON_CreateObject();
 
     // v1_example_service_query_request->id
-    if(v1_example_service_query_request->id) { 
+    if(v1_example_service_query_request->id) {
     if(cJSON_AddStringToObject(item, "id", v1_example_service_query_request->id) == NULL) {
     goto fail; //String
     }
-     } 
+    }
 
     return item;
 fail:

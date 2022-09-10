@@ -9,11 +9,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**exampleServiceQuery**](ExampleServiceApi.md#exampleservicequery) | **POST** /v1/example/{id} | 
+[**query**](ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
 
 
-# **exampleServiceQuery**
-> V1ExampleServiceQueryResponse exampleServiceQuery(id, body)
+# **query**
+> V1ExampleServiceQueryResponse query(id, body)
 
 
 
@@ -32,10 +32,10 @@ final id = id_example; // String |
 final body = V1ExampleServiceQueryRequest(); // V1ExampleServiceQueryRequest | 
 
 try {
-    final result = api_instance.exampleServiceQuery(id, body);
+    final result = api_instance.query(id, body);
     print(result);
 } catch (e) {
-    print('Exception when calling ExampleServiceApi->exampleServiceQuery: $e\n');
+    print('Exception when calling ExampleServiceApi->query: $e\n');
 }
 ```
 

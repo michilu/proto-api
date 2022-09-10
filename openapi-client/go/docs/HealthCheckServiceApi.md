@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**HealthCheckServiceHealthCheck**](HealthCheckServiceApi.md#HealthCheckServiceHealthCheck) | **Get** /healthCheck | 
+[**HealthCheck**](HealthCheckServiceApi.md#HealthCheck) | **Get** /healthCheck | 
 
 
 
-## HealthCheckServiceHealthCheck
+## HealthCheck
 
-> V1HealthCheckServiceHealthCheckResponse HealthCheckServiceHealthCheck(ctx).Execute()
+> V1HealthCheckServiceHealthCheckResponse HealthCheck(ctx).Execute()
 
 
 
@@ -30,13 +30,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HealthCheckServiceApi.HealthCheckServiceHealthCheck(context.Background()).Execute()
+    resp, r, err := apiClient.HealthCheckServiceApi.HealthCheck(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HealthCheckServiceApi.HealthCheckServiceHealthCheck``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `HealthCheckServiceApi.HealthCheck``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `HealthCheckServiceHealthCheck`: V1HealthCheckServiceHealthCheckResponse
-    fmt.Fprintf(os.Stdout, "Response from `HealthCheckServiceApi.HealthCheckServiceHealthCheck`: %v\n", resp)
+    // response from `HealthCheck`: V1HealthCheckServiceHealthCheckResponse
+    fmt.Fprintf(os.Stdout, "Response from `HealthCheckServiceApi.HealthCheck`: %v\n", resp)
 }
 ```
 
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiHealthCheckServiceHealthCheckRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiHealthCheckRequest struct via the builder pattern
 
 
 ### Return type

@@ -59,7 +59,7 @@ class V1ExampleServiceQueryRequest(Model):
         """
         if id is not None and len(id) < 1:
             raise ValueError("Invalid value for `id`, length must be greater than or equal to `1`")
-        if id is not None and not re.search(r'[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}', id):
-            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}/`")
+        if id is not None and not re.search(r'^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$', id):
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$/`")
 
         self._id = id

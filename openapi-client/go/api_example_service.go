@@ -20,56 +20,52 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // ExampleServiceApiService ExampleServiceApi service
 type ExampleServiceApiService service
 
-type ApiExampleServiceQueryRequest struct {
-	ctx context.Context
+type ApiQueryRequest struct {
+	ctx        context.Context
 	ApiService *ExampleServiceApiService
-	id string
-	body *V1ExampleServiceQueryRequest
+	id         string
+	body       *V1ExampleServiceQueryRequest
 }
 
-func (r ApiExampleServiceQueryRequest) Body(body V1ExampleServiceQueryRequest) ApiExampleServiceQueryRequest {
+func (r ApiQueryRequest) Body(body V1ExampleServiceQueryRequest) ApiQueryRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiExampleServiceQueryRequest) Execute() (*V1ExampleServiceQueryResponse, *http.Response, error) {
-	return r.ApiService.ExampleServiceQueryExecute(r)
+func (r ApiQueryRequest) Execute() (*V1ExampleServiceQueryResponse, *http.Response, error) {
+	return r.ApiService.QueryExecute(r)
 }
 
 /*
-ExampleServiceQuery Method for ExampleServiceQuery
+Query Method for Query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id
- @return ApiExampleServiceQueryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id
+	@return ApiQueryRequest
 */
-func (a *ExampleServiceApiService) ExampleServiceQuery(ctx context.Context, id string) ApiExampleServiceQueryRequest {
-	return ApiExampleServiceQueryRequest{
+func (a *ExampleServiceApiService) Query(ctx context.Context, id string) ApiQueryRequest {
+	return ApiQueryRequest{
 		ApiService: a,
-		ctx: ctx,
-		id: id,
+		ctx:        ctx,
+		id:         id,
 	}
 }
 
 // Execute executes the request
-//  @return V1ExampleServiceQueryResponse
-func (a *ExampleServiceApiService) ExampleServiceQueryExecute(r ApiExampleServiceQueryRequest) (*V1ExampleServiceQueryResponse, *http.Response, error) {
+//
+//	@return V1ExampleServiceQueryResponse
+func (a *ExampleServiceApiService) QueryExecute(r ApiQueryRequest) (*V1ExampleServiceQueryResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *V1ExampleServiceQueryResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *V1ExampleServiceQueryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExampleServiceApiService.ExampleServiceQuery")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExampleServiceApiService.Query")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -139,13 +135,6 @@ func (a *ExampleServiceApiService) ExampleServiceQueryExecute(r ApiExampleServic
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-			var v RuntimeError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

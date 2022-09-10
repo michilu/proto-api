@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -14,11 +14,11 @@ import 'package:test/test.dart';
 
 /// tests for ExampleServiceApi
 void main() {
-  final instance = ExampleServiceApi();
+  // final instance = ExampleServiceApi();
 
   group('tests for ExampleServiceApi', () {
-    //Future<V1ExampleServiceQueryResponse> exampleServiceQuery(String id, V1ExampleServiceQueryRequest body) async
-    test('test exampleServiceQuery', () async {
+    //Future<V1ExampleServiceQueryResponse> query(String id, V1ExampleServiceQueryRequest body) async
+    test('test query', () async {
       // TODO
     });
 

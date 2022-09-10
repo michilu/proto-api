@@ -34,7 +34,7 @@ cJSON *v1_example_service_query_response_convertToJSON(v1_example_service_query_
     cJSON *item = cJSON_CreateObject();
 
     // v1_example_service_query_response->value
-    if(v1_example_service_query_response->value) { 
+    if(v1_example_service_query_response->value) {
     cJSON *value_local_JSON = protov1_response_convertToJSON(v1_example_service_query_response->value);
     if(value_local_JSON == NULL) {
     goto fail; //model
@@ -43,7 +43,7 @@ cJSON *v1_example_service_query_response_convertToJSON(v1_example_service_query_
     if(item->child == NULL) {
     goto fail;
     }
-     } 
+    }
 
     return item;
 fail:

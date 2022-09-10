@@ -5,10 +5,10 @@ package v1
 
 import (
 	fmt "fmt"
-	math "math"
+	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/mwitkow/go-proto-validators"
 	_ "google.golang.org/genproto/googleapis/rpc/code"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

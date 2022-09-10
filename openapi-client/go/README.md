@@ -62,7 +62,7 @@ Each operation can use different server URL defined using `OperationServers` map
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
-```
+```golang
 ctx := context.WithValue(context.Background(), openapi.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -79,16 +79,14 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleServiceApi* | [**ExampleServiceQuery**](docs/ExampleServiceApi.md#exampleservicequery) | **Post** /v1/example/{id} | 
-*HealthCheckServiceApi* | [**HealthCheckServiceHealthCheck**](docs/HealthCheckServiceApi.md#healthcheckservicehealthcheck) | **Get** /healthCheck | 
+*ExampleServiceApi* | [**Query**](docs/ExampleServiceApi.md#query) | **Post** /v1/example/{id} | 
+*HealthCheckServiceApi* | [**HealthCheck**](docs/HealthCheckServiceApi.md#healthcheck) | **Get** /healthCheck | 
 
 
 ## Documentation For Models
 
- - [ProtobufAny](docs/ProtobufAny.md)
  - [Protov1Response](docs/Protov1Response.md)
  - [RpcCode](docs/RpcCode.md)
- - [RuntimeError](docs/RuntimeError.md)
  - [V1ExampleServiceQueryRequest](docs/V1ExampleServiceQueryRequest.md)
  - [V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)
  - [V1HealthCheckServiceHealthCheckResponse](docs/V1HealthCheckServiceHealthCheckResponse.md)

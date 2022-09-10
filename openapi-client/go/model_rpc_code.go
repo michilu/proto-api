@@ -21,23 +21,23 @@ type RpcCode string
 
 // List of rpcCode
 const (
-	OK RpcCode = "OK"
-	CANCELLED RpcCode = "CANCELLED"
-	UNKNOWN RpcCode = "UNKNOWN"
-	INVALID_ARGUMENT RpcCode = "INVALID_ARGUMENT"
-	DEADLINE_EXCEEDED RpcCode = "DEADLINE_EXCEEDED"
-	NOT_FOUND RpcCode = "NOT_FOUND"
-	ALREADY_EXISTS RpcCode = "ALREADY_EXISTS"
-	PERMISSION_DENIED RpcCode = "PERMISSION_DENIED"
-	UNAUTHENTICATED RpcCode = "UNAUTHENTICATED"
-	RESOURCE_EXHAUSTED RpcCode = "RESOURCE_EXHAUSTED"
+	OK                  RpcCode = "OK"
+	CANCELLED           RpcCode = "CANCELLED"
+	UNKNOWN             RpcCode = "UNKNOWN"
+	INVALID_ARGUMENT    RpcCode = "INVALID_ARGUMENT"
+	DEADLINE_EXCEEDED   RpcCode = "DEADLINE_EXCEEDED"
+	NOT_FOUND           RpcCode = "NOT_FOUND"
+	ALREADY_EXISTS      RpcCode = "ALREADY_EXISTS"
+	PERMISSION_DENIED   RpcCode = "PERMISSION_DENIED"
+	UNAUTHENTICATED     RpcCode = "UNAUTHENTICATED"
+	RESOURCE_EXHAUSTED  RpcCode = "RESOURCE_EXHAUSTED"
 	FAILED_PRECONDITION RpcCode = "FAILED_PRECONDITION"
-	ABORTED RpcCode = "ABORTED"
-	OUT_OF_RANGE RpcCode = "OUT_OF_RANGE"
-	UNIMPLEMENTED RpcCode = "UNIMPLEMENTED"
-	INTERNAL RpcCode = "INTERNAL"
-	UNAVAILABLE RpcCode = "UNAVAILABLE"
-	DATA_LOSS RpcCode = "DATA_LOSS"
+	ABORTED             RpcCode = "ABORTED"
+	OUT_OF_RANGE        RpcCode = "OUT_OF_RANGE"
+	UNIMPLEMENTED       RpcCode = "UNIMPLEMENTED"
+	INTERNAL            RpcCode = "INTERNAL"
+	UNAVAILABLE         RpcCode = "UNAVAILABLE"
+	DATA_LOSS           RpcCode = "DATA_LOSS"
 )
 
 // All allowed values of RpcCode enum
@@ -139,4 +139,3 @@ func (v *NullableRpcCode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-

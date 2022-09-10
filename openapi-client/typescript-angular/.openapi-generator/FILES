@@ -10,11 +10,10 @@ encoder.ts
 git_push.sh
 index.ts
 model/models.ts
-model/protobufAny.ts
 model/protov1Response.ts
 model/rpcCode.ts
-model/runtimeError.ts
 model/v1ExampleServiceQueryRequest.ts
 model/v1ExampleServiceQueryResponse.ts
 model/v1HealthCheckServiceHealthCheckResponse.ts
+param.ts
 variables.ts

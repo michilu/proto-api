@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -19,7 +19,7 @@ class RpcCode {
   final String value;
 
   @override
-  String toString() => value ?? '';
+  String toString() => value;
 
   String toJson() => value;
 
@@ -62,13 +62,20 @@ class RpcCode {
     DATA_LOSS,
   ];
 
-  static RpcCode fromJson(dynamic value) =>
-    RpcCodeTypeTransformer().decode(value);
+  static RpcCode? fromJson(dynamic value) => RpcCodeTypeTransformer().decode(value);
 
-  static List<RpcCode> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
-    json is List && json.isNotEmpty
-      ? json.map(RpcCode.fromJson).toList(growable: true == growable)
-      : true == emptyIsNull ? null : <RpcCode>[];
+  static List<RpcCode>? listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <RpcCode>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = RpcCode.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
 }
 
 /// Transformation class that can [encode] an instance of [RpcCode] to String,
@@ -88,7 +95,7 @@ class RpcCodeTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  RpcCode decode(dynamic data, {bool allowNull}) {
+  RpcCode? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data.toString()) {
         case r'OK': return RpcCode.OK;
@@ -109,7 +116,7 @@ class RpcCodeTypeTransformer {
         case r'UNAVAILABLE': return RpcCode.UNAVAILABLE;
         case r'DATA_LOSS': return RpcCode.DATA_LOSS;
         default:
-          if (allowNull == false) {
+          if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
           }
       }
@@ -118,6 +125,6 @@ class RpcCodeTypeTransformer {
   }
 
   /// Singleton [RpcCodeTypeTransformer] instance.
-  static RpcCodeTypeTransformer _instance;
+  static RpcCodeTypeTransformer? _instance;
 }
 

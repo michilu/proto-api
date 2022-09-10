@@ -29,8 +29,8 @@ class TestHealthCheckServiceApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_health_check_service_health_check(self):
-        """Test case for health_check_service_health_check
+    def test_health_check(self):
+        """Test case for health_check
 
         """
         pass

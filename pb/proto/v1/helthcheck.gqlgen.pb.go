@@ -4,13 +4,13 @@
 package v1
 
 import (
+	context "context"
 	fmt "fmt"
-	math "math"
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
-	_ "github.com/golang/protobuf/ptypes/empty"
-	context "context"
-	github_com_golang_protobuf_ptypes_empty "github.com/golang/protobuf/ptypes/empty"
+	_ "google.golang.org/protobuf/types/known/emptypb"
+	google_golang_org_protobuf_types_known_emptypb "google.golang.org/protobuf/types/known/emptypb"
+	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -21,5 +21,5 @@ var _ = math.Inf
 type HealthCheckServiceGQLServer struct{ Service HealthCheckServiceServer }
 
 func (s *HealthCheckServiceGQLServer) HealthCheckServiceHealthCheck(ctx context.Context) (*HealthCheckServiceHealthCheckResponse, error) {
-	return s.Service.HealthCheck(ctx, &github_com_golang_protobuf_ptypes_empty.Empty{})
+	return s.Service.HealthCheck(ctx, &google_golang_org_protobuf_types_known_emptypb.Empty{})
 }

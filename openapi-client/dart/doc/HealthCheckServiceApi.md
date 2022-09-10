@@ -9,11 +9,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**healthCheckServiceHealthCheck**](HealthCheckServiceApi.md#healthcheckservicehealthcheck) | **GET** /healthCheck | 
+[**healthCheck**](HealthCheckServiceApi.md#healthcheck) | **GET** /healthCheck | 
 
 
-# **healthCheckServiceHealthCheck**
-> V1HealthCheckServiceHealthCheckResponse healthCheckServiceHealthCheck()
+# **healthCheck**
+> V1HealthCheckServiceHealthCheckResponse healthCheck()
 
 
 
@@ -30,10 +30,10 @@ import 'package:openapi/api.dart';
 final api_instance = HealthCheckServiceApi();
 
 try {
-    final result = api_instance.healthCheckServiceHealthCheck();
+    final result = api_instance.healthCheck();
     print(result);
 } catch (e) {
-    print('Exception when calling HealthCheckServiceApi->healthCheckServiceHealthCheck: $e\n');
+    print('Exception when calling HealthCheckServiceApi->healthCheck: $e\n');
 }
 ```
 

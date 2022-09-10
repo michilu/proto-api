@@ -18,7 +18,7 @@ security:
 paths:
   /healthCheck:
     get:
-      operationId: health_check_service_health_check
+      operationId: health_check
       responses:
         "200":
           content:
@@ -26,18 +26,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1HealthCheckServiceHealthCheckResponse'
           description: A successful response.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/runtimeError'
-          description: An unexpected error response
       tags:
       - HealthCheckService
       x-openapi-router-controller: openapi_server.controllers.health_check_service_controller
   /v1/example/{id}:
     post:
-      operationId: example_service_query
+      operationId: query
       parameters:
       - in: path
         name: id
@@ -58,12 +52,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1ExampleServiceQueryResponse'
           description: A successful response.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/runtimeError'
-          description: An unexpected error response
       security:
       - ApiKeyAuth: []
         OAuth2:
@@ -75,130 +63,9 @@ paths:
       x-openapi-router-controller: openapi_server.controllers.example_service_controller
 components:
   schemas:
-    protobufAny:
-      description: |-
-        `Any` contains an arbitrary serialized protocol buffer message along with a
-        URL that describes the type of the serialized message.
-
-        Protobuf library provides support to pack/unpack Any values in the form
-        of utility functions or additional generated methods of the Any type.
-
-        Example 1: Pack and unpack a message in C++.
-
-            Foo foo = ...;
-            Any any;
-            any.PackFrom(foo);
-            ...
-            if (any.UnpackTo(&foo)) {
-              ...
-            }
-
-        Example 2: Pack and unpack a message in Java.
-
-            Foo foo = ...;
-            Any any = Any.pack(foo);
-            ...
-            if (any.is(Foo.class)) {
-              foo = any.unpack(Foo.class);
-            }
-
-         Example 3: Pack and unpack a message in Python.
-
-            foo = Foo(...)
-            any = Any()
-            any.Pack(foo)
-            ...
-            if any.Is(Foo.DESCRIPTOR):
-              any.Unpack(foo)
-              ...
-
-         Example 4: Pack and unpack a message in Go
-
-             foo := &pb.Foo{...}
-             any, err := ptypes.MarshalAny(foo)
-             ...
-             foo := &pb.Foo{}
-             if err := ptypes.UnmarshalAny(any, foo); err != nil {
-               ...
-             }
-
-        The pack methods provided by protobuf library will by default use
-        'type.googleapis.com/full.type.name' as the type URL and the unpack
-        methods only use the fully qualified type name after the last '/'
-        in the type URL, for example "foo.bar.com/x/y.z" will yield type
-        name "y.z".
-
-
-        JSON
-        ====
-        The JSON representation of an `Any` value uses the regular
-        representation of the deserialized, embedded message, with an
-        additional field `@type` which contains the type URL. Example:
-
-            package google.profile;
-            message Person {
-              string first_name = 1;
-              string last_name = 2;
-            }
-
-            {
-              "@type": "type.googleapis.com/google.profile.Person",
-              "firstName": <string>,
-              "lastName": <string>
-            }
-
-        If the embedded message type is well-known and has a custom JSON
-        representation, that representation will be embedded adding a field
-        `value` which holds the custom JSON in addition to the `@type`
-        field. Example (for message [google.protobuf.Duration][]):
-
-            {
-              "@type": "type.googleapis.com/google.protobuf.Duration",
-              "value": "1.212s"
-            }
-      properties:
-        type_url:
-          description: |-
-            A URL/resource name that uniquely identifies the type of the serialized
-            protocol buffer message. This string must contain at least
-            one "/" character. The last segment of the URL's path must represent
-            the fully qualified name of the type (as in
-            `path/google.protobuf.Duration`). The name should be in a canonical form
-            (e.g., leading "." is not accepted).
-
-            In practice, teams usually precompile into the binary all types that they
-            expect it to use in the context of Any. However, for URLs which use the
-            scheme `http`, `https`, or no scheme, one can optionally set up a type
-            server that maps type URLs to message definitions as follows:
-
-            * If no scheme is provided, `https` is assumed.
-            * An HTTP GET on the URL must yield a [google.protobuf.Type][]
-              value in binary format, or produce an error.
-            * Applications are allowed to cache lookup results based on the
-              URL, or have them precompiled into a binary to avoid any
-              lookup. Therefore, binary compatibility needs to be preserved
-              on changes to types. (Use versioned type names to manage
-              breaking changes.)
-
-            Note: this functionality is not currently available in the official
-            protobuf release, and it is not used for type URLs beginning with
-            type.googleapis.com.
-
-            Schemes other than `http`, `https` (or the empty scheme) might be
-            used with implementation specific semantics.
-          title: type_url
-          type: string
-        value:
-          description: Must be a valid serialized protocol buffer of the above specified
-            type.
-          format: byte
-          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-          title: value
-          type: string
-      title: protobufAny
-      type: object
     protov1Response:
       example:
+        code: null
         message: message
       properties:
         code:
@@ -210,135 +77,81 @@ components:
       type: object
     rpcCode:
       default: OK
-      description: |-
-        The canonical error codes for gRPC APIs.
-
-
-        Sometimes multiple error codes may apply.  Services should return
-        the most specific error code that applies.  For example, prefer
-        `OUT_OF_RANGE` over `FAILED_PRECONDITION` if both codes apply.
-        Similarly prefer `NOT_FOUND` or `ALREADY_EXISTS` over `FAILED_PRECONDITION`.
-
-         - OK: Not an error; returned on success
-
-        HTTP Mapping: 200 OK
-         - CANCELLED: The operation was cancelled, typically by the caller.
-
-        HTTP Mapping: 499 Client Closed Request
-         - UNKNOWN: Unknown error.  For example, this error may be returned when
-        a `Status` value received from another address space belongs to
-        an error space that is not known in this address space.  Also
-        errors raised by APIs that do not return enough error information
-        may be converted to this error.
-
-        HTTP Mapping: 500 Internal Server Error
-         - INVALID_ARGUMENT: The client specified an invalid argument.  Note that this differs
-        from `FAILED_PRECONDITION`.  `INVALID_ARGUMENT` indicates arguments
-        that are problematic regardless of the state of the system
-        (e.g., a malformed file name).
-
-        HTTP Mapping: 400 Bad Request
-         - DEADLINE_EXCEEDED: The deadline expired before the operation could complete. For operations
-        that change the state of the system, this error may be returned
-        even if the operation has completed successfully.  For example, a
-        successful response from a server could have been delayed long
-        enough for the deadline to expire.
-
-        HTTP Mapping: 504 Gateway Timeout
-         - NOT_FOUND: Some requested entity (e.g., file or directory) was not found.
-
-        Note to server developers: if a request is denied for an entire class
-        of users, such as gradual feature rollout or undocumented whitelist,
-        `NOT_FOUND` may be used. If a request is denied for some users within
-        a class of users, such as user-based access control, `PERMISSION_DENIED`
-        must be used.
-
-        HTTP Mapping: 404 Not Found
-         - ALREADY_EXISTS: The entity that a client attempted to create (e.g., file or directory)
-        already exists.
-
-        HTTP Mapping: 409 Conflict
-         - PERMISSION_DENIED: The caller does not have permission to execute the specified
-        operation. `PERMISSION_DENIED` must not be used for rejections
-        caused by exhausting some resource (use `RESOURCE_EXHAUSTED`
-        instead for those errors). `PERMISSION_DENIED` must not be
-        used if the caller can not be identified (use `UNAUTHENTICATED`
-        instead for those errors). This error code does not imply the
-        request is valid or the requested entity exists or satisfies
-        other pre-conditions.
-
-        HTTP Mapping: 403 Forbidden
-         - UNAUTHENTICATED: The request does not have valid authentication credentials for the
-        operation.
-
-        HTTP Mapping: 401 Unauthorized
-         - RESOURCE_EXHAUSTED: Some resource has been exhausted, perhaps a per-user quota, or
-        perhaps the entire file system is out of space.
-
-        HTTP Mapping: 429 Too Many Requests
-         - FAILED_PRECONDITION: The operation was rejected because the system is not in a state
-        required for the operation's execution.  For example, the directory
-        to be deleted is non-empty, an rmdir operation is applied to
-        a non-directory, etc.
-
-        Service implementors can use the following guidelines to decide
-        between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:
-         (a) Use `UNAVAILABLE` if the client can retry just the failing call.
-         (b) Use `ABORTED` if the client should retry at a higher level
-             (e.g., when a client-specified test-and-set fails, indicating the
-             client should restart a read-modify-write sequence).
-         (c) Use `FAILED_PRECONDITION` if the client should not retry until
-             the system state has been explicitly fixed.  E.g., if an "rmdir"
-             fails because the directory is non-empty, `FAILED_PRECONDITION`
-             should be returned since the client should not retry unless
-             the files are deleted from the directory.
-
-        HTTP Mapping: 400 Bad Request
-         - ABORTED: The operation was aborted, typically due to a concurrency issue such as
-        a sequencer check failure or transaction abort.
-
-        See the guidelines above for deciding between `FAILED_PRECONDITION`,
-        `ABORTED`, and `UNAVAILABLE`.
-
-        HTTP Mapping: 409 Conflict
-         - OUT_OF_RANGE: The operation was attempted past the valid range.  E.g., seeking or
-        reading past end-of-file.
-
-        Unlike `INVALID_ARGUMENT`, this error indicates a problem that may
-        be fixed if the system state changes. For example, a 32-bit file
-        system will generate `INVALID_ARGUMENT` if asked to read at an
-        offset that is not in the range [0,2^32-1], but it will generate
-        `OUT_OF_RANGE` if asked to read from an offset past the current
-        file size.
-
-        There is a fair bit of overlap between `FAILED_PRECONDITION` and
-        `OUT_OF_RANGE`.  We recommend using `OUT_OF_RANGE` (the more specific
-        error) when it applies so that callers who are iterating through
-        a space can easily look for an `OUT_OF_RANGE` error to detect when
-        they are done.
-
-        HTTP Mapping: 400 Bad Request
-         - UNIMPLEMENTED: The operation is not implemented or is not supported/enabled in this
-        service.
-
-        HTTP Mapping: 501 Not Implemented
-         - INTERNAL: Internal errors.  This means that some invariants expected by the
-        underlying system have been broken.  This error code is reserved
-        for serious errors.
-
-        HTTP Mapping: 500 Internal Server Error
-         - UNAVAILABLE: The service is currently unavailable.  This is most likely a
-        transient condition, which can be corrected by retrying with
-        a backoff. Note that it is not always safe to retry
-        non-idempotent operations.
-
-        See the guidelines above for deciding between `FAILED_PRECONDITION`,
-        `ABORTED`, and `UNAVAILABLE`.
-
-        HTTP Mapping: 503 Service Unavailable
-         - DATA_LOSS: Unrecoverable data loss or corruption.
-
-        HTTP Mapping: 500 Internal Server Error
+      description: "The canonical error codes for gRPC APIs.\n\n\nSometimes multiple\
+        \ error codes may apply.  Services should return\nthe most specific error\
+        \ code that applies.  For example, prefer\n`OUT_OF_RANGE` over `FAILED_PRECONDITION`\
+        \ if both codes apply.\nSimilarly prefer `NOT_FOUND` or `ALREADY_EXISTS` over\
+        \ `FAILED_PRECONDITION`.\n\n - OK: Not an error; returned on success\n\nHTTP\
+        \ Mapping: 200 OK\n - CANCELLED: The operation was cancelled, typically by\
+        \ the caller.\n\nHTTP Mapping: 499 Client Closed Request\n - UNKNOWN: Unknown\
+        \ error.  For example, this error may be returned when\na `Status` value received\
+        \ from another address space belongs to\nan error space that is not known\
+        \ in this address space.  Also\nerrors raised by APIs that do not return enough\
+        \ error information\nmay be converted to this error.\n\nHTTP Mapping: 500\
+        \ Internal Server Error\n - INVALID_ARGUMENT: The client specified an invalid\
+        \ argument.  Note that this differs\nfrom `FAILED_PRECONDITION`.  `INVALID_ARGUMENT`\
+        \ indicates arguments\nthat are problematic regardless of the state of the\
+        \ system\n(e.g., a malformed file name).\n\nHTTP Mapping: 400 Bad Request\n\
+        \ - DEADLINE_EXCEEDED: The deadline expired before the operation could complete.\
+        \ For operations\nthat change the state of the system, this error may be returned\n\
+        even if the operation has completed successfully.  For example, a\nsuccessful\
+        \ response from a server could have been delayed long\nenough for the deadline\
+        \ to expire.\n\nHTTP Mapping: 504 Gateway Timeout\n - NOT_FOUND: Some requested\
+        \ entity (e.g., file or directory) was not found.\n\nNote to server developers:\
+        \ if a request is denied for an entire class\nof users, such as gradual feature\
+        \ rollout or undocumented whitelist,\n`NOT_FOUND` may be used. If a request\
+        \ is denied for some users within\na class of users, such as user-based access\
+        \ control, `PERMISSION_DENIED`\nmust be used.\n\nHTTP Mapping: 404 Not Found\n\
+        \ - ALREADY_EXISTS: The entity that a client attempted to create (e.g., file\
+        \ or directory)\nalready exists.\n\nHTTP Mapping: 409 Conflict\n - PERMISSION_DENIED:\
+        \ The caller does not have permission to execute the specified\noperation.\
+        \ `PERMISSION_DENIED` must not be used for rejections\ncaused by exhausting\
+        \ some resource (use `RESOURCE_EXHAUSTED`\ninstead for those errors). `PERMISSION_DENIED`\
+        \ must not be\nused if the caller can not be identified (use `UNAUTHENTICATED`\n\
+        instead for those errors). This error code does not imply the\nrequest is\
+        \ valid or the requested entity exists or satisfies\nother pre-conditions.\n\
+        \nHTTP Mapping: 403 Forbidden\n - UNAUTHENTICATED: The request does not have\
+        \ valid authentication credentials for the\noperation.\n\nHTTP Mapping: 401\
+        \ Unauthorized\n - RESOURCE_EXHAUSTED: Some resource has been exhausted, perhaps\
+        \ a per-user quota, or\nperhaps the entire file system is out of space.\n\n\
+        HTTP Mapping: 429 Too Many Requests\n - FAILED_PRECONDITION: The operation\
+        \ was rejected because the system is not in a state\nrequired for the operation's\
+        \ execution.  For example, the directory\nto be deleted is non-empty, an rmdir\
+        \ operation is applied to\na non-directory, etc.\n\nService implementors can\
+        \ use the following guidelines to decide\nbetween `FAILED_PRECONDITION`, `ABORTED`,\
+        \ and `UNAVAILABLE`:\n (a) Use `UNAVAILABLE` if the client can retry just\
+        \ the failing call.\n (b) Use `ABORTED` if the client should retry at a higher\
+        \ level\n     (e.g., when a client-specified test-and-set fails, indicating\
+        \ the\n     client should restart a read-modify-write sequence).\n (c) Use\
+        \ `FAILED_PRECONDITION` if the client should not retry until\n     the system\
+        \ state has been explicitly fixed.  E.g., if an \"rmdir\"\n     fails because\
+        \ the directory is non-empty, `FAILED_PRECONDITION`\n     should be returned\
+        \ since the client should not retry unless\n     the files are deleted from\
+        \ the directory.\n\nHTTP Mapping: 400 Bad Request\n - ABORTED: The operation\
+        \ was aborted, typically due to a concurrency issue such as\na sequencer check\
+        \ failure or transaction abort.\n\nSee the guidelines above for deciding between\
+        \ `FAILED_PRECONDITION`,\n`ABORTED`, and `UNAVAILABLE`.\n\nHTTP Mapping: 409\
+        \ Conflict\n - OUT_OF_RANGE: The operation was attempted past the valid range.\
+        \  E.g., seeking or\nreading past end-of-file.\n\nUnlike `INVALID_ARGUMENT`,\
+        \ this error indicates a problem that may\nbe fixed if the system state changes.\
+        \ For example, a 32-bit file\nsystem will generate `INVALID_ARGUMENT` if asked\
+        \ to read at an\noffset that is not in the range [0,2^32-1], but it will generate\n\
+        `OUT_OF_RANGE` if asked to read from an offset past the current\nfile size.\n\
+        \nThere is a fair bit of overlap between `FAILED_PRECONDITION` and\n`OUT_OF_RANGE`.\
+        \  We recommend using `OUT_OF_RANGE` (the more specific\nerror) when it applies\
+        \ so that callers who are iterating through\na space can easily look for an\
+        \ `OUT_OF_RANGE` error to detect when\nthey are done.\n\nHTTP Mapping: 400\
+        \ Bad Request\n - UNIMPLEMENTED: The operation is not implemented or is not\
+        \ supported/enabled in this\nservice.\n\nHTTP Mapping: 501 Not Implemented\n\
+        \ - INTERNAL: Internal errors.  This means that some invariants expected by\
+        \ the\nunderlying system have been broken.  This error code is reserved\n\
+        for serious errors.\n\nHTTP Mapping: 500 Internal Server Error\n - UNAVAILABLE:\
+        \ The service is currently unavailable.  This is most likely a\ntransient\
+        \ condition, which can be corrected by retrying with\na backoff. Note that\
+        \ it is not always safe to retry\nnon-idempotent operations.\n\nSee the guidelines\
+        \ above for deciding between `FAILED_PRECONDITION`,\n`ABORTED`, and `UNAVAILABLE`.\n\
+        \nHTTP Mapping: 503 Service Unavailable\n - DATA_LOSS: Unrecoverable data\
+        \ loss or corruption.\n\nHTTP Mapping: 500 Internal Server Error"
       enum:
       - OK
       - CANCELLED
@@ -359,30 +172,11 @@ components:
       - DATA_LOSS
       title: rpcCode
       type: string
-    runtimeError:
-      properties:
-        error:
-          title: error
-          type: string
-        code:
-          format: int32
-          title: code
-          type: integer
-        message:
-          title: message
-          type: string
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          title: details
-          type: array
-      title: runtimeError
-      type: object
     v1ExampleServiceQueryRequest:
       properties:
         id:
           minLength: 1
-          pattern: '[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}'
+          pattern: "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$"
           title: id
           type: string
       title: v1ExampleServiceQueryRequest
@@ -390,6 +184,7 @@ components:
     v1ExampleServiceQueryResponse:
       example:
         value:
+          code: null
           message: message
       properties:
         value:
@@ -399,6 +194,7 @@ components:
     v1HealthCheckServiceHealthCheckResponse:
       example:
         value:
+          code: null
           message: message
       properties:
         value:

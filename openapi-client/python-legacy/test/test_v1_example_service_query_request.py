@@ -37,7 +37,7 @@ class TestV1ExampleServiceQueryRequest(unittest.TestCase):
         # model = openapi_client.models.v1_example_service_query_request.V1ExampleServiceQueryRequest()  # noqa: E501
         if include_optional :
             return V1ExampleServiceQueryRequest(
-                id = '62ECB020-8429-30cc-01FF-CCfeEe150AC30'
+                id = '62ECB020-8429-430c-a01F-FCCfeEe150AC0'
             )
         else :
             return V1ExampleServiceQueryRequest(

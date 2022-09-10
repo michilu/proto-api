@@ -11,11 +11,12 @@ import (
 	"net/mail"
 	"net/url"
 	"regexp"
+	"sort"
 	"strings"
 	"time"
 	"unicode/utf8"
 
-	"github.com/golang/protobuf/ptypes"
+	"google.golang.org/protobuf/types/known/anypb"
 
 	code "google.golang.org/genproto/googleapis/rpc/code"
 )
@@ -32,27 +33,69 @@ var (
 	_ = time.Duration(0)
 	_ = (*url.URL)(nil)
 	_ = (*mail.Address)(nil)
-	_ = ptypes.DynamicAny{}
+	_ = anypb.Any{}
+	_ = sort.Sort
 
 	_ = code.Code(0)
 )
 
-// define the regex for a UUID once up-front
-var _message_uuidPattern = regexp.MustCompile("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")
-
 // Validate checks the field values on Response with the rules defined in the
-// proto definition for this message. If any rules are violated, an error is returned.
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
 func (m *Response) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on Response with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in ResponseMultiError, or nil
+// if none found.
+func (m *Response) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *Response) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
 
-	// no validation rules for Code
+	var errors []error
+
+	if _, ok := code.Code_name[int32(m.GetCode())]; !ok {
+		err := ResponseValidationError{
+			field:  "Code",
+			reason: "value must be one of the defined enum values",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	// no validation rules for Message
 
+	if len(errors) > 0 {
+		return ResponseMultiError(errors)
+	}
+
 	return nil
 }
+
+// ResponseMultiError is an error wrapping multiple validation errors returned
+// by Response.ValidateAll() if the designated constraints aren't met.
+type ResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ResponseMultiError) AllErrors() []error { return m }
 
 // ResponseValidationError is the validation error returned by
 // Response.Validate if the designated constraints aren't met.

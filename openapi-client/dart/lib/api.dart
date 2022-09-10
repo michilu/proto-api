@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.0
+// @dart=2.12
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -30,10 +30,8 @@ part 'auth/http_bearer_auth.dart';
 part 'api/example_service_api.dart';
 part 'api/health_check_service_api.dart';
 
-part 'model/protobuf_any.dart';
 part 'model/protov1_response.dart';
 part 'model/rpc_code.dart';
-part 'model/runtime_error.dart';
 part 'model/v1_example_service_query_request.dart';
 part 'model/v1_example_service_query_response.dart';
 part 'model/v1_health_check_service_health_check_response.dart';

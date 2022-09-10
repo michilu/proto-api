@@ -13,7 +13,7 @@
 
 
 v1_health_check_service_health_check_response_t*
-HealthCheckServiceAPI_healthCheckServiceHealthCheck(apiClient_t *apiClient)
+HealthCheckServiceAPI_healthCheck(apiClient_t *apiClient)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -40,12 +40,10 @@ HealthCheckServiceAPI_healthCheckServiceHealthCheck(apiClient_t *apiClient)
                     localVarBodyParameters,
                     "GET");
 
-    if (apiClient->response_code == 200) {
-        printf("%s\n","A successful response.");
-    }
-    if (apiClient->response_code == 0) {
-        printf("%s\n","An unexpected error response");
-    }
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A successful response.");
+    //}
     //nonprimitive not container
     cJSON *HealthCheckServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     v1_health_check_service_health_check_response_t *elementToReturn = v1_health_check_service_health_check_response_parseFromJSON(HealthCheckServiceAPIlocalVarJSON);

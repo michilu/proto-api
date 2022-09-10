@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**example_service_query**](ExampleServiceApi.md#example_service_query) | **POST** /v1/example/{id} | 
+[**query**](ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
 
 
-# **example_service_query**
-> V1ExampleServiceQueryResponse example_service_query(id, body)
+# **query**
+> V1ExampleServiceQueryResponse query(id, body)
 
 
 
@@ -52,10 +52,10 @@ with openapi_client.ApiClient(configuration) as api_client:
 body = openapi_client.V1ExampleServiceQueryRequest() # V1ExampleServiceQueryRequest | 
 
     try:
-        api_response = api_instance.example_service_query(id, body)
+        api_response = api_instance.query(id, body)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ExampleServiceApi->example_service_query: %s\n" % e)
+        print("Exception when calling ExampleServiceApi->query: %s\n" % e)
 ```
 
 * OAuth Authentication (OAuth2):
@@ -96,10 +96,10 @@ with openapi_client.ApiClient(configuration) as api_client:
 body = openapi_client.V1ExampleServiceQueryRequest() # V1ExampleServiceQueryRequest | 
 
     try:
-        api_response = api_instance.example_service_query(id, body)
+        api_response = api_instance.query(id, body)
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ExampleServiceApi->example_service_query: %s\n" % e)
+        print("Exception when calling ExampleServiceApi->query: %s\n" % e)
 ```
 
 ### Parameters
@@ -126,7 +126,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
-**0** | An unexpected error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

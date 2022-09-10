@@ -29,8 +29,8 @@ class TestExampleServiceApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_example_service_query(self):
-        """Test case for example_service_query
+    def test_query(self):
+        """Test case for query
 
         """
         pass

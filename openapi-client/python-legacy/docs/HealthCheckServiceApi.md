@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**health_check_service_health_check**](HealthCheckServiceApi.md#health_check_service_health_check) | **GET** /healthCheck | 
+[**health_check**](HealthCheckServiceApi.md#health_check) | **GET** /healthCheck | 
 
 
-# **health_check_service_health_check**
-> V1HealthCheckServiceHealthCheckResponse health_check_service_health_check()
+# **health_check**
+> V1HealthCheckServiceHealthCheckResponse health_check()
 
 
 
@@ -50,10 +50,10 @@ with openapi_client.ApiClient(configuration) as api_client:
     api_instance = openapi_client.HealthCheckServiceApi(api_client)
     
     try:
-        api_response = api_instance.health_check_service_health_check()
+        api_response = api_instance.health_check()
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling HealthCheckServiceApi->health_check_service_health_check: %s\n" % e)
+        print("Exception when calling HealthCheckServiceApi->health_check: %s\n" % e)
 ```
 
 * OAuth Authentication (OAuth2):
@@ -92,10 +92,10 @@ with openapi_client.ApiClient(configuration) as api_client:
     api_instance = openapi_client.HealthCheckServiceApi(api_client)
     
     try:
-        api_response = api_instance.health_check_service_health_check()
+        api_response = api_instance.health_check()
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling HealthCheckServiceApi->health_check_service_health_check: %s\n" % e)
+        print("Exception when calling HealthCheckServiceApi->health_check: %s\n" % e)
 ```
 
 ### Parameters
@@ -118,7 +118,6 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
-**0** | An unexpected error response |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
