@@ -19,7 +19,7 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
 
 # Dependencies
 
-- [Buf: A new way of working with Protocol Buffers.](https://buf.build/docs/installation)
+- [Buf: A new way of working with Protocol Buffers.](https://buf.build/docs/installation) `$ go install github.com/bufbuild/buf/cmd/buf@v0.18.1`
 - [danielvladco/go-proto-gql: Protoc plugins for generating graphql schema and quickly create servers](https://github.com/danielvladco/go-proto-gql)
 - [gRPC – Protocol Buffer Compiler Installation](https://grpc.io/docs/protoc-installation/) `$ brew install protobuf`
 - [grpc\-gateway/protoc\-gen\-swagger at master · grpc\-ecosystem/grpc\-gateway](https://github.com/grpc-ecosystem/grpc-gateway/tree/master/protoc-gen-swagger) `$ go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger`
