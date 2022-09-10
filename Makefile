@@ -1,7 +1,20 @@
 SHELL:=/usr/bin/env bash
 OPENAPI_GENERATOR_CLI_VERSION?=latest
-OPENAPI_CLIENT?=c dart go python-legacy ruby typescript-angular
-OPENAPI_SERVER?=python-aiohttp python-blueplanet python-flask ruby-on-rails
+OPENAPI_CLIENT?=\
+ c\
+ dart\
+ dart-dio\
+ go\
+ python-legacy\
+ typescript-angular\
+
+OPENAPI_SERVER?=\
+ go-echo-server\
+ go-gin-server\
+ go-server\
+ python-aiohttp\
+ python-blueplanet\
+ python-flask\
 
 GO:=go
 GOM:=GO111MODULE=on $(GO)
