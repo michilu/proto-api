@@ -42,6 +42,8 @@ all:\
  grpc/python/.keep\
  $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT)))\
  $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))\
+ 
+	find . -name "*.go" -exec gofmt -w {} \;
 
 .PHONY: clean
 clean:
