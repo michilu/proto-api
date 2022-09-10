@@ -4,7 +4,7 @@ package proto.v1;
 
 import "google/api/annotations.proto";
 import "proto/v1/message.proto";
-import "protoc-gen-swagger/options/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 import "validate/validate.proto";
 
 option go_package = "pb/proto/v1";
@@ -15,7 +15,7 @@ service ExampleService {
       post: "/v1/example/{id}"
       body: "*"
     };
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
         security_requirement: {
           key: "ApiKeyAuth"
@@ -34,8 +34,9 @@ service ExampleService {
 
 message ExampleServiceQueryRequest {
   string id = 1 [
-    (grpc.gateway.protoc_gen_swagger.options.openapiv2_field) = {
-      pattern: "[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      pattern: "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
+      format: "uuid",
       min_length: 1
     },
     (validate.rules).string.uuid = true

@@ -8,8 +8,8 @@ deps:
   - remote: buf.build
     owner: googleapis
     repository: googleapis
-    commit: 80720a488c9a414bb8d4a9f811084989
+    commit: 8d7204855ec14631a499bd7393ce1970
   - remote: buf.build
-    owner: unionai
-    repository: protoc-gen-swagger
-    commit: fd9d94dc48154d5c94ccc43695df150f
+    owner: grpc-ecosystem
+    repository: grpc-gateway
+    commit: bc28b723cd774c32b6fbc77621518765
