@@ -13,7 +13,7 @@ To see how to make this your own, look here:
 [README](https://openapi-generator.tech)
 
 - API version: 1.0
-- Build date: 2022-09-10T03:31:30.805410Z[Etc/UTC]
+- Build date: 2023-09-05T03:39:13.816564Z[Etc/UTC]
 For more information, please visit [https://github.com/michilu/proto-api](https://github.com/michilu/proto-api)
 
 ### Running the server

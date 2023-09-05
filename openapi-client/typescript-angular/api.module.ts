@@ -2,8 +2,6 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
-import { ExampleServiceService } from './api/exampleService.service';
-import { HealthCheckServiceService } from './api/healthCheckService.service';
 
 @NgModule({
   imports:      [],

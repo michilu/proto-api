@@ -22,14 +22,7 @@ func AssertV1HealthCheckServiceHealthCheckResponseRequired(obj V1HealthCheckServ
 	return nil
 }
 
-// AssertRecurseV1HealthCheckServiceHealthCheckResponseRequired recursively checks if required fields are not zero-ed in a nested slice.
-// Accepts only nested slice of V1HealthCheckServiceHealthCheckResponse (e.g. [][]V1HealthCheckServiceHealthCheckResponse), otherwise ErrTypeAssertionError is thrown.
-func AssertRecurseV1HealthCheckServiceHealthCheckResponseRequired(objSlice interface{}) error {
-	return AssertRecurseInterfaceRequired(objSlice, func(obj interface{}) error {
-		aV1HealthCheckServiceHealthCheckResponse, ok := obj.(V1HealthCheckServiceHealthCheckResponse)
-		if !ok {
-			return ErrTypeAssertionError
-		}
-		return AssertV1HealthCheckServiceHealthCheckResponseRequired(aV1HealthCheckServiceHealthCheckResponse)
-	})
+// AssertV1HealthCheckServiceHealthCheckResponseConstraints checks if the values respects the defined constraints
+func AssertV1HealthCheckServiceHealthCheckResponseConstraints(obj V1HealthCheckServiceHealthCheckResponse) error {
+	return nil
 }

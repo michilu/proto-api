@@ -17,8 +17,8 @@ async def test_query(client):
     headers = { 
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'ApiKeyAuth': 'special-key',
         'Authorization': 'Bearer special-key',
+        'ApiKeyAuth': 'special-key',
     }
     response = await client.request(
         method='POST',

@@ -39,14 +39,7 @@ func AssertRpcCodeRequired(obj RpcCode) error {
 	return nil
 }
 
-// AssertRecurseRpcCodeRequired recursively checks if required fields are not zero-ed in a nested slice.
-// Accepts only nested slice of RpcCode (e.g. [][]RpcCode), otherwise ErrTypeAssertionError is thrown.
-func AssertRecurseRpcCodeRequired(objSlice interface{}) error {
-	return AssertRecurseInterfaceRequired(objSlice, func(obj interface{}) error {
-		aRpcCode, ok := obj.(RpcCode)
-		if !ok {
-			return ErrTypeAssertionError
-		}
-		return AssertRpcCodeRequired(aRpcCode)
-	})
+// AssertRpcCodeConstraints checks if the values respects the defined constraints
+func AssertRpcCodeConstraints(obj RpcCode) error {
+	return nil
 }

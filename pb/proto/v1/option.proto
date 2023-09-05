@@ -63,8 +63,6 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
         scope: "write"
       }
     }
-    security_requirement: {
-      key: "ApiKeyAuth"
-    }
+    security_requirement: {key: "ApiKeyAuth"}
   }
 };

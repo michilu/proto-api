@@ -1,10 +1,6 @@
-# coding: utf-8
-
-from __future__ import absolute_import
 import unittest
 
 from flask import json
-from six import BytesIO
 
 from openapi_server.models.v1_health_check_service_health_check_response import V1HealthCheckServiceHealthCheckResponse  # noqa: E501
 from openapi_server.test import BaseTestCase
@@ -20,8 +16,8 @@ class TestHealthCheckServiceController(BaseTestCase):
         """
         headers = { 
             'Accept': 'application/json',
-            'ApiKeyAuth': 'special-key',
             'Authorization': 'Bearer special-key',
+            'ApiKeyAuth': 'special-key',
         }
         response = self.client.open(
             '/healthCheck',

@@ -22,14 +22,7 @@ func AssertV1ExampleServiceQueryResponseRequired(obj V1ExampleServiceQueryRespon
 	return nil
 }
 
-// AssertRecurseV1ExampleServiceQueryResponseRequired recursively checks if required fields are not zero-ed in a nested slice.
-// Accepts only nested slice of V1ExampleServiceQueryResponse (e.g. [][]V1ExampleServiceQueryResponse), otherwise ErrTypeAssertionError is thrown.
-func AssertRecurseV1ExampleServiceQueryResponseRequired(objSlice interface{}) error {
-	return AssertRecurseInterfaceRequired(objSlice, func(obj interface{}) error {
-		aV1ExampleServiceQueryResponse, ok := obj.(V1ExampleServiceQueryResponse)
-		if !ok {
-			return ErrTypeAssertionError
-		}
-		return AssertV1ExampleServiceQueryResponseRequired(aV1ExampleServiceQueryResponse)
-	})
+// AssertV1ExampleServiceQueryResponseConstraints checks if the values respects the defined constraints
+func AssertV1ExampleServiceQueryResponseConstraints(obj V1ExampleServiceQueryResponse) error {
+	return nil
 }

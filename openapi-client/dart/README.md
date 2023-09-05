@@ -40,12 +40,12 @@ Please follow the [installation procedure](#installation--usage) and then run th
 ```dart
 import 'package:openapi/api.dart';
 
+// TODO Configure OAuth2 access token for authorization: OAuth2
+//defaultApiClient.getAuthentication<OAuth>('OAuth2').accessToken = 'YOUR_ACCESS_TOKEN';
 // TODO Configure API key authorization: ApiKeyAuth
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
-// TODO Configure OAuth2 access token for authorization: OAuth2
-//defaultApiClient.getAuthentication<OAuth>('OAuth2').accessToken = 'YOUR_ACCESS_TOKEN';
 
 final api_instance = ExampleServiceApi();
 final id = id_example; // String | 
@@ -82,13 +82,14 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## ApiKeyAuth
+Authentication schemes defined for the API:
+### ApiKeyAuth
 
 - **Type**: API key
 - **API key parameter name**: X-API-Key
 - **Location**: HTTP header
 
-## OAuth2
+### OAuth2
 
 - **Type**: OAuth
 - **Flow**: accessCode

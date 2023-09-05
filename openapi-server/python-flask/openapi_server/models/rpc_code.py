@@ -1,11 +1,8 @@
-# coding: utf-8
-
-from __future__ import absolute_import
 from datetime import date, datetime  # noqa: F401
 
 from typing import List, Dict  # noqa: F401
 
-from openapi_server.models.base_model_ import Model
+from openapi_server.models.base_model import Model
 from openapi_server import util
 
 
@@ -18,23 +15,23 @@ class RpcCode(Model):
     """
     allowed enum values
     """
-    OK = "OK"
-    CANCELLED = "CANCELLED"
-    UNKNOWN = "UNKNOWN"
-    INVALID_ARGUMENT = "INVALID_ARGUMENT"
-    DEADLINE_EXCEEDED = "DEADLINE_EXCEEDED"
-    NOT_FOUND = "NOT_FOUND"
-    ALREADY_EXISTS = "ALREADY_EXISTS"
-    PERMISSION_DENIED = "PERMISSION_DENIED"
-    UNAUTHENTICATED = "UNAUTHENTICATED"
-    RESOURCE_EXHAUSTED = "RESOURCE_EXHAUSTED"
-    FAILED_PRECONDITION = "FAILED_PRECONDITION"
-    ABORTED = "ABORTED"
-    OUT_OF_RANGE = "OUT_OF_RANGE"
-    UNIMPLEMENTED = "UNIMPLEMENTED"
-    INTERNAL = "INTERNAL"
-    UNAVAILABLE = "UNAVAILABLE"
-    DATA_LOSS = "DATA_LOSS"
+    NUMBER_&#39;OK&#39; = 'OK'
+    NUMBER_&#39;CANCELLED&#39; = 'CANCELLED'
+    NUMBER_&#39;UNKNOWN&#39; = 'UNKNOWN'
+    NUMBER_&#39;INVALID_ARGUMENT&#39; = 'INVALID_ARGUMENT'
+    NUMBER_&#39;DEADLINE_EXCEEDED&#39; = 'DEADLINE_EXCEEDED'
+    NUMBER_&#39;NOT_FOUND&#39; = 'NOT_FOUND'
+    NUMBER_&#39;ALREADY_EXISTS&#39; = 'ALREADY_EXISTS'
+    NUMBER_&#39;PERMISSION_DENIED&#39; = 'PERMISSION_DENIED'
+    NUMBER_&#39;UNAUTHENTICATED&#39; = 'UNAUTHENTICATED'
+    NUMBER_&#39;RESOURCE_EXHAUSTED&#39; = 'RESOURCE_EXHAUSTED'
+    NUMBER_&#39;FAILED_PRECONDITION&#39; = 'FAILED_PRECONDITION'
+    NUMBER_&#39;ABORTED&#39; = 'ABORTED'
+    NUMBER_&#39;OUT_OF_RANGE&#39; = 'OUT_OF_RANGE'
+    NUMBER_&#39;UNIMPLEMENTED&#39; = 'UNIMPLEMENTED'
+    NUMBER_&#39;INTERNAL&#39; = 'INTERNAL'
+    NUMBER_&#39;UNAVAILABLE&#39; = 'UNAVAILABLE'
+    NUMBER_&#39;DATA_LOSS&#39; = 'DATA_LOSS'
     def __init__(self):  # noqa: E501
         """RpcCode - a model defined in OpenAPI
 

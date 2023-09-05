@@ -1,11 +1,8 @@
-# coding: utf-8
-
-from __future__ import absolute_import
 from datetime import date, datetime  # noqa: F401
 
 from typing import List, Dict  # noqa: F401
 
-from openapi_server.models.base_model_ import Model
+from openapi_server.models.base_model import Model
 from openapi_server.models.rpc_code import RpcCode
 from openapi_server import util
 
@@ -35,8 +32,8 @@ class Protov1Response(Model):
             'message': 'message'
         }
 
-        self.code = code
-        self.message = message
+        self._code = code
+        self._message = message
 
     @classmethod
     def from_dict(cls, dikt) -> 'Protov1Response':
@@ -50,7 +47,7 @@ class Protov1Response(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def code(self):
+    def code(self) -> RpcCode:
         """Gets the code of this Protov1Response.
 
 
@@ -60,7 +57,7 @@ class Protov1Response(Model):
         return self._code
 
     @code.setter
-    def code(self, code):
+    def code(self, code: RpcCode):
         """Sets the code of this Protov1Response.
 
 
@@ -71,7 +68,7 @@ class Protov1Response(Model):
         self._code = code
 
     @property
-    def message(self):
+    def message(self) -> str:
         """Gets the message of this Protov1Response.
 
 
@@ -81,7 +78,7 @@ class Protov1Response(Model):
         return self._message
 
     @message.setter
-    def message(self, message):
+    def message(self, message: str):
         """Sets the message of this Protov1Response.
 
 

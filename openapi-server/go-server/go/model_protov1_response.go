@@ -21,14 +21,7 @@ func AssertProtov1ResponseRequired(obj Protov1Response) error {
 	return nil
 }
 
-// AssertRecurseProtov1ResponseRequired recursively checks if required fields are not zero-ed in a nested slice.
-// Accepts only nested slice of Protov1Response (e.g. [][]Protov1Response), otherwise ErrTypeAssertionError is thrown.
-func AssertRecurseProtov1ResponseRequired(objSlice interface{}) error {
-	return AssertRecurseInterfaceRequired(objSlice, func(obj interface{}) error {
-		aProtov1Response, ok := obj.(Protov1Response)
-		if !ok {
-			return ErrTypeAssertionError
-		}
-		return AssertProtov1ResponseRequired(aProtov1Response)
-	})
+// AssertProtov1ResponseConstraints checks if the values respects the defined constraints
+func AssertProtov1ResponseConstraints(obj Protov1Response) error {
+	return nil
 }

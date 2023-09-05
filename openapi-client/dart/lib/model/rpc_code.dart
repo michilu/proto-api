@@ -64,7 +64,7 @@ class RpcCode {
 
   static RpcCode? fromJson(dynamic value) => RpcCodeTypeTransformer().decode(value);
 
-  static List<RpcCode>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<RpcCode> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <RpcCode>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -97,7 +97,7 @@ class RpcCodeTypeTransformer {
   /// and users are still using an old app with the old code.
   RpcCode? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
-      switch (data.toString()) {
+      switch (data) {
         case r'OK': return RpcCode.OK;
         case r'CANCELLED': return RpcCode.CANCELLED;
         case r'UNKNOWN': return RpcCode.UNKNOWN;

@@ -100,7 +100,7 @@ protov1_response_t *protov1_response_parseFromJSON(cJSON *protov1_responseJSON){
     // protov1_response->message
     cJSON *message = cJSON_GetObjectItemCaseSensitive(protov1_responseJSON, "message");
     if (message) { 
-    if(!cJSON_IsString(message))
+    if(!cJSON_IsString(message) && !cJSON_IsNull(message))
     {
     goto end; //String
     }
@@ -109,7 +109,7 @@ protov1_response_t *protov1_response_parseFromJSON(cJSON *protov1_responseJSON){
 
     protov1_response_local_var = protov1_response_create (
         code ? code_local_nonprim : NULL,
-        message ? strdup(message->valuestring) : NULL
+        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL
         );
 
     return protov1_response_local_var;

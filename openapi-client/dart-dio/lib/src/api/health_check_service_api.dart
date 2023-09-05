@@ -29,7 +29,7 @@ class HealthCheckServiceApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V1HealthCheckServiceHealthCheckResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V1HealthCheckServiceHealthCheckResponse>> healthCheck({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -47,13 +47,13 @@ class HealthCheckServiceApi {
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[
           {
+            'type': 'oauth2',
+            'name': 'OAuth2',
+          },{
             'type': 'apiKey',
             'name': 'ApiKeyAuth',
             'keyName': 'X-API-Key',
             'where': 'header',
-          },{
-            'type': 'oauth2',
-            'name': 'OAuth2',
           },
         ],
         ...?extra,
@@ -69,22 +69,23 @@ class HealthCheckServiceApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    V1HealthCheckServiceHealthCheckResponse _responseData;
+    V1HealthCheckServiceHealthCheckResponse? _responseData;
 
     try {
-      const _responseType = FullType(V1HealthCheckServiceHealthCheckResponse);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(V1HealthCheckServiceHealthCheckResponse),
       ) as V1HealthCheckServiceHealthCheckResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioExceptionType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<V1HealthCheckServiceHealthCheckResponse>(

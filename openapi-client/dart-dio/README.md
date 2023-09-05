@@ -9,8 +9,8 @@ For more information, please visit [https://github.com/michilu/proto-api](https:
 
 ## Requirements
 
-* Dart 2.12.0 or later OR Flutter 1.26.0 or later
-* Dio 4.0.0+
+* Dart 2.15.0+ or Flutter 2.8.0+
+* Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
 
@@ -54,7 +54,7 @@ final V1ExampleServiceQueryRequest body = ; // V1ExampleServiceQueryRequest |
 try {
     final response = await api.query(id, body);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print("Exception when calling ExampleServiceApi->query: $e\n");
 }
 
@@ -82,13 +82,14 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## ApiKeyAuth
+Authentication schemes defined for the API:
+### ApiKeyAuth
 
 - **Type**: API key
 - **API key parameter name**: X-API-Key
 - **Location**: HTTP header
 
-## OAuth2
+### OAuth2
 
 - **Type**: OAuth
 - **Flow**: accessCode

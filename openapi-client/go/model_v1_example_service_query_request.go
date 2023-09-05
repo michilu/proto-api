@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the V1ExampleServiceQueryRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &V1ExampleServiceQueryRequest{}
+
 // V1ExampleServiceQueryRequest struct for V1ExampleServiceQueryRequest
 type V1ExampleServiceQueryRequest struct {
 	Id *string `json:"id,omitempty"`
@@ -39,7 +42,7 @@ func NewV1ExampleServiceQueryRequestWithDefaults() *V1ExampleServiceQueryRequest
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *V1ExampleServiceQueryRequest) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *V1ExampleServiceQueryRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *V1ExampleServiceQueryRequest) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -57,7 +60,7 @@ func (o *V1ExampleServiceQueryRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *V1ExampleServiceQueryRequest) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *V1ExampleServiceQueryRequest) SetId(v string) {
 }
 
 func (o V1ExampleServiceQueryRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o V1ExampleServiceQueryRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	return toSerialize, nil
 }
 
 type NullableV1ExampleServiceQueryRequest struct {

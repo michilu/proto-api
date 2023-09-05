@@ -1,10 +1,10 @@
-# \ExampleServiceApi
+# \ExampleServiceAPI
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Query**](ExampleServiceApi.md#Query) | **Post** /v1/example/{id} | 
+[**Query**](ExampleServiceAPI.md#Query) | **Post** /v1/example/{id} | 
 
 
 
@@ -23,7 +23,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -32,13 +32,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExampleServiceApi.Query(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.ExampleServiceAPI.Query(context.Background(), id).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExampleServiceApi.Query``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ExampleServiceAPI.Query``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `Query`: V1ExampleServiceQueryResponse
-    fmt.Fprintf(os.Stdout, "Response from `ExampleServiceApi.Query`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ExampleServiceAPI.Query`: %v\n", resp)
 }
 ```
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth), [OAuth2](../README.md#OAuth2)
+[OAuth2](../README.md#OAuth2), [ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

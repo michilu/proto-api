@@ -28,13 +28,13 @@ type Route struct {
 	HandlerFunc gin.HandlerFunc
 }
 
-// Routes is the list of the generated Route.
-type Routes []Route
-
 // NewRouter returns a new router.
-func NewRouter() *gin.Engine {
+func NewRouter(handleFunctions ApiHandleFunctions) *gin.Engine {
 	router := gin.Default()
-	for _, route := range routes {
+	for _, route := range getRoutes(handleFunctions) {
+		if route.HandlerFunc == nil {
+			route.HandlerFunc = DefaultHandleFunc
+		}
 		switch route.Method {
 		case http.MethodGet:
 			router.GET(route.Pattern, route.HandlerFunc)
@@ -52,30 +52,33 @@ func NewRouter() *gin.Engine {
 	return router
 }
 
-// Index is the index handler.
-func Index(c *gin.Context) {
-	c.String(http.StatusOK, "Hello World!")
+// Default handler for not yet implemented routes
+func DefaultHandleFunc(c *gin.Context) {
+	c.String(http.StatusNotImplemented, "501 not implemented")
 }
 
-var routes = Routes{
-	{
-		"Index",
-		http.MethodGet,
-		"/",
-		Index,
-	},
+type ApiHandleFunctions struct {
 
-	{
-		"Query",
-		http.MethodPost,
-		"/v1/example/:id",
-		Query,
-	},
+	// Routes for the ExampleServiceAPI part of the API
+	ExampleServiceAPI ExampleServiceAPI
+	// Routes for the HealthCheckServiceAPI part of the API
+	HealthCheckServiceAPI HealthCheckServiceAPI
+}
 
-	{
-		"HealthCheck",
-		http.MethodGet,
-		"/healthCheck",
-		HealthCheck,
-	},
+func getRoutes(handleFunctions ApiHandleFunctions) []Route {
+	return []Route{
+
+		{
+			"Query",
+			http.MethodPost,
+			"/v1/example/:id",
+			handleFunctions.ExampleServiceAPI.Query,
+		},
+		{
+			"HealthCheck",
+			http.MethodGet,
+			"/healthCheck",
+			handleFunctions.HealthCheckServiceAPI.HealthCheck,
+		},
+	}
 }

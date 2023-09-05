@@ -1,11 +1,8 @@
-# coding: utf-8
-
-from __future__ import absolute_import
 from datetime import date, datetime  # noqa: F401
 
 from typing import List, Dict  # noqa: F401
 
-from openapi_server.models.base_model_ import Model
+from openapi_server.models.base_model import Model
 from openapi_server.models.protov1_response import Protov1Response
 from openapi_server import util
 
@@ -31,7 +28,7 @@ class V1ExampleServiceQueryResponse(Model):
             'value': 'value'
         }
 
-        self.value = value
+        self._value = value
 
     @classmethod
     def from_dict(cls, dikt) -> 'V1ExampleServiceQueryResponse':
@@ -45,7 +42,7 @@ class V1ExampleServiceQueryResponse(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def value(self):
+    def value(self) -> Protov1Response:
         """Gets the value of this V1ExampleServiceQueryResponse.
 
 
@@ -55,7 +52,7 @@ class V1ExampleServiceQueryResponse(Model):
         return self._value
 
     @value.setter
-    def value(self, value):
+    def value(self, value: Protov1Response):
         """Sets the value of this V1ExampleServiceQueryResponse.
 
 

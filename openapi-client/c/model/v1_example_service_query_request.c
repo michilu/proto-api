@@ -55,7 +55,7 @@ v1_example_service_query_request_t *v1_example_service_query_request_parseFromJS
     // v1_example_service_query_request->id
     cJSON *id = cJSON_GetObjectItemCaseSensitive(v1_example_service_query_requestJSON, "id");
     if (id) { 
-    if(!cJSON_IsString(id))
+    if(!cJSON_IsString(id) && !cJSON_IsNull(id))
     {
     goto end; //String
     }
@@ -63,7 +63,7 @@ v1_example_service_query_request_t *v1_example_service_query_request_parseFromJS
 
 
     v1_example_service_query_request_local_var = v1_example_service_query_request_create (
-        id ? strdup(id->valuestring) : NULL
+        id && !cJSON_IsNull(id) ? strdup(id->valuestring) : NULL
         );
 
     return v1_example_service_query_request_local_var;

@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Protov1Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Protov1Response{}
+
 // Protov1Response struct for Protov1Response
 type Protov1Response struct {
 	Code    *RpcCode `json:"code,omitempty"`
@@ -44,7 +47,7 @@ func NewProtov1ResponseWithDefaults() *Protov1Response {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *Protov1Response) GetCode() RpcCode {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret RpcCode
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *Protov1Response) GetCode() RpcCode {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Protov1Response) GetCodeOk() (*RpcCode, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -62,7 +65,7 @@ func (o *Protov1Response) GetCodeOk() (*RpcCode, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *Protov1Response) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *Protov1Response) SetCode(v RpcCode) {
 
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *Protov1Response) GetMessage() string {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *Protov1Response) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Protov1Response) GetMessageOk() (*string, bool) {
-	if o == nil || o.Message == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
 	return o.Message, true
@@ -94,7 +97,7 @@ func (o *Protov1Response) GetMessageOk() (*string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *Protov1Response) HasMessage() bool {
-	if o != nil && o.Message != nil {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
@@ -107,14 +110,22 @@ func (o *Protov1Response) SetMessage(v string) {
 }
 
 func (o Protov1Response) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
-	if o.Message != nil {
-		toSerialize["message"] = o.Message
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Protov1Response) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
+	return toSerialize, nil
 }
 
 type NullableProtov1Response struct {

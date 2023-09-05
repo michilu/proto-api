@@ -17,9 +17,7 @@ service ExampleService {
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       security: {
-        security_requirement: {
-          key: "ApiKeyAuth"
-        }
+        security_requirement: {key: "ApiKeyAuth"}
         security_requirement: {
           key: "OAuth2"
           value: {

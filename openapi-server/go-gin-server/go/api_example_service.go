@@ -11,12 +11,11 @@
 package openapi
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
-// Query -
-func Query(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{})
+type ExampleServiceAPI struct {
+	// Post /v1/example/:id
+	//
+	Query gin.HandlerFunc
 }

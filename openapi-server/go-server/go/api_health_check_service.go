@@ -18,25 +18,25 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// HealthCheckServiceApiController binds http requests to an api service and writes the service results to the http response
-type HealthCheckServiceApiController struct {
-	service      HealthCheckServiceApiServicer
+// HealthCheckServiceAPIController binds http requests to an api service and writes the service results to the http response
+type HealthCheckServiceAPIController struct {
+	service      HealthCheckServiceAPIServicer
 	errorHandler ErrorHandler
 }
 
-// HealthCheckServiceApiOption for how the controller is set up.
-type HealthCheckServiceApiOption func(*HealthCheckServiceApiController)
+// HealthCheckServiceAPIOption for how the controller is set up.
+type HealthCheckServiceAPIOption func(*HealthCheckServiceAPIController)
 
-// WithHealthCheckServiceApiErrorHandler inject ErrorHandler into controller
-func WithHealthCheckServiceApiErrorHandler(h ErrorHandler) HealthCheckServiceApiOption {
-	return func(c *HealthCheckServiceApiController) {
+// WithHealthCheckServiceAPIErrorHandler inject ErrorHandler into controller
+func WithHealthCheckServiceAPIErrorHandler(h ErrorHandler) HealthCheckServiceAPIOption {
+	return func(c *HealthCheckServiceAPIController) {
 		c.errorHandler = h
 	}
 }
 
-// NewHealthCheckServiceApiController creates a default api controller
-func NewHealthCheckServiceApiController(s HealthCheckServiceApiServicer, opts ...HealthCheckServiceApiOption) Router {
-	controller := &HealthCheckServiceApiController{
+// NewHealthCheckServiceAPIController creates a default api controller
+func NewHealthCheckServiceAPIController(s HealthCheckServiceAPIServicer, opts ...HealthCheckServiceAPIOption) Router {
+	controller := &HealthCheckServiceAPIController{
 		service:      s,
 		errorHandler: DefaultErrorHandler,
 	}
@@ -48,11 +48,10 @@ func NewHealthCheckServiceApiController(s HealthCheckServiceApiServicer, opts ..
 	return controller
 }
 
-// Routes returns all the api routes for the HealthCheckServiceApiController
-func (c *HealthCheckServiceApiController) Routes() Routes {
+// Routes returns all the api routes for the HealthCheckServiceAPIController
+func (c *HealthCheckServiceAPIController) Routes() Routes {
 	return Routes{
-		{
-			"HealthCheck",
+		"HealthCheck": Route{
 			strings.ToUpper("Get"),
 			"/healthCheck",
 			c.HealthCheck,
@@ -61,7 +60,7 @@ func (c *HealthCheckServiceApiController) Routes() Routes {
 }
 
 // HealthCheck -
-func (c *HealthCheckServiceApiController) HealthCheck(w http.ResponseWriter, r *http.Request) {
+func (c *HealthCheckServiceAPIController) HealthCheck(w http.ResponseWriter, r *http.Request) {
 	result, err := c.service.HealthCheck(r.Context())
 	// If an error occurred, encode the error with the status code
 	if err != nil {
@@ -70,5 +69,4 @@ func (c *HealthCheckServiceApiController) HealthCheck(w http.ResponseWriter, r *
 	}
 	// If no error, encode the body and the result code
 	EncodeJSONResponse(result.Body, &result.Code, w)
-
 }

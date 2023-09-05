@@ -14,17 +14,17 @@ package openapi
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
-// HealthCheckServiceApiService HealthCheckServiceApi service
-type HealthCheckServiceApiService service
+// HealthCheckServiceAPIService HealthCheckServiceAPI service
+type HealthCheckServiceAPIService service
 
 type ApiHealthCheckRequest struct {
 	ctx        context.Context
-	ApiService *HealthCheckServiceApiService
+	ApiService *HealthCheckServiceAPIService
 }
 
 func (r ApiHealthCheckRequest) Execute() (*V1HealthCheckServiceHealthCheckResponse, *http.Response, error) {
@@ -37,7 +37,7 @@ HealthCheck Method for HealthCheck
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiHealthCheckRequest
 */
-func (a *HealthCheckServiceApiService) HealthCheck(ctx context.Context) ApiHealthCheckRequest {
+func (a *HealthCheckServiceAPIService) HealthCheck(ctx context.Context) ApiHealthCheckRequest {
 	return ApiHealthCheckRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -47,7 +47,7 @@ func (a *HealthCheckServiceApiService) HealthCheck(ctx context.Context) ApiHealt
 // Execute executes the request
 //
 //	@return V1HealthCheckServiceHealthCheckResponse
-func (a *HealthCheckServiceApiService) HealthCheckExecute(r ApiHealthCheckRequest) (*V1HealthCheckServiceHealthCheckResponse, *http.Response, error) {
+func (a *HealthCheckServiceAPIService) HealthCheckExecute(r ApiHealthCheckRequest) (*V1HealthCheckServiceHealthCheckResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -55,7 +55,7 @@ func (a *HealthCheckServiceApiService) HealthCheckExecute(r ApiHealthCheckReques
 		localVarReturnValue *V1HealthCheckServiceHealthCheckResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HealthCheckServiceApiService.HealthCheck")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HealthCheckServiceAPIService.HealthCheck")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *HealthCheckServiceApiService) HealthCheckExecute(r ApiHealthCheckReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

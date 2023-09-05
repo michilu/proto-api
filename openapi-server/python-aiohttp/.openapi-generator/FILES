@@ -6,9 +6,9 @@ openapi_server/__main__.py
 openapi_server/controllers/__init__.py
 openapi_server/controllers/example_service_controller.py
 openapi_server/controllers/health_check_service_controller.py
-openapi_server/controllers/security_controller_.py
+openapi_server/controllers/security_controller.py
 openapi_server/models/__init__.py
-openapi_server/models/base_model_.py
+openapi_server/models/base_model.py
 openapi_server/models/protov1_response.py
 openapi_server/models/rpc_code.py
 openapi_server/models/v1_example_service_query_request.py

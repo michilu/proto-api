@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:openapi/src/api_util.dart';
 import 'package:openapi/src/model/v1_example_service_query_request.dart';
 import 'package:openapi/src/model/v1_example_service_query_response.dart';
 
@@ -32,7 +33,7 @@ class ExampleServiceApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V1ExampleServiceQueryResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V1ExampleServiceQueryResponse>> query({ 
     required String id,
     required V1ExampleServiceQueryRequest body,
@@ -43,7 +44,7 @@ class ExampleServiceApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/example/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/v1/example/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -52,13 +53,13 @@ class ExampleServiceApi {
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[
           {
+            'type': 'oauth2',
+            'name': 'OAuth2',
+          },{
             'type': 'apiKey',
             'name': 'ApiKeyAuth',
             'keyName': 'X-API-Key',
             'where': 'header',
-          },{
-            'type': 'oauth2',
-            'name': 'OAuth2',
           },
         ],
         ...?extra,
@@ -74,14 +75,15 @@ class ExampleServiceApi {
       _bodyData = _serializers.serialize(body, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.other,
+        type: DioExceptionType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     final _response = await _dio.request<Object>(
@@ -93,22 +95,23 @@ class ExampleServiceApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    V1ExampleServiceQueryResponse _responseData;
+    V1ExampleServiceQueryResponse? _responseData;
 
     try {
-      const _responseType = FullType(V1ExampleServiceQueryResponse);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(V1ExampleServiceQueryResponse),
       ) as V1ExampleServiceQueryResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioExceptionType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<V1ExampleServiceQueryResponse>(

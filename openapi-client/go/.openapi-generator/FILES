@@ -7,8 +7,8 @@ api_example_service.go
 api_health_check_service.go
 client.go
 configuration.go
-docs/ExampleServiceApi.md
-docs/HealthCheckServiceApi.md
+docs/ExampleServiceAPI.md
+docs/HealthCheckServiceAPI.md
 docs/Protov1Response.md
 docs/RpcCode.md
 docs/V1ExampleServiceQueryRequest.md
@@ -23,4 +23,6 @@ model_v1_example_service_query_request.go
 model_v1_example_service_query_response.go
 model_v1_health_check_service_health_check_response.go
 response.go
+test/api_example_service_test.go
+test/api_health_check_service_test.go
 utils.go

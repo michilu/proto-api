@@ -79,8 +79,8 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleServiceApi* | [**Query**](docs/ExampleServiceApi.md#query) | **Post** /v1/example/{id} | 
-*HealthCheckServiceApi* | [**HealthCheck**](docs/HealthCheckServiceApi.md#healthcheck) | **Get** /healthCheck | 
+*ExampleServiceAPI* | [**Query**](docs/ExampleServiceAPI.md#query) | **Post** /v1/example/{id} | 
+*HealthCheckServiceAPI* | [**HealthCheck**](docs/HealthCheckServiceAPI.md#healthcheck) | **Get** /healthCheck | 
 
 
 ## Documentation For Models
@@ -95,7 +95,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-
+Authentication schemes defined for the API:
 ### ApiKeyAuth
 
 - **Type**: API key
@@ -104,6 +104,18 @@ Class | Method | HTTP request | Description
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: X-API-Key and passed in as the auth context for each request.
 
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"X-API-Key": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 ### OAuth2
 

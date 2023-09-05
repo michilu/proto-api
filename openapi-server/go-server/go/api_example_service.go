@@ -18,25 +18,25 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// ExampleServiceApiController binds http requests to an api service and writes the service results to the http response
-type ExampleServiceApiController struct {
-	service      ExampleServiceApiServicer
+// ExampleServiceAPIController binds http requests to an api service and writes the service results to the http response
+type ExampleServiceAPIController struct {
+	service      ExampleServiceAPIServicer
 	errorHandler ErrorHandler
 }
 
-// ExampleServiceApiOption for how the controller is set up.
-type ExampleServiceApiOption func(*ExampleServiceApiController)
+// ExampleServiceAPIOption for how the controller is set up.
+type ExampleServiceAPIOption func(*ExampleServiceAPIController)
 
-// WithExampleServiceApiErrorHandler inject ErrorHandler into controller
-func WithExampleServiceApiErrorHandler(h ErrorHandler) ExampleServiceApiOption {
-	return func(c *ExampleServiceApiController) {
+// WithExampleServiceAPIErrorHandler inject ErrorHandler into controller
+func WithExampleServiceAPIErrorHandler(h ErrorHandler) ExampleServiceAPIOption {
+	return func(c *ExampleServiceAPIController) {
 		c.errorHandler = h
 	}
 }
 
-// NewExampleServiceApiController creates a default api controller
-func NewExampleServiceApiController(s ExampleServiceApiServicer, opts ...ExampleServiceApiOption) Router {
-	controller := &ExampleServiceApiController{
+// NewExampleServiceAPIController creates a default api controller
+func NewExampleServiceAPIController(s ExampleServiceAPIServicer, opts ...ExampleServiceAPIOption) Router {
+	controller := &ExampleServiceAPIController{
 		service:      s,
 		errorHandler: DefaultErrorHandler,
 	}
@@ -48,11 +48,10 @@ func NewExampleServiceApiController(s ExampleServiceApiServicer, opts ...Example
 	return controller
 }
 
-// Routes returns all the api routes for the ExampleServiceApiController
-func (c *ExampleServiceApiController) Routes() Routes {
+// Routes returns all the api routes for the ExampleServiceAPIController
+func (c *ExampleServiceAPIController) Routes() Routes {
 	return Routes{
-		{
-			"Query",
+		"Query": Route{
 			strings.ToUpper("Post"),
 			"/v1/example/{id}",
 			c.Query,
@@ -61,10 +60,9 @@ func (c *ExampleServiceApiController) Routes() Routes {
 }
 
 // Query -
-func (c *ExampleServiceApiController) Query(w http.ResponseWriter, r *http.Request) {
+func (c *ExampleServiceAPIController) Query(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	idParam := params["id"]
-
 	bodyParam := V1ExampleServiceQueryRequest{}
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
@@ -76,6 +74,10 @@ func (c *ExampleServiceApiController) Query(w http.ResponseWriter, r *http.Reque
 		c.errorHandler(w, r, err, nil)
 		return
 	}
+	if err := AssertV1ExampleServiceQueryRequestConstraints(bodyParam); err != nil {
+		c.errorHandler(w, r, err, nil)
+		return
+	}
 	result, err := c.service.Query(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
@@ -84,5 +86,4 @@ func (c *ExampleServiceApiController) Query(w http.ResponseWriter, r *http.Reque
 	}
 	// If no error, encode the body and the result code
 	EncodeJSONResponse(result.Body, &result.Code, w)
-
 }

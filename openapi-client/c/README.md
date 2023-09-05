@@ -81,13 +81,13 @@ Category | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
+Authentication schemes defined for the API:
 ### ApiKeyAuth
 
 - **Type**: API key
 
 - **API key parameter name**: X-API-Key
 - **Location**: HTTP header
-
 
 ### OAuth2
 

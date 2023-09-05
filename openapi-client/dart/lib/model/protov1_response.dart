@@ -35,8 +35,8 @@ class Protov1Response {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Protov1Response &&
-     other.code == code &&
-     other.message == message;
+    other.code == code &&
+    other.message == message;
 
   @override
   int get hashCode =>
@@ -88,7 +88,7 @@ class Protov1Response {
     return null;
   }
 
-  static List<Protov1Response>? listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Protov1Response> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <Protov1Response>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -119,12 +119,10 @@ class Protov1Response {
   static Map<String, List<Protov1Response>> mapListFromJson(dynamic json, {bool growable = false,}) {
     final map = <String, List<Protov1Response>>{};
     if (json is Map && json.isNotEmpty) {
-      json = json.cast<String, dynamic>(); // ignore: parameter_assignments
+      // ignore: parameter_assignments
+      json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        final value = Protov1Response.listFromJson(entry.value, growable: growable,);
-        if (value != null) {
-          map[entry.key] = value;
-        }
+        map[entry.key] = Protov1Response.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

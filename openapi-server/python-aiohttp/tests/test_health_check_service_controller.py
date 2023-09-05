@@ -14,8 +14,8 @@ async def test_health_check(client):
     """
     headers = { 
         'Accept': 'application/json',
-        'ApiKeyAuth': 'special-key',
         'Authorization': 'Bearer special-key',
+        'ApiKeyAuth': 'special-key',
     }
     response = await client.request(
         method='GET',

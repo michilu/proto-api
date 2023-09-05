@@ -15,32 +15,32 @@ import (
 	"net/http"
 )
 
-// ExampleServiceApiRouter defines the required methods for binding the api requests to a responses for the ExampleServiceApi
-// The ExampleServiceApiRouter implementation should parse necessary information from the http request,
-// pass the data to a ExampleServiceApiServicer to perform the required actions, then write the service results to the http response.
-type ExampleServiceApiRouter interface {
+// ExampleServiceAPIRouter defines the required methods for binding the api requests to a responses for the ExampleServiceAPI
+// The ExampleServiceAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a ExampleServiceAPIServicer to perform the required actions, then write the service results to the http response.
+type ExampleServiceAPIRouter interface {
 	Query(http.ResponseWriter, *http.Request)
 }
 
-// HealthCheckServiceApiRouter defines the required methods for binding the api requests to a responses for the HealthCheckServiceApi
-// The HealthCheckServiceApiRouter implementation should parse necessary information from the http request,
-// pass the data to a HealthCheckServiceApiServicer to perform the required actions, then write the service results to the http response.
-type HealthCheckServiceApiRouter interface {
+// HealthCheckServiceAPIRouter defines the required methods for binding the api requests to a responses for the HealthCheckServiceAPI
+// The HealthCheckServiceAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a HealthCheckServiceAPIServicer to perform the required actions, then write the service results to the http response.
+type HealthCheckServiceAPIRouter interface {
 	HealthCheck(http.ResponseWriter, *http.Request)
 }
 
-// ExampleServiceApiServicer defines the api actions for the ExampleServiceApi service
+// ExampleServiceAPIServicer defines the api actions for the ExampleServiceAPI service
 // This interface intended to stay up to date with the openapi yaml used to generate it,
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
-type ExampleServiceApiServicer interface {
+type ExampleServiceAPIServicer interface {
 	Query(context.Context, string, V1ExampleServiceQueryRequest) (ImplResponse, error)
 }
 
-// HealthCheckServiceApiServicer defines the api actions for the HealthCheckServiceApi service
+// HealthCheckServiceAPIServicer defines the api actions for the HealthCheckServiceAPI service
 // This interface intended to stay up to date with the openapi yaml used to generate it,
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
-type HealthCheckServiceApiServicer interface {
+type HealthCheckServiceAPIServicer interface {
 	HealthCheck(context.Context) (ImplResponse, error)
 }

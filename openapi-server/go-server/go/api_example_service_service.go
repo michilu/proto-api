@@ -16,24 +16,24 @@ import (
 	"net/http"
 )
 
-// ExampleServiceApiService is a service that implements the logic for the ExampleServiceApiServicer
-// This service should implement the business logic for every endpoint for the ExampleServiceApi API.
+// ExampleServiceAPIService is a service that implements the logic for the ExampleServiceAPIServicer
+// This service should implement the business logic for every endpoint for the ExampleServiceAPI API.
 // Include any external packages or services that will be required by this service.
-type ExampleServiceApiService struct {
+type ExampleServiceAPIService struct {
 }
 
-// NewExampleServiceApiService creates a default api service
-func NewExampleServiceApiService() ExampleServiceApiServicer {
-	return &ExampleServiceApiService{}
+// NewExampleServiceAPIService creates a default api service
+func NewExampleServiceAPIService() ExampleServiceAPIServicer {
+	return &ExampleServiceAPIService{}
 }
 
 // Query -
-func (s *ExampleServiceApiService) Query(ctx context.Context, id string, body V1ExampleServiceQueryRequest) (ImplResponse, error) {
+func (s *ExampleServiceAPIService) Query(ctx context.Context, id string, body V1ExampleServiceQueryRequest) (ImplResponse, error) {
 	// TODO - update Query with the required logic for this service method.
 	// Add api_example_service_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	//TODO: Uncomment the next line to return response Response(200, V1ExampleServiceQueryResponse{}) or use other options such as http.Ok ...
-	//return Response(200, V1ExampleServiceQueryResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, V1ExampleServiceQueryResponse{}) or use other options such as http.Ok ...
+	// return Response(200, V1ExampleServiceQueryResponse{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("Query method not implemented")
 }

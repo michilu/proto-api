@@ -16,24 +16,24 @@ import (
 	"net/http"
 )
 
-// HealthCheckServiceApiService is a service that implements the logic for the HealthCheckServiceApiServicer
-// This service should implement the business logic for every endpoint for the HealthCheckServiceApi API.
+// HealthCheckServiceAPIService is a service that implements the logic for the HealthCheckServiceAPIServicer
+// This service should implement the business logic for every endpoint for the HealthCheckServiceAPI API.
 // Include any external packages or services that will be required by this service.
-type HealthCheckServiceApiService struct {
+type HealthCheckServiceAPIService struct {
 }
 
-// NewHealthCheckServiceApiService creates a default api service
-func NewHealthCheckServiceApiService() HealthCheckServiceApiServicer {
-	return &HealthCheckServiceApiService{}
+// NewHealthCheckServiceAPIService creates a default api service
+func NewHealthCheckServiceAPIService() HealthCheckServiceAPIServicer {
+	return &HealthCheckServiceAPIService{}
 }
 
 // HealthCheck -
-func (s *HealthCheckServiceApiService) HealthCheck(ctx context.Context) (ImplResponse, error) {
+func (s *HealthCheckServiceAPIService) HealthCheck(ctx context.Context) (ImplResponse, error) {
 	// TODO - update HealthCheck with the required logic for this service method.
 	// Add api_health_check_service_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
-	//TODO: Uncomment the next line to return response Response(200, V1HealthCheckServiceHealthCheckResponse{}) or use other options such as http.Ok ...
-	//return Response(200, V1HealthCheckServiceHealthCheckResponse{}), nil
+	// TODO: Uncomment the next line to return response Response(200, V1HealthCheckServiceHealthCheckResponse{}) or use other options such as http.Ok ...
+	// return Response(200, V1HealthCheckServiceHealthCheckResponse{}), nil
 
 	return Response(http.StatusNotImplemented, nil), errors.New("HealthCheck method not implemented")
 }

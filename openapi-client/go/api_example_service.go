@@ -14,18 +14,18 @@ package openapi
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
-// ExampleServiceApiService ExampleServiceApi service
-type ExampleServiceApiService service
+// ExampleServiceAPIService ExampleServiceAPI service
+type ExampleServiceAPIService service
 
 type ApiQueryRequest struct {
 	ctx        context.Context
-	ApiService *ExampleServiceApiService
+	ApiService *ExampleServiceAPIService
 	id         string
 	body       *V1ExampleServiceQueryRequest
 }
@@ -46,7 +46,7 @@ Query Method for Query
 	@param id
 	@return ApiQueryRequest
 */
-func (a *ExampleServiceApiService) Query(ctx context.Context, id string) ApiQueryRequest {
+func (a *ExampleServiceAPIService) Query(ctx context.Context, id string) ApiQueryRequest {
 	return ApiQueryRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -57,7 +57,7 @@ func (a *ExampleServiceApiService) Query(ctx context.Context, id string) ApiQuer
 // Execute executes the request
 //
 //	@return V1ExampleServiceQueryResponse
-func (a *ExampleServiceApiService) QueryExecute(r ApiQueryRequest) (*V1ExampleServiceQueryResponse, *http.Response, error) {
+func (a *ExampleServiceAPIService) QueryExecute(r ApiQueryRequest) (*V1ExampleServiceQueryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -65,13 +65,13 @@ func (a *ExampleServiceApiService) QueryExecute(r ApiQueryRequest) (*V1ExampleSe
 		localVarReturnValue *V1ExampleServiceQueryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExampleServiceApiService.Query")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExampleServiceAPIService.Query")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/example/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -123,9 +123,9 @@ func (a *ExampleServiceApiService) QueryExecute(r ApiQueryRequest) (*V1ExampleSe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
