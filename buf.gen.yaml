@@ -4,12 +4,11 @@ managed:
 plugins:
 - name: go
   out: .
-- remote: buf.build/go-sdk/plugins/protoc-gen-validate
+- plugin: buf.build/bufbuild/validate-go
   out: pb
   opt:
     - paths=source_relative
-    - lang=go
-- remote: buf.build/protocolbuffers/plugins/python
+- plugin: buf.build/protocolbuffers/python
   out: grpc/python
-- remote: buf.build/grpc/plugins/python
+- plugin: buf.build/grpc/python
   out: grpc/python

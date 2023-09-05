@@ -5,7 +5,7 @@ OPENAPI_CLIENT?=\
  dart\
  dart-dio\
  go\
- python-legacy\
+ python\
  typescript-angular\
 
 OPENAPI_SERVER?=\

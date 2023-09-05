@@ -10,7 +10,7 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
 # Dependencies
 
 ## proto
-- [Buf: A new way of working with Protocol Buffers.](https://buf.build/docs/installation)
+- [Buf: A new way of working with Protocol Buffers.](https://buf.build/docs/installation) `$ brew install bufbuild/buf/buf`
 - [protocolbuffers/protobuf-go: Go support for Google's protocol buffers](https://github.com/protocolbuffers/protobuf-go) `$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest`
 - [envoyproxy/protoc-gen-validate: protoc plugin to generate polyglot message validators](https://github.com/envoyproxy/protoc-gen-validate) `$ go install github.com/envoyproxy/protoc-gen-validate@latest`
 
