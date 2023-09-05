@@ -2,8 +2,8 @@ SHELL:=/usr/bin/env bash
 OPENAPI_GENERATOR_CLI_VERSION?=latest
 OPENAPI_CLIENT?=\
  c\
- dart\
  dart-dio\
+ dart\
  go\
  python\
  typescript-angular\
