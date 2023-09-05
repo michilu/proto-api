@@ -1,0 +1,12 @@
+.openapi-generator-ignore
+apis/ExampleServiceApi.ts
+apis/HealthCheckServiceApi.ts
+apis/index.ts
+index.ts
+models/Protov1Response.ts
+models/RpcCode.ts
+models/V1ExampleServiceQueryRequest.ts
+models/V1ExampleServiceQueryResponse.ts
+models/V1HealthCheckServiceHealthCheckResponse.ts
+models/index.ts
+runtime.ts

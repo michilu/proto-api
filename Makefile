@@ -7,6 +7,7 @@ OPENAPI_CLIENT?=\
  go\
  python\
  typescript-angular\
+ typescript-fetch\
 
 OPENAPI_SERVER?=\
  go-echo-server\
