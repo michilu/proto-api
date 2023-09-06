@@ -22,13 +22,13 @@ func Test_openapi_ExampleServiceAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ExampleServiceAPIService Query", func(t *testing.T) {
+	t.Run("Test ExampleServiceAPIService ExampleServiceQuery", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.ExampleServiceAPI.Query(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ExampleServiceAPI.ExampleServiceQuery(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

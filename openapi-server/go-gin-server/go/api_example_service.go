@@ -17,5 +17,5 @@ import (
 type ExampleServiceAPI struct {
 	// Post /v1/example/:id
 	//
-	Query gin.HandlerFunc
+	ExampleServiceQuery gin.HandlerFunc
 }

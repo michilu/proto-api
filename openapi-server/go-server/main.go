@@ -23,10 +23,10 @@ func main() {
 	ExampleServiceAPIService := openapi.NewExampleServiceAPIService()
 	ExampleServiceAPIController := openapi.NewExampleServiceAPIController(ExampleServiceAPIService)
 
-	HealthCheckServiceAPIService := openapi.NewHealthCheckServiceAPIService()
-	HealthCheckServiceAPIController := openapi.NewHealthCheckServiceAPIController(HealthCheckServiceAPIService)
+	HealthAPIService := openapi.NewHealthAPIService()
+	HealthAPIController := openapi.NewHealthAPIController(HealthAPIService)
 
-	router := openapi.NewRouter(ExampleServiceAPIController, HealthCheckServiceAPIController)
+	router := openapi.NewRouter(ExampleServiceAPIController, HealthAPIController)
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

@@ -1,0 +1,42 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server StreamResultOfV1HealthCheckResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a StreamResultOfV1HealthCheckResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  RpcStatus = openapi_server.resourceTypes.RpcStatus
+  V1HealthCheckResponse = openapi_server.resourceTypes.V1HealthCheckResponse
+}
+resourceTypes {
+
+  StreamResultOfV1HealthCheckResponse {
+    title = StreamResultOfV1HealthCheckResponse
+    description = StreamResultOfV1HealthCheckResponse
+    derivedFrom = Root
+    properties {
+        result {
+          type = V1HealthCheckResponse
+          description = ""
+          optional = false
+        }
+        error {
+          type = RpcStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  StreamResultOfV1HealthCheckResponse {
+    title = StreamResultOfV1HealthCheckResponse
+    description = StreamResultOfV1HealthCheckResponse
+    implements = openapi_server.resourceTypes.StreamResultOfV1HealthCheckResponse
+
+  }
+}

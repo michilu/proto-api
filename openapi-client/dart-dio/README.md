@@ -48,14 +48,14 @@ import 'package:openapi/openapi.dart';
 
 
 final api = Openapi().getExampleServiceApi();
-final String id = id_example; // String | 
-final V1ExampleServiceQueryRequest body = ; // V1ExampleServiceQueryRequest | 
+final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final JsonObject body = Object; // JsonObject | 
 
 try {
-    final response = await api.query(id, body);
+    final response = await api.exampleServiceQuery(id, body);
     print(response);
 } catch on DioException (e) {
-    print("Exception when calling ExampleServiceApi->query: $e\n");
+    print("Exception when calling ExampleServiceApi->exampleServiceQuery: $e\n");
 }
 
 ```
@@ -66,17 +66,21 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-[*ExampleServiceApi*](doc/ExampleServiceApi.md) | [**query**](doc/ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
-[*HealthCheckServiceApi*](doc/HealthCheckServiceApi.md) | [**healthCheck**](doc/HealthCheckServiceApi.md#healthcheck) | **GET** /healthCheck | 
+[*ExampleServiceApi*](doc/ExampleServiceApi.md) | [**exampleServiceQuery**](doc/ExampleServiceApi.md#exampleservicequery) | **POST** /v1/example/{id} | 
+[*HealthApi*](doc/HealthApi.md) | [**healthCheck**](doc/HealthApi.md#healthcheck) | **GET** /healthCheck | 
+[*HealthApi*](doc/HealthApi.md) | [**healthWatch**](doc/HealthApi.md#healthwatch) | **GET** /healthWatch | 
 
 
 ## Documentation For Models
 
+ - [HealthCheckResponseServingStatus](doc/HealthCheckResponseServingStatus.md)
+ - [ProtobufAny](doc/ProtobufAny.md)
  - [Protov1Response](doc/Protov1Response.md)
  - [RpcCode](doc/RpcCode.md)
- - [V1ExampleServiceQueryRequest](doc/V1ExampleServiceQueryRequest.md)
+ - [RpcStatus](doc/RpcStatus.md)
+ - [StreamResultOfV1HealthCheckResponse](doc/StreamResultOfV1HealthCheckResponse.md)
  - [V1ExampleServiceQueryResponse](doc/V1ExampleServiceQueryResponse.md)
- - [V1HealthCheckServiceHealthCheckResponse](doc/V1HealthCheckServiceHealthCheckResponse.md)
+ - [V1HealthCheckResponse](doc/V1HealthCheckResponse.md)
 
 
 ## Documentation For Authorization

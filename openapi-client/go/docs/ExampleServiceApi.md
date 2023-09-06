@@ -4,13 +4,13 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Query**](ExampleServiceAPI.md#Query) | **Post** /v1/example/{id} | 
+[**ExampleServiceQuery**](ExampleServiceAPI.md#ExampleServiceQuery) | **Post** /v1/example/{id} | 
 
 
 
-## Query
+## ExampleServiceQuery
 
-> V1ExampleServiceQueryResponse Query(ctx, id).Body(body).Execute()
+> V1ExampleServiceQueryResponse ExampleServiceQuery(ctx, id).Body(body).Execute()
 
 
 
@@ -27,18 +27,18 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | 
-    body := *openapiclient.NewV1ExampleServiceQueryRequest() // V1ExampleServiceQueryRequest | 
+    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+    body := map[string]interface{}{ ... } // map[string]interface{} | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExampleServiceAPI.Query(context.Background(), id).Body(body).Execute()
+    resp, r, err := apiClient.ExampleServiceAPI.ExampleServiceQuery(context.Background(), id).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExampleServiceAPI.Query``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ExampleServiceAPI.ExampleServiceQuery``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Query`: V1ExampleServiceQueryResponse
-    fmt.Fprintf(os.Stdout, "Response from `ExampleServiceAPI.Query`: %v\n", resp)
+    // response from `ExampleServiceQuery`: V1ExampleServiceQueryResponse
+    fmt.Fprintf(os.Stdout, "Response from `ExampleServiceAPI.ExampleServiceQuery`: %v\n", resp)
 }
 ```
 
@@ -52,13 +52,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiQueryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiExampleServiceQueryRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | [**V1ExampleServiceQueryRequest**](V1ExampleServiceQueryRequest.md) |  | 
+ **body** | **map[string]interface{}** |  | 
 
 ### Return type
 

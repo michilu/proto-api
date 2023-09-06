@@ -19,14 +19,15 @@ import (
 // The ExampleServiceAPIRouter implementation should parse necessary information from the http request,
 // pass the data to a ExampleServiceAPIServicer to perform the required actions, then write the service results to the http response.
 type ExampleServiceAPIRouter interface {
-	Query(http.ResponseWriter, *http.Request)
+	ExampleServiceQuery(http.ResponseWriter, *http.Request)
 }
 
-// HealthCheckServiceAPIRouter defines the required methods for binding the api requests to a responses for the HealthCheckServiceAPI
-// The HealthCheckServiceAPIRouter implementation should parse necessary information from the http request,
-// pass the data to a HealthCheckServiceAPIServicer to perform the required actions, then write the service results to the http response.
-type HealthCheckServiceAPIRouter interface {
+// HealthAPIRouter defines the required methods for binding the api requests to a responses for the HealthAPI
+// The HealthAPIRouter implementation should parse necessary information from the http request,
+// pass the data to a HealthAPIServicer to perform the required actions, then write the service results to the http response.
+type HealthAPIRouter interface {
 	HealthCheck(http.ResponseWriter, *http.Request)
+	HealthWatch(http.ResponseWriter, *http.Request)
 }
 
 // ExampleServiceAPIServicer defines the api actions for the ExampleServiceAPI service
@@ -34,13 +35,14 @@ type HealthCheckServiceAPIRouter interface {
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
 type ExampleServiceAPIServicer interface {
-	Query(context.Context, string, V1ExampleServiceQueryRequest) (ImplResponse, error)
+	ExampleServiceQuery(context.Context, string, map[string]interface{}) (ImplResponse, error)
 }
 
-// HealthCheckServiceAPIServicer defines the api actions for the HealthCheckServiceAPI service
+// HealthAPIServicer defines the api actions for the HealthAPI service
 // This interface intended to stay up to date with the openapi yaml used to generate it,
 // while the service implementation can be ignored with the .openapi-generator-ignore file
 // and updated with the logic required for the API.
-type HealthCheckServiceAPIServicer interface {
-	HealthCheck(context.Context) (ImplResponse, error)
+type HealthAPIServicer interface {
+	HealthCheck(context.Context, string) (ImplResponse, error)
+	HealthWatch(context.Context, string) (ImplResponse, error)
 }

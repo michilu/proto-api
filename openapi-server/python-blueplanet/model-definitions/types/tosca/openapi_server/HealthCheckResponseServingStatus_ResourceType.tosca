@@ -1,0 +1,30 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server HealthCheckResponseServingStatus"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a HealthCheckResponseServingStatus"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  HealthCheckResponseServingStatus {
+    title = HealthCheckResponseServingStatus
+    description = HealthCheckResponseServingStatus
+    derivedFrom = Root
+    properties {
+    }
+  }
+}
+
+serviceTemplates {
+
+  HealthCheckResponseServingStatus {
+    title = HealthCheckResponseServingStatus
+    description = HealthCheckResponseServingStatus
+    implements = openapi_server.resourceTypes.HealthCheckResponseServingStatus
+
+  }
+}

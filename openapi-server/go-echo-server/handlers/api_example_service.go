@@ -6,8 +6,8 @@ import (
 	"net/http"
 )
 
-// Query -
-func (c *Container) Query(ctx echo.Context) error {
+// ExampleServiceQuery -
+func (c *Container) ExampleServiceQuery(ctx echo.Context) error {
 	return ctx.JSON(http.StatusOK, models.HelloWorld{
 		Message: "Hello World",
 	})

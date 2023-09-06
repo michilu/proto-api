@@ -81,14 +81,14 @@ with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.ExampleServiceApi(api_client)
     id = 'id_example' # str | 
-    body = openapi_client.V1ExampleServiceQueryRequest() # V1ExampleServiceQueryRequest | 
+    body = None # object | 
 
     try:
-        api_response = api_instance.query(id, body)
-        print("The response of ExampleServiceApi->query:\n")
+        api_response = api_instance.example_service_query(id, body)
+        print("The response of ExampleServiceApi->example_service_query:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling ExampleServiceApi->query: %s\n" % e)
+        print("Exception when calling ExampleServiceApi->example_service_query: %s\n" % e)
 
 ```
 
@@ -98,17 +98,21 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ExampleServiceApi* | [**query**](docs/ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
-*HealthCheckServiceApi* | [**health_check**](docs/HealthCheckServiceApi.md#health_check) | **GET** /healthCheck | 
+*ExampleServiceApi* | [**example_service_query**](docs/ExampleServiceApi.md#example_service_query) | **POST** /v1/example/{id} | 
+*HealthApi* | [**health_check**](docs/HealthApi.md#health_check) | **GET** /healthCheck | 
+*HealthApi* | [**health_watch**](docs/HealthApi.md#health_watch) | **GET** /healthWatch | 
 
 
 ## Documentation For Models
 
+ - [HealthCheckResponseServingStatus](docs/HealthCheckResponseServingStatus.md)
+ - [ProtobufAny](docs/ProtobufAny.md)
  - [Protov1Response](docs/Protov1Response.md)
  - [RpcCode](docs/RpcCode.md)
- - [V1ExampleServiceQueryRequest](docs/V1ExampleServiceQueryRequest.md)
+ - [RpcStatus](docs/RpcStatus.md)
+ - [StreamResultOfV1HealthCheckResponse](docs/StreamResultOfV1HealthCheckResponse.md)
  - [V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)
- - [V1HealthCheckServiceHealthCheckResponse](docs/V1HealthCheckServiceHealthCheckResponse.md)
+ - [V1HealthCheckResponse](docs/V1HealthCheckResponse.md)
 
 
 <a id="documentation-for-authorization"></a>

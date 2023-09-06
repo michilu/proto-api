@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**query**](ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
+[**example_service_query**](ExampleServiceApi.md#example_service_query) | **POST** /v1/example/{id} | 
 
 
-# **query**
-> V1ExampleServiceQueryResponse query(id, body)
+# **example_service_query**
+> V1ExampleServiceQueryResponse example_service_query(id, body)
 
 
 
@@ -20,7 +20,6 @@ Method | HTTP request | Description
 import time
 import os
 import openapi_client
-from openapi_client.models.v1_example_service_query_request import V1ExampleServiceQueryRequest
 from openapi_client.models.v1_example_service_query_response import V1ExampleServiceQueryResponse
 from openapi_client.rest import ApiException
 from pprint import pprint
@@ -49,14 +48,14 @@ with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.ExampleServiceApi(api_client)
     id = 'id_example' # str | 
-    body = openapi_client.V1ExampleServiceQueryRequest() # V1ExampleServiceQueryRequest | 
+    body = None # object | 
 
     try:
-        api_response = api_instance.query(id, body)
-        print("The response of ExampleServiceApi->query:\n")
+        api_response = api_instance.example_service_query(id, body)
+        print("The response of ExampleServiceApi->example_service_query:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ExampleServiceApi->query: %s\n" % e)
+        print("Exception when calling ExampleServiceApi->example_service_query: %s\n" % e)
 ```
 
 
@@ -66,7 +65,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **body** | [**V1ExampleServiceQueryRequest**](V1ExampleServiceQueryRequest.md)|  | 
+ **body** | **object**|  | 
 
 ### Return type
 
@@ -85,6 +84,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |
+**0** | An unexpected error response. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

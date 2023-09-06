@@ -19,7 +19,7 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { V1ExampleServiceQueryRequest } from '../model/v1ExampleServiceQueryRequest';
+import { RpcStatus } from '../model/rpcStatus';
 // @ts-ignore
 import { V1ExampleServiceQueryResponse } from '../model/v1ExampleServiceQueryResponse';
 
@@ -99,15 +99,15 @@ export class ExampleServiceService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public query(id: string, body: V1ExampleServiceQueryRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<V1ExampleServiceQueryResponse>;
-    public query(id: string, body: V1ExampleServiceQueryRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<V1ExampleServiceQueryResponse>>;
-    public query(id: string, body: V1ExampleServiceQueryRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<V1ExampleServiceQueryResponse>>;
-    public query(id: string, body: V1ExampleServiceQueryRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public exampleServiceQuery(id: string, body: object, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<V1ExampleServiceQueryResponse>;
+    public exampleServiceQuery(id: string, body: object, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<V1ExampleServiceQueryResponse>>;
+    public exampleServiceQuery(id: string, body: object, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<V1ExampleServiceQueryResponse>>;
+    public exampleServiceQuery(id: string, body: object, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling query.');
+            throw new Error('Required parameter id was null or undefined when calling exampleServiceQuery.');
         }
         if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling query.');
+            throw new Error('Required parameter body was null or undefined when calling exampleServiceQuery.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -163,7 +163,7 @@ export class ExampleServiceService {
             }
         }
 
-        let localVarPath = `/v1/example/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        let localVarPath = `/v1/example/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
         return this.httpClient.request<V1ExampleServiceQueryResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,

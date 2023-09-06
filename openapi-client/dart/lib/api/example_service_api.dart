@@ -21,8 +21,8 @@ class ExampleServiceApi {
   ///
   /// * [String] id (required):
   ///
-  /// * [V1ExampleServiceQueryRequest] body (required):
-  Future<Response> queryWithHttpInfo(String id, V1ExampleServiceQueryRequest body,) async {
+  /// * [Object] body (required):
+  Future<Response> exampleServiceQueryWithHttpInfo(String id, Object body,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/example/{id}'
       .replaceAll('{id}', id);
@@ -52,9 +52,9 @@ class ExampleServiceApi {
   ///
   /// * [String] id (required):
   ///
-  /// * [V1ExampleServiceQueryRequest] body (required):
-  Future<V1ExampleServiceQueryResponse?> query(String id, V1ExampleServiceQueryRequest body,) async {
-    final response = await queryWithHttpInfo(id, body,);
+  /// * [Object] body (required):
+  Future<V1ExampleServiceQueryResponse?> exampleServiceQuery(String id, Object body,) async {
+    final response = await exampleServiceQueryWithHttpInfo(id, body,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

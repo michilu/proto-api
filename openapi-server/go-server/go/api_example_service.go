@@ -51,34 +51,26 @@ func NewExampleServiceAPIController(s ExampleServiceAPIServicer, opts ...Example
 // Routes returns all the api routes for the ExampleServiceAPIController
 func (c *ExampleServiceAPIController) Routes() Routes {
 	return Routes{
-		"Query": Route{
+		"ExampleServiceQuery": Route{
 			strings.ToUpper("Post"),
 			"/v1/example/{id}",
-			c.Query,
+			c.ExampleServiceQuery,
 		},
 	}
 }
 
-// Query -
-func (c *ExampleServiceAPIController) Query(w http.ResponseWriter, r *http.Request) {
+// ExampleServiceQuery -
+func (c *ExampleServiceAPIController) ExampleServiceQuery(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	idParam := params["id"]
-	bodyParam := V1ExampleServiceQueryRequest{}
+	bodyParam := map[string]interface{}{}
 	d := json.NewDecoder(r.Body)
 	d.DisallowUnknownFields()
 	if err := d.Decode(&bodyParam); err != nil {
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	if err := AssertV1ExampleServiceQueryRequestRequired(bodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	if err := AssertV1ExampleServiceQueryRequestConstraints(bodyParam); err != nil {
-		c.errorHandler(w, r, err, nil)
-		return
-	}
-	result, err := c.service.Query(r.Context(), idParam, bodyParam)
+	result, err := c.service.ExampleServiceQuery(r.Context(), idParam, bodyParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

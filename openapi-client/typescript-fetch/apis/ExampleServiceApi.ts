@@ -15,19 +15,19 @@
 
 import * as runtime from '../runtime';
 import type {
-  V1ExampleServiceQueryRequest,
+  RpcStatus,
   V1ExampleServiceQueryResponse,
 } from '../models/index';
 import {
-    V1ExampleServiceQueryRequestFromJSON,
-    V1ExampleServiceQueryRequestToJSON,
+    RpcStatusFromJSON,
+    RpcStatusToJSON,
     V1ExampleServiceQueryResponseFromJSON,
     V1ExampleServiceQueryResponseToJSON,
 } from '../models/index';
 
-export interface QueryRequest {
+export interface ExampleServiceQueryRequest {
     id: string;
-    body: V1ExampleServiceQueryRequest;
+    body: object;
 }
 
 /**
@@ -37,13 +37,13 @@ export class ExampleServiceApi extends runtime.BaseAPI {
 
     /**
      */
-    async queryRaw(requestParameters: QueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<V1ExampleServiceQueryResponse>> {
+    async exampleServiceQueryRaw(requestParameters: ExampleServiceQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<V1ExampleServiceQueryResponse>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling query.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling exampleServiceQuery.');
         }
 
         if (requestParameters.body === null || requestParameters.body === undefined) {
-            throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling query.');
+            throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling exampleServiceQuery.');
         }
 
         const queryParameters: any = {};
@@ -66,7 +66,7 @@ export class ExampleServiceApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: V1ExampleServiceQueryRequestToJSON(requestParameters.body),
+            body: requestParameters.body as any,
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => V1ExampleServiceQueryResponseFromJSON(jsonValue));
@@ -74,8 +74,8 @@ export class ExampleServiceApi extends runtime.BaseAPI {
 
     /**
      */
-    async query(requestParameters: QueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<V1ExampleServiceQueryResponse> {
-        const response = await this.queryRaw(requestParameters, initOverrides);
+    async exampleServiceQuery(requestParameters: ExampleServiceQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<V1ExampleServiceQueryResponse> {
+        const response = await this.exampleServiceQueryRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

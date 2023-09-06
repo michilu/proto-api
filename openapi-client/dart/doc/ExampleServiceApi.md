@@ -9,11 +9,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**query**](ExampleServiceApi.md#query) | **POST** /v1/example/{id} | 
+[**exampleServiceQuery**](ExampleServiceApi.md#exampleservicequery) | **POST** /v1/example/{id} | 
 
 
-# **query**
-> V1ExampleServiceQueryResponse query(id, body)
+# **exampleServiceQuery**
+> V1ExampleServiceQueryResponse exampleServiceQuery(id, body)
 
 
 
@@ -28,14 +28,14 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = ExampleServiceApi();
-final id = id_example; // String | 
-final body = V1ExampleServiceQueryRequest(); // V1ExampleServiceQueryRequest | 
+final id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
+final body = Object(); // Object | 
 
 try {
-    final result = api_instance.query(id, body);
+    final result = api_instance.exampleServiceQuery(id, body);
     print(result);
 } catch (e) {
-    print('Exception when calling ExampleServiceApi->query: $e\n');
+    print('Exception when calling ExampleServiceApi->exampleServiceQuery: $e\n');
 }
 ```
 
@@ -44,7 +44,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **body** | [**V1ExampleServiceQueryRequest**](V1ExampleServiceQueryRequest.md)|  | 
+ **body** | **Object**|  | 
 
 ### Return type
 

@@ -10,7 +10,7 @@ import 'package:openapi/src/auth/basic_auth.dart';
 import 'package:openapi/src/auth/bearer_auth.dart';
 import 'package:openapi/src/auth/oauth.dart';
 import 'package:openapi/src/api/example_service_api.dart';
-import 'package:openapi/src/api/health_check_service_api.dart';
+import 'package:openapi/src/api/health_api.dart';
 
 class Openapi {
   static const String basePath = r'http://localhost';
@@ -72,9 +72,9 @@ class Openapi {
     return ExampleServiceApi(dio, serializers);
   }
 
-  /// Get HealthCheckServiceApi instance, base route and serializer can be overridden by a given but be careful,
+  /// Get HealthApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
-  HealthCheckServiceApi getHealthCheckServiceApi() {
-    return HealthCheckServiceApi(dio, serializers);
+  HealthApi getHealthApi() {
+    return HealthApi(dio, serializers);
   }
 }

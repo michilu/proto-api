@@ -19,7 +19,7 @@ __version__ = "1.0.0"
 
 # import apis into sdk package
 from openapi_client.api.example_service_api import ExampleServiceApi
-from openapi_client.api.health_check_service_api import HealthCheckServiceApi
+from openapi_client.api.health_api import HealthApi
 
 # import ApiClient
 from openapi_client.api_response import ApiResponse
@@ -33,8 +33,11 @@ from openapi_client.exceptions import ApiAttributeError
 from openapi_client.exceptions import ApiException
 
 # import models into sdk package
+from openapi_client.models.health_check_response_serving_status import HealthCheckResponseServingStatus
+from openapi_client.models.protobuf_any import ProtobufAny
 from openapi_client.models.protov1_response import Protov1Response
 from openapi_client.models.rpc_code import RpcCode
-from openapi_client.models.v1_example_service_query_request import V1ExampleServiceQueryRequest
+from openapi_client.models.rpc_status import RpcStatus
+from openapi_client.models.stream_result_of_v1_health_check_response import StreamResultOfV1HealthCheckResponse
 from openapi_client.models.v1_example_service_query_response import V1ExampleServiceQueryResponse
-from openapi_client.models.v1_health_check_service_health_check_response import V1HealthCheckServiceHealthCheckResponse
+from openapi_client.models.v1_health_check_response import V1HealthCheckResponse

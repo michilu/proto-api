@@ -1,0 +1,35 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server ProtobufAny"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a ProtobufAny"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+}
+resourceTypes {
+
+  ProtobufAny {
+    title = ProtobufAny
+    description = ProtobufAny
+    derivedFrom = Root
+    properties {
+        type {
+          type =  string
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  ProtobufAny {
+    title = ProtobufAny
+    description = ProtobufAny
+    implements = openapi_server.resourceTypes.ProtobufAny
+
+  }
+}

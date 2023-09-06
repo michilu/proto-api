@@ -7,8 +7,9 @@ import 'dart:async';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
+import 'package:built_value/json_object.dart';
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/v1_example_service_query_request.dart';
+import 'package:openapi/src/model/rpc_status.dart';
 import 'package:openapi/src/model/v1_example_service_query_response.dart';
 
 class ExampleServiceApi {
@@ -19,7 +20,7 @@ class ExampleServiceApi {
 
   const ExampleServiceApi(this._dio, this._serializers);
 
-  /// query
+  /// exampleServiceQuery
   /// 
   ///
   /// Parameters:
@@ -34,9 +35,9 @@ class ExampleServiceApi {
   ///
   /// Returns a [Future] containing a [Response] with a [V1ExampleServiceQueryResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<V1ExampleServiceQueryResponse>> query({ 
+  Future<Response<V1ExampleServiceQueryResponse>> exampleServiceQuery({ 
     required String id,
-    required V1ExampleServiceQueryRequest body,
+    required JsonObject body,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -71,8 +72,7 @@ class ExampleServiceApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(V1ExampleServiceQueryRequest);
-      _bodyData = _serializers.serialize(body, specifiedType: _type);
+      _bodyData = body;
 
     } catch(error, stackTrace) {
       throw DioException(

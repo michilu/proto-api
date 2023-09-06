@@ -16,11 +16,14 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	// Query -
-	e.POST("/v1/example/:id", c.Query)
+	// ExampleServiceQuery -
+	e.POST("/v1/example/:id", c.ExampleServiceQuery)
 
 	// HealthCheck -
 	e.GET("/healthCheck", c.HealthCheck)
+
+	// HealthWatch -
+	e.GET("/healthWatch", c.HealthWatch)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8080"))

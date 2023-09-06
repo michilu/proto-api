@@ -27,13 +27,16 @@ func NewExampleServiceAPIService() ExampleServiceAPIServicer {
 	return &ExampleServiceAPIService{}
 }
 
-// Query -
-func (s *ExampleServiceAPIService) Query(ctx context.Context, id string, body V1ExampleServiceQueryRequest) (ImplResponse, error) {
-	// TODO - update Query with the required logic for this service method.
+// ExampleServiceQuery -
+func (s *ExampleServiceAPIService) ExampleServiceQuery(ctx context.Context, id string, body map[string]interface{}) (ImplResponse, error) {
+	// TODO - update ExampleServiceQuery with the required logic for this service method.
 	// Add api_example_service_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 
 	// TODO: Uncomment the next line to return response Response(200, V1ExampleServiceQueryResponse{}) or use other options such as http.Ok ...
 	// return Response(200, V1ExampleServiceQueryResponse{}), nil
 
-	return Response(http.StatusNotImplemented, nil), errors.New("Query method not implemented")
+	// TODO: Uncomment the next line to return response Response(0, RpcStatus{}) or use other options such as http.Ok ...
+	// return Response(0, RpcStatus{}), nil
+
+	return Response(http.StatusNotImplemented, nil), errors.New("ExampleServiceQuery method not implemented")
 }

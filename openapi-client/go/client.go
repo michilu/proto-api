@@ -53,7 +53,7 @@ type APIClient struct {
 
 	ExampleServiceAPI *ExampleServiceAPIService
 
-	HealthCheckServiceAPI *HealthCheckServiceAPIService
+	HealthAPI *HealthAPIService
 }
 
 type service struct {
@@ -73,7 +73,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.ExampleServiceAPI = (*ExampleServiceAPIService)(&c.common)
-	c.HealthCheckServiceAPI = (*HealthCheckServiceAPIService)(&c.common)
+	c.HealthAPI = (*HealthAPIService)(&c.common)
 
 	return c
 }

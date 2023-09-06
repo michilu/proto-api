@@ -1,4 +1,4 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './ExampleServiceApi';
-export * from './HealthCheckServiceApi';
+export * from './HealthApi';

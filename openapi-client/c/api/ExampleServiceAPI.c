@@ -13,7 +13,7 @@
 
 
 v1_example_service_query_response_t*
-ExampleServiceAPI_query(apiClient_t *apiClient, char * id , v1_example_service_query_request_t * body )
+ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , object_t * body )
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -37,6 +37,13 @@ ExampleServiceAPI_query(apiClient_t *apiClient, char * id , v1_example_service_q
     sprintf(localVarToReplace_id, "{%s}", "id");
 
     localVarPath = strReplace(localVarPath, localVarToReplace_id, id);
+    if(id == NULL) {
+        goto end;
+    }
+    char* localVarToReplace_id = malloc(sizeOfPathParams_id);
+    sprintf(localVarToReplace_id, "{%s}", "id");
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_id, id);
 
 
 
@@ -45,7 +52,7 @@ ExampleServiceAPI_query(apiClient_t *apiClient, char * id , v1_example_service_q
     if (body != NULL)
     {
         //string
-        localVarSingleItemJSON_body = v1_example_service_query_request_convertToJSON(body);
+        localVarSingleItemJSON_body = object_convertToJSON(body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_body);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
@@ -63,6 +70,10 @@ ExampleServiceAPI_query(apiClient_t *apiClient, char * id , v1_example_service_q
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
     //    printf("%s\n","A successful response.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 0) {
+    //    printf("%s\n","An unexpected error response.");
     //}
     //nonprimitive not container
     cJSON *ExampleServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);

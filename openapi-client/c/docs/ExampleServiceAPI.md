@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ExampleServiceAPI_query**](ExampleServiceAPI.md#ExampleServiceAPI_query) | **POST** /v1/example/{id} | 
+[**ExampleServiceAPI_exampleServiceQuery**](ExampleServiceAPI.md#ExampleServiceAPI_exampleServiceQuery) | **POST** /v1/example/{id} | 
 
 
-# **ExampleServiceAPI_query**
+# **ExampleServiceAPI_exampleServiceQuery**
 ```c
-v1_example_service_query_response_t* ExampleServiceAPI_query(apiClient_t *apiClient, char * id, v1_example_service_query_request_t * body);
+v1_example_service_query_response_t* ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id, object_t * body);
 ```
 
 ### Parameters
@@ -17,7 +17,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
 **id** | **char \*** |  | 
-**body** | **[v1_example_service_query_request_t](v1_example_service_query_request.md) \*** |  | 
+**body** | **[object_t](object.md) \*** |  | 
 
 ### Return type
 

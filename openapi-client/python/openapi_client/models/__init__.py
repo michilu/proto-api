@@ -15,8 +15,11 @@
 
 
 # import models into model package
+from openapi_client.models.health_check_response_serving_status import HealthCheckResponseServingStatus
+from openapi_client.models.protobuf_any import ProtobufAny
 from openapi_client.models.protov1_response import Protov1Response
 from openapi_client.models.rpc_code import RpcCode
-from openapi_client.models.v1_example_service_query_request import V1ExampleServiceQueryRequest
+from openapi_client.models.rpc_status import RpcStatus
+from openapi_client.models.stream_result_of_v1_health_check_response import StreamResultOfV1HealthCheckResponse
 from openapi_client.models.v1_example_service_query_response import V1ExampleServiceQueryResponse
-from openapi_client.models.v1_health_check_service_health_check_response import V1HealthCheckServiceHealthCheckResponse
+from openapi_client.models.v1_health_check_response import V1HealthCheckResponse

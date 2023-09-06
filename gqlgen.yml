@@ -16,6 +16,15 @@ models:
   ExampleServiceQueryResponse:
     model:
       - pb/proto/v1.ExampleServiceQueryResponse
+  HealthCheckRequestInput:
+    model:
+      - pb/proto/v1.HealthCheckRequest
+  HealthCheckResponse:
+    model:
+      - pb/proto/v1.HealthCheckResponse
+  HealthCheckResponse_ServingStatus:
+    model:
+      - pb/proto/v1.HealthCheckResponse_ServingStatus
   HealthCheckServiceHealthCheckResponse:
     model:
       - pb/proto/v1.HealthCheckServiceHealthCheckResponse

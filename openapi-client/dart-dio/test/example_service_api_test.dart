@@ -7,8 +7,8 @@ void main() {
   final instance = Openapi().getExampleServiceApi();
 
   group(ExampleServiceApi, () {
-    //Future<V1ExampleServiceQueryResponse> query(String id, V1ExampleServiceQueryRequest body) async
-    test('test query', () async {
+    //Future<V1ExampleServiceQueryResponse> exampleServiceQuery(String id, JsonObject body) async
+    test('test exampleServiceQuery', () async {
       // TODO
     });
 

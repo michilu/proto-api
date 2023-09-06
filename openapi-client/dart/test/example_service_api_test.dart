@@ -17,8 +17,8 @@ void main() {
   // final instance = ExampleServiceApi();
 
   group('tests for ExampleServiceApi', () {
-    //Future<V1ExampleServiceQueryResponse> query(String id, V1ExampleServiceQueryRequest body) async
-    test('test query', () async {
+    //Future<V1ExampleServiceQueryResponse> exampleServiceQuery(String id, Object body) async
+    test('test exampleServiceQuery', () async {
       // TODO
     });
 

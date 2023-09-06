@@ -1,0 +1,16 @@
+schema:
+- health.pb.graphqls
+exec:
+  filename: exec.go
+model:
+  filename: models.go
+models:
+  HealthCheckRequestInput:
+    model:
+    - pb/proto/v1.HealthCheckRequest
+  HealthCheckResponse:
+    model:
+    - pb/proto/v1.HealthCheckResponse
+  HealthCheckResponse_ServingStatus:
+    model:
+    - pb/proto/v1.HealthCheckResponse_ServingStatus

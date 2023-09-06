@@ -22,7 +22,8 @@ from typing_extensions import Annotated
 
 from pydantic import StrictStr
 
-from openapi_client.models.v1_example_service_query_request import V1ExampleServiceQueryRequest
+from typing import Any, Dict
+
 from openapi_client.models.v1_example_service_query_response import V1ExampleServiceQueryResponse
 
 from openapi_client.api_client import ApiClient
@@ -46,19 +47,19 @@ class ExampleServiceApi:
         self.api_client = api_client
 
     @validate_arguments
-    def query(self, id : StrictStr, body : V1ExampleServiceQueryRequest, **kwargs) -> V1ExampleServiceQueryResponse:  # noqa: E501
-        """query  # noqa: E501
+    def example_service_query(self, id : StrictStr, body : Dict[str, Any], **kwargs) -> V1ExampleServiceQueryResponse:  # noqa: E501
+        """example_service_query  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.query(id, body, async_req=True)
+        >>> thread = api.example_service_query(id, body, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
         :param body: (required)
-        :type body: V1ExampleServiceQueryRequest
+        :type body: object
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -72,24 +73,24 @@ class ExampleServiceApi:
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
-            message = "Error! Please call the query_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            message = "Error! Please call the example_service_query_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.query_with_http_info(id, body, **kwargs)  # noqa: E501
+        return self.example_service_query_with_http_info(id, body, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def query_with_http_info(self, id : StrictStr, body : V1ExampleServiceQueryRequest, **kwargs) -> ApiResponse:  # noqa: E501
-        """query  # noqa: E501
+    def example_service_query_with_http_info(self, id : StrictStr, body : Dict[str, Any], **kwargs) -> ApiResponse:  # noqa: E501
+        """example_service_query  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.query_with_http_info(id, body, async_req=True)
+        >>> thread = api.example_service_query_with_http_info(id, body, async_req=True)
         >>> result = thread.get()
 
         :param id: (required)
         :type id: str
         :param body: (required)
-        :type body: V1ExampleServiceQueryRequest
+        :type body: object
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -138,7 +139,7 @@ class ExampleServiceApi:
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method query" % _key
+                    " to method example_service_query" % _key
                 )
             _params[_key] = _val
         del _params['kwargs']
