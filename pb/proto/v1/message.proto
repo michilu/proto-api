@@ -9,5 +9,6 @@ option go_package = "pb/proto/v1";
 
 message Response {
   google.rpc.Code code = 1 [(validate.rules).enum.defined_only = true];
-  string message = 2;
+  repeated string details = 2;
+  string message = 3;
 }
