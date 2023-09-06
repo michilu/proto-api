@@ -52,6 +52,7 @@ clean:
 	find . -type f -name "*.swagger.*" -delete
 	rm -rf\
  $(BUF_IMAGE)\
+ gqlgen.yml\
  graph\
  grpc/python\
  openapi-client\
