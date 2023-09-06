@@ -17,7 +17,7 @@ from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapi
 from validate import validate_pb2 as validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16proto/v1/service.proto\x12\x08proto.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x16proto/v1/message.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a\x17validate/validate.proto\"\x9c\x01\n\x1a\x45xampleServiceQueryRequest\x12~\n\x02id\x18\x01 \x01(\tBn\x92\x41\x63\x80\x01\x01\x8a\x01V^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$\xa2\x02\x04uuid\xfa\x42\x05r\x03\xb0\x01\x01R\x02id\"G\n\x1b\x45xampleServiceQueryResponse\x12(\n\x05value\x18\x01 \x01(\x0b\x32\x12.proto.v1.ResponseR\x05value2\xb2\x01\n\x0e\x45xampleService\x12\x9f\x01\n\x05Query\x12$.proto.v1.ExampleServiceQueryRequest\x1a%.proto.v1.ExampleServiceQueryResponse\"I\x92\x41+b)\n\x0e\n\nApiKeyAuth\x12\x00\n\x17\n\x06OAuth2\x12\r\n\x04read\n\x05write\x82\xd3\xe4\x93\x02\x15\"\x10/v1/example/{id}:\x01*Bj\n\x0c\x63om.proto.v1B\x0cServiceProtoP\x01Z\x0bpb/proto/v1\xa2\x02\x03PXX\xaa\x02\x08Proto.V1\xca\x02\x08Proto\\V1\xe2\x02\x14Proto\\V1\\GPBMetadata\xea\x02\tProto::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16proto/v1/service.proto\x12\x08proto.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x16proto/v1/message.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a\x17validate/validate.proto\"C\n\x1a\x45xampleServiceQueryRequest\x12%\n\x02id\x18\x01 \x01(\tB\x15\x92\x41\n\x80\x01\x01\xa2\x02\x04uuid\xfa\x42\x05r\x03\xb0\x01\x01R\x02id\"G\n\x1b\x45xampleServiceQueryResponse\x12(\n\x05value\x18\x01 \x01(\x0b\x32\x12.proto.v1.ResponseR\x05value2\xb2\x01\n\x0e\x45xampleService\x12\x9f\x01\n\x05Query\x12$.proto.v1.ExampleServiceQueryRequest\x1a%.proto.v1.ExampleServiceQueryResponse\"I\x92\x41+b)\n\x0e\n\nApiKeyAuth\x12\x00\n\x17\n\x06OAuth2\x12\r\n\x04read\n\x05write\x82\xd3\xe4\x93\x02\x15\"\x10/v1/example/{id}:\x01*Bj\n\x0c\x63om.proto.v1B\x0cServiceProtoP\x01Z\x0bpb/proto/v1\xa2\x02\x03PXX\xaa\x02\x08Proto.V1\xca\x02\x08Proto\\V1\xe2\x02\x14Proto\\V1\\GPBMetadata\xea\x02\tProto::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -26,13 +26,13 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\014com.proto.v1B\014ServiceProtoP\001Z\013pb/proto/v1\242\002\003PXX\252\002\010Proto.V1\312\002\010Proto\\V1\342\002\024Proto\\V1\\GPBMetadata\352\002\tProto::V1'
   _EXAMPLESERVICEQUERYREQUEST.fields_by_name['id']._options = None
-  _EXAMPLESERVICEQUERYREQUEST.fields_by_name['id']._serialized_options = b'\222Ac\200\001\001\212\001V^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$\242\002\004uuid\372B\005r\003\260\001\001'
+  _EXAMPLESERVICEQUERYREQUEST.fields_by_name['id']._serialized_options = b'\222A\n\200\001\001\242\002\004uuid\372B\005r\003\260\001\001'
   _EXAMPLESERVICE.methods_by_name['Query']._options = None
   _EXAMPLESERVICE.methods_by_name['Query']._serialized_options = b'\222A+b)\n\016\n\nApiKeyAuth\022\000\n\027\n\006OAuth2\022\r\n\004read\n\005write\202\323\344\223\002\025\"\020/v1/example/{id}:\001*'
-  _globals['_EXAMPLESERVICEQUERYREQUEST']._serialized_start=164
-  _globals['_EXAMPLESERVICEQUERYREQUEST']._serialized_end=320
-  _globals['_EXAMPLESERVICEQUERYRESPONSE']._serialized_start=322
-  _globals['_EXAMPLESERVICEQUERYRESPONSE']._serialized_end=393
-  _globals['_EXAMPLESERVICE']._serialized_start=396
-  _globals['_EXAMPLESERVICE']._serialized_end=574
+  _globals['_EXAMPLESERVICEQUERYREQUEST']._serialized_start=163
+  _globals['_EXAMPLESERVICEQUERYREQUEST']._serialized_end=230
+  _globals['_EXAMPLESERVICEQUERYRESPONSE']._serialized_start=232
+  _globals['_EXAMPLESERVICEQUERYRESPONSE']._serialized_end=303
+  _globals['_EXAMPLESERVICE']._serialized_start=306
+  _globals['_EXAMPLESERVICE']._serialized_end=484
 # @@protoc_insertion_point(module_scope)
