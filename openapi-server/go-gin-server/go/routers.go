@@ -77,7 +77,7 @@ func getRoutes(handleFunctions ApiHandleFunctions) []Route {
 		{
 			"HealthServiceCheck",
 			http.MethodGet,
-			"/healthCheck",
+			"/v1/healthCheck",
 			handleFunctions.HealthServiceAPI.HealthServiceCheck,
 		},
 	}

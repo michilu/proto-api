@@ -153,7 +153,7 @@ export class HealthServiceService {
             }
         }
 
-        let localVarPath = `/healthCheck`;
+        let localVarPath = `/v1/healthCheck`;
         return this.httpClient.request<V1CheckResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,

@@ -20,7 +20,7 @@ func main() {
 	e.POST("/v1/example/:id", c.ExampleServiceQuery)
 
 	// HealthServiceCheck -
-	e.GET("/healthCheck", c.HealthServiceCheck)
+	e.GET("/v1/healthCheck", c.HealthServiceCheck)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8080"))

@@ -67,7 +67,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 [*ExampleServiceApi*](doc/ExampleServiceApi.md) | [**exampleServiceQuery**](doc/ExampleServiceApi.md#exampleservicequery) | **POST** /v1/example/{id} | 
-[*HealthServiceApi*](doc/HealthServiceApi.md) | [**healthServiceCheck**](doc/HealthServiceApi.md#healthservicecheck) | **GET** /healthCheck | 
+[*HealthServiceApi*](doc/HealthServiceApi.md) | [**healthServiceCheck**](doc/HealthServiceApi.md#healthservicecheck) | **GET** /v1/healthCheck | 
 
 
 ## Documentation For Models

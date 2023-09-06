@@ -22,7 +22,7 @@ class TestHealthServiceController(BaseTestCase):
             'ApiKeyAuth': 'special-key',
         }
         response = self.client.open(
-            '/healthCheck',
+            '/v1/healthCheck',
             method='GET',
             headers=headers,
             query_string=query_string)

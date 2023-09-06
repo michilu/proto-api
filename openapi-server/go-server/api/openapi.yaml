@@ -19,29 +19,6 @@ tags:
 - name: HealthService
 - name: ExampleService
 paths:
-  /healthCheck:
-    get:
-      operationId: HealthService_Check
-      parameters:
-      - in: query
-        name: service
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/v1CheckResponse'
-          description: A successful response.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
-          description: An unexpected error response.
-      tags:
-      - HealthService
   /v1/example/{id}:
     post:
       operationId: ExampleService_Query
@@ -79,6 +56,29 @@ paths:
       tags:
       - ExampleService
       x-codegen-request-body-name: body
+  /v1/healthCheck:
+    get:
+      operationId: HealthService_Check
+      parameters:
+      - in: query
+        name: service
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1CheckResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - HealthService
 components:
   schemas:
     CheckResponseServingStatus:

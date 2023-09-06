@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15proto/v1/health.proto\x12\x08proto.v1\x1a\x1cgoogle/api/annotations.proto\"(\n\x0c\x43heckRequest\x12\x18\n\x07service\x18\x01 \x01(\tR\x07service\"\xc3\x01\n\rCheckResponse\x12=\n\x06status\x18\x01 \x01(\x0e\x32%.proto.v1.CheckResponse.ServingStatusR\x06status\"s\n\rServingStatus\x12&\n\"SERVING_STATUS_UNKNOWN_UNSPECIFIED\x10\x00\x12\x1a\n\x16SERVING_STATUS_SERVING\x10\x01\x12\x1e\n\x1aSERVING_STATUS_NOT_SERVING\x10\x02\x32_\n\rHealthService\x12N\n\x05\x43heck\x12\x16.proto.v1.CheckRequest\x1a\x17.proto.v1.CheckResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\x12\x0c/healthCheckBi\n\x0c\x63om.proto.v1B\x0bHealthProtoP\x01Z\x0bpb/proto/v1\xa2\x02\x03PXX\xaa\x02\x08Proto.V1\xca\x02\x08Proto\\V1\xe2\x02\x14Proto\\V1\\GPBMetadata\xea\x02\tProto::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15proto/v1/health.proto\x12\x08proto.v1\x1a\x1cgoogle/api/annotations.proto\"(\n\x0c\x43heckRequest\x12\x18\n\x07service\x18\x01 \x01(\tR\x07service\"\xc3\x01\n\rCheckResponse\x12=\n\x06status\x18\x01 \x01(\x0e\x32%.proto.v1.CheckResponse.ServingStatusR\x06status\"s\n\rServingStatus\x12&\n\"SERVING_STATUS_UNKNOWN_UNSPECIFIED\x10\x00\x12\x1a\n\x16SERVING_STATUS_SERVING\x10\x01\x12\x1e\n\x1aSERVING_STATUS_NOT_SERVING\x10\x02\x32\x62\n\rHealthService\x12Q\n\x05\x43heck\x12\x16.proto.v1.CheckRequest\x1a\x17.proto.v1.CheckResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/v1/healthCheckBi\n\x0c\x63om.proto.v1B\x0bHealthProtoP\x01Z\x0bpb/proto/v1\xa2\x02\x03PXX\xaa\x02\x08Proto.V1\xca\x02\x08Proto\\V1\xe2\x02\x14Proto\\V1\\GPBMetadata\xea\x02\tProto::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -23,7 +23,7 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\014com.proto.v1B\013HealthProtoP\001Z\013pb/proto/v1\242\002\003PXX\252\002\010Proto.V1\312\002\010Proto\\V1\342\002\024Proto\\V1\\GPBMetadata\352\002\tProto::V1'
   _HEALTHSERVICE.methods_by_name['Check']._options = None
-  _HEALTHSERVICE.methods_by_name['Check']._serialized_options = b'\202\323\344\223\002\016\022\014/healthCheck'
+  _HEALTHSERVICE.methods_by_name['Check']._serialized_options = b'\202\323\344\223\002\021\022\017/v1/healthCheck'
   _globals['_CHECKREQUEST']._serialized_start=65
   _globals['_CHECKREQUEST']._serialized_end=105
   _globals['_CHECKRESPONSE']._serialized_start=108
@@ -31,5 +31,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_CHECKRESPONSE_SERVINGSTATUS']._serialized_start=188
   _globals['_CHECKRESPONSE_SERVINGSTATUS']._serialized_end=303
   _globals['_HEALTHSERVICE']._serialized_start=305
-  _globals['_HEALTHSERVICE']._serialized_end=400
+  _globals['_HEALTHSERVICE']._serialized_end=403
 # @@protoc_insertion_point(module_scope)

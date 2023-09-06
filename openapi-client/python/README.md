@@ -99,7 +99,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ExampleServiceApi* | [**example_service_query**](docs/ExampleServiceApi.md#example_service_query) | **POST** /v1/example/{id} | 
-*HealthServiceApi* | [**health_service_check**](docs/HealthServiceApi.md#health_service_check) | **GET** /healthCheck | 
+*HealthServiceApi* | [**health_service_check**](docs/HealthServiceApi.md#health_service_check) | **GET** /v1/healthCheck | 
 
 
 ## Documentation For Models

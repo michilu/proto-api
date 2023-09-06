@@ -16,13 +16,13 @@ class HealthServiceApi {
 
   final ApiClient apiClient;
 
-  /// Performs an HTTP 'GET /healthCheck' operation and returns the [Response].
+  /// Performs an HTTP 'GET /v1/healthCheck' operation and returns the [Response].
   /// Parameters:
   ///
   /// * [String] service:
   Future<Response> healthServiceCheckWithHttpInfo({ String? service, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/healthCheck';
+    final path = r'/v1/healthCheck';
 
     // ignore: prefer_final_locals
     Object? postBody;

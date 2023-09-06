@@ -204,25 +204,6 @@ info:
   title: An example of generating swagger via gRPC ecosystem.
   version: "1.0"
 paths:
-  /healthCheck:
-    get:
-      operationId: HealthService_Check
-      parameters:
-        - in: query
-          name: service
-          required: false
-          type: string
-      responses:
-        "200":
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/v1CheckResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/rpcStatus'
-      tags:
-        - HealthService
   /v1/example/{id}:
     post:
       operationId: ExampleService_Query
@@ -253,6 +234,25 @@ paths:
             - write
       tags:
         - ExampleService
+  /v1/healthCheck:
+    get:
+      operationId: HealthService_Check
+      parameters:
+        - in: query
+          name: service
+          required: false
+          type: string
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/v1CheckResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/rpcStatus'
+      tags:
+        - HealthService
 produces:
   - application/json
 schemes:

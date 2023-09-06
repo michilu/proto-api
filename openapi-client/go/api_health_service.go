@@ -66,7 +66,7 @@ func (a *HealthServiceAPIService) HealthServiceCheckExecute(r ApiHealthServiceCh
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/healthCheck"
+	localVarPath := localBasePath + "/v1/healthCheck"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

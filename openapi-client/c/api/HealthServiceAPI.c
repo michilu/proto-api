@@ -23,9 +23,9 @@ HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char * service )
     char      *localVarBodyParameters = NULL;
 
     // create the path
-    long sizeOfPath = strlen("/healthCheck")+1;
+    long sizeOfPath = strlen("/v1/healthCheck")+1;
     char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/healthCheck");
+    snprintf(localVarPath, sizeOfPath, "/v1/healthCheck");
 
 
 

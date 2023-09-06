@@ -42,7 +42,7 @@ class HealthServiceApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/healthCheck';
+    final _path = r'/v1/healthCheck';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{

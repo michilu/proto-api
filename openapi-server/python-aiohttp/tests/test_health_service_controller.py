@@ -21,7 +21,7 @@ async def test_health_service_check(client):
     }
     response = await client.request(
         method='GET',
-        path='/healthCheck',
+        path='/v1/healthCheck',
         headers=headers,
         params=params,
         )

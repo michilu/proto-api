@@ -80,7 +80,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ExampleServiceAPI* | [**ExampleServiceQuery**](docs/ExampleServiceAPI.md#exampleservicequery) | **Post** /v1/example/{id} | 
-*HealthServiceAPI* | [**HealthServiceCheck**](docs/HealthServiceAPI.md#healthservicecheck) | **Get** /healthCheck | 
+*HealthServiceAPI* | [**HealthServiceCheck**](docs/HealthServiceAPI.md#healthservicecheck) | **Get** /v1/healthCheck | 
 
 
 ## Documentation For Models

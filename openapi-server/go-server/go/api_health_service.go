@@ -53,7 +53,7 @@ func (c *HealthServiceAPIController) Routes() Routes {
 	return Routes{
 		"HealthServiceCheck": Route{
 			strings.ToUpper("Get"),
-			"/healthCheck",
+			"/v1/healthCheck",
 			c.HealthServiceCheck,
 		},
 	}

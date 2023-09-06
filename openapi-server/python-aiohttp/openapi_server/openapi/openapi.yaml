@@ -19,30 +19,6 @@ tags:
 - name: HealthService
 - name: ExampleService
 paths:
-  /healthCheck:
-    get:
-      operationId: health_service_check
-      parameters:
-      - in: query
-        name: service
-        schema:
-          type: string
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/v1CheckResponse'
-          description: A successful response.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
-          description: An unexpected error response.
-      tags:
-      - HealthService
-      x-openapi-router-controller: openapi_server.controllers.health_service_controller
   /v1/example/{id}:
     post:
       operationId: example_service_query
@@ -82,6 +58,30 @@ paths:
       - ExampleService
       x-codegen-request-body-name: body
       x-openapi-router-controller: openapi_server.controllers.example_service_controller
+  /v1/healthCheck:
+    get:
+      operationId: health_service_check
+      parameters:
+      - in: query
+        name: service
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/v1CheckResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - HealthService
+      x-openapi-router-controller: openapi_server.controllers.health_service_controller
 components:
   schemas:
     CheckResponseServingStatus:

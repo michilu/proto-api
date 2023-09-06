@@ -20,7 +20,7 @@ class TestHealthServiceController(BaseTestCase):
         """
         query_string = [('service', 'service_example')]
         response = self.client.open(
-            '/healthCheck',
+            '/v1/healthCheck',
             method='GET',
             query_string=query_string)
         self.assert200(response,

@@ -9,7 +9,7 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**healthServiceCheck**](HealthServiceApi.md#healthservicecheck) | **GET** /healthCheck | 
+[**healthServiceCheck**](HealthServiceApi.md#healthservicecheck) | **GET** /v1/healthCheck | 
 
 
 # **healthServiceCheck**

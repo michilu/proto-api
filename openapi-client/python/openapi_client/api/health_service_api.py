@@ -168,7 +168,7 @@ class HealthServiceApi:
         }
 
         return self.api_client.call_api(
-            '/healthCheck', 'GET',
+            '/v1/healthCheck', 'GET',
             _path_params,
             _query_params,
             _header_params,

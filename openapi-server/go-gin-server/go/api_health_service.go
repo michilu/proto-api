@@ -15,7 +15,7 @@ import (
 )
 
 type HealthServiceAPI struct {
-	// Get /healthCheck
+	// Get /v1/healthCheck
 	//
 	HealthServiceCheck gin.HandlerFunc
 }
