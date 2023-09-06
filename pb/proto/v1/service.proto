@@ -33,7 +33,6 @@ service ExampleService {
 message ExampleServiceQueryRequest {
   string id = 1 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      pattern: "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$",
       format: "uuid",
       min_length: 1
     },
