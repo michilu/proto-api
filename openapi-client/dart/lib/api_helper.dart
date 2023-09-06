@@ -55,8 +55,8 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
-  if (value is HealthCheckResponseServingStatus) {
-    return HealthCheckResponseServingStatusTypeTransformer().encode(value).toString();
+  if (value is CheckResponseServingStatus) {
+    return CheckResponseServingStatusTypeTransformer().encode(value).toString();
   }
   if (value is RpcCode) {
     return RpcCodeTypeTransformer().encode(value).toString();

@@ -1,0 +1,36 @@
+"$schema"   = "http://cyaninc.com/json-schemas/tosca-lite-v1/definition-module#"
+title       = "openapi_server V1CheckResponse"
+package     = openapi_server
+version     = "1.0"
+description = "Defines a V1CheckResponse"
+authors     = ["F. Bar (foo@bar.baz)"]
+
+imports {
+  Root = tosca.resourceTypes.Root
+  CheckResponseServingStatus = openapi_server.resourceTypes.CheckResponseServingStatus
+}
+resourceTypes {
+
+  V1CheckResponse {
+    title = V1CheckResponse
+    description = V1CheckResponse
+    derivedFrom = Root
+    properties {
+        status {
+          type = CheckResponseServingStatus
+          description = ""
+          optional = false
+        }
+    }
+  }
+}
+
+serviceTemplates {
+
+  V1CheckResponse {
+    title = V1CheckResponse
+    description = V1CheckResponse
+    implements = openapi_server.resourceTypes.V1CheckResponse
+
+  }
+}

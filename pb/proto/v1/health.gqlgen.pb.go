@@ -17,21 +17,21 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-type HealthGQLServer struct{ Service HealthServer }
+type HealthServiceGQLServer struct{ Service HealthServiceServer }
 
-func (s *HealthGQLServer) HealthCheck(ctx context.Context, in *HealthCheckRequest) (*HealthCheckResponse, error) {
+func (s *HealthServiceGQLServer) HealthServiceCheck(ctx context.Context, in *CheckRequest) (*CheckResponse, error) {
 	return s.Service.Check(ctx, in)
 }
 
-func (c *HealthCheckResponse_ServingStatus) UnmarshalGQL(v interface{}) error {
+func (c *CheckResponse_ServingStatus) UnmarshalGQL(v interface{}) error {
 	code, ok := v.(string)
 	if ok {
-		*c = HealthCheckResponse_ServingStatus(HealthCheckResponse_ServingStatus_value[code])
+		*c = CheckResponse_ServingStatus(CheckResponse_ServingStatus_value[code])
 		return nil
 	}
-	return fmt.Errorf("cannot unmarshal HealthCheckResponse_ServingStatus enum")
+	return fmt.Errorf("cannot unmarshal CheckResponse_ServingStatus enum")
 }
 
-func (c HealthCheckResponse_ServingStatus) MarshalGQL(w io.Writer) {
+func (c CheckResponse_ServingStatus) MarshalGQL(w io.Writer) {
 	fmt.Fprintf(w, "%q", c.String())
 }

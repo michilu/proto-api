@@ -29,16 +29,15 @@ part 'auth/http_basic_auth.dart';
 part 'auth/http_bearer_auth.dart';
 
 part 'api/example_service_api.dart';
-part 'api/health_api.dart';
+part 'api/health_service_api.dart';
 
-part 'model/health_check_response_serving_status.dart';
+part 'model/check_response_serving_status.dart';
 part 'model/protobuf_any.dart';
 part 'model/protov1_response.dart';
 part 'model/rpc_code.dart';
 part 'model/rpc_status.dart';
-part 'model/stream_result_of_v1_health_check_response.dart';
+part 'model/v1_check_response.dart';
 part 'model/v1_example_service_query_response.dart';
-part 'model/v1_health_check_response.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from

@@ -35,22 +35,22 @@ var (
 	_ = sort.Sort
 )
 
-// Validate checks the field values on HealthCheckRequest with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, the first error encountered is returned, or nil if there are no violations.
-func (m *HealthCheckRequest) Validate() error {
+// Validate checks the field values on CheckRequest with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *CheckRequest) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on HealthCheckRequest with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, the result is a list of violation errors wrapped in
-// HealthCheckRequestMultiError, or nil if none found.
-func (m *HealthCheckRequest) ValidateAll() error {
+// ValidateAll checks the field values on CheckRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in CheckRequestMultiError, or
+// nil if none found.
+func (m *CheckRequest) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *HealthCheckRequest) validate(all bool) error {
+func (m *CheckRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -60,19 +60,18 @@ func (m *HealthCheckRequest) validate(all bool) error {
 	// no validation rules for Service
 
 	if len(errors) > 0 {
-		return HealthCheckRequestMultiError(errors)
+		return CheckRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-// HealthCheckRequestMultiError is an error wrapping multiple validation errors
-// returned by HealthCheckRequest.ValidateAll() if the designated constraints
-// aren't met.
-type HealthCheckRequestMultiError []error
+// CheckRequestMultiError is an error wrapping multiple validation errors
+// returned by CheckRequest.ValidateAll() if the designated constraints aren't met.
+type CheckRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m HealthCheckRequestMultiError) Error() string {
+func (m CheckRequestMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -81,11 +80,11 @@ func (m HealthCheckRequestMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m HealthCheckRequestMultiError) AllErrors() []error { return m }
+func (m CheckRequestMultiError) AllErrors() []error { return m }
 
-// HealthCheckRequestValidationError is the validation error returned by
-// HealthCheckRequest.Validate if the designated constraints aren't met.
-type HealthCheckRequestValidationError struct {
+// CheckRequestValidationError is the validation error returned by
+// CheckRequest.Validate if the designated constraints aren't met.
+type CheckRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -93,24 +92,22 @@ type HealthCheckRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e HealthCheckRequestValidationError) Field() string { return e.field }
+func (e CheckRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e HealthCheckRequestValidationError) Reason() string { return e.reason }
+func (e CheckRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e HealthCheckRequestValidationError) Cause() error { return e.cause }
+func (e CheckRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e HealthCheckRequestValidationError) Key() bool { return e.key }
+func (e CheckRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e HealthCheckRequestValidationError) ErrorName() string {
-	return "HealthCheckRequestValidationError"
-}
+func (e CheckRequestValidationError) ErrorName() string { return "CheckRequestValidationError" }
 
 // Error satisfies the builtin error interface
-func (e HealthCheckRequestValidationError) Error() string {
+func (e CheckRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -122,14 +119,14 @@ func (e HealthCheckRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sHealthCheckRequest.%s: %s%s",
+		"invalid %sCheckRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = HealthCheckRequestValidationError{}
+var _ error = CheckRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -137,24 +134,24 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = HealthCheckRequestValidationError{}
+} = CheckRequestValidationError{}
 
-// Validate checks the field values on HealthCheckResponse with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, the first error encountered is returned, or nil if there are no violations.
-func (m *HealthCheckResponse) Validate() error {
+// Validate checks the field values on CheckResponse with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *CheckResponse) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on HealthCheckResponse with the rules
-// defined in the proto definition for this message. If any rules are
-// violated, the result is a list of violation errors wrapped in
-// HealthCheckResponseMultiError, or nil if none found.
-func (m *HealthCheckResponse) ValidateAll() error {
+// ValidateAll checks the field values on CheckResponse with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in CheckResponseMultiError, or
+// nil if none found.
+func (m *CheckResponse) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *HealthCheckResponse) validate(all bool) error {
+func (m *CheckResponse) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -164,19 +161,19 @@ func (m *HealthCheckResponse) validate(all bool) error {
 	// no validation rules for Status
 
 	if len(errors) > 0 {
-		return HealthCheckResponseMultiError(errors)
+		return CheckResponseMultiError(errors)
 	}
 
 	return nil
 }
 
-// HealthCheckResponseMultiError is an error wrapping multiple validation
-// errors returned by HealthCheckResponse.ValidateAll() if the designated
-// constraints aren't met.
-type HealthCheckResponseMultiError []error
+// CheckResponseMultiError is an error wrapping multiple validation errors
+// returned by CheckResponse.ValidateAll() if the designated constraints
+// aren't met.
+type CheckResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m HealthCheckResponseMultiError) Error() string {
+func (m CheckResponseMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -185,11 +182,11 @@ func (m HealthCheckResponseMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m HealthCheckResponseMultiError) AllErrors() []error { return m }
+func (m CheckResponseMultiError) AllErrors() []error { return m }
 
-// HealthCheckResponseValidationError is the validation error returned by
-// HealthCheckResponse.Validate if the designated constraints aren't met.
-type HealthCheckResponseValidationError struct {
+// CheckResponseValidationError is the validation error returned by
+// CheckResponse.Validate if the designated constraints aren't met.
+type CheckResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -197,24 +194,22 @@ type HealthCheckResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e HealthCheckResponseValidationError) Field() string { return e.field }
+func (e CheckResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e HealthCheckResponseValidationError) Reason() string { return e.reason }
+func (e CheckResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e HealthCheckResponseValidationError) Cause() error { return e.cause }
+func (e CheckResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e HealthCheckResponseValidationError) Key() bool { return e.key }
+func (e CheckResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e HealthCheckResponseValidationError) ErrorName() string {
-	return "HealthCheckResponseValidationError"
-}
+func (e CheckResponseValidationError) ErrorName() string { return "CheckResponseValidationError" }
 
 // Error satisfies the builtin error interface
-func (e HealthCheckResponseValidationError) Error() string {
+func (e CheckResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -226,14 +221,14 @@ func (e HealthCheckResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sHealthCheckResponse.%s: %s%s",
+		"invalid %sCheckResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = HealthCheckResponseValidationError{}
+var _ error = CheckResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -241,4 +236,4 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = HealthCheckResponseValidationError{}
+} = CheckResponseValidationError{}

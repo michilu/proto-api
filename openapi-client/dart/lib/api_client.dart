@@ -182,8 +182,8 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
-        case 'HealthCheckResponseServingStatus':
-          return HealthCheckResponseServingStatusTypeTransformer().decode(value);
+        case 'CheckResponseServingStatus':
+          return CheckResponseServingStatusTypeTransformer().decode(value);
         case 'ProtobufAny':
           return ProtobufAny.fromJson(value);
         case 'Protov1Response':
@@ -192,12 +192,10 @@ class ApiClient {
           return RpcCodeTypeTransformer().decode(value);
         case 'RpcStatus':
           return RpcStatus.fromJson(value);
-        case 'StreamResultOfV1HealthCheckResponse':
-          return StreamResultOfV1HealthCheckResponse.fromJson(value);
+        case 'V1CheckResponse':
+          return V1CheckResponse.fromJson(value);
         case 'V1ExampleServiceQueryResponse':
           return V1ExampleServiceQueryResponse.fromJson(value);
-        case 'V1HealthCheckResponse':
-          return V1HealthCheckResponse.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

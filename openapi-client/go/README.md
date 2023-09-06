@@ -80,20 +80,18 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ExampleServiceAPI* | [**ExampleServiceQuery**](docs/ExampleServiceAPI.md#exampleservicequery) | **Post** /v1/example/{id} | 
-*HealthAPI* | [**HealthCheck**](docs/HealthAPI.md#healthcheck) | **Get** /healthCheck | 
-*HealthAPI* | [**HealthWatch**](docs/HealthAPI.md#healthwatch) | **Get** /healthWatch | 
+*HealthServiceAPI* | [**HealthServiceCheck**](docs/HealthServiceAPI.md#healthservicecheck) | **Get** /healthCheck | 
 
 
 ## Documentation For Models
 
- - [HealthCheckResponseServingStatus](docs/HealthCheckResponseServingStatus.md)
+ - [CheckResponseServingStatus](docs/CheckResponseServingStatus.md)
  - [ProtobufAny](docs/ProtobufAny.md)
  - [Protov1Response](docs/Protov1Response.md)
  - [RpcCode](docs/RpcCode.md)
  - [RpcStatus](docs/RpcStatus.md)
- - [StreamResultOfV1HealthCheckResponse](docs/StreamResultOfV1HealthCheckResponse.md)
+ - [V1CheckResponse](docs/V1CheckResponse.md)
  - [V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)
- - [V1HealthCheckResponse](docs/V1HealthCheckResponse.md)
 
 
 ## Documentation For Authorization

@@ -61,8 +61,8 @@ type ApiHandleFunctions struct {
 
 	// Routes for the ExampleServiceAPI part of the API
 	ExampleServiceAPI ExampleServiceAPI
-	// Routes for the HealthAPI part of the API
-	HealthAPI HealthAPI
+	// Routes for the HealthServiceAPI part of the API
+	HealthServiceAPI HealthServiceAPI
 }
 
 func getRoutes(handleFunctions ApiHandleFunctions) []Route {
@@ -75,16 +75,10 @@ func getRoutes(handleFunctions ApiHandleFunctions) []Route {
 			handleFunctions.ExampleServiceAPI.ExampleServiceQuery,
 		},
 		{
-			"HealthCheck",
+			"HealthServiceCheck",
 			http.MethodGet,
 			"/healthCheck",
-			handleFunctions.HealthAPI.HealthCheck,
-		},
-		{
-			"HealthWatch",
-			http.MethodGet,
-			"/healthWatch",
-			handleFunctions.HealthAPI.HealthWatch,
+			handleFunctions.HealthServiceAPI.HealthServiceCheck,
 		},
 	}
 }

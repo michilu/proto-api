@@ -5,12 +5,12 @@ exec:
 model:
   filename: models.go
 models:
-  HealthCheckRequestInput:
+  CheckRequestInput:
     model:
-    - pb/proto/v1.HealthCheckRequest
-  HealthCheckResponse:
+    - pb/proto/v1.CheckRequest
+  CheckResponse:
     model:
-    - pb/proto/v1.HealthCheckResponse
-  HealthCheckResponse_ServingStatus:
+    - pb/proto/v1.CheckResponse
+  CheckResponse_ServingStatus:
     model:
-    - pb/proto/v1.HealthCheckResponse_ServingStatus
+    - pb/proto/v1.CheckResponse_ServingStatus

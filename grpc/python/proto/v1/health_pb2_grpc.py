@@ -5,12 +5,8 @@ import grpc
 from proto.v1 import health_pb2 as proto_dot_v1_dot_health__pb2
 
 
-class HealthStub(object):
-    """buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
-    buf:lint:ignore RPC_REQUEST_STANDARD_NAME
-    buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-    buf:lint:ignore SERVICE_SUFFIX
-    """
+class HealthServiceStub(object):
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -19,23 +15,14 @@ class HealthStub(object):
             channel: A grpc.Channel.
         """
         self.Check = channel.unary_unary(
-                '/proto.v1.Health/Check',
-                request_serializer=proto_dot_v1_dot_health__pb2.HealthCheckRequest.SerializeToString,
-                response_deserializer=proto_dot_v1_dot_health__pb2.HealthCheckResponse.FromString,
-                )
-        self.Watch = channel.unary_stream(
-                '/proto.v1.Health/Watch',
-                request_serializer=proto_dot_v1_dot_health__pb2.HealthCheckRequest.SerializeToString,
-                response_deserializer=proto_dot_v1_dot_health__pb2.HealthCheckResponse.FromString,
+                '/proto.v1.HealthService/Check',
+                request_serializer=proto_dot_v1_dot_health__pb2.CheckRequest.SerializeToString,
+                response_deserializer=proto_dot_v1_dot_health__pb2.CheckResponse.FromString,
                 )
 
 
-class HealthServicer(object):
-    """buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
-    buf:lint:ignore RPC_REQUEST_STANDARD_NAME
-    buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-    buf:lint:ignore SERVICE_SUFFIX
-    """
+class HealthServiceServicer(object):
+    """Missing associated documentation comment in .proto file."""
 
     def Check(self, request, context):
         """Missing associated documentation comment in .proto file."""
@@ -43,38 +30,23 @@ class HealthServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Watch(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
 
-
-def add_HealthServicer_to_server(servicer, server):
+def add_HealthServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Check': grpc.unary_unary_rpc_method_handler(
                     servicer.Check,
-                    request_deserializer=proto_dot_v1_dot_health__pb2.HealthCheckRequest.FromString,
-                    response_serializer=proto_dot_v1_dot_health__pb2.HealthCheckResponse.SerializeToString,
-            ),
-            'Watch': grpc.unary_stream_rpc_method_handler(
-                    servicer.Watch,
-                    request_deserializer=proto_dot_v1_dot_health__pb2.HealthCheckRequest.FromString,
-                    response_serializer=proto_dot_v1_dot_health__pb2.HealthCheckResponse.SerializeToString,
+                    request_deserializer=proto_dot_v1_dot_health__pb2.CheckRequest.FromString,
+                    response_serializer=proto_dot_v1_dot_health__pb2.CheckResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'proto.v1.Health', rpc_method_handlers)
+            'proto.v1.HealthService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Health(object):
-    """buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
-    buf:lint:ignore RPC_REQUEST_STANDARD_NAME
-    buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-    buf:lint:ignore SERVICE_SUFFIX
-    """
+class HealthService(object):
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def Check(request,
@@ -87,25 +59,8 @@ class Health(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/proto.v1.Health/Check',
-            proto_dot_v1_dot_health__pb2.HealthCheckRequest.SerializeToString,
-            proto_dot_v1_dot_health__pb2.HealthCheckResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def Watch(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/proto.v1.Health/Watch',
-            proto_dot_v1_dot_health__pb2.HealthCheckRequest.SerializeToString,
-            proto_dot_v1_dot_health__pb2.HealthCheckResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/proto.v1.HealthService/Check',
+            proto_dot_v1_dot_health__pb2.CheckRequest.SerializeToString,
+            proto_dot_v1_dot_health__pb2.CheckResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -66,20 +66,18 @@ All URIs are relative to *http://localhost*
 Category | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ExampleServiceAPI* | [**ExampleServiceAPI_exampleServiceQuery**](docs/ExampleServiceAPI.md#ExampleServiceAPI_exampleServiceQuery) | **POST** /v1/example/{id} | 
-*HealthAPI* | [**HealthAPI_healthCheck**](docs/HealthAPI.md#HealthAPI_healthCheck) | **GET** /healthCheck | 
-*HealthAPI* | [**HealthAPI_healthWatch**](docs/HealthAPI.md#HealthAPI_healthWatch) | **GET** /healthWatch | 
+*HealthServiceAPI* | [**HealthServiceAPI_healthServiceCheck**](docs/HealthServiceAPI.md#HealthServiceAPI_healthServiceCheck) | **GET** /healthCheck | 
 
 
 ## Documentation for Models
 
- - [health_check_response_serving_status_t](docs/health_check_response_serving_status.md)
+ - [check_response_serving_status_t](docs/check_response_serving_status.md)
  - [protobuf_any_t](docs/protobuf_any.md)
  - [protov1_response_t](docs/protov1_response.md)
  - [rpc_code_t](docs/rpc_code.md)
  - [rpc_status_t](docs/rpc_status.md)
- - [stream_result_of_v1_health_check_response_t](docs/stream_result_of_v1_health_check_response.md)
+ - [v1_check_response_t](docs/v1_check_response.md)
  - [v1_example_service_query_response_t](docs/v1_example_service_query_response.md)
- - [v1_health_check_response_t](docs/v1_health_check_response.md)
 
 
 ## Documentation for Authorization

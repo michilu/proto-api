@@ -11,46 +11,64 @@
 package openapi
 
 import (
-	"context"
-	"errors"
+	"encoding/json"
 	"net/http"
+	"strings"
+
+	"github.com/gorilla/mux"
 )
 
-// HealthAPIService is a service that implements the logic for the HealthAPIServicer
-// This service should implement the business logic for every endpoint for the HealthAPI API.
-// Include any external packages or services that will be required by this service.
-type HealthAPIService struct {
+// HealthServiceAPIController binds http requests to an api service and writes the service results to the http response
+type HealthServiceAPIController struct {
+	service      HealthServiceAPIServicer
+	errorHandler ErrorHandler
 }
 
-// NewHealthAPIService creates a default api service
-func NewHealthAPIService() HealthAPIServicer {
-	return &HealthAPIService{}
+// HealthServiceAPIOption for how the controller is set up.
+type HealthServiceAPIOption func(*HealthServiceAPIController)
+
+// WithHealthServiceAPIErrorHandler inject ErrorHandler into controller
+func WithHealthServiceAPIErrorHandler(h ErrorHandler) HealthServiceAPIOption {
+	return func(c *HealthServiceAPIController) {
+		c.errorHandler = h
+	}
 }
 
-// HealthCheck -
-func (s *HealthAPIService) HealthCheck(ctx context.Context, service string) (ImplResponse, error) {
-	// TODO - update HealthCheck with the required logic for this service method.
-	// Add api_health_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+// NewHealthServiceAPIController creates a default api controller
+func NewHealthServiceAPIController(s HealthServiceAPIServicer, opts ...HealthServiceAPIOption) Router {
+	controller := &HealthServiceAPIController{
+		service:      s,
+		errorHandler: DefaultErrorHandler,
+	}
 
-	// TODO: Uncomment the next line to return response Response(200, V1HealthCheckResponse{}) or use other options such as http.Ok ...
-	// return Response(200, V1HealthCheckResponse{}), nil
+	for _, opt := range opts {
+		opt(controller)
+	}
 
-	// TODO: Uncomment the next line to return response Response(0, RpcStatus{}) or use other options such as http.Ok ...
-	// return Response(0, RpcStatus{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("HealthCheck method not implemented")
+	return controller
 }
 
-// HealthWatch -
-func (s *HealthAPIService) HealthWatch(ctx context.Context, service string) (ImplResponse, error) {
-	// TODO - update HealthWatch with the required logic for this service method.
-	// Add api_health_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
+// Routes returns all the api routes for the HealthServiceAPIController
+func (c *HealthServiceAPIController) Routes() Routes {
+	return Routes{
+		"HealthServiceCheck": Route{
+			strings.ToUpper("Get"),
+			"/healthCheck",
+			c.HealthServiceCheck,
+		},
+	}
+}
 
-	// TODO: Uncomment the next line to return response Response(200, StreamResultOfV1HealthCheckResponse{}) or use other options such as http.Ok ...
-	// return Response(200, StreamResultOfV1HealthCheckResponse{}), nil
-
-	// TODO: Uncomment the next line to return response Response(0, RpcStatus{}) or use other options such as http.Ok ...
-	// return Response(0, RpcStatus{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("HealthWatch method not implemented")
+// HealthServiceCheck -
+func (c *HealthServiceAPIController) HealthServiceCheck(w http.ResponseWriter, r *http.Request) {
+	query := r.URL.Query()
+	serviceParam := query.Get("service")
+	result, err := c.service.HealthServiceCheck(r.Context(), serviceParam)
+	// If an error occurred, encode the error with the status code
+	if err != nil {
+		c.errorHandler(w, r, err, &result)
+		return
+	}
+	// If no error, encode the body and the result code
+	EncodeJSONResponse(result.Body, &result.Code, w)
 }
