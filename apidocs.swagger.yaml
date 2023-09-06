@@ -18,6 +18,10 @@ definitions:
     properties:
       code:
         $ref: '#/definitions/rpcCode'
+      details:
+        items:
+          type: string
+        type: array
       message:
         type: string
     type: object

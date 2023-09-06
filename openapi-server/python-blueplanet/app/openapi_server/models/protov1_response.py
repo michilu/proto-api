@@ -16,25 +16,30 @@ class Protov1Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, code: RpcCode=None, message: str=None):  # noqa: E501
+    def __init__(self, code: RpcCode=None, details: List[str]=None, message: str=None):  # noqa: E501
         """Protov1Response - a model defined in Swagger
 
         :param code: The code of this Protov1Response.  # noqa: E501
         :type code: RpcCode
+        :param details: The details of this Protov1Response.  # noqa: E501
+        :type details: List[str]
         :param message: The message of this Protov1Response.  # noqa: E501
         :type message: str
         """
         self.swagger_types = {
             'code': RpcCode,
+            'details': List[str],
             'message': str
         }
 
         self.attribute_map = {
             'code': 'code',
+            'details': 'details',
             'message': 'message'
         }
 
         self._code = code
+        self._details = details
         self._message = message
 
     @classmethod
@@ -68,6 +73,27 @@ class Protov1Response(Model):
         """
 
         self._code = code
+
+    @property
+    def details(self) -> List[str]:
+        """Gets the details of this Protov1Response.
+
+
+        :return: The details of this Protov1Response.
+        :rtype: List[str]
+        """
+        return self._details
+
+    @details.setter
+    def details(self, details: List[str]):
+        """Sets the details of this Protov1Response.
+
+
+        :param details: The details of this Protov1Response.
+        :type details: List[str]
+        """
+
+        self._details = details
 
     @property
     def message(self) -> str:

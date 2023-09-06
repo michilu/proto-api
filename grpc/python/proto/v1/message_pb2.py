@@ -15,7 +15,7 @@ from google.rpc import code_pb2 as google_dot_rpc_dot_code__pb2
 from validate import validate_pb2 as validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16proto/v1/message.proto\x12\x08proto.v1\x1a\x15google/rpc/code.proto\x1a\x17validate/validate.proto\"T\n\x08Response\x12.\n\x04\x63ode\x18\x01 \x01(\x0e\x32\x10.google.rpc.CodeB\x08\xfa\x42\x05\x82\x01\x02\x10\x01R\x04\x63ode\x12\x18\n\x07message\x18\x02 \x01(\tR\x07messageBj\n\x0c\x63om.proto.v1B\x0cMessageProtoP\x01Z\x0bpb/proto/v1\xa2\x02\x03PXX\xaa\x02\x08Proto.V1\xca\x02\x08Proto\\V1\xe2\x02\x14Proto\\V1\\GPBMetadata\xea\x02\tProto::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16proto/v1/message.proto\x12\x08proto.v1\x1a\x15google/rpc/code.proto\x1a\x17validate/validate.proto\"n\n\x08Response\x12.\n\x04\x63ode\x18\x01 \x01(\x0e\x32\x10.google.rpc.CodeB\x08\xfa\x42\x05\x82\x01\x02\x10\x01R\x04\x63ode\x12\x18\n\x07\x64\x65tails\x18\x02 \x03(\tR\x07\x64\x65tails\x12\x18\n\x07message\x18\x03 \x01(\tR\x07messageBj\n\x0c\x63om.proto.v1B\x0cMessageProtoP\x01Z\x0bpb/proto/v1\xa2\x02\x03PXX\xaa\x02\x08Proto.V1\xca\x02\x08Proto\\V1\xe2\x02\x14Proto\\V1\\GPBMetadata\xea\x02\tProto::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -26,5 +26,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _RESPONSE.fields_by_name['code']._options = None
   _RESPONSE.fields_by_name['code']._serialized_options = b'\372B\005\202\001\002\020\001'
   _globals['_RESPONSE']._serialized_start=84
-  _globals['_RESPONSE']._serialized_end=168
+  _globals['_RESPONSE']._serialized_end=194
 # @@protoc_insertion_point(module_scope)

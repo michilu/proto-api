@@ -14,6 +14,7 @@ import { RpcCode } from './rpcCode';
 
 export interface Protov1Response { 
     code?: RpcCode;
+    details?: Array<string>;
     message?: string;
 }
 export namespace Protov1Response {

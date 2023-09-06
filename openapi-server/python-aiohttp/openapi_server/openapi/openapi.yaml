@@ -103,10 +103,18 @@ components:
     protov1Response:
       example:
         code: null
+        details:
+        - details
+        - details
         message: message
       properties:
         code:
           $ref: '#/components/schemas/rpcCode'
+        details:
+          items:
+            type: string
+          title: details
+          type: array
         message:
           title: message
           type: string
@@ -291,6 +299,9 @@ components:
       example:
         value:
           code: null
+          details:
+          - details
+          - details
           message: message
       properties:
         value:

@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, StrictStr
+from typing import List, Optional
+from pydantic import BaseModel, StrictStr, conlist
 from openapi_client.models.rpc_code import RpcCode
 
 class Protov1Response(BaseModel):
@@ -28,8 +28,9 @@ class Protov1Response(BaseModel):
     Protov1Response
     """
     code: Optional[RpcCode] = None
+    details: Optional[conlist(StrictStr)] = None
     message: Optional[StrictStr] = None
-    __properties = ["code", "message"]
+    __properties = ["code", "details", "message"]
 
     class Config:
         """Pydantic configuration"""
@@ -68,6 +69,7 @@ class Protov1Response(BaseModel):
 
         _obj = Protov1Response.parse_obj({
             "code": obj.get("code"),
+            "details": obj.get("details"),
             "message": obj.get("message")
         })
         return _obj

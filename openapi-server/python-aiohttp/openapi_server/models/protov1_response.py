@@ -15,23 +15,27 @@ class Protov1Response(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, code: RpcCode=None, message: str=None):
+    def __init__(self, code: RpcCode=None, details: List[str]=None, message: str=None):
         """Protov1Response - a model defined in OpenAPI
 
         :param code: The code of this Protov1Response.
+        :param details: The details of this Protov1Response.
         :param message: The message of this Protov1Response.
         """
         self.openapi_types = {
             'code': RpcCode,
+            'details': List[str],
             'message': str
         }
 
         self.attribute_map = {
             'code': 'code',
+            'details': 'details',
             'message': 'message'
         }
 
         self._code = code
+        self._details = details
         self._message = message
 
     @classmethod
@@ -63,6 +67,27 @@ class Protov1Response(Model):
         """
 
         self._code = code
+
+    @property
+    def details(self):
+        """Gets the details of this Protov1Response.
+
+
+        :return: The details of this Protov1Response.
+        :rtype: List[str]
+        """
+        return self._details
+
+    @details.setter
+    def details(self, details):
+        """Sets the details of this Protov1Response.
+
+
+        :param details: The details of this Protov1Response.
+        :type details: List[str]
+        """
+
+        self._details = details
 
     @property
     def message(self):

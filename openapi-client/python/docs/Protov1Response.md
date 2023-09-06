@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | [**RpcCode**](RpcCode.md) |  | [optional] 
+**details** | **List[str]** |  | [optional] 
 **message** | **str** |  | [optional] 
 
 ## Example

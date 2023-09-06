@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:openapi/src/model/rpc_code.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,12 +14,16 @@ part 'protov1_response.g.dart';
 ///
 /// Properties:
 /// * [code] 
+/// * [details] 
 /// * [message] 
 @BuiltValue()
 abstract class Protov1Response implements Built<Protov1Response, Protov1ResponseBuilder> {
   @BuiltValueField(wireName: r'code')
   RpcCode? get code;
   // enum codeEnum {  OK,  CANCELLED,  UNKNOWN,  INVALID_ARGUMENT,  DEADLINE_EXCEEDED,  NOT_FOUND,  ALREADY_EXISTS,  PERMISSION_DENIED,  UNAUTHENTICATED,  RESOURCE_EXHAUSTED,  FAILED_PRECONDITION,  ABORTED,  OUT_OF_RANGE,  UNIMPLEMENTED,  INTERNAL,  UNAVAILABLE,  DATA_LOSS,  };
+
+  @BuiltValueField(wireName: r'details')
+  BuiltList<String>? get details;
 
   @BuiltValueField(wireName: r'message')
   String? get message;
@@ -51,6 +56,13 @@ class _$Protov1ResponseSerializer implements PrimitiveSerializer<Protov1Response
       yield serializers.serialize(
         object.code,
         specifiedType: const FullType(RpcCode),
+      );
+    }
+    if (object.details != null) {
+      yield r'details';
+      yield serializers.serialize(
+        object.details,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
     if (object.message != null) {
@@ -89,6 +101,13 @@ class _$Protov1ResponseSerializer implements PrimitiveSerializer<Protov1Response
             specifiedType: const FullType(RpcCode),
           ) as RpcCode;
           result.code = valueDes;
+          break;
+        case r'details':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.details.replace(valueDes);
           break;
         case r'message':
           final valueDes = serializers.deserialize(

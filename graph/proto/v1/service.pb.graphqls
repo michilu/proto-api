@@ -11,6 +11,7 @@ type ExampleServiceQueryResponse {
 
 type Response {
 	code: Code 
+	details: [String!] 
 	message: String 
 }
 

@@ -14,6 +14,7 @@ class Protov1Response {
   /// Returns a new [Protov1Response] instance.
   Protov1Response({
     this.code,
+    this.details = const [],
     this.message,
   });
 
@@ -24,6 +25,8 @@ class Protov1Response {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   RpcCode? code;
+
+  List<String> details;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -36,16 +39,18 @@ class Protov1Response {
   @override
   bool operator ==(Object other) => identical(this, other) || other is Protov1Response &&
     other.code == code &&
+    _deepEquality.equals(other.details, details) &&
     other.message == message;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (code == null ? 0 : code!.hashCode) +
+    (details.hashCode) +
     (message == null ? 0 : message!.hashCode);
 
   @override
-  String toString() => 'Protov1Response[code=$code, message=$message]';
+  String toString() => 'Protov1Response[code=$code, details=$details, message=$message]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -54,6 +59,7 @@ class Protov1Response {
     } else {
       json[r'code'] = null;
     }
+      json[r'details'] = this.details;
     if (this.message != null) {
       json[r'message'] = this.message;
     } else {
@@ -82,6 +88,9 @@ class Protov1Response {
 
       return Protov1Response(
         code: RpcCode.fromJson(json[r'code']),
+        details: json[r'details'] is Iterable
+            ? (json[r'details'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         message: mapValueOfType<String>(json, r'message'),
       );
     }

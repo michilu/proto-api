@@ -34,6 +34,12 @@ export interface Protov1Response {
     code?: RpcCode;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof Protov1Response
+     */
+    details?: Array<string>;
+    /**
+     * 
      * @type {string}
      * @memberof Protov1Response
      */
@@ -60,6 +66,7 @@ export function Protov1ResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'code': !exists(json, 'code') ? undefined : RpcCodeFromJSON(json['code']),
+        'details': !exists(json, 'details') ? undefined : json['details'],
         'message': !exists(json, 'message') ? undefined : json['message'],
     };
 }
@@ -74,6 +81,7 @@ export function Protov1ResponseToJSON(value?: Protov1Response | null): any {
     return {
         
         'code': RpcCodeToJSON(value.code),
+        'details': value.details,
         'message': value.message,
     };
 }

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | Pointer to [**RpcCode**](RpcCode.md) |  | [optional] [default to OK]
+**Details** | Pointer to **[]string** |  | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetCode sets Code field to given value.
 `func (o *Protov1Response) HasCode() bool`
 
 HasCode returns a boolean if a field has been set.
+
+### GetDetails
+
+`func (o *Protov1Response) GetDetails() []string`
+
+GetDetails returns the Details field if non-nil, zero value otherwise.
+
+### GetDetailsOk
+
+`func (o *Protov1Response) GetDetailsOk() (*[]string, bool)`
+
+GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetails
+
+`func (o *Protov1Response) SetDetails(v []string)`
+
+SetDetails sets Details field to given value.
+
+### HasDetails
+
+`func (o *Protov1Response) HasDetails() bool`
+
+HasDetails returns a boolean if a field has been set.
 
 ### GetMessage
 

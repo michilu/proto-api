@@ -21,6 +21,12 @@ resourceTypes {
           description = ""
           optional = false
         }
+        details {
+          type = array
+          items.type =  string
+          description = ""
+          optional = false
+        }
         message {
           type =  string
           description = ""

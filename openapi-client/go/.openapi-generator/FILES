@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -27,6 +26,4 @@ model_rpc_status.go
 model_v1_check_response.go
 model_v1_example_service_query_response.go
 response.go
-test/api_example_service_test.go
-test/api_health_service_test.go
 utils.go

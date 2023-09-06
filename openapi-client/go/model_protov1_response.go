@@ -21,6 +21,7 @@ var _ MappedNullable = &Protov1Response{}
 // Protov1Response struct for Protov1Response
 type Protov1Response struct {
 	Code    *RpcCode `json:"code,omitempty"`
+	Details []string `json:"details,omitempty"`
 	Message *string  `json:"message,omitempty"`
 }
 
@@ -77,6 +78,38 @@ func (o *Protov1Response) SetCode(v RpcCode) {
 	o.Code = &v
 }
 
+// GetDetails returns the Details field value if set, zero value otherwise.
+func (o *Protov1Response) GetDetails() []string {
+	if o == nil || IsNil(o.Details) {
+		var ret []string
+		return ret
+	}
+	return o.Details
+}
+
+// GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Protov1Response) GetDetailsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Details) {
+		return nil, false
+	}
+	return o.Details, true
+}
+
+// HasDetails returns a boolean if a field has been set.
+func (o *Protov1Response) HasDetails() bool {
+	if o != nil && !IsNil(o.Details) {
+		return true
+	}
+
+	return false
+}
+
+// SetDetails gets a reference to the given []string and assigns it to the Details field.
+func (o *Protov1Response) SetDetails(v []string) {
+	o.Details = v
+}
+
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *Protov1Response) GetMessage() string {
 	if o == nil || IsNil(o.Message) {
@@ -121,6 +154,9 @@ func (o Protov1Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.Details) {
+		toSerialize["details"] = o.Details
 	}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message

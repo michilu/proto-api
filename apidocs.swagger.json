@@ -26,6 +26,12 @@
         "code": {
           "$ref": "#/definitions/rpcCode"
         },
+        "details": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "message": {
           "type": "string"
         }
