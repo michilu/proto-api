@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | Pointer to **int32** |  | [optional] 
-**Message** | Pointer to **string** |  | [optional] 
 **Details** | Pointer to [**[]ProtobufAny**](ProtobufAny.md) |  | [optional] 
+**Message** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -52,31 +52,6 @@ SetCode sets Code field to given value.
 
 HasCode returns a boolean if a field has been set.
 
-### GetMessage
-
-`func (o *RpcStatus) GetMessage() string`
-
-GetMessage returns the Message field if non-nil, zero value otherwise.
-
-### GetMessageOk
-
-`func (o *RpcStatus) GetMessageOk() (*string, bool)`
-
-GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMessage
-
-`func (o *RpcStatus) SetMessage(v string)`
-
-SetMessage sets Message field to given value.
-
-### HasMessage
-
-`func (o *RpcStatus) HasMessage() bool`
-
-HasMessage returns a boolean if a field has been set.
-
 ### GetDetails
 
 `func (o *RpcStatus) GetDetails() []ProtobufAny`
@@ -101,6 +76,31 @@ SetDetails sets Details field to given value.
 `func (o *RpcStatus) HasDetails() bool`
 
 HasDetails returns a boolean if a field has been set.
+
+### GetMessage
+
+`func (o *RpcStatus) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *RpcStatus) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *RpcStatus) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *RpcStatus) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

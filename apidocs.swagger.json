@@ -1,136 +1,27 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "An example of generating swagger via gRPC ecosystem.",
-    "version": "1.0",
-    "contact": {
-      "url": "https://github.com/michilu/proto-api",
-      "email": "none@example.com"
-    },
-    "license": {
-      "name": "Apache-2.0",
-      "url": "https://github.com/michilu/proto-api/blob/master/LICENSE"
-    }
-  },
-  "tags": [
-    {
-      "name": "HealthService"
-    },
-    {
-      "name": "ExampleService"
-    }
-  ],
-  "schemes": [
-    "https",
-    "wss"
-  ],
   "consumes": [
     "application/json"
   ],
-  "produces": [
-    "application/json"
-  ],
-  "paths": {
-    "/healthCheck": {
-      "get": {
-        "operationId": "HealthService_Check",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v1CheckResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "service",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "HealthService"
-        ]
-      }
-    },
-    "/v1/example/{id}": {
-      "post": {
-        "operationId": "ExampleService_Query",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/v1ExampleServiceQueryResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "uuid"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object"
-            }
-          }
-        ],
-        "tags": [
-          "ExampleService"
-        ],
-        "security": [
-          {
-            "ApiKeyAuth": [],
-            "OAuth2": [
-              "read",
-              "write"
-            ]
-          }
-        ]
-      }
-    }
-  },
   "definitions": {
     "CheckResponseServingStatus": {
-      "type": "string",
+      "default": "SERVING_STATUS_UNKNOWN_UNSPECIFIED",
       "enum": [
         "SERVING_STATUS_UNKNOWN_UNSPECIFIED",
         "SERVING_STATUS_SERVING",
         "SERVING_STATUS_NOT_SERVING"
       ],
-      "default": "SERVING_STATUS_UNKNOWN_UNSPECIFIED"
+      "type": "string"
     },
     "protobufAny": {
-      "type": "object",
+      "additionalProperties": {},
       "properties": {
         "@type": {
           "type": "string"
         }
       },
-      "additionalProperties": {}
+      "type": "object"
     },
     "protov1Response": {
-      "type": "object",
       "properties": {
         "code": {
           "$ref": "#/definitions/rpcCode"
@@ -138,10 +29,12 @@
         "message": {
           "type": "string"
         }
-      }
+      },
+      "type": "object"
     },
     "rpcCode": {
-      "type": "string",
+      "default": "OK",
+      "description": "The canonical error codes for gRPC APIs.\n\n\nSometimes multiple error codes may apply.  Services should return\nthe most specific error code that applies.  For example, prefer\n`OUT_OF_RANGE` over `FAILED_PRECONDITION` if both codes apply.\nSimilarly prefer `NOT_FOUND` or `ALREADY_EXISTS` over `FAILED_PRECONDITION`.\n\n - OK: Not an error; returned on success\n\nHTTP Mapping: 200 OK\n - CANCELLED: The operation was cancelled, typically by the caller.\n\nHTTP Mapping: 499 Client Closed Request\n - UNKNOWN: Unknown error.  For example, this error may be returned when\na `Status` value received from another address space belongs to\nan error space that is not known in this address space.  Also\nerrors raised by APIs that do not return enough error information\nmay be converted to this error.\n\nHTTP Mapping: 500 Internal Server Error\n - INVALID_ARGUMENT: The client specified an invalid argument.  Note that this differs\nfrom `FAILED_PRECONDITION`.  `INVALID_ARGUMENT` indicates arguments\nthat are problematic regardless of the state of the system\n(e.g., a malformed file name).\n\nHTTP Mapping: 400 Bad Request\n - DEADLINE_EXCEEDED: The deadline expired before the operation could complete. For operations\nthat change the state of the system, this error may be returned\neven if the operation has completed successfully.  For example, a\nsuccessful response from a server could have been delayed long\nenough for the deadline to expire.\n\nHTTP Mapping: 504 Gateway Timeout\n - NOT_FOUND: Some requested entity (e.g., file or directory) was not found.\n\nNote to server developers: if a request is denied for an entire class\nof users, such as gradual feature rollout or undocumented whitelist,\n`NOT_FOUND` may be used. If a request is denied for some users within\na class of users, such as user-based access control, `PERMISSION_DENIED`\nmust be used.\n\nHTTP Mapping: 404 Not Found\n - ALREADY_EXISTS: The entity that a client attempted to create (e.g., file or directory)\nalready exists.\n\nHTTP Mapping: 409 Conflict\n - PERMISSION_DENIED: The caller does not have permission to execute the specified\noperation. `PERMISSION_DENIED` must not be used for rejections\ncaused by exhausting some resource (use `RESOURCE_EXHAUSTED`\ninstead for those errors). `PERMISSION_DENIED` must not be\nused if the caller can not be identified (use `UNAUTHENTICATED`\ninstead for those errors). This error code does not imply the\nrequest is valid or the requested entity exists or satisfies\nother pre-conditions.\n\nHTTP Mapping: 403 Forbidden\n - UNAUTHENTICATED: The request does not have valid authentication credentials for the\noperation.\n\nHTTP Mapping: 401 Unauthorized\n - RESOURCE_EXHAUSTED: Some resource has been exhausted, perhaps a per-user quota, or\nperhaps the entire file system is out of space.\n\nHTTP Mapping: 429 Too Many Requests\n - FAILED_PRECONDITION: The operation was rejected because the system is not in a state\nrequired for the operation's execution.  For example, the directory\nto be deleted is non-empty, an rmdir operation is applied to\na non-directory, etc.\n\nService implementors can use the following guidelines to decide\nbetween `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:\n (a) Use `UNAVAILABLE` if the client can retry just the failing call.\n (b) Use `ABORTED` if the client should retry at a higher level\n     (e.g., when a client-specified test-and-set fails, indicating the\n     client should restart a read-modify-write sequence).\n (c) Use `FAILED_PRECONDITION` if the client should not retry until\n     the system state has been explicitly fixed.  E.g., if an \"rmdir\"\n     fails because the directory is non-empty, `FAILED_PRECONDITION`\n     should be returned since the client should not retry unless\n     the files are deleted from the directory.\n\nHTTP Mapping: 400 Bad Request\n - ABORTED: The operation was aborted, typically due to a concurrency issue such as\na sequencer check failure or transaction abort.\n\nSee the guidelines above for deciding between `FAILED_PRECONDITION`,\n`ABORTED`, and `UNAVAILABLE`.\n\nHTTP Mapping: 409 Conflict\n - OUT_OF_RANGE: The operation was attempted past the valid range.  E.g., seeking or\nreading past end-of-file.\n\nUnlike `INVALID_ARGUMENT`, this error indicates a problem that may\nbe fixed if the system state changes. For example, a 32-bit file\nsystem will generate `INVALID_ARGUMENT` if asked to read at an\noffset that is not in the range [0,2^32-1], but it will generate\n`OUT_OF_RANGE` if asked to read from an offset past the current\nfile size.\n\nThere is a fair bit of overlap between `FAILED_PRECONDITION` and\n`OUT_OF_RANGE`.  We recommend using `OUT_OF_RANGE` (the more specific\nerror) when it applies so that callers who are iterating through\na space can easily look for an `OUT_OF_RANGE` error to detect when\nthey are done.\n\nHTTP Mapping: 400 Bad Request\n - UNIMPLEMENTED: The operation is not implemented or is not supported/enabled in this\nservice.\n\nHTTP Mapping: 501 Not Implemented\n - INTERNAL: Internal errors.  This means that some invariants expected by the\nunderlying system have been broken.  This error code is reserved\nfor serious errors.\n\nHTTP Mapping: 500 Internal Server Error\n - UNAVAILABLE: The service is currently unavailable.  This is most likely a\ntransient condition, which can be corrected by retrying with\na backoff. Note that it is not always safe to retry\nnon-idempotent operations.\n\nSee the guidelines above for deciding between `FAILED_PRECONDITION`,\n`ABORTED`, and `UNAVAILABLE`.\n\nHTTP Mapping: 503 Service Unavailable\n - DATA_LOSS: Unrecoverable data loss or corruption.\n\nHTTP Mapping: 500 Internal Server Error",
       "enum": [
         "OK",
         "CANCELLED",
@@ -161,63 +54,143 @@
         "UNAVAILABLE",
         "DATA_LOSS"
       ],
-      "default": "OK",
-      "description": "The canonical error codes for gRPC APIs.\n\n\nSometimes multiple error codes may apply.  Services should return\nthe most specific error code that applies.  For example, prefer\n`OUT_OF_RANGE` over `FAILED_PRECONDITION` if both codes apply.\nSimilarly prefer `NOT_FOUND` or `ALREADY_EXISTS` over `FAILED_PRECONDITION`.\n\n - OK: Not an error; returned on success\n\nHTTP Mapping: 200 OK\n - CANCELLED: The operation was cancelled, typically by the caller.\n\nHTTP Mapping: 499 Client Closed Request\n - UNKNOWN: Unknown error.  For example, this error may be returned when\na `Status` value received from another address space belongs to\nan error space that is not known in this address space.  Also\nerrors raised by APIs that do not return enough error information\nmay be converted to this error.\n\nHTTP Mapping: 500 Internal Server Error\n - INVALID_ARGUMENT: The client specified an invalid argument.  Note that this differs\nfrom `FAILED_PRECONDITION`.  `INVALID_ARGUMENT` indicates arguments\nthat are problematic regardless of the state of the system\n(e.g., a malformed file name).\n\nHTTP Mapping: 400 Bad Request\n - DEADLINE_EXCEEDED: The deadline expired before the operation could complete. For operations\nthat change the state of the system, this error may be returned\neven if the operation has completed successfully.  For example, a\nsuccessful response from a server could have been delayed long\nenough for the deadline to expire.\n\nHTTP Mapping: 504 Gateway Timeout\n - NOT_FOUND: Some requested entity (e.g., file or directory) was not found.\n\nNote to server developers: if a request is denied for an entire class\nof users, such as gradual feature rollout or undocumented whitelist,\n`NOT_FOUND` may be used. If a request is denied for some users within\na class of users, such as user-based access control, `PERMISSION_DENIED`\nmust be used.\n\nHTTP Mapping: 404 Not Found\n - ALREADY_EXISTS: The entity that a client attempted to create (e.g., file or directory)\nalready exists.\n\nHTTP Mapping: 409 Conflict\n - PERMISSION_DENIED: The caller does not have permission to execute the specified\noperation. `PERMISSION_DENIED` must not be used for rejections\ncaused by exhausting some resource (use `RESOURCE_EXHAUSTED`\ninstead for those errors). `PERMISSION_DENIED` must not be\nused if the caller can not be identified (use `UNAUTHENTICATED`\ninstead for those errors). This error code does not imply the\nrequest is valid or the requested entity exists or satisfies\nother pre-conditions.\n\nHTTP Mapping: 403 Forbidden\n - UNAUTHENTICATED: The request does not have valid authentication credentials for the\noperation.\n\nHTTP Mapping: 401 Unauthorized\n - RESOURCE_EXHAUSTED: Some resource has been exhausted, perhaps a per-user quota, or\nperhaps the entire file system is out of space.\n\nHTTP Mapping: 429 Too Many Requests\n - FAILED_PRECONDITION: The operation was rejected because the system is not in a state\nrequired for the operation's execution.  For example, the directory\nto be deleted is non-empty, an rmdir operation is applied to\na non-directory, etc.\n\nService implementors can use the following guidelines to decide\nbetween `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:\n (a) Use `UNAVAILABLE` if the client can retry just the failing call.\n (b) Use `ABORTED` if the client should retry at a higher level\n     (e.g., when a client-specified test-and-set fails, indicating the\n     client should restart a read-modify-write sequence).\n (c) Use `FAILED_PRECONDITION` if the client should not retry until\n     the system state has been explicitly fixed.  E.g., if an \"rmdir\"\n     fails because the directory is non-empty, `FAILED_PRECONDITION`\n     should be returned since the client should not retry unless\n     the files are deleted from the directory.\n\nHTTP Mapping: 400 Bad Request\n - ABORTED: The operation was aborted, typically due to a concurrency issue such as\na sequencer check failure or transaction abort.\n\nSee the guidelines above for deciding between `FAILED_PRECONDITION`,\n`ABORTED`, and `UNAVAILABLE`.\n\nHTTP Mapping: 409 Conflict\n - OUT_OF_RANGE: The operation was attempted past the valid range.  E.g., seeking or\nreading past end-of-file.\n\nUnlike `INVALID_ARGUMENT`, this error indicates a problem that may\nbe fixed if the system state changes. For example, a 32-bit file\nsystem will generate `INVALID_ARGUMENT` if asked to read at an\noffset that is not in the range [0,2^32-1], but it will generate\n`OUT_OF_RANGE` if asked to read from an offset past the current\nfile size.\n\nThere is a fair bit of overlap between `FAILED_PRECONDITION` and\n`OUT_OF_RANGE`.  We recommend using `OUT_OF_RANGE` (the more specific\nerror) when it applies so that callers who are iterating through\na space can easily look for an `OUT_OF_RANGE` error to detect when\nthey are done.\n\nHTTP Mapping: 400 Bad Request\n - UNIMPLEMENTED: The operation is not implemented or is not supported/enabled in this\nservice.\n\nHTTP Mapping: 501 Not Implemented\n - INTERNAL: Internal errors.  This means that some invariants expected by the\nunderlying system have been broken.  This error code is reserved\nfor serious errors.\n\nHTTP Mapping: 500 Internal Server Error\n - UNAVAILABLE: The service is currently unavailable.  This is most likely a\ntransient condition, which can be corrected by retrying with\na backoff. Note that it is not always safe to retry\nnon-idempotent operations.\n\nSee the guidelines above for deciding between `FAILED_PRECONDITION`,\n`ABORTED`, and `UNAVAILABLE`.\n\nHTTP Mapping: 503 Service Unavailable\n - DATA_LOSS: Unrecoverable data loss or corruption.\n\nHTTP Mapping: 500 Internal Server Error"
+      "type": "string"
     },
     "rpcStatus": {
-      "type": "object",
       "properties": {
         "code": {
-          "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "type": "integer"
+        },
+        "details": {
+          "items": {
+            "$ref": "#/definitions/protobufAny",
+            "type": "object"
+          },
+          "type": "array"
         },
         "message": {
           "type": "string"
-        },
-        "details": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "$ref": "#/definitions/protobufAny"
-          }
         }
-      }
+      },
+      "type": "object"
     },
     "v1CheckResponse": {
-      "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/CheckResponseServingStatus"
         }
-      }
+      },
+      "type": "object"
     },
     "v1ExampleServiceQueryResponse": {
-      "type": "object",
       "properties": {
         "value": {
           "$ref": "#/definitions/protov1Response"
         }
-      }
+      },
+      "type": "object"
     }
   },
-  "securityDefinitions": {
-    "ApiKeyAuth": {
-      "type": "apiKey",
-      "name": "X-API-Key",
-      "in": "header"
+  "info": {
+    "contact": {
+      "email": "none@example.com",
+      "url": "https://github.com/michilu/proto-api"
     },
-    "OAuth2": {
-      "type": "oauth2",
-      "flow": "accessCode",
-      "authorizationUrl": "https://example.com/oauth/authorize",
-      "tokenUrl": "https://example.com/oauth/token",
-      "scopes": {
-        "admin": "Grants read and write access to administrative information",
-        "read": "Grants read access",
-        "write": "Grants write access"
+    "license": {
+      "name": "Apache-2.0",
+      "url": "https://github.com/michilu/proto-api/blob/master/LICENSE"
+    },
+    "title": "An example of generating swagger via gRPC ecosystem.",
+    "version": "1.0"
+  },
+  "paths": {
+    "/healthCheck": {
+      "get": {
+        "operationId": "HealthService_Check",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "service",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CheckResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "HealthService"
+        ]
+      }
+    },
+    "/v1/example/{id}": {
+      "post": {
+        "operationId": "ExampleService_Query",
+        "parameters": [
+          {
+            "format": "uuid",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ExampleServiceQueryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "OAuth2": [
+              "read",
+              "write"
+            ]
+          }
+        ],
+        "tags": [
+          "ExampleService"
+        ]
       }
     }
   },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https",
+    "wss"
+  ],
   "security": [
     {
       "ApiKeyAuth": [],
@@ -225,6 +198,33 @@
         "read",
         "write"
       ]
+    }
+  ],
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "in": "header",
+      "name": "X-API-Key",
+      "type": "apiKey"
+    },
+    "OAuth2": {
+      "authorizationUrl": "https://example.com/oauth/authorize",
+      "flow": "accessCode",
+      "scopes": {
+        "admin": "Grants read and write access to administrative information",
+        "read": "Grants read access",
+        "write": "Grants write access"
+      },
+      "tokenUrl": "https://example.com/oauth/token",
+      "type": "oauth2"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "name": "HealthService"
+    },
+    {
+      "name": "ExampleService"
     }
   ]
 }

@@ -14,18 +14,18 @@ part 'rpc_status.g.dart';
 ///
 /// Properties:
 /// * [code] 
-/// * [message] 
 /// * [details] 
+/// * [message] 
 @BuiltValue()
 abstract class RpcStatus implements Built<RpcStatus, RpcStatusBuilder> {
   @BuiltValueField(wireName: r'code')
   int? get code;
 
-  @BuiltValueField(wireName: r'message')
-  String? get message;
-
   @BuiltValueField(wireName: r'details')
   BuiltList<ProtobufAny>? get details;
+
+  @BuiltValueField(wireName: r'message')
+  String? get message;
 
   RpcStatus._();
 
@@ -57,18 +57,18 @@ class _$RpcStatusSerializer implements PrimitiveSerializer<RpcStatus> {
         specifiedType: const FullType(int),
       );
     }
-    if (object.message != null) {
-      yield r'message';
-      yield serializers.serialize(
-        object.message,
-        specifiedType: const FullType(String),
-      );
-    }
     if (object.details != null) {
       yield r'details';
       yield serializers.serialize(
         object.details,
         specifiedType: const FullType(BuiltList, [FullType(ProtobufAny)]),
+      );
+    }
+    if (object.message != null) {
+      yield r'message';
+      yield serializers.serialize(
+        object.message,
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -101,19 +101,19 @@ class _$RpcStatusSerializer implements PrimitiveSerializer<RpcStatus> {
           ) as int;
           result.code = valueDes;
           break;
-        case r'message':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.message = valueDes;
-          break;
         case r'details':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(BuiltList, [FullType(ProtobufAny)]),
           ) as BuiltList<ProtobufAny>;
           result.details.replace(valueDes);
+          break;
+        case r'message':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.message = valueDes;
           break;
         default:
           unhandled.add(key);

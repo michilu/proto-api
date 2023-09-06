@@ -21,13 +21,13 @@ void main() {
       // TODO
     });
 
-    // String message
-    test('to test the property `message`', () async {
+    // List<ProtobufAny> details (default value: const [])
+    test('to test the property `details`', () async {
       // TODO
     });
 
-    // List<ProtobufAny> details (default value: const [])
-    test('to test the property `details`', () async {
+    // String message
+    test('to test the property `message`', () async {
       // TODO
     });
 

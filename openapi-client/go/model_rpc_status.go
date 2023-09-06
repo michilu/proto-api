@@ -21,8 +21,8 @@ var _ MappedNullable = &RpcStatus{}
 // RpcStatus struct for RpcStatus
 type RpcStatus struct {
 	Code    *int32        `json:"code,omitempty"`
-	Message *string       `json:"message,omitempty"`
 	Details []ProtobufAny `json:"details,omitempty"`
+	Message *string       `json:"message,omitempty"`
 }
 
 // NewRpcStatus instantiates a new RpcStatus object
@@ -74,38 +74,6 @@ func (o *RpcStatus) SetCode(v int32) {
 	o.Code = &v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise.
-func (o *RpcStatus) GetMessage() string {
-	if o == nil || IsNil(o.Message) {
-		var ret string
-		return ret
-	}
-	return *o.Message
-}
-
-// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RpcStatus) GetMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.Message) {
-		return nil, false
-	}
-	return o.Message, true
-}
-
-// HasMessage returns a boolean if a field has been set.
-func (o *RpcStatus) HasMessage() bool {
-	if o != nil && !IsNil(o.Message) {
-		return true
-	}
-
-	return false
-}
-
-// SetMessage gets a reference to the given string and assigns it to the Message field.
-func (o *RpcStatus) SetMessage(v string) {
-	o.Message = &v
-}
-
 // GetDetails returns the Details field value if set, zero value otherwise.
 func (o *RpcStatus) GetDetails() []ProtobufAny {
 	if o == nil || IsNil(o.Details) {
@@ -138,6 +106,38 @@ func (o *RpcStatus) SetDetails(v []ProtobufAny) {
 	o.Details = v
 }
 
+// GetMessage returns the Message field value if set, zero value otherwise.
+func (o *RpcStatus) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RpcStatus) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *RpcStatus) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *RpcStatus) SetMessage(v string) {
+	o.Message = &v
+}
+
 func (o RpcStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -151,11 +151,11 @@ func (o RpcStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if !IsNil(o.Message) {
-		toSerialize["message"] = o.Message
-	}
 	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
 	}
 	return toSerialize, nil
 }

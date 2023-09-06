@@ -15,28 +15,28 @@ class RpcStatus(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, code: int=None, message: str=None, details: List[ProtobufAny]=None):
+    def __init__(self, code: int=None, details: List[ProtobufAny]=None, message: str=None):
         """RpcStatus - a model defined in OpenAPI
 
         :param code: The code of this RpcStatus.
-        :param message: The message of this RpcStatus.
         :param details: The details of this RpcStatus.
+        :param message: The message of this RpcStatus.
         """
         self.openapi_types = {
             'code': int,
-            'message': str,
-            'details': List[ProtobufAny]
+            'details': List[ProtobufAny],
+            'message': str
         }
 
         self.attribute_map = {
             'code': 'code',
-            'message': 'message',
-            'details': 'details'
+            'details': 'details',
+            'message': 'message'
         }
 
         self._code = code
-        self._message = message
         self._details = details
+        self._message = message
 
     @classmethod
     def from_dict(cls, dikt: dict) -> 'RpcStatus':
@@ -69,27 +69,6 @@ class RpcStatus(Model):
         self._code = code
 
     @property
-    def message(self):
-        """Gets the message of this RpcStatus.
-
-
-        :return: The message of this RpcStatus.
-        :rtype: str
-        """
-        return self._message
-
-    @message.setter
-    def message(self, message):
-        """Sets the message of this RpcStatus.
-
-
-        :param message: The message of this RpcStatus.
-        :type message: str
-        """
-
-        self._message = message
-
-    @property
     def details(self):
         """Gets the details of this RpcStatus.
 
@@ -109,3 +88,24 @@ class RpcStatus(Model):
         """
 
         self._details = details
+
+    @property
+    def message(self):
+        """Gets the message of this RpcStatus.
+
+
+        :return: The message of this RpcStatus.
+        :rtype: str
+        """
+        return self._message
+
+    @message.setter
+    def message(self, message):
+        """Sets the message of this RpcStatus.
+
+
+        :param message: The message of this RpcStatus.
+        :type message: str
+        """
+
+        self._message = message

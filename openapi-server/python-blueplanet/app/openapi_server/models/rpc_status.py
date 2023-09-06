@@ -16,31 +16,31 @@ class RpcStatus(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, code: int=None, message: str=None, details: List[ProtobufAny]=None):  # noqa: E501
+    def __init__(self, code: int=None, details: List[ProtobufAny]=None, message: str=None):  # noqa: E501
         """RpcStatus - a model defined in Swagger
 
         :param code: The code of this RpcStatus.  # noqa: E501
         :type code: int
-        :param message: The message of this RpcStatus.  # noqa: E501
-        :type message: str
         :param details: The details of this RpcStatus.  # noqa: E501
         :type details: List[ProtobufAny]
+        :param message: The message of this RpcStatus.  # noqa: E501
+        :type message: str
         """
         self.swagger_types = {
             'code': int,
-            'message': str,
-            'details': List[ProtobufAny]
+            'details': List[ProtobufAny],
+            'message': str
         }
 
         self.attribute_map = {
             'code': 'code',
-            'message': 'message',
-            'details': 'details'
+            'details': 'details',
+            'message': 'message'
         }
 
         self._code = code
-        self._message = message
         self._details = details
+        self._message = message
 
     @classmethod
     def from_dict(cls, dikt) -> 'RpcStatus':
@@ -75,27 +75,6 @@ class RpcStatus(Model):
         self._code = code
 
     @property
-    def message(self) -> str:
-        """Gets the message of this RpcStatus.
-
-
-        :return: The message of this RpcStatus.
-        :rtype: str
-        """
-        return self._message
-
-    @message.setter
-    def message(self, message: str):
-        """Sets the message of this RpcStatus.
-
-
-        :param message: The message of this RpcStatus.
-        :type message: str
-        """
-
-        self._message = message
-
-    @property
     def details(self) -> List[ProtobufAny]:
         """Gets the details of this RpcStatus.
 
@@ -115,3 +94,24 @@ class RpcStatus(Model):
         """
 
         self._details = details
+
+    @property
+    def message(self) -> str:
+        """Gets the message of this RpcStatus.
+
+
+        :return: The message of this RpcStatus.
+        :rtype: str
+        """
+        return self._message
+
+    @message.setter
+    def message(self, message: str):
+        """Sets the message of this RpcStatus.
+
+
+        :param message: The message of this RpcStatus.
+        :type message: str
+        """
+
+        self._message = message

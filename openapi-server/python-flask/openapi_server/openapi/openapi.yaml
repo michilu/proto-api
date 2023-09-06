@@ -268,14 +268,14 @@ components:
           format: int32
           title: code
           type: integer
-        message:
-          title: message
-          type: string
         details:
           items:
             $ref: '#/components/schemas/protobufAny'
           title: details
           type: array
+        message:
+          title: message
+          type: string
       title: rpcStatus
       type: object
     v1CheckResponse:

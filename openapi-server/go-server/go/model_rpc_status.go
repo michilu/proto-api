@@ -13,9 +13,9 @@ package openapi
 type RpcStatus struct {
 	Code int32 `json:"code,omitempty"`
 
-	Message string `json:"message,omitempty"`
-
 	Details []ProtobufAny `json:"details,omitempty"`
+
+	Message string `json:"message,omitempty"`
 }
 
 // AssertRpcStatusRequired checks if the required fields are not zero-ed

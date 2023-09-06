@@ -23,14 +23,14 @@ rpc_status_t* instantiate_rpc_status(int include_optional) {
   if (include_optional) {
     rpc_status = rpc_status_create(
       56,
-      "0",
-      list_createList()
+      list_createList(),
+      "0"
     );
   } else {
     rpc_status = rpc_status_create(
       56,
-      "0",
-      list_createList()
+      list_createList(),
+      "0"
     );
   }
 
