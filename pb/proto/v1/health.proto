@@ -24,6 +24,6 @@ message CheckResponse {
 
 service HealthService {
   rpc Check(CheckRequest) returns (CheckResponse) {
-    option (google.api.http) = {get: "/healthCheck"};
+    option (google.api.http) = {get: "/v1/healthCheck"};
   }
 }
