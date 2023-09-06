@@ -4,5 +4,4 @@ plugins:
     out: ..
     opt:
       - allow_merge=true
-      - ignore_comments=true
       - merge_file_name=apidocs.json

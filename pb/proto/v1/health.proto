@@ -9,32 +9,21 @@ import "google/api/annotations.proto";
 
 option go_package = "pb/proto/v1";
 
-message HealthCheckRequest {
+message CheckRequest {
   string service = 1;
 }
 
-message HealthCheckResponse {
-  // buf:lint:ignore ENUM_VALUE_PREFIX
+message CheckResponse {
   enum ServingStatus {
-    // buf:lint:ignore ENUM_ZERO_VALUE_SUFFIX
-    UNKNOWN = 0;
-    SERVING = 1;
-    NOT_SERVING = 2;
-    SERVICE_UNKNOWN = 3; // Used only by the Watch method.
+    SERVING_STATUS_UNKNOWN_UNSPECIFIED = 0;
+    SERVING_STATUS_SERVING = 1;
+    SERVING_STATUS_NOT_SERVING = 2;
   }
   ServingStatus status = 1;
 }
 
-// buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
-// buf:lint:ignore RPC_REQUEST_STANDARD_NAME
-// buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
-// buf:lint:ignore SERVICE_SUFFIX
-service Health {
-  rpc Check(HealthCheckRequest) returns (HealthCheckResponse) {
+service HealthService {
+  rpc Check(CheckRequest) returns (CheckResponse) {
     option (google.api.http) = {get: "/healthCheck"};
-  }
-
-  rpc Watch(HealthCheckRequest) returns (stream HealthCheckResponse) {
-    option (google.api.http) = {get: "/healthWatch"};
   }
 }
