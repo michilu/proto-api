@@ -103,10 +103,7 @@ grpc/python/.keep: $(PROTO)
 	touch $@
 
 apidocs.swagger.json: $(BUF_IMAGE)
-	( type protoc > /dev/null 2>&1 ) && protoc\
- --descriptor_set_in=$<\
- --swagger_out=logtostderr=true,allow_merge=true:.\
- $(patsubst $(PROTO_DIR)/%,%,$(PROTO))
+	cd $(PROTO_DIR) && buf generate
 
 apidocs.swagger.yaml: apidocs.swagger.json
 	yq --prettyPrint eval $< > $@
