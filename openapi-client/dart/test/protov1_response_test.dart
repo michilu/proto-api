@@ -21,6 +21,11 @@ void main() {
       // TODO
     });
 
+    // List<String> details (default value: const [])
+    test('to test the property `details`', () async {
+      // TODO
+    });
+
     // String message
     test('to test the property `message`', () async {
       // TODO

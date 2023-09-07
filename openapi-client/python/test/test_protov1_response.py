@@ -38,6 +38,9 @@ class TestProtov1Response(unittest.TestCase):
         if include_optional:
             return Protov1Response(
                 code = 'OK',
+                details = [
+                    ''
+                    ],
                 message = ''
             )
         else:

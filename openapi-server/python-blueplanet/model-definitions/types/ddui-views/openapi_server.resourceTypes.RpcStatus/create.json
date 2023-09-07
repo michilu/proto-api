@@ -12,8 +12,8 @@
     "model": "properties",
     "children": [
       {"model": "code" },
-      {"model": "details" },
       {"model": "message" },
+      {"model": "details" },
     ]
   }]
 }

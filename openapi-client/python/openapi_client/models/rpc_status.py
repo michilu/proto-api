@@ -28,9 +28,9 @@ class RpcStatus(BaseModel):
     RpcStatus
     """
     code: Optional[StrictInt] = None
-    details: Optional[conlist(ProtobufAny)] = None
     message: Optional[StrictStr] = None
-    __properties = ["code", "details", "message"]
+    details: Optional[conlist(ProtobufAny)] = None
+    __properties = ["code", "message", "details"]
 
     class Config:
         """Pydantic configuration"""
@@ -76,8 +76,8 @@ class RpcStatus(BaseModel):
 
         _obj = RpcStatus.parse_obj({
             "code": obj.get("code"),
-            "details": [ProtobufAny.from_dict(_item) for _item in obj.get("details")] if obj.get("details") is not None else None,
-            "message": obj.get("message")
+            "message": obj.get("message"),
+            "details": [ProtobufAny.from_dict(_item) for _item in obj.get("details")] if obj.get("details") is not None else None
         })
         return _obj
 

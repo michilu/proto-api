@@ -21,14 +21,14 @@ resourceTypes {
           description = ""
           optional = false
         }
-        details {
-          type = array
-          items.type = ProtobufAny
+        message {
+          type =  string
           description = ""
           optional = false
         }
-        message {
-          type =  string
+        details {
+          type = array
+          items.type = ProtobufAny
           description = ""
           optional = false
         }

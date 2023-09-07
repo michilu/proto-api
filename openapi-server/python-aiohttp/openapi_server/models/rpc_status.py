@@ -15,28 +15,28 @@ class RpcStatus(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, code: int=None, details: List[ProtobufAny]=None, message: str=None):
+    def __init__(self, code: int=None, message: str=None, details: List[ProtobufAny]=None):
         """RpcStatus - a model defined in OpenAPI
 
         :param code: The code of this RpcStatus.
-        :param details: The details of this RpcStatus.
         :param message: The message of this RpcStatus.
+        :param details: The details of this RpcStatus.
         """
         self.openapi_types = {
             'code': int,
-            'details': List[ProtobufAny],
-            'message': str
+            'message': str,
+            'details': List[ProtobufAny]
         }
 
         self.attribute_map = {
             'code': 'code',
-            'details': 'details',
-            'message': 'message'
+            'message': 'message',
+            'details': 'details'
         }
 
         self._code = code
-        self._details = details
         self._message = message
+        self._details = details
 
     @classmethod
     def from_dict(cls, dikt: dict) -> 'RpcStatus':
@@ -69,27 +69,6 @@ class RpcStatus(Model):
         self._code = code
 
     @property
-    def details(self):
-        """Gets the details of this RpcStatus.
-
-
-        :return: The details of this RpcStatus.
-        :rtype: List[ProtobufAny]
-        """
-        return self._details
-
-    @details.setter
-    def details(self, details):
-        """Sets the details of this RpcStatus.
-
-
-        :param details: The details of this RpcStatus.
-        :type details: List[ProtobufAny]
-        """
-
-        self._details = details
-
-    @property
     def message(self):
         """Gets the message of this RpcStatus.
 
@@ -109,3 +88,24 @@ class RpcStatus(Model):
         """
 
         self._message = message
+
+    @property
+    def details(self):
+        """Gets the details of this RpcStatus.
+
+
+        :return: The details of this RpcStatus.
+        :rtype: List[ProtobufAny]
+        """
+        return self._details
+
+    @details.setter
+    def details(self, details):
+        """Sets the details of this RpcStatus.
+
+
+        :param details: The details of this RpcStatus.
+        :type details: List[ProtobufAny]
+        """
+
+        self._details = details

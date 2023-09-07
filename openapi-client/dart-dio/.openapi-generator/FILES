@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 README.md
 analysis_options.yaml
 doc/CheckResponseServingStatus.md
@@ -31,3 +32,12 @@ lib/src/model/v1_check_response.dart
 lib/src/model/v1_example_service_query_response.dart
 lib/src/serializers.dart
 pubspec.yaml
+test/check_response_serving_status_test.dart
+test/example_service_api_test.dart
+test/health_service_api_test.dart
+test/protobuf_any_test.dart
+test/protov1_response_test.dart
+test/rpc_code_test.dart
+test/rpc_status_test.dart
+test/v1_check_response_test.dart
+test/v1_example_service_query_response_test.dart

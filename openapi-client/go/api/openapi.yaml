@@ -267,12 +267,12 @@ components:
         code:
           format: int32
           type: integer
+        message:
+          type: string
         details:
           items:
             $ref: '#/components/schemas/protobufAny'
           type: array
-        message:
-          type: string
       type: object
     v1CheckResponse:
       example:

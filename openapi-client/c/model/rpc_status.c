@@ -7,16 +7,16 @@
 
 rpc_status_t *rpc_status_create(
     int code,
-    list_t *details,
-    char *message
+    char *message,
+    list_t *details
     ) {
     rpc_status_t *rpc_status_local_var = malloc(sizeof(rpc_status_t));
     if (!rpc_status_local_var) {
         return NULL;
     }
     rpc_status_local_var->code = code;
-    rpc_status_local_var->details = details;
     rpc_status_local_var->message = message;
+    rpc_status_local_var->details = details;
 
     return rpc_status_local_var;
 }
@@ -27,16 +27,16 @@ void rpc_status_free(rpc_status_t *rpc_status) {
         return ;
     }
     listEntry_t *listEntry;
+    if (rpc_status->message) {
+        free(rpc_status->message);
+        rpc_status->message = NULL;
+    }
     if (rpc_status->details) {
         list_ForEach(listEntry, rpc_status->details) {
             protobuf_any_free(listEntry->data);
         }
         list_freeList(rpc_status->details);
         rpc_status->details = NULL;
-    }
-    if (rpc_status->message) {
-        free(rpc_status->message);
-        rpc_status->message = NULL;
     }
     free(rpc_status);
 }
@@ -48,6 +48,14 @@ cJSON *rpc_status_convertToJSON(rpc_status_t *rpc_status) {
     if(rpc_status->code) {
     if(cJSON_AddNumberToObject(item, "code", rpc_status->code) == NULL) {
     goto fail; //Numeric
+    }
+    }
+
+
+    // rpc_status->message
+    if(rpc_status->message) {
+    if(cJSON_AddStringToObject(item, "message", rpc_status->message) == NULL) {
+    goto fail; //String
     }
     }
 
@@ -68,14 +76,6 @@ cJSON *rpc_status_convertToJSON(rpc_status_t *rpc_status) {
     }
     cJSON_AddItemToArray(details, itemLocal);
     }
-    }
-    }
-
-
-    // rpc_status->message
-    if(rpc_status->message) {
-    if(cJSON_AddStringToObject(item, "message", rpc_status->message) == NULL) {
-    goto fail; //String
     }
     }
 
@@ -103,6 +103,15 @@ rpc_status_t *rpc_status_parseFromJSON(cJSON *rpc_statusJSON){
     }
     }
 
+    // rpc_status->message
+    cJSON *message = cJSON_GetObjectItemCaseSensitive(rpc_statusJSON, "message");
+    if (message) { 
+    if(!cJSON_IsString(message) && !cJSON_IsNull(message))
+    {
+    goto end; //String
+    }
+    }
+
     // rpc_status->details
     cJSON *details = cJSON_GetObjectItemCaseSensitive(rpc_statusJSON, "details");
     if (details) { 
@@ -124,20 +133,11 @@ rpc_status_t *rpc_status_parseFromJSON(cJSON *rpc_statusJSON){
     }
     }
 
-    // rpc_status->message
-    cJSON *message = cJSON_GetObjectItemCaseSensitive(rpc_statusJSON, "message");
-    if (message) { 
-    if(!cJSON_IsString(message) && !cJSON_IsNull(message))
-    {
-    goto end; //String
-    }
-    }
-
 
     rpc_status_local_var = rpc_status_create (
         code ? code->valuedouble : 0,
-        details ? detailsList : NULL,
-        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL
+        message && !cJSON_IsNull(message) ? strdup(message->valuestring) : NULL,
+        details ? detailsList : NULL
         );
 
     return rpc_status_local_var;

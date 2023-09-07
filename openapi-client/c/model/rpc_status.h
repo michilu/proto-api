@@ -21,15 +21,15 @@ typedef struct rpc_status_t rpc_status_t;
 
 typedef struct rpc_status_t {
     int code; //numeric
-    list_t *details; //nonprimitive container
     char *message; // string
+    list_t *details; //nonprimitive container
 
 } rpc_status_t;
 
 rpc_status_t *rpc_status_create(
     int code,
-    list_t *details,
-    char *message
+    char *message,
+    list_t *details
 );
 
 void rpc_status_free(rpc_status_t *rpc_status);

@@ -14,8 +14,8 @@ class RpcStatus {
   /// Returns a new [RpcStatus] instance.
   RpcStatus({
     this.code,
-    this.details = const [],
     this.message,
+    this.details = const [],
   });
 
   ///
@@ -26,8 +26,6 @@ class RpcStatus {
   ///
   int? code;
 
-  List<ProtobufAny> details;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -36,21 +34,23 @@ class RpcStatus {
   ///
   String? message;
 
+  List<ProtobufAny> details;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is RpcStatus &&
     other.code == code &&
-    _deepEquality.equals(other.details, details) &&
-    other.message == message;
+    other.message == message &&
+    _deepEquality.equals(other.details, details);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (code == null ? 0 : code!.hashCode) +
-    (details.hashCode) +
-    (message == null ? 0 : message!.hashCode);
+    (message == null ? 0 : message!.hashCode) +
+    (details.hashCode);
 
   @override
-  String toString() => 'RpcStatus[code=$code, details=$details, message=$message]';
+  String toString() => 'RpcStatus[code=$code, message=$message, details=$details]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -59,12 +59,12 @@ class RpcStatus {
     } else {
       json[r'code'] = null;
     }
-      json[r'details'] = this.details;
     if (this.message != null) {
       json[r'message'] = this.message;
     } else {
       json[r'message'] = null;
     }
+      json[r'details'] = this.details;
     return json;
   }
 
@@ -88,8 +88,8 @@ class RpcStatus {
 
       return RpcStatus(
         code: mapValueOfType<int>(json, r'code'),
-        details: ProtobufAny.listFromJson(json[r'details']),
         message: mapValueOfType<String>(json, r'message'),
+        details: ProtobufAny.listFromJson(json[r'details']),
       );
     }
     return null;

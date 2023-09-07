@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **int** |  | [optional] 
-**details** | [**List[ProtobufAny]**](ProtobufAny.md) |  | [optional] 
 **message** | **str** |  | [optional] 
+**details** | [**List[ProtobufAny]**](ProtobufAny.md) |  | [optional] 
 
 ## Example
 

@@ -39,6 +39,9 @@ class TestV1ExampleServiceQueryResponse(unittest.TestCase):
             return V1ExampleServiceQueryResponse(
                 value = openapi_client.models.protov1_response.protov1Response(
                     code = 'OK', 
+                    details = [
+                        ''
+                        ], 
                     message = '', )
             )
         else:

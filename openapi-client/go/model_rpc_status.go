@@ -21,8 +21,8 @@ var _ MappedNullable = &RpcStatus{}
 // RpcStatus struct for RpcStatus
 type RpcStatus struct {
 	Code    *int32        `json:"code,omitempty"`
-	Details []ProtobufAny `json:"details,omitempty"`
 	Message *string       `json:"message,omitempty"`
+	Details []ProtobufAny `json:"details,omitempty"`
 }
 
 // NewRpcStatus instantiates a new RpcStatus object
@@ -74,38 +74,6 @@ func (o *RpcStatus) SetCode(v int32) {
 	o.Code = &v
 }
 
-// GetDetails returns the Details field value if set, zero value otherwise.
-func (o *RpcStatus) GetDetails() []ProtobufAny {
-	if o == nil || IsNil(o.Details) {
-		var ret []ProtobufAny
-		return ret
-	}
-	return o.Details
-}
-
-// GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RpcStatus) GetDetailsOk() ([]ProtobufAny, bool) {
-	if o == nil || IsNil(o.Details) {
-		return nil, false
-	}
-	return o.Details, true
-}
-
-// HasDetails returns a boolean if a field has been set.
-func (o *RpcStatus) HasDetails() bool {
-	if o != nil && !IsNil(o.Details) {
-		return true
-	}
-
-	return false
-}
-
-// SetDetails gets a reference to the given []ProtobufAny and assigns it to the Details field.
-func (o *RpcStatus) SetDetails(v []ProtobufAny) {
-	o.Details = v
-}
-
 // GetMessage returns the Message field value if set, zero value otherwise.
 func (o *RpcStatus) GetMessage() string {
 	if o == nil || IsNil(o.Message) {
@@ -138,6 +106,38 @@ func (o *RpcStatus) SetMessage(v string) {
 	o.Message = &v
 }
 
+// GetDetails returns the Details field value if set, zero value otherwise.
+func (o *RpcStatus) GetDetails() []ProtobufAny {
+	if o == nil || IsNil(o.Details) {
+		var ret []ProtobufAny
+		return ret
+	}
+	return o.Details
+}
+
+// GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RpcStatus) GetDetailsOk() ([]ProtobufAny, bool) {
+	if o == nil || IsNil(o.Details) {
+		return nil, false
+	}
+	return o.Details, true
+}
+
+// HasDetails returns a boolean if a field has been set.
+func (o *RpcStatus) HasDetails() bool {
+	if o != nil && !IsNil(o.Details) {
+		return true
+	}
+
+	return false
+}
+
+// SetDetails gets a reference to the given []ProtobufAny and assigns it to the Details field.
+func (o *RpcStatus) SetDetails(v []ProtobufAny) {
+	o.Details = v
+}
+
 func (o RpcStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -151,11 +151,11 @@ func (o RpcStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if !IsNil(o.Details) {
-		toSerialize["details"] = o.Details
-	}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
+	}
+	if !IsNil(o.Details) {
+		toSerialize["details"] = o.Details
 	}
 	return toSerialize, nil
 }

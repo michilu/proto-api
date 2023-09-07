@@ -23,11 +23,13 @@ protov1_response_t* instantiate_protov1_response(int include_optional) {
   if (include_optional) {
     protov1_response = protov1_response_create(
       an_example_of_generating_swagger_via_grpc_ecosystem__protov1_response__"OK",
+      list_createList(),
       "0"
     );
   } else {
     protov1_response = protov1_response_create(
       an_example_of_generating_swagger_via_grpc_ecosystem__protov1_response__"OK",
+      list_createList(),
       "0"
     );
   }

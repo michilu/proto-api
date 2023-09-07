@@ -38,12 +38,12 @@ class TestRpcStatus(unittest.TestCase):
         if include_optional:
             return RpcStatus(
                 code = 56,
+                message = '',
                 details = [
                     {
                         'key' : None
                         }
-                    ],
-                message = ''
+                    ]
             )
         else:
             return RpcStatus(

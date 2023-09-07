@@ -16,31 +16,31 @@ class RpcStatus(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, code: int=None, details: List[ProtobufAny]=None, message: str=None):  # noqa: E501
+    def __init__(self, code: int=None, message: str=None, details: List[ProtobufAny]=None):  # noqa: E501
         """RpcStatus - a model defined in Swagger
 
         :param code: The code of this RpcStatus.  # noqa: E501
         :type code: int
-        :param details: The details of this RpcStatus.  # noqa: E501
-        :type details: List[ProtobufAny]
         :param message: The message of this RpcStatus.  # noqa: E501
         :type message: str
+        :param details: The details of this RpcStatus.  # noqa: E501
+        :type details: List[ProtobufAny]
         """
         self.swagger_types = {
             'code': int,
-            'details': List[ProtobufAny],
-            'message': str
+            'message': str,
+            'details': List[ProtobufAny]
         }
 
         self.attribute_map = {
             'code': 'code',
-            'details': 'details',
-            'message': 'message'
+            'message': 'message',
+            'details': 'details'
         }
 
         self._code = code
-        self._details = details
         self._message = message
+        self._details = details
 
     @classmethod
     def from_dict(cls, dikt) -> 'RpcStatus':
@@ -75,27 +75,6 @@ class RpcStatus(Model):
         self._code = code
 
     @property
-    def details(self) -> List[ProtobufAny]:
-        """Gets the details of this RpcStatus.
-
-
-        :return: The details of this RpcStatus.
-        :rtype: List[ProtobufAny]
-        """
-        return self._details
-
-    @details.setter
-    def details(self, details: List[ProtobufAny]):
-        """Sets the details of this RpcStatus.
-
-
-        :param details: The details of this RpcStatus.
-        :type details: List[ProtobufAny]
-        """
-
-        self._details = details
-
-    @property
     def message(self) -> str:
         """Gets the message of this RpcStatus.
 
@@ -115,3 +94,24 @@ class RpcStatus(Model):
         """
 
         self._message = message
+
+    @property
+    def details(self) -> List[ProtobufAny]:
+        """Gets the details of this RpcStatus.
+
+
+        :return: The details of this RpcStatus.
+        :rtype: List[ProtobufAny]
+        """
+        return self._details
+
+    @details.setter
+    def details(self, details: List[ProtobufAny]):
+        """Sets the details of this RpcStatus.
+
+
+        :param details: The details of this RpcStatus.
+        :type details: List[ProtobufAny]
+        """
+
+        self._details = details

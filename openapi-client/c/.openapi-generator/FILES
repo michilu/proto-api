@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 CMakeLists.txt
 Packing.cmake
 README.md
@@ -43,3 +44,10 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_check_response_serving_status.c
+unit-test/test_protobuf_any.c
+unit-test/test_protov1_response.c
+unit-test/test_rpc_code.c
+unit-test/test_rpc_status.c
+unit-test/test_v1_check_response.c
+unit-test/test_v1_example_service_query_response.c

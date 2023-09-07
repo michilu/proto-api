@@ -14,7 +14,7 @@ import { ProtobufAny } from './protobufAny';
 
 export interface RpcStatus { 
     code?: number;
-    details?: Array<ProtobufAny>;
     message?: string;
+    details?: Array<ProtobufAny>;
 }
 

@@ -34,16 +34,16 @@ export interface RpcStatus {
     code?: number;
     /**
      * 
-     * @type {Array<ProtobufAny>}
-     * @memberof RpcStatus
-     */
-    details?: Array<ProtobufAny>;
-    /**
-     * 
      * @type {string}
      * @memberof RpcStatus
      */
     message?: string;
+    /**
+     * 
+     * @type {Array<ProtobufAny>}
+     * @memberof RpcStatus
+     */
+    details?: Array<ProtobufAny>;
 }
 
 /**
@@ -66,8 +66,8 @@ export function RpcStatusFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     return {
         
         'code': !exists(json, 'code') ? undefined : json['code'],
-        'details': !exists(json, 'details') ? undefined : ((json['details'] as Array<any>).map(ProtobufAnyFromJSON)),
         'message': !exists(json, 'message') ? undefined : json['message'],
+        'details': !exists(json, 'details') ? undefined : ((json['details'] as Array<any>).map(ProtobufAnyFromJSON)),
     };
 }
 
@@ -81,8 +81,8 @@ export function RpcStatusToJSON(value?: RpcStatus | null): any {
     return {
         
         'code': value.code,
-        'details': value.details === undefined ? undefined : ((value.details as Array<any>).map(ProtobufAnyToJSON)),
         'message': value.message,
+        'details': value.details === undefined ? undefined : ((value.details as Array<any>).map(ProtobufAnyToJSON)),
     };
 }
 
