@@ -104,8 +104,7 @@ grpc/python/.keep: $(PROTO)
 	touch $@
 
 apidocs.swagger.json: $(BUF_IMAGE)
-	cd $(PROTO_DIR) && buf generate
-	jq --sort-keys . $@ > $@.tmp && rm $@ && mv $@.tmp $@
+	buf generate
 
 apidocs.swagger.yaml: apidocs.swagger.json
 	yq --prettyPrint eval $< > $@

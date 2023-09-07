@@ -12,3 +12,8 @@ plugins:
   out: grpc/python
 - plugin: buf.build/grpc/python
   out: grpc/python
+- plugin: buf.build/grpc-ecosystem/openapiv2
+  out: .
+  opt:
+  - allow_merge=true
+  - merge_file_name=apidocs.json
