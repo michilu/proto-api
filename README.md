@@ -24,7 +24,7 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
   - `$ go install github.com/danielvladco/go-proto-gql/protoc-gen-gqlgencfg@v0.7.3`
   
 ## OpenAPI
-- [grpc-ecosystem/grpc-gateway/protoc-gen-swagger at v1.7.0](https://github.com/grpc-ecosystem/grpc-gateway/tree/v1.7.0) `$ go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v1.7.0`
+- [grpc-ecosystem/grpc-gateway/protoc-gen-openapiv2](https://github.com/grpc-ecosystem/grpc-gateway/tree/main/protoc-gen-openapiv2)
 - [openapitools/openapi-generator-cli Tags - Docker Hub](https://hub.docker.com/r/openapitools/openapi-generator-cli/tags?ordering=name)
 - [jqlang/jq: Command-line JSON processor](https://github.com/jqlang/jq) `$ brew install jq`
 - [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
