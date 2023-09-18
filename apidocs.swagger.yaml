@@ -11,9 +11,10 @@ info:
 tags:
   - name: HealthService
   - name: ExampleService
+host: localhost:8080
 schemes:
+  - http
   - https
-  - wss
 consumes:
   - application/json
 produces:

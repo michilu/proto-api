@@ -20,9 +20,10 @@
       "name": "ExampleService"
     }
   ],
+  "host": "localhost:8080",
   "schemes": [
-    "https",
-    "wss"
+    "http",
+    "https"
   ],
   "consumes": [
     "application/json"
