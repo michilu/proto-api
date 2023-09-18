@@ -9,7 +9,8 @@ info:
   title: An example of generating swagger via gRPC ecosystem.
   version: "1.0"
 servers:
-- url: /
+- url: http://localhost:8080/
+- url: https://localhost:8080/
 security:
 - ApiKeyAuth: []
   OAuth2:

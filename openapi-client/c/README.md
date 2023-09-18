@@ -61,7 +61,7 @@ Note: You don't need to specify includes for models and include folder separatel
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://localhost:8080*
 
 Category | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
