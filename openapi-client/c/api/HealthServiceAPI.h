@@ -5,7 +5,6 @@
 #include "../external/cJSON.h"
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
-#include "../model/rpc_status.h"
 #include "../model/v1_check_response.h"
 
 

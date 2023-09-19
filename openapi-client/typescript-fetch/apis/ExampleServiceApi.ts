@@ -15,12 +15,9 @@
 
 import * as runtime from '../runtime';
 import type {
-  RpcStatus,
   V1ExampleServiceQueryResponse,
 } from '../models/index';
 import {
-    RpcStatusFromJSON,
-    RpcStatusToJSON,
     V1ExampleServiceQueryResponseFromJSON,
     V1ExampleServiceQueryResponseToJSON,
 } from '../models/index';

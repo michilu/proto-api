@@ -43,12 +43,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1ExampleServiceQueryResponse'
           description: A successful response.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
-          description: An unexpected error response.
       security:
       - ApiKeyAuth: []
         OAuth2:
@@ -72,12 +66,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1CheckResponse'
           description: A successful response.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/rpcStatus'
-          description: An unexpected error response.
       tags:
       - HealthService
 components:
@@ -89,13 +77,6 @@ components:
       - SERVING_STATUS_SERVING
       - SERVING_STATUS_NOT_SERVING
       type: string
-    protobufAny:
-      additionalProperties:
-        type: object
-      properties:
-        '@type':
-          type: string
-      type: object
     protov1Response:
       example:
         code: null
@@ -263,18 +244,6 @@ components:
       - UNAVAILABLE
       - DATA_LOSS
       type: string
-    rpcStatus:
-      properties:
-        code:
-          format: int32
-          type: integer
-        message:
-          type: string
-        details:
-          items:
-            $ref: '#/components/schemas/protobufAny'
-          type: array
-      type: object
     v1CheckResponse:
       example:
         status: null

@@ -35,8 +35,5 @@ func (s *HealthServiceAPIService) HealthServiceCheck(ctx context.Context, servic
 	// TODO: Uncomment the next line to return response Response(200, V1CheckResponse{}) or use other options such as http.Ok ...
 	// return Response(200, V1CheckResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, RpcStatus{}) or use other options such as http.Ok ...
-	// return Response(0, RpcStatus{}), nil
-
 	return Response(http.StatusNotImplemented, nil), errors.New("HealthServiceCheck method not implemented")
 }

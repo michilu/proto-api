@@ -73,10 +73,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CheckResponseServingStatus](doc/CheckResponseServingStatus.md)
- - [ProtobufAny](doc/ProtobufAny.md)
  - [Protov1Response](doc/Protov1Response.md)
  - [RpcCode](doc/RpcCode.md)
- - [RpcStatus](doc/RpcStatus.md)
  - [V1CheckResponse](doc/V1CheckResponse.md)
  - [V1ExampleServiceQueryResponse](doc/V1ExampleServiceQueryResponse.md)
 

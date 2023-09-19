@@ -71,10 +71,6 @@ ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , object
     //if (apiClient->response_code == 200) {
     //    printf("%s\n","A successful response.");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","An unexpected error response.");
-    //}
     //nonprimitive not container
     cJSON *ExampleServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     v1_example_service_query_response_t *elementToReturn = v1_example_service_query_response_parseFromJSON(ExampleServiceAPIlocalVarJSON);

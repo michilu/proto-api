@@ -72,10 +72,8 @@ Category | Method | HTTP request | Description
 ## Documentation for Models
 
  - [check_response_serving_status_t](docs/check_response_serving_status.md)
- - [protobuf_any_t](docs/protobuf_any.md)
  - [protov1_response_t](docs/protov1_response.md)
  - [rpc_code_t](docs/rpc_code.md)
- - [rpc_status_t](docs/rpc_status.md)
  - [v1_check_response_t](docs/v1_check_response.md)
  - [v1_example_service_query_response_t](docs/v1_example_service_query_response.md)
 

@@ -3,7 +3,6 @@ from typing import Dict
 from typing import Tuple
 from typing import Union
 
-from openapi_server.models.rpc_status import RpcStatus  # noqa: E501
 from openapi_server.models.v1_example_service_query_response import V1ExampleServiceQueryResponse  # noqa: E501
 from openapi_server import util
 

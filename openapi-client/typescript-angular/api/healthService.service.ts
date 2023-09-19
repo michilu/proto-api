@@ -19,8 +19,6 @@ import { CustomHttpParameterCodec }                          from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 // @ts-ignore
-import { RpcStatus } from '../model/rpcStatus';
-// @ts-ignore
 import { V1CheckResponse } from '../model/v1CheckResponse';
 
 // @ts-ignore

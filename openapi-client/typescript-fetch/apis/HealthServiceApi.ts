@@ -15,12 +15,9 @@
 
 import * as runtime from '../runtime';
 import type {
-  RpcStatus,
   V1CheckResponse,
 } from '../models/index';
 import {
-    RpcStatusFromJSON,
-    RpcStatusToJSON,
     V1CheckResponseFromJSON,
     V1CheckResponseToJSON,
 } from '../models/index';

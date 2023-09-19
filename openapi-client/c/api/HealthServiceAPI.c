@@ -56,10 +56,6 @@ HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char * service )
     //if (apiClient->response_code == 200) {
     //    printf("%s\n","A successful response.");
     //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 0) {
-    //    printf("%s\n","An unexpected error response.");
-    //}
     //nonprimitive not container
     cJSON *HealthServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
     v1_check_response_t *elementToReturn = v1_check_response_parseFromJSON(HealthServiceAPIlocalVarJSON);

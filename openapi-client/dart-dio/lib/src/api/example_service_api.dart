@@ -9,7 +9,6 @@ import 'package:dio/dio.dart';
 
 import 'package:built_value/json_object.dart';
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/rpc_status.dart';
 import 'package:openapi/src/model/v1_example_service_query_response.dart';
 
 class ExampleServiceApi {

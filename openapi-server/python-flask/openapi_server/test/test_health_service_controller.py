@@ -2,7 +2,6 @@ import unittest
 
 from flask import json
 
-from openapi_server.models.rpc_status import RpcStatus  # noqa: E501
 from openapi_server.models.v1_check_response import V1CheckResponse  # noqa: E501
 from openapi_server.test import BaseTestCase
 

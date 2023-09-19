@@ -1,7 +1,6 @@
 from typing import List, Dict
 from aiohttp import web
 
-from openapi_server.models.rpc_status import RpcStatus
 from openapi_server.models.v1_check_response import V1CheckResponse
 from openapi_server import util
 

@@ -1,7 +1,6 @@
 import connexion
 import six
 
-from app.openapi_server.models.rpc_status import RpcStatus  # noqa: E501
 from app.openapi_server.models.v1_check_response import V1CheckResponse  # noqa: E501
 from openapi_server import util
 

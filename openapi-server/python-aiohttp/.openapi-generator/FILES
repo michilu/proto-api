@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 README.md
 openapi_server/__init__.py
 openapi_server/__main__.py
@@ -9,10 +10,8 @@ openapi_server/controllers/security_controller.py
 openapi_server/models/__init__.py
 openapi_server/models/base_model.py
 openapi_server/models/check_response_serving_status.py
-openapi_server/models/protobuf_any.py
 openapi_server/models/protov1_response.py
 openapi_server/models/rpc_code.py
-openapi_server/models/rpc_status.py
 openapi_server/models/v1_check_response.py
 openapi_server/models/v1_example_service_query_response.py
 openapi_server/openapi/openapi.yaml
@@ -23,4 +22,6 @@ setup.py
 test-requirements.txt
 tests/__init__.py
 tests/conftest.py
+tests/test_example_service_controller.py
+tests/test_health_service_controller.py
 tox.ini

@@ -35,8 +35,5 @@ func (s *ExampleServiceAPIService) ExampleServiceQuery(ctx context.Context, id s
 	// TODO: Uncomment the next line to return response Response(200, V1ExampleServiceQueryResponse{}) or use other options such as http.Ok ...
 	// return Response(200, V1ExampleServiceQueryResponse{}), nil
 
-	// TODO: Uncomment the next line to return response Response(0, RpcStatus{}) or use other options such as http.Ok ...
-	// return Response(0, RpcStatus{}), nil
-
 	return Response(http.StatusNotImplemented, nil), errors.New("ExampleServiceQuery method not implemented")
 }

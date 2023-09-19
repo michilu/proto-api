@@ -1,12 +1,11 @@
+.openapi-generator-ignore
 apis/ExampleServiceApi.ts
 apis/HealthServiceApi.ts
 apis/index.ts
 index.ts
 models/CheckResponseServingStatus.ts
-models/ProtobufAny.ts
 models/Protov1Response.ts
 models/RpcCode.ts
-models/RpcStatus.ts
 models/V1CheckResponse.ts
 models/V1ExampleServiceQueryResponse.ts
 models/index.ts

@@ -6,7 +6,6 @@
 #include "../include/keyValuePair.h"
 #include "../include/binary.h"
 #include "../model/object.h"
-#include "../model/rpc_status.h"
 #include "../model/v1_example_service_query_response.h"
 
 

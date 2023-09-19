@@ -28,10 +28,6 @@ paths:
           description: A successful response.
           schema:
             $ref: '#/definitions/v1ExampleServiceQueryResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/rpcStatus'
       parameters:
         - name: id
           in: path
@@ -58,10 +54,6 @@ paths:
           description: A successful response.
           schema:
             $ref: '#/definitions/v1CheckResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/rpcStatus'
       parameters:
         - name: service
           in: query
@@ -77,12 +69,6 @@ definitions:
       - SERVING_STATUS_SERVING
       - SERVING_STATUS_NOT_SERVING
     default: SERVING_STATUS_UNKNOWN_UNSPECIFIED
-  protobufAny:
-    type: object
-    properties:
-      '@type':
-        type: string
-    additionalProperties: {}
   protov1Response:
     type: object
     properties:
@@ -244,19 +230,6 @@ definitions:
        - DATA_LOSS: Unrecoverable data loss or corruption.
 
       HTTP Mapping: 500 Internal Server Error
-  rpcStatus:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      details:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/protobufAny'
   v1CheckResponse:
     type: object
     properties:

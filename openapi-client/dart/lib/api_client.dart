@@ -184,14 +184,10 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'CheckResponseServingStatus':
           return CheckResponseServingStatusTypeTransformer().decode(value);
-        case 'ProtobufAny':
-          return ProtobufAny.fromJson(value);
         case 'Protov1Response':
           return Protov1Response.fromJson(value);
         case 'RpcCode':
           return RpcCodeTypeTransformer().decode(value);
-        case 'RpcStatus':
-          return RpcStatus.fromJson(value);
         case 'V1CheckResponse':
           return V1CheckResponse.fromJson(value);
         case 'V1ExampleServiceQueryResponse':

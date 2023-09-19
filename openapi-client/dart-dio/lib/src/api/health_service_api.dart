@@ -8,7 +8,6 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/rpc_status.dart';
 import 'package:openapi/src/model/v1_check_response.dart';
 
 class HealthServiceApi {

@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 CMakeLists.txt
 Packing.cmake
 README.md
@@ -8,10 +9,8 @@ api/HealthServiceAPI.h
 docs/ExampleServiceAPI.md
 docs/HealthServiceAPI.md
 docs/check_response_serving_status.md
-docs/protobuf_any.md
 docs/protov1_response.md
 docs/rpc_code.md
-docs/rpc_status.md
 docs/v1_check_response.md
 docs/v1_example_service_query_response.md
 external/cJSON.c
@@ -26,14 +25,10 @@ model/check_response_serving_status.c
 model/check_response_serving_status.h
 model/object.c
 model/object.h
-model/protobuf_any.c
-model/protobuf_any.h
 model/protov1_response.c
 model/protov1_response.h
 model/rpc_code.c
 model/rpc_code.h
-model/rpc_status.c
-model/rpc_status.h
 model/v1_check_response.c
 model/v1_check_response.h
 model/v1_example_service_query_response.c
@@ -43,3 +38,8 @@ src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
+unit-test/test_check_response_serving_status.c
+unit-test/test_protov1_response.c
+unit-test/test_rpc_code.c
+unit-test/test_v1_check_response.c
+unit-test/test_v1_example_service_query_response.c

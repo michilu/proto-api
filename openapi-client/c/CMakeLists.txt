@@ -55,10 +55,8 @@ set(SRCS
     external/cJSON.c
     model/object.c
     model/check_response_serving_status.c
-    model/protobuf_any.c
     model/protov1_response.c
     model/rpc_code.c
-    model/rpc_status.c
     model/v1_check_response.c
     model/v1_example_service_query_response.c
     api/ExampleServiceAPI.c
@@ -74,10 +72,8 @@ set(HDRS
     external/cJSON.h
     model/object.h
     model/check_response_serving_status.h
-    model/protobuf_any.h
     model/protov1_response.h
     model/rpc_code.h
-    model/rpc_status.h
     model/v1_check_response.h
     model/v1_example_service_query_response.h
     api/ExampleServiceAPI.h
