@@ -16,4 +16,5 @@ plugins:
   out: .
   opt:
   - allow_merge=true
+  - disable_default_errors=true
   - merge_file_name=apidocs.json
