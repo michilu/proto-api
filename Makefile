@@ -11,12 +11,8 @@ OPENAPI_CLIENT?=\
  typescript-fetch\
 
 OPENAPI_SERVER?=\
- go-echo-server\
- go-gin-server\
  go-server\
  python-aiohttp\
- python-blueplanet\
- python-flask\
 
 KEEP?=\
  grpc/python/.keep\
