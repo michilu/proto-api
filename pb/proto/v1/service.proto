@@ -41,5 +41,5 @@ message ExampleServiceQueryRequest {
 }
 
 message ExampleServiceQueryResponse {
-  Status error = 1;
+  Status status = 1;
 }

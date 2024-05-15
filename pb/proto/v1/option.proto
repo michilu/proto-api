@@ -18,7 +18,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
       url: "https://github.com/michilu/proto-api/blob/master/LICENSE"
     }
   }
-  host: "localhost:8080"
+  host: "localhost:3100"
   schemes: HTTP
   schemes: HTTPS
   consumes: "application/json"
