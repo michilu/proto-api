@@ -1,4 +1,5 @@
 SHELL:=/usr/bin/env bash
+DOCKER_NAME?=$(notdir $(shell pwd))
 OPENAPI_GENERATOR_CLI_VERSION?=latest
 OPENAPI_CLIENT?=\
  c\
@@ -16,6 +17,10 @@ OPENAPI_SERVER?=\
  python-aiohttp\
  python-blueplanet\
  python-flask\
+
+KEEP?=\
+ grpc/python/.keep\
+ ogen/.keep\
 
 GO:=go
 GOM:=GO111MODULE=on $(GO)
@@ -37,10 +42,11 @@ GRAPH:=$(GRAPHQLS) $(GQLGEN) gqlgen.yml
 .PHONY: all
 all:\
  apidocs.swagger.yaml\
+ openapi.yaml\
  $(BUF_IMAGE)\
  $(GOSRC)\
  $(GRAPH)\
- grpc/python/.keep\
+ $(KEEP)\
  $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT)))\
  $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))\
  
@@ -49,12 +55,15 @@ all:\
 .PHONY: clean
 clean:
 	find $(PROTO_DIR) -name "*.pb*.go" -delete
-	find . -type f -name "*.swagger.*" -delete
+	find . -depth 1 -type f -name "*.swagger.*" -delete
+	find . -depth 1 -type f -name "openapi.*" -delete
 	rm -rf\
  $(BUF_IMAGE)\
  gqlgen.yml\
  graph\
+ $(KEEP)\
  grpc/python\
+ ogen/oas\
  openapi-client\
  openapi-server\
  ;
@@ -103,15 +112,26 @@ grpc/python/.keep: $(PROTO)
  ;buf generate
 	touch $@
 
+ogen/.keep: openapi.yaml
+	( cd $(dir $@) && go generate ./... )
+	docker build --tag "$(DOCKER_NAME)-$(shell dirname $@)" $(dir $@)
+	touch $@
+
 apidocs.swagger.json: $(BUF_IMAGE)
 	buf generate
 
 apidocs.swagger.yaml: apidocs.swagger.json
-	yq --prettyPrint eval $< > $@
+	yq --output-format=yaml --prettyPrint eval $< > $@
 
-openapi-client/%: apidocs.swagger.json
+openapi.json: apidocs.swagger.json
+	npx swagger2openapi --outfile $@ $<
+
+openapi.yaml: openapi.json
+	yq --output-format=yaml --prettyPrint eval $< > $@
+
+openapi-client/%: openapi.json
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
 	touch $@
-openapi-server/%: apidocs.swagger.json
+openapi-server/%: openapi.json
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
 	touch $@
