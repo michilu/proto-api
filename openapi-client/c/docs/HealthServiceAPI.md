@@ -1,6 +1,6 @@
 # HealthServiceAPI
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *http://localhost:3100*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -16,7 +16,7 @@ v1_check_response_t* HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient,
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**service** | **char \*** |  | [optional] 
+**service** | **char \*** | The service name to check the health of. | 
 
 ### Return type
 

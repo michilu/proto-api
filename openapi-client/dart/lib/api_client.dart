@@ -11,7 +11,7 @@
 part of openapi.api;
 
 class ApiClient {
-  ApiClient({this.basePath = 'http://localhost:8080', this.authentication,});
+  ApiClient({this.basePath = 'http://localhost:3100', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -184,8 +184,8 @@ class ApiClient {
           return value is DateTime ? value : DateTime.tryParse(value);
         case 'CheckResponseServingStatus':
           return CheckResponseServingStatusTypeTransformer().decode(value);
-        case 'Protov1Response':
-          return Protov1Response.fromJson(value);
+        case 'Protov1Status':
+          return Protov1Status.fromJson(value);
         case 'RpcCode':
           return RpcCodeTypeTransformer().decode(value);
         case 'V1CheckResponse':

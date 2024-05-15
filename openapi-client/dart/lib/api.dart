@@ -32,7 +32,7 @@ part 'api/example_service_api.dart';
 part 'api/health_service_api.dart';
 
 part 'model/check_response_serving_status.dart';
-part 'model/protov1_response.dart';
+part 'model/protov1_status.dart';
 part 'model/rpc_code.dart';
 part 'model/v1_check_response.dart';
 part 'model/v1_example_service_query_response.dart';

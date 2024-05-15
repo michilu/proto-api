@@ -1,7 +1,7 @@
 /*
  * v1_check_response.h
  *
- * 
+ * The response message containing the health status of the service.
  */
 
 #ifndef _v1_check_response_H_

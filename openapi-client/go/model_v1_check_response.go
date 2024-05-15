@@ -18,19 +18,18 @@ import (
 // checks if the V1CheckResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &V1CheckResponse{}
 
-// V1CheckResponse struct for V1CheckResponse
+// V1CheckResponse The response message containing the health status of the service.
 type V1CheckResponse struct {
-	Status *CheckResponseServingStatus `json:"status,omitempty"`
+	Status CheckResponseServingStatus `json:"status"`
 }
 
 // NewV1CheckResponse instantiates a new V1CheckResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1CheckResponse() *V1CheckResponse {
+func NewV1CheckResponse(status CheckResponseServingStatus) *V1CheckResponse {
 	this := V1CheckResponse{}
-	var status CheckResponseServingStatus = UNKNOWN_UNSPECIFIED
-	this.Status = &status
+	this.Status = status
 	return &this
 }
 
@@ -40,40 +39,32 @@ func NewV1CheckResponse() *V1CheckResponse {
 func NewV1CheckResponseWithDefaults() *V1CheckResponse {
 	this := V1CheckResponse{}
 	var status CheckResponseServingStatus = UNKNOWN_UNSPECIFIED
-	this.Status = &status
+	this.Status = status
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *V1CheckResponse) GetStatus() CheckResponseServingStatus {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret CheckResponseServingStatus
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *V1CheckResponse) GetStatusOk() (*CheckResponseServingStatus, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *V1CheckResponse) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given CheckResponseServingStatus and assigns it to the Status field.
+// SetStatus sets field value
 func (o *V1CheckResponse) SetStatus(v CheckResponseServingStatus) {
-	o.Status = &v
+	o.Status = v
 }
 
 func (o V1CheckResponse) MarshalJSON() ([]byte, error) {
@@ -86,9 +77,7 @@ func (o V1CheckResponse) MarshalJSON() ([]byte, error) {
 
 func (o V1CheckResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
+	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
 

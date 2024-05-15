@@ -6,13 +6,13 @@
 
 
 v1_example_service_query_response_t *v1_example_service_query_response_create(
-    protov1_response_t *value
+    protov1_status_t *status
     ) {
     v1_example_service_query_response_t *v1_example_service_query_response_local_var = malloc(sizeof(v1_example_service_query_response_t));
     if (!v1_example_service_query_response_local_var) {
         return NULL;
     }
-    v1_example_service_query_response_local_var->value = value;
+    v1_example_service_query_response_local_var->status = status;
 
     return v1_example_service_query_response_local_var;
 }
@@ -23,9 +23,9 @@ void v1_example_service_query_response_free(v1_example_service_query_response_t 
         return ;
     }
     listEntry_t *listEntry;
-    if (v1_example_service_query_response->value) {
-        protov1_response_free(v1_example_service_query_response->value);
-        v1_example_service_query_response->value = NULL;
+    if (v1_example_service_query_response->status) {
+        protov1_status_free(v1_example_service_query_response->status);
+        v1_example_service_query_response->status = NULL;
     }
     free(v1_example_service_query_response);
 }
@@ -33,13 +33,13 @@ void v1_example_service_query_response_free(v1_example_service_query_response_t 
 cJSON *v1_example_service_query_response_convertToJSON(v1_example_service_query_response_t *v1_example_service_query_response) {
     cJSON *item = cJSON_CreateObject();
 
-    // v1_example_service_query_response->value
-    if(v1_example_service_query_response->value) {
-    cJSON *value_local_JSON = protov1_response_convertToJSON(v1_example_service_query_response->value);
-    if(value_local_JSON == NULL) {
+    // v1_example_service_query_response->status
+    if(v1_example_service_query_response->status) {
+    cJSON *status_local_JSON = protov1_status_convertToJSON(v1_example_service_query_response->status);
+    if(status_local_JSON == NULL) {
     goto fail; //model
     }
-    cJSON_AddItemToObject(item, "value", value_local_JSON);
+    cJSON_AddItemToObject(item, "status", status_local_JSON);
     if(item->child == NULL) {
     goto fail;
     }
@@ -57,25 +57,25 @@ v1_example_service_query_response_t *v1_example_service_query_response_parseFrom
 
     v1_example_service_query_response_t *v1_example_service_query_response_local_var = NULL;
 
-    // define the local variable for v1_example_service_query_response->value
-    protov1_response_t *value_local_nonprim = NULL;
+    // define the local variable for v1_example_service_query_response->status
+    protov1_status_t *status_local_nonprim = NULL;
 
-    // v1_example_service_query_response->value
-    cJSON *value = cJSON_GetObjectItemCaseSensitive(v1_example_service_query_responseJSON, "value");
-    if (value) { 
-    value_local_nonprim = protov1_response_parseFromJSON(value); //nonprimitive
+    // v1_example_service_query_response->status
+    cJSON *status = cJSON_GetObjectItemCaseSensitive(v1_example_service_query_responseJSON, "status");
+    if (status) { 
+    status_local_nonprim = protov1_status_parseFromJSON(status); //nonprimitive
     }
 
 
     v1_example_service_query_response_local_var = v1_example_service_query_response_create (
-        value ? value_local_nonprim : NULL
+        status ? status_local_nonprim : NULL
         );
 
     return v1_example_service_query_response_local_var;
 end:
-    if (value_local_nonprim) {
-        protov1_response_free(value_local_nonprim);
-        value_local_nonprim = NULL;
+    if (status_local_nonprim) {
+        protov1_status_free(status_local_nonprim);
+        status_local_nonprim = NULL;
     }
     return NULL;
 

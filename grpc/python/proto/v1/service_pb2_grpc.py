@@ -18,7 +18,7 @@ class ExampleServiceStub(object):
                 '/proto.v1.ExampleService/Query',
                 request_serializer=proto_dot_v1_dot_service__pb2.ExampleServiceQueryRequest.SerializeToString,
                 response_deserializer=proto_dot_v1_dot_service__pb2.ExampleServiceQueryResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class ExampleServiceServicer(object):
@@ -59,8 +59,18 @@ class ExampleService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/proto.v1.ExampleService/Query',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/proto.v1.ExampleService/Query',
             proto_dot_v1_dot_service__pb2.ExampleServiceQueryRequest.SerializeToString,
             proto_dot_v1_dot_service__pb2.ExampleServiceQueryResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)

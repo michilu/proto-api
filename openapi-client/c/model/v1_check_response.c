@@ -51,7 +51,9 @@ cJSON *v1_check_response_convertToJSON(v1_check_response_t *v1_check_response) {
     cJSON *item = cJSON_CreateObject();
 
     // v1_check_response->status
-    if(v1_check_response->status != an_example_of_generating_swagger_via_grpc_ecosystem__v1_check_response__NULL) {
+    if (an_example_of_generating_swagger_via_grpc_ecosystem__v1_check_response__NULL == v1_check_response->status) {
+        goto fail;
+    }
     cJSON *status_local_JSON = check_response_serving_status_convertToJSON(v1_check_response->status);
     if(status_local_JSON == NULL) {
         goto fail; // custom
@@ -59,7 +61,6 @@ cJSON *v1_check_response_convertToJSON(v1_check_response_t *v1_check_response) {
     cJSON_AddItemToObject(item, "status", status_local_JSON);
     if(item->child == NULL) {
         goto fail;
-    }
     }
 
     return item;
@@ -79,13 +80,16 @@ v1_check_response_t *v1_check_response_parseFromJSON(cJSON *v1_check_responseJSO
 
     // v1_check_response->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(v1_check_responseJSON, "status");
-    if (status) { 
-    status_local_nonprim = check_response_serving_status_parseFromJSON(status); //custom
+    if (!status) {
+        goto end;
     }
+
+    
+    status_local_nonprim = check_response_serving_status_parseFromJSON(status); //custom
 
 
     v1_check_response_local_var = v1_check_response_create (
-        status ? status_local_nonprim : NULL
+        status_local_nonprim
         );
 
     return v1_check_response_local_var;

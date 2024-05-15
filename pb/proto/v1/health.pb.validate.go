@@ -57,7 +57,16 @@ func (m *CheckRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Service
+	if utf8.RuneCountInString(m.GetService()) > 256 {
+		err := CheckRequestValidationError{
+			field:  "Service",
+			reason: "value length must be at most 256 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return CheckRequestMultiError(errors)
@@ -158,7 +167,16 @@ func (m *CheckResponse) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Status
+	if _, ok := CheckResponse_ServingStatus_name[int32(m.GetStatus())]; !ok {
+		err := CheckResponseValidationError{
+			field:  "Status",
+			reason: "value must be one of the defined enum values",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return CheckResponseMultiError(errors)

@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { Protov1Response } from './Protov1Response';
+import type { Protov1Status } from './Protov1Status';
 import {
-    Protov1ResponseFromJSON,
-    Protov1ResponseFromJSONTyped,
-    Protov1ResponseToJSON,
-} from './Protov1Response';
+    Protov1StatusFromJSON,
+    Protov1StatusFromJSONTyped,
+    Protov1StatusToJSON,
+} from './Protov1Status';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface V1ExampleServiceQueryResponse {
     /**
      * 
-     * @type {Protov1Response}
+     * @type {Protov1Status}
      * @memberof V1ExampleServiceQueryResponse
      */
-    value?: Protov1Response;
+    status?: Protov1Status;
 }
 
 /**
@@ -53,7 +53,7 @@ export function V1ExampleServiceQueryResponseFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'value': !exists(json, 'value') ? undefined : Protov1ResponseFromJSON(json['value']),
+        'status': !exists(json, 'status') ? undefined : Protov1StatusFromJSON(json['status']),
     };
 }
 
@@ -66,7 +66,7 @@ export function V1ExampleServiceQueryResponseToJSON(value?: V1ExampleServiceQuer
     }
     return {
         
-        'value': Protov1ResponseToJSON(value.value),
+        'status': Protov1StatusToJSON(value.status),
     };
 }
 

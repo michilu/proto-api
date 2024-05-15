@@ -11,12 +11,12 @@
 package openapi
 
 type V1ExampleServiceQueryResponse struct {
-	Value Protov1Response `json:"value,omitempty"`
+	Status Protov1Status `json:"status,omitempty"`
 }
 
 // AssertV1ExampleServiceQueryResponseRequired checks if the required fields are not zero-ed
 func AssertV1ExampleServiceQueryResponseRequired(obj V1ExampleServiceQueryResponse) error {
-	if err := AssertProtov1ResponseRequired(obj.Value); err != nil {
+	if err := AssertProtov1StatusRequired(obj.Status); err != nil {
 		return err
 	}
 	return nil

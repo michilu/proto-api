@@ -16,8 +16,8 @@ void main() {
   // final instance = V1ExampleServiceQueryResponse();
 
   group('test V1ExampleServiceQueryResponse', () {
-    // Protov1Response value
-    test('to test the property `value`', () async {
+    // Protov1Status status
+    test('to test the property `status`', () async {
       // TODO
     });
 

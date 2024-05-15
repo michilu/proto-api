@@ -62,7 +62,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *http://localhost:3100*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -73,7 +73,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CheckResponseServingStatus](doc/CheckResponseServingStatus.md)
- - [Protov1Response](doc/Protov1Response.md)
+ - [Protov1Status](doc/Protov1Status.md)
  - [RpcCode](doc/RpcCode.md)
  - [V1CheckResponse](doc/V1CheckResponse.md)
  - [V1ExampleServiceQueryResponse](doc/V1ExampleServiceQueryResponse.md)

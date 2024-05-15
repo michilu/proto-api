@@ -16,7 +16,7 @@
 #include "../model/v1_example_service_query_response.h"
 v1_example_service_query_response_t* instantiate_v1_example_service_query_response(int include_optional);
 
-#include "test_protov1_response.c"
+#include "test_protov1_status.c"
 
 
 v1_example_service_query_response_t* instantiate_v1_example_service_query_response(int include_optional) {
@@ -24,7 +24,7 @@ v1_example_service_query_response_t* instantiate_v1_example_service_query_respon
   if (include_optional) {
     v1_example_service_query_response = v1_example_service_query_response_create(
        // false, not to have infinite recursion
-      instantiate_protov1_response(0)
+      instantiate_protov1_status(0)
     );
   } else {
     v1_example_service_query_response = v1_example_service_query_response_create(

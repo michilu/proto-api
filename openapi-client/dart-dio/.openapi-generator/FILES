@@ -5,7 +5,7 @@ analysis_options.yaml
 doc/CheckResponseServingStatus.md
 doc/ExampleServiceApi.md
 doc/HealthServiceApi.md
-doc/Protov1Response.md
+doc/Protov1Status.md
 doc/RpcCode.md
 doc/V1CheckResponse.md
 doc/V1ExampleServiceQueryResponse.md
@@ -22,7 +22,7 @@ lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/check_response_serving_status.dart
 lib/src/model/date.dart
-lib/src/model/protov1_response.dart
+lib/src/model/protov1_status.dart
 lib/src/model/rpc_code.dart
 lib/src/model/v1_check_response.dart
 lib/src/model/v1_example_service_query_response.dart
@@ -31,7 +31,7 @@ pubspec.yaml
 test/check_response_serving_status_test.dart
 test/example_service_api_test.dart
 test/health_service_api_test.dart
-test/protov1_response_test.dart
+test/protov1_status_test.dart
 test/rpc_code_test.dart
 test/v1_check_response_test.dart
 test/v1_example_service_query_response_test.dart

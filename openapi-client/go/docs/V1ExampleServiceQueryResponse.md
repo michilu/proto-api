@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Value** | Pointer to [**Protov1Response**](Protov1Response.md) |  | [optional] 
+**Status** | Pointer to [**Protov1Status**](Protov1Status.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewV1ExampleServiceQueryResponseWithDefaults instantiates a new V1ExampleService
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetValue
+### GetStatus
 
-`func (o *V1ExampleServiceQueryResponse) GetValue() Protov1Response`
+`func (o *V1ExampleServiceQueryResponse) GetStatus() Protov1Status`
 
-GetValue returns the Value field if non-nil, zero value otherwise.
+GetStatus returns the Status field if non-nil, zero value otherwise.
 
-### GetValueOk
+### GetStatusOk
 
-`func (o *V1ExampleServiceQueryResponse) GetValueOk() (*Protov1Response, bool)`
+`func (o *V1ExampleServiceQueryResponse) GetStatusOk() (*Protov1Status, bool)`
 
-GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetValue
+### SetStatus
 
-`func (o *V1ExampleServiceQueryResponse) SetValue(v Protov1Response)`
+`func (o *V1ExampleServiceQueryResponse) SetStatus(v Protov1Status)`
 
-SetValue sets Value field to given value.
+SetStatus sets Status field to given value.
 
-### HasValue
+### HasStatus
 
-`func (o *V1ExampleServiceQueryResponse) HasValue() bool`
+`func (o *V1ExampleServiceQueryResponse) HasStatus() bool`
 
-HasValue returns a boolean if a field has been set.
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

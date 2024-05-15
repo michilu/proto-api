@@ -13,7 +13,7 @@ part of openapi.api;
 class V1ExampleServiceQueryResponse {
   /// Returns a new [V1ExampleServiceQueryResponse] instance.
   V1ExampleServiceQueryResponse({
-    this.value,
+    this.status,
   });
 
   ///
@@ -22,26 +22,26 @@ class V1ExampleServiceQueryResponse {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  Protov1Response? value;
+  Protov1Status? status;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is V1ExampleServiceQueryResponse &&
-    other.value == value;
+    other.status == status;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (value == null ? 0 : value!.hashCode);
+    (status == null ? 0 : status!.hashCode);
 
   @override
-  String toString() => 'V1ExampleServiceQueryResponse[value=$value]';
+  String toString() => 'V1ExampleServiceQueryResponse[status=$status]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.value != null) {
-      json[r'value'] = this.value;
+    if (this.status != null) {
+      json[r'status'] = this.status;
     } else {
-      json[r'value'] = null;
+      json[r'status'] = null;
     }
     return json;
   }
@@ -65,7 +65,7 @@ class V1ExampleServiceQueryResponse {
       }());
 
       return V1ExampleServiceQueryResponse(
-        value: Protov1Response.fromJson(json[r'value']),
+        status: Protov1Status.fromJson(json[r'status']),
       );
     }
     return null;

@@ -17,7 +17,7 @@ void main() {
   // final instance = HealthServiceApi();
 
   group('tests for HealthServiceApi', () {
-    //Future<V1CheckResponse> healthServiceCheck({ String service }) async
+    //Future<V1CheckResponse> healthServiceCheck(String service) async
     test('test healthServiceCheck', () async {
       // TODO
     });

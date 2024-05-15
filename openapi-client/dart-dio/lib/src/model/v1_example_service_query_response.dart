@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/protov1_response.dart';
+import 'package:openapi/src/model/protov1_status.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,11 +12,11 @@ part 'v1_example_service_query_response.g.dart';
 /// V1ExampleServiceQueryResponse
 ///
 /// Properties:
-/// * [value] 
+/// * [status] 
 @BuiltValue()
 abstract class V1ExampleServiceQueryResponse implements Built<V1ExampleServiceQueryResponse, V1ExampleServiceQueryResponseBuilder> {
-  @BuiltValueField(wireName: r'value')
-  Protov1Response? get value;
+  @BuiltValueField(wireName: r'status')
+  Protov1Status? get status;
 
   V1ExampleServiceQueryResponse._();
 
@@ -41,11 +41,11 @@ class _$V1ExampleServiceQueryResponseSerializer implements PrimitiveSerializer<V
     V1ExampleServiceQueryResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.value != null) {
-      yield r'value';
+    if (object.status != null) {
+      yield r'status';
       yield serializers.serialize(
-        object.value,
-        specifiedType: const FullType(Protov1Response),
+        object.status,
+        specifiedType: const FullType(Protov1Status),
       );
     }
   }
@@ -71,12 +71,12 @@ class _$V1ExampleServiceQueryResponseSerializer implements PrimitiveSerializer<V
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'value':
+        case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(Protov1Response),
-          ) as Protov1Response;
-          result.value.replace(valueDes);
+            specifiedType: const FullType(Protov1Status),
+          ) as Protov1Status;
+          result.status.replace(valueDes);
           break;
         default:
           unhandled.add(key);

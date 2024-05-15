@@ -1,10 +1,11 @@
 # V1CheckResponse
 
+The response message containing the health status of the service.
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**status** | [**CheckResponseServingStatus**](CheckResponseServingStatus.md) |  | [optional] 
+**status** | [**CheckResponseServingStatus**](CheckResponseServingStatus.md) |  | 
 
 ## Example
 

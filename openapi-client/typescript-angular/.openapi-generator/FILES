@@ -11,7 +11,7 @@ git_push.sh
 index.ts
 model/checkResponseServingStatus.ts
 model/models.ts
-model/protov1Response.ts
+model/protov1Status.ts
 model/rpcCode.ts
 model/v1CheckResponse.ts
 model/v1ExampleServiceQueryResponse.ts

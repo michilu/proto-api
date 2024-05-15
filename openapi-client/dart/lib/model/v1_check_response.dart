@@ -13,16 +13,10 @@ part of openapi.api;
 class V1CheckResponse {
   /// Returns a new [V1CheckResponse] instance.
   V1CheckResponse({
-    this.status,
+    required this.status,
   });
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  CheckResponseServingStatus? status;
+  CheckResponseServingStatus status;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is V1CheckResponse &&
@@ -31,18 +25,14 @@ class V1CheckResponse {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (status == null ? 0 : status!.hashCode);
+    (status.hashCode);
 
   @override
   String toString() => 'V1CheckResponse[status=$status]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.status != null) {
       json[r'status'] = this.status;
-    } else {
-      json[r'status'] = null;
-    }
     return json;
   }
 
@@ -65,7 +55,7 @@ class V1CheckResponse {
       }());
 
       return V1CheckResponse(
-        status: CheckResponseServingStatus.fromJson(json[r'status']),
+        status: CheckResponseServingStatus.fromJson(json[r'status'])!,
       );
     }
     return null;
@@ -113,6 +103,7 @@ class V1CheckResponse {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
+    'status',
   };
 }
 

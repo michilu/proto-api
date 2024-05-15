@@ -9,7 +9,7 @@ api/HealthServiceAPI.h
 docs/ExampleServiceAPI.md
 docs/HealthServiceAPI.md
 docs/check_response_serving_status.md
-docs/protov1_response.md
+docs/protov1_status.md
 docs/rpc_code.md
 docs/v1_check_response.md
 docs/v1_example_service_query_response.md
@@ -25,8 +25,8 @@ model/check_response_serving_status.c
 model/check_response_serving_status.h
 model/object.c
 model/object.h
-model/protov1_response.c
-model/protov1_response.h
+model/protov1_status.c
+model/protov1_status.h
 model/rpc_code.c
 model/rpc_code.h
 model/v1_check_response.c
@@ -39,7 +39,7 @@ src/binary.c
 src/list.c
 uncrustify-rules.cfg
 unit-test/test_check_response_serving_status.c
-unit-test/test_protov1_response.c
+unit-test/test_protov1_status.c
 unit-test/test_rpc_code.c
 unit-test/test_v1_check_response.c
 unit-test/test_v1_example_service_query_response.c

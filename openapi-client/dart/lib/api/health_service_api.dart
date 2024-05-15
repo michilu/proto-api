@@ -19,8 +19,9 @@ class HealthServiceApi {
   /// Performs an HTTP 'GET /v1/healthCheck' operation and returns the [Response].
   /// Parameters:
   ///
-  /// * [String] service:
-  Future<Response> healthServiceCheckWithHttpInfo({ String? service, }) async {
+  /// * [String] service (required):
+  ///   The service name to check the health of.
+  Future<Response> healthServiceCheckWithHttpInfo(String service,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/healthCheck';
 
@@ -31,9 +32,7 @@ class HealthServiceApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (service != null) {
       queryParams.addAll(_queryParams('', 'service', service));
-    }
 
     const contentTypes = <String>[];
 
@@ -51,9 +50,10 @@ class HealthServiceApi {
 
   /// Parameters:
   ///
-  /// * [String] service:
-  Future<V1CheckResponse?> healthServiceCheck({ String? service, }) async {
-    final response = await healthServiceCheckWithHttpInfo( service: service, );
+  /// * [String] service (required):
+  ///   The service name to check the health of.
+  Future<V1CheckResponse?> healthServiceCheck(String service,) async {
+    final response = await healthServiceCheckWithHttpInfo(service,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

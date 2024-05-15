@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | Pointer to [**CheckResponseServingStatus**](CheckResponseServingStatus.md) |  | [optional] [default to UNKNOWN_UNSPECIFIED]
+**Status** | [**CheckResponseServingStatus**](CheckResponseServingStatus.md) |  | [default to UNKNOWN_UNSPECIFIED]
 
 ## Methods
 
 ### NewV1CheckResponse
 
-`func NewV1CheckResponse() *V1CheckResponse`
+`func NewV1CheckResponse(status CheckResponseServingStatus, ) *V1CheckResponse`
 
 NewV1CheckResponse instantiates a new V1CheckResponse object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-### HasStatus
-
-`func (o *V1CheckResponse) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

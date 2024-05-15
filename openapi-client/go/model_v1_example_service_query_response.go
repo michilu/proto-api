@@ -20,7 +20,7 @@ var _ MappedNullable = &V1ExampleServiceQueryResponse{}
 
 // V1ExampleServiceQueryResponse struct for V1ExampleServiceQueryResponse
 type V1ExampleServiceQueryResponse struct {
-	Value *Protov1Response `json:"value,omitempty"`
+	Status *Protov1Status `json:"status,omitempty"`
 }
 
 // NewV1ExampleServiceQueryResponse instantiates a new V1ExampleServiceQueryResponse object
@@ -40,36 +40,36 @@ func NewV1ExampleServiceQueryResponseWithDefaults() *V1ExampleServiceQueryRespon
 	return &this
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
-func (o *V1ExampleServiceQueryResponse) GetValue() Protov1Response {
-	if o == nil || IsNil(o.Value) {
-		var ret Protov1Response
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *V1ExampleServiceQueryResponse) GetStatus() Protov1Status {
+	if o == nil || IsNil(o.Status) {
+		var ret Protov1Status
 		return ret
 	}
-	return *o.Value
+	return *o.Status
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *V1ExampleServiceQueryResponse) GetValueOk() (*Protov1Response, bool) {
-	if o == nil || IsNil(o.Value) {
+func (o *V1ExampleServiceQueryResponse) GetStatusOk() (*Protov1Status, bool) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Status, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *V1ExampleServiceQueryResponse) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+// HasStatus returns a boolean if a field has been set.
+func (o *V1ExampleServiceQueryResponse) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given Protov1Response and assigns it to the Value field.
-func (o *V1ExampleServiceQueryResponse) SetValue(v Protov1Response) {
-	o.Value = &v
+// SetStatus gets a reference to the given Protov1Status and assigns it to the Status field.
+func (o *V1ExampleServiceQueryResponse) SetStatus(v Protov1Status) {
+	o.Status = &v
 }
 
 func (o V1ExampleServiceQueryResponse) MarshalJSON() ([]byte, error) {
@@ -82,8 +82,8 @@ func (o V1ExampleServiceQueryResponse) MarshalJSON() ([]byte, error) {
 
 func (o V1ExampleServiceQueryResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

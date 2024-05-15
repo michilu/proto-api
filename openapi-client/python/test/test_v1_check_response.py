@@ -41,6 +41,7 @@ class TestV1CheckResponse(unittest.TestCase):
             )
         else:
             return V1CheckResponse(
+                status = 'SERVING_STATUS_UNKNOWN_UNSPECIFIED',
         )
         """
 

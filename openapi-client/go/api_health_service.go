@@ -28,6 +28,7 @@ type ApiHealthServiceCheckRequest struct {
 	service    *string
 }
 
+// The service name to check the health of.
 func (r ApiHealthServiceCheckRequest) Service(service string) ApiHealthServiceCheckRequest {
 	r.service = &service
 	return r
@@ -71,10 +72,11 @@ func (a *HealthServiceAPIService) HealthServiceCheckExecute(r ApiHealthServiceCh
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-
-	if r.service != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "service", r.service, "")
+	if r.service == nil {
+		return localVarReturnValue, nil, reportError("service is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "service", r.service, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

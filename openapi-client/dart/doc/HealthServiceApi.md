@@ -5,7 +5,7 @@
 import 'package:openapi/api.dart';
 ```
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *http://localhost:3100*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,7 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api_instance = HealthServiceApi();
-final service = service_example; // String | 
+final service = service_example; // String | The service name to check the health of.
 
 try {
     final result = api_instance.healthServiceCheck(service);
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service** | **String**|  | [optional] 
+ **service** | **String**| The service name to check the health of. | 
 
 ### Return type
 

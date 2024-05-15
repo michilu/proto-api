@@ -75,7 +75,7 @@ ctx = context.WithValue(context.Background(), openapi.ContextOperationServerVari
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *http://localhost:3100*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -86,7 +86,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CheckResponseServingStatus](docs/CheckResponseServingStatus.md)
- - [Protov1Response](docs/Protov1Response.md)
+ - [Protov1Status](docs/Protov1Status.md)
  - [RpcCode](docs/RpcCode.md)
  - [V1CheckResponse](docs/V1CheckResponse.md)
  - [V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)

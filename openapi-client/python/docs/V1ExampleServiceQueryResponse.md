@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | [**Protov1Response**](Protov1Response.md) |  | [optional] 
+**status** | [**Protov1Status**](Protov1Status.md) |  | [optional] 
 
 ## Example
 

@@ -56,10 +56,10 @@ import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost:8080
+# Defining the host is optional and defaults to http://localhost:3100
 # See configuration.py for a list of all supported configuration parameters.
 configuration = openapi_client.Configuration(
-    host = "http://localhost:8080"
+    host = "http://localhost:3100"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -94,7 +94,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *http://localhost:3100*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -105,7 +105,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CheckResponseServingStatus](docs/CheckResponseServingStatus.md)
- - [Protov1Response](docs/Protov1Response.md)
+ - [Protov1Status](docs/Protov1Status.md)
  - [RpcCode](docs/RpcCode.md)
  - [V1CheckResponse](docs/V1CheckResponse.md)
  - [V1ExampleServiceQueryResponse](docs/V1ExampleServiceQueryResponse.md)

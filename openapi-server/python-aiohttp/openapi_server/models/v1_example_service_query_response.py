@@ -5,7 +5,7 @@ from datetime import date, datetime
 from typing import List, Dict, Type
 
 from openapi_server.models.base_model import Model
-from openapi_server.models.protov1_response import Protov1Response
+from openapi_server.models.protov1_status import Protov1Status
 from openapi_server import util
 
 
@@ -15,20 +15,20 @@ class V1ExampleServiceQueryResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, value: Protov1Response=None):
+    def __init__(self, status: Protov1Status=None):
         """V1ExampleServiceQueryResponse - a model defined in OpenAPI
 
-        :param value: The value of this V1ExampleServiceQueryResponse.
+        :param status: The status of this V1ExampleServiceQueryResponse.
         """
         self.openapi_types = {
-            'value': Protov1Response
+            'status': Protov1Status
         }
 
         self.attribute_map = {
-            'value': 'value'
+            'status': 'status'
         }
 
-        self._value = value
+        self._status = status
 
     @classmethod
     def from_dict(cls, dikt: dict) -> 'V1ExampleServiceQueryResponse':
@@ -40,22 +40,22 @@ class V1ExampleServiceQueryResponse(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def value(self):
-        """Gets the value of this V1ExampleServiceQueryResponse.
+    def status(self):
+        """Gets the status of this V1ExampleServiceQueryResponse.
 
 
-        :return: The value of this V1ExampleServiceQueryResponse.
-        :rtype: Protov1Response
+        :return: The status of this V1ExampleServiceQueryResponse.
+        :rtype: Protov1Status
         """
-        return self._value
+        return self._status
 
-    @value.setter
-    def value(self, value):
-        """Sets the value of this V1ExampleServiceQueryResponse.
+    @status.setter
+    def status(self, status):
+        """Sets the status of this V1ExampleServiceQueryResponse.
 
 
-        :param value: The value of this V1ExampleServiceQueryResponse.
-        :type value: Protov1Response
+        :param status: The status of this V1ExampleServiceQueryResponse.
+        :type status: Protov1Status
         """
 
-        self._value = value
+        self._status = status

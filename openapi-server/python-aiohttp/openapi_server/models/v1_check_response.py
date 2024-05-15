@@ -57,5 +57,7 @@ class V1CheckResponse(Model):
         :param status: The status of this V1CheckResponse.
         :type status: CheckResponseServingStatus
         """
+        if status is None:
+            raise ValueError("Invalid value for `status`, must not be `None`")
 
         self._status = status

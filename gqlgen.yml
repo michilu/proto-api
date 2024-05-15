@@ -21,7 +21,10 @@ models:
   ExampleServiceQueryResponse:
     model:
       - pb/proto/v1.ExampleServiceQueryResponse
-  Response:
+  Int32:
     model:
-      - pb/proto/v1.Response
+      - github.com/danielvladco/go-proto-gql/pb.Int32
+  Status:
+    model:
+      - pb/proto/v1.Status
 schema:

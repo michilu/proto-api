@@ -21,7 +21,7 @@ import {
 } from './CheckResponseServingStatus';
 
 /**
- * 
+ * The response message containing the health status of the service.
  * @export
  * @interface V1CheckResponse
  */
@@ -31,7 +31,7 @@ export interface V1CheckResponse {
      * @type {CheckResponseServingStatus}
      * @memberof V1CheckResponse
      */
-    status?: CheckResponseServingStatus;
+    status: CheckResponseServingStatus;
 }
 
 /**
@@ -39,6 +39,7 @@ export interface V1CheckResponse {
  */
 export function instanceOfV1CheckResponse(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "status" in value;
 
     return isInstance;
 }
@@ -53,7 +54,7 @@ export function V1CheckResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
-        'status': !exists(json, 'status') ? undefined : CheckResponseServingStatusFromJSON(json['status']),
+        'status': CheckResponseServingStatusFromJSON(json['status']),
     };
 }
 

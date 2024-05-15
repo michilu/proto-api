@@ -7,7 +7,7 @@ README.md
 docs/CheckResponseServingStatus.md
 docs/ExampleServiceApi.md
 docs/HealthServiceApi.md
-docs/Protov1Response.md
+docs/Protov1Status.md
 docs/RpcCode.md
 docs/V1CheckResponse.md
 docs/V1ExampleServiceQueryResponse.md
@@ -22,7 +22,7 @@ openapi_client/configuration.py
 openapi_client/exceptions.py
 openapi_client/models/__init__.py
 openapi_client/models/check_response_serving_status.py
-openapi_client/models/protov1_response.py
+openapi_client/models/protov1_status.py
 openapi_client/models/rpc_code.py
 openapi_client/models/v1_check_response.py
 openapi_client/models/v1_example_service_query_response.py
@@ -37,7 +37,7 @@ test/__init__.py
 test/test_check_response_serving_status.py
 test/test_example_service_api.py
 test/test_health_service_api.py
-test/test_protov1_response.py
+test/test_protov1_status.py
 test/test_rpc_code.py
 test/test_v1_check_response.py
 test/test_v1_example_service_query_response.py

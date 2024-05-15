@@ -10,7 +10,7 @@ configuration.go
 docs/CheckResponseServingStatus.md
 docs/ExampleServiceAPI.md
 docs/HealthServiceAPI.md
-docs/Protov1Response.md
+docs/Protov1Status.md
 docs/RpcCode.md
 docs/V1CheckResponse.md
 docs/V1ExampleServiceQueryResponse.md
@@ -18,7 +18,7 @@ git_push.sh
 go.mod
 go.sum
 model_check_response_serving_status.go
-model_protov1_response.go
+model_protov1_status.go
 model_rpc_code.go
 model_v1_check_response.go
 model_v1_example_service_query_response.go

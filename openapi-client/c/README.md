@@ -61,7 +61,7 @@ Note: You don't need to specify includes for models and include folder separatel
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *http://localhost:3100*
 
 Category | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -72,7 +72,7 @@ Category | Method | HTTP request | Description
 ## Documentation for Models
 
  - [check_response_serving_status_t](docs/check_response_serving_status.md)
- - [protov1_response_t](docs/protov1_response.md)
+ - [protov1_status_t](docs/protov1_status.md)
  - [rpc_code_t](docs/rpc_code.md)
  - [v1_check_response_t](docs/v1_check_response.md)
  - [v1_example_service_query_response_t](docs/v1_example_service_query_response.md)

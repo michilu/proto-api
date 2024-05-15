@@ -9,14 +9,14 @@ import 'package:built_value/serializer.dart';
 
 part 'v1_check_response.g.dart';
 
-/// V1CheckResponse
+/// The response message containing the health status of the service.
 ///
 /// Properties:
 /// * [status] 
 @BuiltValue()
 abstract class V1CheckResponse implements Built<V1CheckResponse, V1CheckResponseBuilder> {
   @BuiltValueField(wireName: r'status')
-  CheckResponseServingStatus? get status;
+  CheckResponseServingStatus get status;
   // enum statusEnum {  SERVING_STATUS_UNKNOWN_UNSPECIFIED,  SERVING_STATUS_SERVING,  SERVING_STATUS_NOT_SERVING,  };
 
   V1CheckResponse._();
@@ -42,13 +42,11 @@ class _$V1CheckResponseSerializer implements PrimitiveSerializer<V1CheckResponse
     V1CheckResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(CheckResponseServingStatus),
-      );
-    }
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(CheckResponseServingStatus),
+    );
   }
 
   @override

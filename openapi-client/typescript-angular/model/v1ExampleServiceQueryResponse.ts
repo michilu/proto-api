@@ -9,10 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Protov1Response } from './protov1Response';
+import { Protov1Status } from './protov1Status';
 
 
 export interface V1ExampleServiceQueryResponse { 
-    value?: Protov1Response;
+    status?: Protov1Status;
 }
 

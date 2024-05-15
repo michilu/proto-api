@@ -5,12 +5,12 @@ from openapi_server.models.v1_check_response import V1CheckResponse
 from openapi_server import util
 
 
-async def health_service_check(request: web.Request, service=None) -> web.Response:
+async def health_service_check(request: web.Request, service) -> web.Response:
     """health_service_check
 
     
 
-    :param service: 
+    :param service: The service name to check the health of.
     :type service: str
 
     """

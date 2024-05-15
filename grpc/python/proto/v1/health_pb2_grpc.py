@@ -18,7 +18,7 @@ class HealthServiceStub(object):
                 '/proto.v1.HealthService/Check',
                 request_serializer=proto_dot_v1_dot_health__pb2.CheckRequest.SerializeToString,
                 response_deserializer=proto_dot_v1_dot_health__pb2.CheckResponse.FromString,
-                )
+                _registered_method=True)
 
 
 class HealthServiceServicer(object):
@@ -59,8 +59,18 @@ class HealthService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/proto.v1.HealthService/Check',
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/proto.v1.HealthService/Check',
             proto_dot_v1_dot_health__pb2.CheckRequest.SerializeToString,
             proto_dot_v1_dot_health__pb2.CheckResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)

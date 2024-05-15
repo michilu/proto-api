@@ -21,14 +21,14 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel
-from openapi_client.models.protov1_response import Protov1Response
+from openapi_client.models.protov1_status import Protov1Status
 
 class V1ExampleServiceQueryResponse(BaseModel):
     """
     V1ExampleServiceQueryResponse
     """
-    value: Optional[Protov1Response] = None
-    __properties = ["value"]
+    status: Optional[Protov1Status] = None
+    __properties = ["status"]
 
     class Config:
         """Pydantic configuration"""
@@ -54,9 +54,9 @@ class V1ExampleServiceQueryResponse(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of value
-        if self.value:
-            _dict['value'] = self.value.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of status
+        if self.status:
+            _dict['status'] = self.status.to_dict()
         return _dict
 
     @classmethod
@@ -69,7 +69,7 @@ class V1ExampleServiceQueryResponse(BaseModel):
             return V1ExampleServiceQueryResponse.parse_obj(obj)
 
         _obj = V1ExampleServiceQueryResponse.parse_obj({
-            "value": Protov1Response.from_dict(obj.get("value")) if obj.get("value") is not None else None
+            "status": Protov1Status.from_dict(obj.get("status")) if obj.get("status") is not None else None
         })
         return _obj
 

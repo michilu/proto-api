@@ -88,7 +88,7 @@ conf = openapi_client.Configuration(
                  ) -> None:
         """Constructor
         """
-        self._base_path = "http://localhost:8080" if host is None else host
+        self._base_path = "http://localhost:3100" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -415,11 +415,11 @@ conf = openapi_client.Configuration(
         """
         return [
             {
-                'url': "http://localhost:8080",
+                'url': "http://localhost:3100",
                 'description': "No description provided",
             },
             {
-                'url': "https://localhost:8080",
+                'url': "https://localhost:3100",
                 'description': "No description provided",
             }
         ]

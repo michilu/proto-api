@@ -13,7 +13,7 @@ go/helpers.go
 go/impl.go
 go/logger.go
 go/model_check_response_serving_status.go
-go/model_protov1_response.go
+go/model_protov1_status.go
 go/model_rpc_code.go
 go/model_v1_check_response.go
 go/model_v1_example_service_query_response.go

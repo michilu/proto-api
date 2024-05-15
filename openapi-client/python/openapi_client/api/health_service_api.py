@@ -20,9 +20,7 @@ import warnings
 from pydantic import validate_arguments, ValidationError
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
-
-from typing import Optional
+from pydantic import Field, StrictStr
 
 from openapi_client.models.v1_check_response import V1CheckResponse
 
@@ -47,7 +45,7 @@ class HealthServiceApi:
         self.api_client = api_client
 
     @validate_arguments
-    def health_service_check(self, service : Optional[StrictStr] = None, **kwargs) -> V1CheckResponse:  # noqa: E501
+    def health_service_check(self, service : Annotated[StrictStr, Field(..., description="The service name to check the health of.")], **kwargs) -> V1CheckResponse:  # noqa: E501
         """health_service_check  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -56,7 +54,7 @@ class HealthServiceApi:
         >>> thread = api.health_service_check(service, async_req=True)
         >>> result = thread.get()
 
-        :param service:
+        :param service: The service name to check the health of. (required)
         :type service: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
@@ -76,7 +74,7 @@ class HealthServiceApi:
         return self.health_service_check_with_http_info(service, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def health_service_check_with_http_info(self, service : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def health_service_check_with_http_info(self, service : Annotated[StrictStr, Field(..., description="The service name to check the health of.")], **kwargs) -> ApiResponse:  # noqa: E501
         """health_service_check  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -85,7 +83,7 @@ class HealthServiceApi:
         >>> thread = api.health_service_check_with_http_info(service, async_req=True)
         >>> result = thread.get()
 
-        :param service:
+        :param service: The service name to check the health of. (required)
         :type service: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional

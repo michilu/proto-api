@@ -15,7 +15,7 @@ import 'package:openapi/src/date_serializer.dart';
 import 'package:openapi/src/model/date.dart';
 
 import 'package:openapi/src/model/check_response_serving_status.dart';
-import 'package:openapi/src/model/protov1_response.dart';
+import 'package:openapi/src/model/protov1_status.dart';
 import 'package:openapi/src/model/rpc_code.dart';
 import 'package:openapi/src/model/v1_check_response.dart';
 import 'package:openapi/src/model/v1_example_service_query_response.dart';
@@ -24,7 +24,7 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   CheckResponseServingStatus,
-  Protov1Response,
+  Protov1Status,
   RpcCode,
   V1CheckResponse,
   V1ExampleServiceQueryResponse,

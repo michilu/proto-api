@@ -10,12 +10,22 @@
 
 package openapi
 
+// V1CheckResponse - The response message containing the health status of the service.
 type V1CheckResponse struct {
-	Status CheckResponseServingStatus `json:"status,omitempty"`
+	Status CheckResponseServingStatus `json:"status"`
 }
 
 // AssertV1CheckResponseRequired checks if the required fields are not zero-ed
 func AssertV1CheckResponseRequired(obj V1CheckResponse) error {
+	elements := map[string]interface{}{
+		"status": obj.Status,
+	}
+	for name, el := range elements {
+		if isZero := IsZeroValue(el); isZero {
+			return &RequiredError{Field: name}
+		}
+	}
+
 	return nil
 }
 

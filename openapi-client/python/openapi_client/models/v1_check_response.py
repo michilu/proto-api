@@ -19,15 +19,15 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel
+
+from pydantic import BaseModel, Field
 from openapi_client.models.check_response_serving_status import CheckResponseServingStatus
 
 class V1CheckResponse(BaseModel):
     """
-    V1CheckResponse
+    The response message containing the health status of the service.
     """
-    status: Optional[CheckResponseServingStatus] = None
+    status: CheckResponseServingStatus = Field(...)
     __properties = ["status"]
 
     class Config:

@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 })
 export class HealthServiceService {
 
-    protected basePath = 'http://localhost:8080';
+    protected basePath = 'http://localhost:3100';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
@@ -92,14 +92,17 @@ export class HealthServiceService {
     }
 
     /**
-     * @param service 
+     * @param service The service name to check the health of.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public healthServiceCheck(service?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<V1CheckResponse>;
-    public healthServiceCheck(service?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<V1CheckResponse>>;
-    public healthServiceCheck(service?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<V1CheckResponse>>;
-    public healthServiceCheck(service?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public healthServiceCheck(service: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<V1CheckResponse>;
+    public healthServiceCheck(service: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<V1CheckResponse>>;
+    public healthServiceCheck(service: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<V1CheckResponse>>;
+    public healthServiceCheck(service: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+        if (service === null || service === undefined) {
+            throw new Error('Required parameter service was null or undefined when calling healthServiceCheck.');
+        }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (service !== undefined && service !== null) {

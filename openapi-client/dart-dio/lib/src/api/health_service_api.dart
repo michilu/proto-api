@@ -22,7 +22,7 @@ class HealthServiceApi {
   /// 
   ///
   /// Parameters:
-  /// * [service] 
+  /// * [service] - The service name to check the health of.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -33,7 +33,7 @@ class HealthServiceApi {
   /// Returns a [Future] containing a [Response] with a [V1CheckResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<V1CheckResponse>> healthServiceCheck({ 
-    String? service,
+    required String service,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -65,7 +65,7 @@ class HealthServiceApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (service != null) r'service': encodeQueryParameter(_serializers, service, const FullType(String)),
+      r'service': encodeQueryParameter(_serializers, service, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

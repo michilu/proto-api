@@ -15,17 +15,17 @@
 
 typedef struct v1_example_service_query_response_t v1_example_service_query_response_t;
 
-#include "protov1_response.h"
+#include "protov1_status.h"
 
 
 
 typedef struct v1_example_service_query_response_t {
-    struct protov1_response_t *value; //model
+    struct protov1_status_t *status; //model
 
 } v1_example_service_query_response_t;
 
 v1_example_service_query_response_t *v1_example_service_query_response_create(
-    protov1_response_t *value
+    protov1_status_t *status
 );
 
 void v1_example_service_query_response_free(v1_example_service_query_response_t *v1_example_service_query_response);

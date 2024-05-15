@@ -1,6 +1,6 @@
 # \HealthServiceAPI
 
-All URIs are relative to *http://localhost:8080*
+All URIs are relative to *http://localhost:3100*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,7 +27,7 @@ import (
 )
 
 func main() {
-    service := "service_example" // string |  (optional)
+    service := "service_example" // string | The service name to check the health of.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -52,7 +52,7 @@ Other parameters are passed through a pointer to a apiHealthServiceCheckRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service** | **string** |  | 
+ **service** | **string** | The service name to check the health of. | 
 
 ### Return type
 

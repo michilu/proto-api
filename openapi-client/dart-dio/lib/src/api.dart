@@ -13,7 +13,7 @@ import 'package:openapi/src/api/example_service_api.dart';
 import 'package:openapi/src/api/health_service_api.dart';
 
 class Openapi {
-  static const String basePath = r'http://localhost:8080';
+  static const String basePath = r'http://localhost:3100';
 
   final Dio dio;
   final Serializers serializers;

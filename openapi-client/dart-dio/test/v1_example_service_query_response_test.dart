@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(V1ExampleServiceQueryResponse, () {
-    // Protov1Response value
-    test('to test the property `value`', () async {
+    // Protov1Status status
+    test('to test the property `status`', () async {
       // TODO
     });
 

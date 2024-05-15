@@ -12,8 +12,11 @@
 import { CheckResponseServingStatus } from './checkResponseServingStatus';
 
 
+/**
+ * The response message containing the health status of the service.
+ */
 export interface V1CheckResponse { 
-    status?: CheckResponseServingStatus;
+    status: CheckResponseServingStatus;
 }
 export namespace V1CheckResponse {
 }

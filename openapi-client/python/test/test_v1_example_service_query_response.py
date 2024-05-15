@@ -37,12 +37,18 @@ class TestV1ExampleServiceQueryResponse(unittest.TestCase):
         model = V1ExampleServiceQueryResponse()  # noqa: E501
         if include_optional:
             return V1ExampleServiceQueryResponse(
-                value = openapi_client.models.protov1_response.protov1Response(
-                    code = 'OK', 
-                    details = [
+                status = openapi_client.models.extends_[rfc_9457]_for_api_response/
+rfc_9457___problem_details_for_http_apis_https://datatracker/ietf/org/doc/html/rfc9457.Extends [RFC 9457] for API response.
+RFC 9457 - Problem Details for HTTP APIs https://datatracker.ietf.org/doc/html/rfc9457(
+                    type = '', 
+                    status = 56, 
+                    title = '', 
+                    detail = '', 
+                    instance = '', 
+                    extensions = [
                         ''
                         ], 
-                    message = '', )
+                    code = 'OK', )
             )
         else:
             return V1ExampleServiceQueryResponse(
