@@ -7,12 +7,14 @@ OPENAPI_CLIENT?=\
  dart\
  go\
  python\
+ rust\
  typescript-angular\
  typescript-fetch\
 
 OPENAPI_SERVER?=\
  go-server\
  python-aiohttp\
+ rust-server\
 
 KEEP?=\
  grpc/python/.keep\
