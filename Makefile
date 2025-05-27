@@ -128,8 +128,8 @@ openapi.yaml: openapi.json
 	yq --output-format=yaml --prettyPrint eval $< > $@
 
 openapi-client/%: openapi.json
-	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
+	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate --input-spec /local/$< --generator-name $(shell basename $$(dirname $@)) --output /local/$(shell dirname $@)
 	touch $@
 openapi-server/%: openapi.json
-	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate -i /local/$< -g $(shell basename $$(dirname $@)) -o /local/$(shell dirname $@)
+	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:$(OPENAPI_GENERATOR_CLI_VERSION) generate --input-spec /local/$< --generator-name $(shell basename $$(dirname $@)) --output /local/$(shell dirname $@)
 	touch $@
