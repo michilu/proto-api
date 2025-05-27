@@ -47,6 +47,7 @@ all:\
  $(KEEP)\
  $(addprefix openapi-client/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_CLIENT)))\
  $(addprefix openapi-server/,$(addsuffix /.openapi-generator-ignore,$(OPENAPI_SERVER)))\
+ fmt\
  
 	find . -name "*.go" -exec gofmt -w {} \;
 
@@ -65,6 +66,10 @@ clean:
  openapi-client\
  openapi-server\
  ;
+
+.PHONY: fmt
+fmt: $(shell find . -name "*.yaml" -print)
+	yamlfmt -dstar "**/*.yaml"
 
 $(BUF_IMAGE): $(PROTO)
 	buf lint

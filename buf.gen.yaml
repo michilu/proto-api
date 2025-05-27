@@ -2,19 +2,19 @@ version: v1
 managed:
   enabled: true
 plugins:
-- name: go
-  out: .
-- plugin: buf.build/bufbuild/validate-go
-  out: pb
-  opt:
-    - paths=source_relative
-- plugin: buf.build/protocolbuffers/python
-  out: grpc/python
-- plugin: buf.build/grpc/python
-  out: grpc/python
-- plugin: buf.build/grpc-ecosystem/openapiv2
-  out: .
-  opt:
-  - allow_merge=true
-  - disable_default_errors=true
-  - merge_file_name=apidocs.json
+  - name: go
+    out: .
+  - plugin: buf.build/bufbuild/validate-go
+    out: pb
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/protocolbuffers/python
+    out: grpc/python
+  - plugin: buf.build/grpc/python
+    out: grpc/python
+  - plugin: buf.build/grpc-ecosystem/openapiv2
+    out: .
+    opt:
+      - allow_merge=true
+      - disable_default_errors=true
+      - merge_file_name=apidocs.json
