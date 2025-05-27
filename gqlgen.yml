@@ -24,6 +24,9 @@ models:
   Int32:
     model:
       - github.com/danielvladco/go-proto-gql/pb.Int32
+  ServingStatus:
+    model:
+      - api/proto/v1.ServingStatus
   Status:
     model:
       - pb/proto/v1.Status
