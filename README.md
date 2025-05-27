@@ -11,6 +11,7 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
 
 ## proto
 - [Buf: A new way of working with Protocol Buffers.](https://buf.build/docs/installation) `$ brew install bufbuild/buf/buf`
+  - [Buf - Style guide](https://buf.build/docs/best-practices/style-guide)
 - [protocolbuffers/protobuf-go: Go support for Google's protocol buffers](https://github.com/protocolbuffers/protobuf-go) `$ go install google.golang.org/protobuf/cmd/protoc-gen-go@latest`
 - [envoyproxy/protoc-gen-validate: protoc plugin to generate polyglot message validators](https://github.com/envoyproxy/protoc-gen-validate) `$ go install github.com/envoyproxy/protoc-gen-validate@latest`
 
@@ -25,8 +26,12 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
   
 ## OpenAPI
 - [grpc-ecosystem/grpc-gateway/protoc-gen-openapiv2](https://github.com/grpc-ecosystem/grpc-gateway/tree/main/protoc-gen-openapiv2)
+- [oas-kit/packages/swagger2openapi/README.md at main · Mermade/oas-kit](https://github.com/Mermade/oas-kit/blob/main/packages/swagger2openapi/README.md)
+- [ogen-go/ogen: OpenAPI v3 code generator for go](https://github.com/ogen-go/ogen)
 - [openapitools/openapi-generator-cli Tags - Docker Hub](https://hub.docker.com/r/openapitools/openapi-generator-cli/tags?ordering=name)
-- [jqlang/jq: Command-line JSON processor](https://github.com/jqlang/jq) `$ brew install jq`
+
+## YAML
+- [google/yamlfmt: An extensible command line tool or library to format yaml files.](https://github.com/google/yamlfmt) `$ brew install yamlfmt`
 - [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
 
 # sync subtree
