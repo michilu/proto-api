@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "automerge": true,
+  "platformAutomerge": true,
+  "baseBranches": [
+    "preview/renovate"
+  ],
+  "extends": [
+    "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "matchDepTypes": [
+        "action"
+      ],
+      "pinDigests": true
+    }
+  ]
+}
