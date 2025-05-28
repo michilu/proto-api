@@ -5,25 +5,27 @@ syntax = "proto3";
 
 package proto.v1;
 
+import "buf/validate/validate.proto";
 import "google/api/annotations.proto";
 import "google/api/field_behavior.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
-import "validate/validate.proto";
 
-option go_package = "pb/proto/v1";
+option go_package = "api/proto/v1";
+
+service HealthService {
+  rpc Check(CheckRequest) returns (CheckResponse) {
+    option (google.api.http) = {get: "/v1/healthCheck"};
+  }
+}
 
 message CheckRequest {
   string service = 1 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The service name to check the health of.",
-      max_length: 256,
-      example: "\"service_name\"",
+      description: "The service name as specified.",
+      pattern: "^proto$",
     },
-    (validate.rules).string = {
-      ignore_empty: false,
-      max_len: 256,
-    }
+    (buf.validate.field).string.const = "proto"
   ];
 }
 
@@ -35,20 +37,15 @@ message CheckResponse {
       required: ["status"]
     }
   };
-  enum ServingStatus {
-    SERVING_STATUS_UNKNOWN_UNSPECIFIED = 0;
-    SERVING_STATUS_SERVING = 1;
-    SERVING_STATUS_NOT_SERVING = 2;
-  }
   ServingStatus status = 1 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The serving status of the health check."},
-    (validate.rules).enum = {defined_only: true}
+    (buf.validate.field).enum = {defined_only: true}
   ];
 }
 
-service HealthService {
-  rpc Check(CheckRequest) returns (CheckResponse) {
-    option (google.api.http) = {get: "/v1/healthCheck"};
-  }
+enum ServingStatus {
+  SERVING_STATUS_UNKNOWN_UNSPECIFIED = 0;
+  SERVING_STATUS_SERVING = 1;
+  SERVING_STATUS_NOT_SERVING = 2;
 }
