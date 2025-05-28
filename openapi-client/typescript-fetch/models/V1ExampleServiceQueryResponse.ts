@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Protov1Status } from './Protov1Status';
 import {
     Protov1StatusFromJSON,
     Protov1StatusFromJSONTyped,
     Protov1StatusToJSON,
+    Protov1StatusToJSONTyped,
 } from './Protov1Status';
 
 /**
@@ -37,10 +38,8 @@ export interface V1ExampleServiceQueryResponse {
 /**
  * Check if a given object implements the V1ExampleServiceQueryResponse interface.
  */
-export function instanceOfV1ExampleServiceQueryResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfV1ExampleServiceQueryResponse(value: object): value is V1ExampleServiceQueryResponse {
+    return true;
 }
 
 export function V1ExampleServiceQueryResponseFromJSON(json: any): V1ExampleServiceQueryResponse {
@@ -48,25 +47,27 @@ export function V1ExampleServiceQueryResponseFromJSON(json: any): V1ExampleServi
 }
 
 export function V1ExampleServiceQueryResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): V1ExampleServiceQueryResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'status': !exists(json, 'status') ? undefined : Protov1StatusFromJSON(json['status']),
+        'status': json['status'] == null ? undefined : Protov1StatusFromJSON(json['status']),
     };
 }
 
-export function V1ExampleServiceQueryResponseToJSON(value?: V1ExampleServiceQueryResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+export function V1ExampleServiceQueryResponseToJSON(json: any): V1ExampleServiceQueryResponse {
+    return V1ExampleServiceQueryResponseToJSONTyped(json, false);
+}
+
+export function V1ExampleServiceQueryResponseToJSONTyped(value?: V1ExampleServiceQueryResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'status': Protov1StatusToJSON(value.status),
+        'status': Protov1StatusToJSON(value['status']),
     };
 }
 

@@ -10,7 +10,7 @@ async def health_service_check(request: web.Request, service) -> web.Response:
 
     
 
-    :param service: The service name to check the health of.
+    :param service: The service name as specified.
     :type service: str
 
     """

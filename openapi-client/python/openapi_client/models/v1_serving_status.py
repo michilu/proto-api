@@ -13,18 +13,15 @@
 """  # noqa: E501
 
 
+from __future__ import annotations
 import json
-import pprint
-import re  # noqa: F401
-from aenum import Enum, no_arg
+from enum import Enum
+from typing_extensions import Self
 
 
-
-
-
-class CheckResponseServingStatus(str, Enum):
+class V1ServingStatus(str, Enum):
     """
-    CheckResponseServingStatus
+    V1ServingStatus
     """
 
     """
@@ -35,8 +32,8 @@ class CheckResponseServingStatus(str, Enum):
     SERVING_STATUS_NOT_SERVING = 'SERVING_STATUS_NOT_SERVING'
 
     @classmethod
-    def from_json(cls, json_str: str) -> CheckResponseServingStatus:
-        """Create an instance of CheckResponseServingStatus from a JSON string"""
-        return CheckResponseServingStatus(json.loads(json_str))
+    def from_json(cls, json_str: str) -> Self:
+        """Create an instance of V1ServingStatus from a JSON string"""
+        return cls(json.loads(json_str))
 
 

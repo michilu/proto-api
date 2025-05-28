@@ -7,23 +7,23 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'check_response_serving_status.g.dart';
+part 'v1_serving_status.g.dart';
 
-class CheckResponseServingStatus extends EnumClass {
+class V1ServingStatus extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'SERVING_STATUS_UNKNOWN_UNSPECIFIED')
-  static const CheckResponseServingStatus UNKNOWN_UNSPECIFIED = _$UNKNOWN_UNSPECIFIED;
+  static const V1ServingStatus SERVING_STATUS_UNKNOWN_UNSPECIFIED = _$SERVING_STATUS_UNKNOWN_UNSPECIFIED;
   @BuiltValueEnumConst(wireName: r'SERVING_STATUS_SERVING')
-  static const CheckResponseServingStatus SERVING = _$SERVING;
+  static const V1ServingStatus SERVING_STATUS_SERVING = _$SERVING_STATUS_SERVING;
   @BuiltValueEnumConst(wireName: r'SERVING_STATUS_NOT_SERVING')
-  static const CheckResponseServingStatus NOT_SERVING = _$NOT_SERVING;
+  static const V1ServingStatus SERVING_STATUS_NOT_SERVING = _$SERVING_STATUS_NOT_SERVING;
 
-  static Serializer<CheckResponseServingStatus> get serializer => _$checkResponseServingStatusSerializer;
+  static Serializer<V1ServingStatus> get serializer => _$v1ServingStatusSerializer;
 
-  const CheckResponseServingStatus._(String name): super(name);
+  const V1ServingStatus._(String name): super(name);
 
-  static BuiltSet<CheckResponseServingStatus> get values => _$values;
-  static CheckResponseServingStatus valueOf(String name) => _$valueOf(name);
+  static BuiltSet<V1ServingStatus> get values => _$values;
+  static V1ServingStatus valueOf(String name) => _$valueOf(name);
 }
 
 /// Optionally, enum_class can generate a mixin to go with your enum for use
@@ -32,5 +32,5 @@ class CheckResponseServingStatus extends EnumClass {
 /// corresponding Angular template.
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class CheckResponseServingStatusMixin = Object with _$CheckResponseServingStatusMixin;
+abstract class V1ServingStatusMixin = Object with _$V1ServingStatusMixin;
 

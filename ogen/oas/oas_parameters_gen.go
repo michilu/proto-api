@@ -83,7 +83,7 @@ func decodeExampleServiceQueryParams(args [1]string, argsEscaped bool, r *http.R
 
 // HealthServiceCheckParams is parameters of HealthService_Check operation.
 type HealthServiceCheckParams struct {
-	// The service name to check the health of.
+	// The service name as specified.
 	Service string
 }
 
@@ -123,6 +123,22 @@ func decodeHealthServiceCheckParams(args [0]string, argsEscaped bool, r *http.Re
 				params.Service = c
 				return nil
 			}); err != nil {
+				return err
+			}
+			if err := func() error {
+				if err := (validate.String{
+					MinLength:    0,
+					MinLengthSet: false,
+					MaxLength:    0,
+					MaxLengthSet: false,
+					Email:        false,
+					Hostname:     false,
+					Regex:        regexMap["^proto$"],
+				}).Validate(string(params.Service)); err != nil {
+					return errors.Wrap(err, "string")
+				}
+				return nil
+			}(); err != nil {
 				return err
 			}
 		} else {

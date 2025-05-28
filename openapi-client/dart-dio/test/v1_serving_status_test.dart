@@ -1,9 +1,9 @@
 import 'package:test/test.dart';
 import 'package:openapi/openapi.dart';
 
-// tests for CheckResponseServingStatus
+// tests for V1ServingStatus
 void main() {
 
-  group(CheckResponseServingStatus, () {
+  group(V1ServingStatus, () {
   });
 }

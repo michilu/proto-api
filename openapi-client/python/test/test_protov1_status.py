@@ -14,9 +14,8 @@
 
 
 import unittest
-import datetime
 
-from openapi_client.models.protov1_status import Protov1Status  # noqa: E501
+from openapi_client.models.protov1_status import Protov1Status
 
 class TestProtov1Status(unittest.TestCase):
     """Protov1Status unit test stubs"""
@@ -29,12 +28,12 @@ class TestProtov1Status(unittest.TestCase):
 
     def make_instance(self, include_optional) -> Protov1Status:
         """Test Protov1Status
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `Protov1Status`
         """
-        model = Protov1Status()  # noqa: E501
+        model = Protov1Status()
         if include_optional:
             return Protov1Status(
                 type = '',

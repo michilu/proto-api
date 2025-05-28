@@ -5,7 +5,7 @@ from datetime import date, datetime
 from typing import List, Dict, Type
 
 from openapi_server.models.base_model import Model
-from openapi_server.models.check_response_serving_status import CheckResponseServingStatus
+from openapi_server.models.v1_serving_status import V1ServingStatus
 from openapi_server import util
 
 
@@ -15,13 +15,13 @@ class V1CheckResponse(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, status: CheckResponseServingStatus=None):
+    def __init__(self, status: V1ServingStatus=V1ServingStatus.SERVING_STATUS_UNKNOWN_UNSPECIFIED):
         """V1CheckResponse - a model defined in OpenAPI
 
         :param status: The status of this V1CheckResponse.
         """
         self.openapi_types = {
-            'status': CheckResponseServingStatus
+            'status': V1ServingStatus
         }
 
         self.attribute_map = {
@@ -45,7 +45,7 @@ class V1CheckResponse(Model):
 
 
         :return: The status of this V1CheckResponse.
-        :rtype: CheckResponseServingStatus
+        :rtype: V1ServingStatus
         """
         return self._status
 
@@ -55,7 +55,7 @@ class V1CheckResponse(Model):
 
 
         :param status: The status of this V1CheckResponse.
-        :type status: CheckResponseServingStatus
+        :type status: V1ServingStatus
         """
         if status is None:
             raise ValueError("Invalid value for `status`, must not be `None`")

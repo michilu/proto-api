@@ -10,15 +10,12 @@ Method | HTTP request | Description
 # **example_service_query**
 > V1ExampleServiceQueryResponse example_service_query(id, body)
 
-
-
 ### Example
 
 * OAuth Authentication (OAuth2):
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import openapi_client
 from openapi_client.models.v1_example_service_query_response import V1ExampleServiceQueryResponse
 from openapi_client.rest import ApiException
@@ -62,6 +59,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
@@ -81,6 +79,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

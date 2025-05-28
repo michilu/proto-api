@@ -14,9 +14,8 @@
 
 
 import unittest
-import datetime
 
-from openapi_client.models.rpc_code import RpcCode  # noqa: E501
+from openapi_client.models.rpc_code import RpcCode
 
 class TestRpcCode(unittest.TestCase):
     """RpcCode unit test stubs"""

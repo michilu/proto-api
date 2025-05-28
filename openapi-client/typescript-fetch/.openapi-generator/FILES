@@ -3,10 +3,10 @@ apis/ExampleServiceApi.ts
 apis/HealthServiceApi.ts
 apis/index.ts
 index.ts
-models/CheckResponseServingStatus.ts
 models/Protov1Status.ts
 models/RpcCode.ts
 models/V1CheckResponse.ts
 models/V1ExampleServiceQueryResponse.ts
+models/V1ServingStatus.ts
 models/index.ts
 runtime.ts

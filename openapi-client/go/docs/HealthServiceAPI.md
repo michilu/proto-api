@@ -20,24 +20,24 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    service := "service_example" // string | The service name to check the health of.
+	service := "service_example" // string | The service name as specified.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HealthServiceAPI.HealthServiceCheck(context.Background()).Service(service).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HealthServiceAPI.HealthServiceCheck``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `HealthServiceCheck`: V1CheckResponse
-    fmt.Fprintf(os.Stdout, "Response from `HealthServiceAPI.HealthServiceCheck`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HealthServiceAPI.HealthServiceCheck(context.Background()).Service(service).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HealthServiceAPI.HealthServiceCheck``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `HealthServiceCheck`: V1CheckResponse
+	fmt.Fprintf(os.Stdout, "Response from `HealthServiceAPI.HealthServiceCheck`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ Other parameters are passed through a pointer to a apiHealthServiceCheckRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service** | **string** | The service name to check the health of. | 
+ **service** | **string** | The service name as specified. | 
 
 ### Return type
 

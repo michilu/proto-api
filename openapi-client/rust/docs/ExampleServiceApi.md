@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## example_service_query
 
-> crate::models::V1ExampleServiceQueryResponse example_service_query(id, body)
+> models::V1ExampleServiceQueryResponse example_service_query(id, body)
 
 
 ### Parameters
@@ -23,7 +23,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::V1ExampleServiceQueryResponse**](v1ExampleServiceQueryResponse.md)
+[**models::V1ExampleServiceQueryResponse**](v1ExampleServiceQueryResponse.md)
 
 ### Authorization
 

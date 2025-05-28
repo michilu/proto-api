@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -182,8 +182,6 @@ class ApiClient {
           return valueString == 'true' || valueString == '1';
         case 'DateTime':
           return value is DateTime ? value : DateTime.tryParse(value);
-        case 'CheckResponseServingStatus':
-          return CheckResponseServingStatusTypeTransformer().decode(value);
         case 'Protov1Status':
           return Protov1Status.fromJson(value);
         case 'RpcCode':
@@ -192,6 +190,8 @@ class ApiClient {
           return V1CheckResponse.fromJson(value);
         case 'V1ExampleServiceQueryResponse':
           return V1ExampleServiceQueryResponse.fromJson(value);
+        case 'V1ServingStatus':
+          return V1ServingStatusTypeTransformer().decode(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

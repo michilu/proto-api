@@ -12,48 +12,6 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-// Encode encodes CheckResponseServingStatus as json.
-func (s CheckResponseServingStatus) Encode(e *jx.Encoder) {
-	e.Str(string(s))
-}
-
-// Decode decodes CheckResponseServingStatus from json.
-func (s *CheckResponseServingStatus) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CheckResponseServingStatus to nil")
-	}
-	v, err := d.StrBytes()
-	if err != nil {
-		return err
-	}
-	// Try to use constant string.
-	switch CheckResponseServingStatus(v) {
-	case CheckResponseServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED:
-		*s = CheckResponseServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED
-	case CheckResponseServingStatusSERVINGSTATUSSERVING:
-		*s = CheckResponseServingStatusSERVINGSTATUSSERVING
-	case CheckResponseServingStatusSERVINGSTATUSNOTSERVING:
-		*s = CheckResponseServingStatusSERVINGSTATUSNOTSERVING
-	default:
-		*s = CheckResponseServingStatus(v)
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s CheckResponseServingStatus) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *CheckResponseServingStatus) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
 // Encode implements json.Marshaler.
 func (s *ExampleServiceQueryBody) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -637,6 +595,48 @@ func (s *V1ExampleServiceQueryResponse) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *V1ExampleServiceQueryResponse) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes V1ServingStatus as json.
+func (s V1ServingStatus) Encode(e *jx.Encoder) {
+	e.Str(string(s))
+}
+
+// Decode decodes V1ServingStatus from json.
+func (s *V1ServingStatus) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode V1ServingStatus to nil")
+	}
+	v, err := d.StrBytes()
+	if err != nil {
+		return err
+	}
+	// Try to use constant string.
+	switch V1ServingStatus(v) {
+	case V1ServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED:
+		*s = V1ServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED
+	case V1ServingStatusSERVINGSTATUSSERVING:
+		*s = V1ServingStatusSERVINGSTATUSSERVING
+	case V1ServingStatusSERVINGSTATUSNOTSERVING:
+		*s = V1ServingStatusSERVINGSTATUSNOTSERVING
+	default:
+		*s = V1ServingStatus(v)
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s V1ServingStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *V1ServingStatus) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

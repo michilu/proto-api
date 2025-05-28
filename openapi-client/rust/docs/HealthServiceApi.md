@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## health_service_check
 
-> crate::models::V1CheckResponse health_service_check(service)
+> models::V1CheckResponse health_service_check(service)
 
 
 ### Parameters
@@ -18,11 +18,11 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**service** | **String** | The service name to check the health of. | [required] |
+**service** | **String** | The service name as specified. | [required] |
 
 ### Return type
 
-[**crate::models::V1CheckResponse**](v1CheckResponse.md)
+[**models::V1CheckResponse**](v1CheckResponse.md)
 
 ### Authorization
 

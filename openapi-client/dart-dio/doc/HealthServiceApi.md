@@ -28,7 +28,7 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api = Openapi().getHealthServiceApi();
-final String service = service_example; // String | The service name to check the health of.
+final String service = service_example; // String | The service name as specified.
 
 try {
     final response = api.healthServiceCheck(service);
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service** | **String**| The service name to check the health of. | 
+ **service** | **String**| The service name as specified. | 
 
 ### Return type
 

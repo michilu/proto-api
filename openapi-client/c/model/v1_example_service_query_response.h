@@ -22,9 +22,10 @@ typedef struct v1_example_service_query_response_t v1_example_service_query_resp
 typedef struct v1_example_service_query_response_t {
     struct protov1_status_t *status; //model
 
+    int _library_owned; // Is the library responsible for freeing this object?
 } v1_example_service_query_response_t;
 
-v1_example_service_query_response_t *v1_example_service_query_response_create(
+__attribute__((deprecated)) v1_example_service_query_response_t *v1_example_service_query_response_create(
     protov1_status_t *status
 );
 

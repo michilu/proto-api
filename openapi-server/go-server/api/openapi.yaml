@@ -9,29 +9,29 @@ info:
   title: An example of generating swagger via gRPC ecosystem.
   version: "1.0"
 servers:
-- url: http://localhost:3100
-- url: https://localhost:3100
+  - url: http://localhost:3100
+  - url: https://localhost:3100
 security:
-- ApiKeyAuth: []
-  OAuth2:
-  - read
-  - write
+  - ApiKeyAuth: []
+    OAuth2:
+      - read
+      - write
 tags:
-- name: HealthService
-- name: ExampleService
+  - name: HealthService
+  - name: ExampleService
 paths:
   /v1/example/{id}:
     post:
       operationId: ExampleService_Query
       parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
+        - explode: false
+          in: path
+          name: id
+          required: true
+          schema:
+            format: uuid
+            type: string
+          style: simple
       requestBody:
         content:
           application/json:
@@ -46,24 +46,25 @@ paths:
                 $ref: '#/components/schemas/v1ExampleServiceQueryResponse'
           description: A successful response.
       security:
-      - ApiKeyAuth: []
-        OAuth2:
-        - read
-        - write
+        - ApiKeyAuth: []
+          OAuth2:
+            - read
+            - write
       tags:
-      - ExampleService
+        - ExampleService
   /v1/healthCheck:
     get:
       operationId: HealthService_Check
       parameters:
-      - description: The service name to check the health of.
-        explode: true
-        in: query
-        name: service
-        required: true
-        schema:
-          type: string
-        style: form
+        - description: The service name as specified.
+          explode: true
+          in: query
+          name: service
+          required: true
+          schema:
+            pattern: ^proto$
+            type: string
+          style: form
       responses:
         "200":
           content:
@@ -72,25 +73,18 @@ paths:
                 $ref: '#/components/schemas/v1CheckResponse'
           description: A successful response.
       tags:
-      - HealthService
+        - HealthService
 components:
   schemas:
-    CheckResponseServingStatus:
-      default: SERVING_STATUS_UNKNOWN_UNSPECIFIED
-      enum:
-      - SERVING_STATUS_UNKNOWN_UNSPECIFIED
-      - SERVING_STATUS_SERVING
-      - SERVING_STATUS_NOT_SERVING
-      type: string
     ExampleServiceQueryBody:
       type: object
     protov1Status:
       example:
         extensions:
-        - extensions
-        - extensions
+          - extensions
+          - extensions
         instance: instance
-        code: null
+        code: OK
         detail: detail
         type: type
         title: title
@@ -108,8 +102,7 @@ components:
           format: int32
           type: integer
         title:
-          description: "The \"title\" member is a JSON string containing a short,\
-            \ human-readable summary of the problem/response type."
+          description: "The \"title\" member is a JSON string containing a short, human-readable summary of the problem/response type."
           type: string
         detail:
           description: |-
@@ -117,12 +110,10 @@ components:
             The "detail" string, if present, ought to focus on helping the client correct the problem/response, rather than giving debugging information.
           type: string
         instance:
-          description: The "instance" member is a JSON string containing a URI reference
-            that identifies the specific occurrence of the problem/response.
+          description: The "instance" member is a JSON string containing a URI reference that identifies the specific occurrence of the problem/response.
           type: string
         extensions:
-          description: Problem type definitions MAY extend the problem details object
-            with additional members that are specific to that problem type.
+          description: Problem type definitions MAY extend the problem details object with additional members that are specific to that problem type.
           items:
             type: string
           type: array
@@ -143,7 +134,7 @@ components:
         `OUT_OF_RANGE` over `FAILED_PRECONDITION` if both codes apply.
         Similarly prefer `NOT_FOUND` or `ALREADY_EXISTS` over `FAILED_PRECONDITION`.
 
-         - OK: Not an error; returned on success
+         - OK: Not an error; returned on success.
 
         HTTP Mapping: 200 OK
          - CANCELLED: The operation was cancelled, typically by the caller.
@@ -172,7 +163,7 @@ components:
          - NOT_FOUND: Some requested entity (e.g., file or directory) was not found.
 
         Note to server developers: if a request is denied for an entire class
-        of users, such as gradual feature rollout or undocumented whitelist,
+        of users, such as gradual feature rollout or undocumented allowlist,
         `NOT_FOUND` may be used. If a request is denied for some users within
         a class of users, such as user-based access control, `PERMISSION_DENIED`
         must be used.
@@ -208,11 +199,11 @@ components:
         Service implementors can use the following guidelines to decide
         between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:
          (a) Use `UNAVAILABLE` if the client can retry just the failing call.
-         (b) Use `ABORTED` if the client should retry at a higher level
-             (e.g., when a client-specified test-and-set fails, indicating the
-             client should restart a read-modify-write sequence).
+         (b) Use `ABORTED` if the client should retry at a higher level. For
+             example, when a client-specified test-and-set fails, indicating the
+             client should restart a read-modify-write sequence.
          (c) Use `FAILED_PRECONDITION` if the client should not retry until
-             the system state has been explicitly fixed.  E.g., if an "rmdir"
+             the system state has been explicitly fixed. For example, if an "rmdir"
              fails because the directory is non-empty, `FAILED_PRECONDITION`
              should be returned since the client should not retry unless
              the files are deleted from the directory.
@@ -264,43 +255,43 @@ components:
 
         HTTP Mapping: 500 Internal Server Error
       enum:
-      - OK
-      - CANCELLED
-      - UNKNOWN
-      - INVALID_ARGUMENT
-      - DEADLINE_EXCEEDED
-      - NOT_FOUND
-      - ALREADY_EXISTS
-      - PERMISSION_DENIED
-      - UNAUTHENTICATED
-      - RESOURCE_EXHAUSTED
-      - FAILED_PRECONDITION
-      - ABORTED
-      - OUT_OF_RANGE
-      - UNIMPLEMENTED
-      - INTERNAL
-      - UNAVAILABLE
-      - DATA_LOSS
+        - OK
+        - CANCELLED
+        - UNKNOWN
+        - INVALID_ARGUMENT
+        - DEADLINE_EXCEEDED
+        - NOT_FOUND
+        - ALREADY_EXISTS
+        - PERMISSION_DENIED
+        - UNAUTHENTICATED
+        - RESOURCE_EXHAUSTED
+        - FAILED_PRECONDITION
+        - ABORTED
+        - OUT_OF_RANGE
+        - UNIMPLEMENTED
+        - INTERNAL
+        - UNAVAILABLE
+        - DATA_LOSS
       type: string
     v1CheckResponse:
       description: The response message containing the health status of the service.
       example:
-        status: null
+        status: SERVING_STATUS_UNKNOWN_UNSPECIFIED
       properties:
         status:
-          $ref: '#/components/schemas/CheckResponseServingStatus'
+          $ref: '#/components/schemas/v1ServingStatus'
       required:
-      - status
+        - status
       title: CheckResponse
       type: object
     v1ExampleServiceQueryResponse:
       example:
         status:
           extensions:
-          - extensions
-          - extensions
+            - extensions
+            - extensions
           instance: instance
-          code: null
+          code: OK
           detail: detail
           type: type
           title: title
@@ -309,6 +300,13 @@ components:
         status:
           $ref: '#/components/schemas/protov1Status'
       type: object
+    v1ServingStatus:
+      default: SERVING_STATUS_UNKNOWN_UNSPECIFIED
+      enum:
+        - SERVING_STATUS_UNKNOWN_UNSPECIFIED
+        - SERVING_STATUS_SERVING
+        - SERVING_STATUS_NOT_SERVING
+      type: string
   securitySchemes:
     ApiKeyAuth:
       in: header

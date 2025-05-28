@@ -1,5 +1,3 @@
-pub mod check_response_serving_status;
-pub use self::check_response_serving_status::CheckResponseServingStatus;
 pub mod protov1_status;
 pub use self::protov1_status::Protov1Status;
 pub mod rpc_code;
@@ -8,3 +6,5 @@ pub mod v1_check_response;
 pub use self::v1_check_response::V1CheckResponse;
 pub mod v1_example_service_query_response;
 pub use self::v1_example_service_query_response::V1ExampleServiceQueryResponse;
+pub mod v1_serving_status;
+pub use self::v1_serving_status::V1ServingStatus;

@@ -7,6 +7,8 @@ from aiohttp import web
 from openapi_server.models.v1_check_response import V1CheckResponse
 
 
+pytestmark = pytest.mark.asyncio
+
 async def test_health_service_check(client):
     """Test case for health_service_check
 

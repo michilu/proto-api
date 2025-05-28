@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -20,7 +20,7 @@ class HealthServiceApi {
   /// Parameters:
   ///
   /// * [String] service (required):
-  ///   The service name to check the health of.
+  ///   The service name as specified.
   Future<Response> healthServiceCheckWithHttpInfo(String service,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/healthCheck';
@@ -51,7 +51,7 @@ class HealthServiceApi {
   /// Parameters:
   ///
   /// * [String] service (required):
-  ///   The service name to check the health of.
+  ///   The service name as specified.
   Future<V1CheckResponse?> healthServiceCheck(String service,) async {
     final response = await healthServiceCheckWithHttpInfo(service,);
     if (response.statusCode >= HttpStatus.badRequest) {

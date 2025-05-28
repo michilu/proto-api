@@ -5,15 +5,10 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 v1_example_service_query_response_t*
-ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , object_t * body )
+ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char *id, object_t *body)
 {
     list_t    *localVarQueryParameters = NULL;
     list_t    *localVarHeaderParameters = NULL;
@@ -21,15 +16,20 @@ ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , object
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = list_createList();
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/v1/example/{id}")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/v1/example/{id}");
+    char *localVarPath = strdup("/v1/example/{id}");
+
+    if(!id)
+        goto end;
 
 
     // Path Params
-    long sizeOfPathParams_id = strlen(id)+3 + strlen("{ id }");
+    long sizeOfPathParams_id = strlen(id)+3 + sizeof("{ id }") - 1;
     if(id == NULL) {
         goto end;
     }
@@ -51,9 +51,10 @@ ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , object
     cJSON *localVarSingleItemJSON_body = NULL;
     if (body != NULL)
     {
-        //string
+        //not string, not binary
         localVarSingleItemJSON_body = object_convertToJSON(body);
         localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_body);
+        localVarBodyLength = strlen(localVarBodyParameters);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     list_addElement(localVarContentType,"application/json"); //consumes
@@ -65,6 +66,7 @@ ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , object
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "POST");
 
     // uncomment below to debug the error response
@@ -72,11 +74,14 @@ ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , object
     //    printf("%s\n","A successful response.");
     //}
     //nonprimitive not container
-    cJSON *ExampleServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    v1_example_service_query_response_t *elementToReturn = v1_example_service_query_response_parseFromJSON(ExampleServiceAPIlocalVarJSON);
-    cJSON_Delete(ExampleServiceAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    v1_example_service_query_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *ExampleServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = v1_example_service_query_response_parseFromJSON(ExampleServiceAPIlocalVarJSON);
+        cJSON_Delete(ExampleServiceAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

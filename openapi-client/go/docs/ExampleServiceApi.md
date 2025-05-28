@@ -20,25 +20,25 @@ Method | HTTP request | Description
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-    body := map[string]interface{}{ ... } // map[string]interface{} | 
+	id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	body := map[string]interface{}{ ... } // map[string]interface{} | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ExampleServiceAPI.ExampleServiceQuery(context.Background(), id).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ExampleServiceAPI.ExampleServiceQuery``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ExampleServiceQuery`: V1ExampleServiceQueryResponse
-    fmt.Fprintf(os.Stdout, "Response from `ExampleServiceAPI.ExampleServiceQuery`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ExampleServiceAPI.ExampleServiceQuery(context.Background(), id).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ExampleServiceAPI.ExampleServiceQuery``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ExampleServiceQuery`: V1ExampleServiceQueryResponse
+	fmt.Fprintf(os.Stdout, "Response from `ExampleServiceAPI.ExampleServiceQuery`: %v\n", resp)
 }
 ```
 

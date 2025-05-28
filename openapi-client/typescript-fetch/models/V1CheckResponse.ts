@@ -12,13 +12,14 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
-import type { CheckResponseServingStatus } from './CheckResponseServingStatus';
+import { mapValues } from '../runtime';
+import type { V1ServingStatus } from './V1ServingStatus';
 import {
-    CheckResponseServingStatusFromJSON,
-    CheckResponseServingStatusFromJSONTyped,
-    CheckResponseServingStatusToJSON,
-} from './CheckResponseServingStatus';
+    V1ServingStatusFromJSON,
+    V1ServingStatusFromJSONTyped,
+    V1ServingStatusToJSON,
+    V1ServingStatusToJSONTyped,
+} from './V1ServingStatus';
 
 /**
  * The response message containing the health status of the service.
@@ -28,20 +29,20 @@ import {
 export interface V1CheckResponse {
     /**
      * 
-     * @type {CheckResponseServingStatus}
+     * @type {V1ServingStatus}
      * @memberof V1CheckResponse
      */
-    status: CheckResponseServingStatus;
+    status: V1ServingStatus;
 }
+
+
 
 /**
  * Check if a given object implements the V1CheckResponse interface.
  */
-export function instanceOfV1CheckResponse(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "status" in value;
-
-    return isInstance;
+export function instanceOfV1CheckResponse(value: object): value is V1CheckResponse {
+    if (!('status' in value) || value['status'] === undefined) return false;
+    return true;
 }
 
 export function V1CheckResponseFromJSON(json: any): V1CheckResponse {
@@ -49,25 +50,27 @@ export function V1CheckResponseFromJSON(json: any): V1CheckResponse {
 }
 
 export function V1CheckResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): V1CheckResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'status': CheckResponseServingStatusFromJSON(json['status']),
+        'status': V1ServingStatusFromJSON(json['status']),
     };
 }
 
-export function V1CheckResponseToJSON(value?: V1CheckResponse | null): any {
-    if (value === undefined) {
-        return undefined;
+export function V1CheckResponseToJSON(json: any): V1CheckResponse {
+    return V1CheckResponseToJSONTyped(json, false);
+}
+
+export function V1CheckResponseToJSONTyped(value?: V1CheckResponse | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'status': CheckResponseServingStatusToJSON(value.status),
+        'status': V1ServingStatusToJSON(value['status']),
     };
 }
 

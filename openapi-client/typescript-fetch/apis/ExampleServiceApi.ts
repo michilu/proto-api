@@ -35,12 +35,18 @@ export class ExampleServiceApi extends runtime.BaseAPI {
     /**
      */
     async exampleServiceQueryRaw(requestParameters: ExampleServiceQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<V1ExampleServiceQueryResponse>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling exampleServiceQuery.');
+        if (requestParameters['id'] == null) {
+            throw new runtime.RequiredError(
+                'id',
+                'Required parameter "id" was null or undefined when calling exampleServiceQuery().'
+            );
         }
 
-        if (requestParameters.body === null || requestParameters.body === undefined) {
-            throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling exampleServiceQuery.');
+        if (requestParameters['body'] == null) {
+            throw new runtime.RequiredError(
+                'body',
+                'Required parameter "body" was null or undefined when calling exampleServiceQuery().'
+            );
         }
 
         const queryParameters: any = {};
@@ -55,15 +61,15 @@ export class ExampleServiceApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-API-Key"] = this.configuration.apiKey("X-API-Key"); // ApiKeyAuth authentication
+            headerParameters["X-API-Key"] = await this.configuration.apiKey("X-API-Key"); // ApiKeyAuth authentication
         }
 
         const response = await this.request({
-            path: `/v1/example/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/v1/example/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.body as any,
+            body: requestParameters['body'] as any,
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => V1ExampleServiceQueryResponseFromJSON(jsonValue));

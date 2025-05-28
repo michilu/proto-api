@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **detail** | Option<**String**> | The \"detail\" member is a JSON string containing a human-readable explanation specific to this occurrence of the problem/response. The \"detail\" string, if present, ought to focus on helping the client correct the problem/response, rather than giving debugging information. | [optional]
 **instance** | Option<**String**> | The \"instance\" member is a JSON string containing a URI reference that identifies the specific occurrence of the problem/response. | [optional]
 **extensions** | Option<**Vec<String>**> | Problem type definitions MAY extend the problem details object with additional members that are specific to that problem type. | [optional]
-**code** | Option<[**crate::models::RpcCode**](rpcCode.md)> |  | [optional]
+**code** | Option<[**models::RpcCode**](rpcCode.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

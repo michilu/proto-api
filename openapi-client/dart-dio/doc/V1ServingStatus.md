@@ -1,7 +1,11 @@
-# CheckResponseServingStatus
+# openapi.model.V1ServingStatus
+
+## Load the model package
+```dart
+import 'package:openapi/api.dart';
+```
 
 ## Properties
-
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 

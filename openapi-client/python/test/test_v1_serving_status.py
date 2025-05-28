@@ -14,12 +14,11 @@
 
 
 import unittest
-import datetime
 
-from openapi_client.models.check_response_serving_status import CheckResponseServingStatus  # noqa: E501
+from openapi_client.models.v1_serving_status import V1ServingStatus
 
-class TestCheckResponseServingStatus(unittest.TestCase):
-    """CheckResponseServingStatus unit test stubs"""
+class TestV1ServingStatus(unittest.TestCase):
+    """V1ServingStatus unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,9 +26,9 @@ class TestCheckResponseServingStatus(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testCheckResponseServingStatus(self):
-        """Test CheckResponseServingStatus"""
-        # inst = CheckResponseServingStatus()
+    def testV1ServingStatus(self):
+        """Test V1ServingStatus"""
+        # inst = V1ServingStatus()
 
 if __name__ == '__main__':
     unittest.main()

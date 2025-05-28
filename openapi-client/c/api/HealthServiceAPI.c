@@ -5,15 +5,10 @@
 
 #define MAX_NUMBER_LENGTH 16
 #define MAX_BUFFER_LENGTH 4096
-#define intToStr(dst, src) \
-    do {\
-    char dst[256];\
-    snprintf(dst, 256, "%ld", (long int)(src));\
-}while(0)
 
 
 v1_check_response_t*
-HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char * service )
+HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char *service)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -21,11 +16,14 @@ HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char * service )
     list_t *localVarHeaderType = list_createList();
     list_t *localVarContentType = NULL;
     char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
 
     // create the path
-    long sizeOfPath = strlen("/v1/healthCheck")+1;
-    char *localVarPath = malloc(sizeOfPath);
-    snprintf(localVarPath, sizeOfPath, "/v1/healthCheck");
+    char *localVarPath = strdup("/v1/healthCheck");
+
 
 
 
@@ -50,6 +48,7 @@ HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char * service )
                     localVarHeaderType,
                     localVarContentType,
                     localVarBodyParameters,
+                    localVarBodyLength,
                     "GET");
 
     // uncomment below to debug the error response
@@ -57,11 +56,14 @@ HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char * service )
     //    printf("%s\n","A successful response.");
     //}
     //nonprimitive not container
-    cJSON *HealthServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-    v1_check_response_t *elementToReturn = v1_check_response_parseFromJSON(HealthServiceAPIlocalVarJSON);
-    cJSON_Delete(HealthServiceAPIlocalVarJSON);
-    if(elementToReturn == NULL) {
-        // return 0;
+    v1_check_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *HealthServiceAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = v1_check_response_parseFromJSON(HealthServiceAPIlocalVarJSON);
+        cJSON_Delete(HealthServiceAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
     }
 
     //return type

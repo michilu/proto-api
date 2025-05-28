@@ -4,32 +4,15 @@
 #include "protov1_status.h"
 
 
-char* codeprotov1_status_ToString(an_example_of_generating_swagger_via_grpc_ecosystem__protov1_status__e code) {
-    char* codeArray[] =  { "NULL", "OK", "CANCELLED", "UNKNOWN", "INVALID_ARGUMENT", "DEADLINE_EXCEEDED", "NOT_FOUND", "ALREADY_EXISTS", "PERMISSION_DENIED", "UNAUTHENTICATED", "RESOURCE_EXHAUSTED", "FAILED_PRECONDITION", "ABORTED", "OUT_OF_RANGE", "UNIMPLEMENTED", "INTERNAL", "UNAVAILABLE", "DATA_LOSS" };
-	return codeArray[code];
-}
 
-an_example_of_generating_swagger_via_grpc_ecosystem__protov1_status__e codeprotov1_status_FromString(char* code){
-    int stringToReturn = 0;
-    char *codeArray[] =  { "NULL", "OK", "CANCELLED", "UNKNOWN", "INVALID_ARGUMENT", "DEADLINE_EXCEEDED", "NOT_FOUND", "ALREADY_EXISTS", "PERMISSION_DENIED", "UNAUTHENTICATED", "RESOURCE_EXHAUSTED", "FAILED_PRECONDITION", "ABORTED", "OUT_OF_RANGE", "UNIMPLEMENTED", "INTERNAL", "UNAVAILABLE", "DATA_LOSS" };
-    size_t sizeofArray = sizeof(codeArray) / sizeof(codeArray[0]);
-    while(stringToReturn < sizeofArray) {
-        if(strcmp(code, codeArray[stringToReturn]) == 0) {
-            return stringToReturn;
-        }
-        stringToReturn++;
-    }
-    return 0;
-}
-
-protov1_status_t *protov1_status_create(
+static protov1_status_t *protov1_status_create_internal(
     char *type,
     int status,
     char *title,
     char *detail,
     char *instance,
     list_t *extensions,
-    rpc_code_t *code
+    an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e code
     ) {
     protov1_status_t *protov1_status_local_var = malloc(sizeof(protov1_status_t));
     if (!protov1_status_local_var) {
@@ -43,12 +26,36 @@ protov1_status_t *protov1_status_create(
     protov1_status_local_var->extensions = extensions;
     protov1_status_local_var->code = code;
 
+    protov1_status_local_var->_library_owned = 1;
     return protov1_status_local_var;
 }
 
+__attribute__((deprecated)) protov1_status_t *protov1_status_create(
+    char *type,
+    int status,
+    char *title,
+    char *detail,
+    char *instance,
+    list_t *extensions,
+    an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e code
+    ) {
+    return protov1_status_create_internal (
+        type,
+        status,
+        title,
+        detail,
+        instance,
+        extensions,
+        code
+        );
+}
 
 void protov1_status_free(protov1_status_t *protov1_status) {
     if(NULL == protov1_status){
+        return ;
+    }
+    if(protov1_status->_library_owned != 1){
+        fprintf(stderr, "WARNING: %s() does NOT free objects allocated by the user\n", "protov1_status_free");
         return ;
     }
     listEntry_t *listEntry;
@@ -74,10 +81,6 @@ void protov1_status_free(protov1_status_t *protov1_status) {
         }
         list_freeList(protov1_status->extensions);
         protov1_status->extensions = NULL;
-    }
-    if (protov1_status->code) {
-        rpc_code_free(protov1_status->code);
-        protov1_status->code = NULL;
     }
     free(protov1_status);
 }
@@ -134,7 +137,7 @@ cJSON *protov1_status_convertToJSON(protov1_status_t *protov1_status) {
 
     listEntry_t *extensionsListEntry;
     list_ForEach(extensionsListEntry, protov1_status->extensions) {
-    if(cJSON_AddStringToObject(extensions, "", (char*)extensionsListEntry->data) == NULL)
+    if(cJSON_AddStringToObject(extensions, "", extensionsListEntry->data) == NULL)
     {
         goto fail;
     }
@@ -143,7 +146,7 @@ cJSON *protov1_status_convertToJSON(protov1_status_t *protov1_status) {
 
 
     // protov1_status->code
-    if(protov1_status->code != an_example_of_generating_swagger_via_grpc_ecosystem__protov1_status__NULL) {
+    if(protov1_status->code != an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__NULL) {
     cJSON *code_local_JSON = rpc_code_convertToJSON(protov1_status->code);
     if(code_local_JSON == NULL) {
         goto fail; // custom
@@ -170,10 +173,13 @@ protov1_status_t *protov1_status_parseFromJSON(cJSON *protov1_statusJSON){
     list_t *extensionsList = NULL;
 
     // define the local variable for protov1_status->code
-    rpc_code_t *code_local_nonprim = NULL;
+    an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e code_local_nonprim = 0;
 
     // protov1_status->type
     cJSON *type = cJSON_GetObjectItemCaseSensitive(protov1_statusJSON, "type");
+    if (cJSON_IsNull(type)) {
+        type = NULL;
+    }
     if (type) { 
     if(!cJSON_IsString(type) && !cJSON_IsNull(type))
     {
@@ -183,6 +189,9 @@ protov1_status_t *protov1_status_parseFromJSON(cJSON *protov1_statusJSON){
 
     // protov1_status->status
     cJSON *status = cJSON_GetObjectItemCaseSensitive(protov1_statusJSON, "status");
+    if (cJSON_IsNull(status)) {
+        status = NULL;
+    }
     if (status) { 
     if(!cJSON_IsNumber(status))
     {
@@ -192,6 +201,9 @@ protov1_status_t *protov1_status_parseFromJSON(cJSON *protov1_statusJSON){
 
     // protov1_status->title
     cJSON *title = cJSON_GetObjectItemCaseSensitive(protov1_statusJSON, "title");
+    if (cJSON_IsNull(title)) {
+        title = NULL;
+    }
     if (title) { 
     if(!cJSON_IsString(title) && !cJSON_IsNull(title))
     {
@@ -201,6 +213,9 @@ protov1_status_t *protov1_status_parseFromJSON(cJSON *protov1_statusJSON){
 
     // protov1_status->detail
     cJSON *detail = cJSON_GetObjectItemCaseSensitive(protov1_statusJSON, "detail");
+    if (cJSON_IsNull(detail)) {
+        detail = NULL;
+    }
     if (detail) { 
     if(!cJSON_IsString(detail) && !cJSON_IsNull(detail))
     {
@@ -210,6 +225,9 @@ protov1_status_t *protov1_status_parseFromJSON(cJSON *protov1_statusJSON){
 
     // protov1_status->instance
     cJSON *instance = cJSON_GetObjectItemCaseSensitive(protov1_statusJSON, "instance");
+    if (cJSON_IsNull(instance)) {
+        instance = NULL;
+    }
     if (instance) { 
     if(!cJSON_IsString(instance) && !cJSON_IsNull(instance))
     {
@@ -219,6 +237,9 @@ protov1_status_t *protov1_status_parseFromJSON(cJSON *protov1_statusJSON){
 
     // protov1_status->extensions
     cJSON *extensions = cJSON_GetObjectItemCaseSensitive(protov1_statusJSON, "extensions");
+    if (cJSON_IsNull(extensions)) {
+        extensions = NULL;
+    }
     if (extensions) { 
     cJSON *extensions_local = NULL;
     if(!cJSON_IsArray(extensions)) {
@@ -238,19 +259,22 @@ protov1_status_t *protov1_status_parseFromJSON(cJSON *protov1_statusJSON){
 
     // protov1_status->code
     cJSON *code = cJSON_GetObjectItemCaseSensitive(protov1_statusJSON, "code");
+    if (cJSON_IsNull(code)) {
+        code = NULL;
+    }
     if (code) { 
     code_local_nonprim = rpc_code_parseFromJSON(code); //custom
     }
 
 
-    protov1_status_local_var = protov1_status_create (
+    protov1_status_local_var = protov1_status_create_internal (
         type && !cJSON_IsNull(type) ? strdup(type->valuestring) : NULL,
         status ? status->valuedouble : 0,
         title && !cJSON_IsNull(title) ? strdup(title->valuestring) : NULL,
         detail && !cJSON_IsNull(detail) ? strdup(detail->valuestring) : NULL,
         instance && !cJSON_IsNull(instance) ? strdup(instance->valuestring) : NULL,
         extensions ? extensionsList : NULL,
-        code ? code_local_nonprim : NULL
+        code ? code_local_nonprim : 0
         );
 
     return protov1_status_local_var;
@@ -265,8 +289,7 @@ end:
         extensionsList = NULL;
     }
     if (code_local_nonprim) {
-        rpc_code_free(code_local_nonprim);
-        code_local_nonprim = NULL;
+        code_local_nonprim = 0;
     }
     return NULL;
 

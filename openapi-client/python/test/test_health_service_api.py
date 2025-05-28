@@ -15,14 +15,14 @@
 
 import unittest
 
-from openapi_client.api.health_service_api import HealthServiceApi  # noqa: E501
+from openapi_client.api.health_service_api import HealthServiceApi
 
 
 class TestHealthServiceApi(unittest.TestCase):
     """HealthServiceApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = HealthServiceApi()  # noqa: E501
+        self.api = HealthServiceApi()
 
     def tearDown(self) -> None:
         pass

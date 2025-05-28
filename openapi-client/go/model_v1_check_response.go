@@ -12,7 +12,9 @@ Contact: none@example.com
 package openapi
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the V1CheckResponse type satisfies the MappedNullable interface at compile time
@@ -20,14 +22,16 @@ var _ MappedNullable = &V1CheckResponse{}
 
 // V1CheckResponse The response message containing the health status of the service.
 type V1CheckResponse struct {
-	Status CheckResponseServingStatus `json:"status"`
+	Status V1ServingStatus `json:"status"`
 }
+
+type _V1CheckResponse V1CheckResponse
 
 // NewV1CheckResponse instantiates a new V1CheckResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewV1CheckResponse(status CheckResponseServingStatus) *V1CheckResponse {
+func NewV1CheckResponse(status V1ServingStatus) *V1CheckResponse {
 	this := V1CheckResponse{}
 	this.Status = status
 	return &this
@@ -38,15 +42,15 @@ func NewV1CheckResponse(status CheckResponseServingStatus) *V1CheckResponse {
 // but it doesn't guarantee that properties required by API are set
 func NewV1CheckResponseWithDefaults() *V1CheckResponse {
 	this := V1CheckResponse{}
-	var status CheckResponseServingStatus = UNKNOWN_UNSPECIFIED
+	var status V1ServingStatus = SERVING_STATUS_UNKNOWN_UNSPECIFIED
 	this.Status = status
 	return &this
 }
 
 // GetStatus returns the Status field value
-func (o *V1CheckResponse) GetStatus() CheckResponseServingStatus {
+func (o *V1CheckResponse) GetStatus() V1ServingStatus {
 	if o == nil {
-		var ret CheckResponseServingStatus
+		var ret V1ServingStatus
 		return ret
 	}
 
@@ -55,7 +59,7 @@ func (o *V1CheckResponse) GetStatus() CheckResponseServingStatus {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *V1CheckResponse) GetStatusOk() (*CheckResponseServingStatus, bool) {
+func (o *V1CheckResponse) GetStatusOk() (*V1ServingStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +67,7 @@ func (o *V1CheckResponse) GetStatusOk() (*CheckResponseServingStatus, bool) {
 }
 
 // SetStatus sets field value
-func (o *V1CheckResponse) SetStatus(v CheckResponseServingStatus) {
+func (o *V1CheckResponse) SetStatus(v V1ServingStatus) {
 	o.Status = v
 }
 
@@ -79,6 +83,43 @@ func (o V1CheckResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["status"] = o.Status
 	return toSerialize, nil
+}
+
+func (o *V1CheckResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"status",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varV1CheckResponse := _V1CheckResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varV1CheckResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = V1CheckResponse(varV1CheckResponse)
+
+	return err
 }
 
 type NullableV1CheckResponse struct {

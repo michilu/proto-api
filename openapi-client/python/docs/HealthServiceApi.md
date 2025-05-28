@@ -10,15 +10,12 @@ Method | HTTP request | Description
 # **health_service_check**
 > V1CheckResponse health_service_check(service)
 
-
-
 ### Example
 
 * OAuth Authentication (OAuth2):
 * Api Key Authentication (ApiKeyAuth):
+
 ```python
-import time
-import os
 import openapi_client
 from openapi_client.models.v1_check_response import V1CheckResponse
 from openapi_client.rest import ApiException
@@ -47,7 +44,7 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.HealthServiceApi(api_client)
-    service = 'service_example' # str | The service name to check the health of.
+    service = 'service_example' # str | The service name as specified.
 
     try:
         api_response = api_instance.health_service_check(service)
@@ -61,9 +58,10 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service** | **str**| The service name to check the health of. | 
+ **service** | **str**| The service name as specified. | 
 
 ### Return type
 
@@ -79,6 +77,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A successful response. |  -  |

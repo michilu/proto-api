@@ -1,6 +1,7 @@
 .gitignore
 .openapi-generator-ignore
 README.md
+api.base.service.ts
 api.module.ts
 api/api.ts
 api/exampleService.service.ts
@@ -9,11 +10,12 @@ configuration.ts
 encoder.ts
 git_push.sh
 index.ts
-model/checkResponseServingStatus.ts
 model/models.ts
 model/protov1Status.ts
 model/rpcCode.ts
 model/v1CheckResponse.ts
 model/v1ExampleServiceQueryResponse.ts
+model/v1ServingStatus.ts
 param.ts
+provide-api.ts
 variables.ts

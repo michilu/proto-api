@@ -34,14 +34,17 @@ export class HealthServiceApi extends runtime.BaseAPI {
     /**
      */
     async healthServiceCheckRaw(requestParameters: HealthServiceCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<V1CheckResponse>> {
-        if (requestParameters.service === null || requestParameters.service === undefined) {
-            throw new runtime.RequiredError('service','Required parameter requestParameters.service was null or undefined when calling healthServiceCheck.');
+        if (requestParameters['service'] == null) {
+            throw new runtime.RequiredError(
+                'service',
+                'Required parameter "service" was null or undefined when calling healthServiceCheck().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.service !== undefined) {
-            queryParameters['service'] = requestParameters.service;
+        if (requestParameters['service'] != null) {
+            queryParameters['service'] = requestParameters['service'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -52,7 +55,7 @@ export class HealthServiceApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-API-Key"] = this.configuration.apiKey("X-API-Key"); // ApiKeyAuth authentication
+            headerParameters["X-API-Key"] = await this.configuration.apiKey("X-API-Key"); // ApiKeyAuth authentication
         }
 
         const response = await this.request({

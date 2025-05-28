@@ -17,7 +17,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **service** | **String**| The service name to check the health of. | 
+  **service** | **String**| The service name as specified. | 
 
 ### Return type
 

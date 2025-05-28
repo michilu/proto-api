@@ -417,10 +417,10 @@ impl<S, C> Api<C> for Client<S, C> where
                 Err(e) => return Err(ApiError(format!("Unable to create request: {}", e)))
         };
 
+        // Consumes basic body
         // Body parameter
         let body = serde_json::to_string(&param_body).expect("impossible to fail to serialize");
-
-                *request.body_mut() = Body::from(body);
+        *request.body_mut() = Body::from(body);
 
         let header = "application/json";
         request.headers_mut().insert(CONTENT_TYPE, match HeaderValue::from_str(header) {
@@ -436,10 +436,9 @@ impl<S, C> Api<C> for Client<S, C> where
 
         #[allow(clippy::collapsible_match)]
         if let Some(auth_data) = Has::<Option<AuthData>>::get(context).as_ref() {
-            // Currently only authentication with Basic and Bearer are supported
             #[allow(clippy::single_match, clippy::match_single_binding)]
             match auth_data {
-                &AuthData::Bearer(ref bearer_header) => {
+                AuthData::Bearer(bearer_header) => {
                     let auth = swagger::auth::Header(bearer_header.clone());
                     let header = match HeaderValue::from_str(&format!("{}", auth)) {
                         Ok(h) => h,
@@ -462,11 +461,13 @@ impl<S, C> Api<C> for Client<S, C> where
                 let body = body
                         .into_raw()
                         .map_err(|e| ApiError(format!("Failed to read response: {}", e))).await?;
+
                 let body = str::from_utf8(&body)
                     .map_err(|e| ApiError(format!("Response was not valid UTF8: {}", e)))?;
-                let body = serde_json::from_str::<models::V1ExampleServiceQueryResponse>(body).map_err(|e| {
-                    ApiError(format!("Response body did not match the schema: {}", e))
-                })?;
+                let body = serde_json::from_str::<models::V1ExampleServiceQueryResponse>(body)
+                    .map_err(|e| ApiError(format!("Response body did not match the schema: {}", e)))?;
+
+
                 Ok(ExampleServiceQueryResponse::ASuccessfulResponse
                     (body)
                 )
@@ -535,10 +536,9 @@ impl<S, C> Api<C> for Client<S, C> where
 
         #[allow(clippy::collapsible_match)]
         if let Some(auth_data) = Has::<Option<AuthData>>::get(context).as_ref() {
-            // Currently only authentication with Basic and Bearer are supported
             #[allow(clippy::single_match, clippy::match_single_binding)]
             match auth_data {
-                &AuthData::Bearer(ref bearer_header) => {
+                AuthData::Bearer(bearer_header) => {
                     let auth = swagger::auth::Header(bearer_header.clone());
                     let header = match HeaderValue::from_str(&format!("{}", auth)) {
                         Ok(h) => h,
@@ -561,11 +561,13 @@ impl<S, C> Api<C> for Client<S, C> where
                 let body = body
                         .into_raw()
                         .map_err(|e| ApiError(format!("Failed to read response: {}", e))).await?;
+
                 let body = str::from_utf8(&body)
                     .map_err(|e| ApiError(format!("Response was not valid UTF8: {}", e)))?;
-                let body = serde_json::from_str::<models::V1CheckResponse>(body).map_err(|e| {
-                    ApiError(format!("Response body did not match the schema: {}", e))
-                })?;
+                let body = serde_json::from_str::<models::V1CheckResponse>(body)
+                    .map_err(|e| ApiError(format!("Response body did not match the schema: {}", e)))?;
+
+
                 Ok(HealthServiceCheckResponse::ASuccessfulResponse
                     (body)
                 )

@@ -13,7 +13,7 @@ func (s *Protov1Status) setDefaults() {
 // setDefaults set default value of fields.
 func (s *V1CheckResponse) setDefaults() {
 	{
-		val := CheckResponseServingStatus("SERVING_STATUS_UNKNOWN_UNSPECIFIED")
+		val := V1ServingStatus("SERVING_STATUS_UNKNOWN_UNSPECIFIED")
 		s.Status = val
 	}
 }

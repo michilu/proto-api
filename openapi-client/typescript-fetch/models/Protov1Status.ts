@@ -12,12 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RpcCode } from './RpcCode';
 import {
     RpcCodeFromJSON,
     RpcCodeFromJSONTyped,
     RpcCodeToJSON,
+    RpcCodeToJSONTyped,
 } from './RpcCode';
 
 /**
@@ -73,13 +74,13 @@ export interface Protov1Status {
     code?: RpcCode;
 }
 
+
+
 /**
  * Check if a given object implements the Protov1Status interface.
  */
-export function instanceOfProtov1Status(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+export function instanceOfProtov1Status(value: object): value is Protov1Status {
+    return true;
 }
 
 export function Protov1StatusFromJSON(json: any): Protov1Status {
@@ -87,37 +88,39 @@ export function Protov1StatusFromJSON(json: any): Protov1Status {
 }
 
 export function Protov1StatusFromJSONTyped(json: any, ignoreDiscriminator: boolean): Protov1Status {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'type': !exists(json, 'type') ? undefined : json['type'],
-        'status': !exists(json, 'status') ? undefined : json['status'],
-        'title': !exists(json, 'title') ? undefined : json['title'],
-        'detail': !exists(json, 'detail') ? undefined : json['detail'],
-        'instance': !exists(json, 'instance') ? undefined : json['instance'],
-        'extensions': !exists(json, 'extensions') ? undefined : json['extensions'],
-        'code': !exists(json, 'code') ? undefined : RpcCodeFromJSON(json['code']),
+        'type': json['type'] == null ? undefined : json['type'],
+        'status': json['status'] == null ? undefined : json['status'],
+        'title': json['title'] == null ? undefined : json['title'],
+        'detail': json['detail'] == null ? undefined : json['detail'],
+        'instance': json['instance'] == null ? undefined : json['instance'],
+        'extensions': json['extensions'] == null ? undefined : json['extensions'],
+        'code': json['code'] == null ? undefined : RpcCodeFromJSON(json['code']),
     };
 }
 
-export function Protov1StatusToJSON(value?: Protov1Status | null): any {
-    if (value === undefined) {
-        return undefined;
+export function Protov1StatusToJSON(json: any): Protov1Status {
+    return Protov1StatusToJSONTyped(json, false);
+}
+
+export function Protov1StatusToJSONTyped(value?: Protov1Status | null, ignoreDiscriminator: boolean = false): any {
+    if (value == null) {
+        return value;
     }
-    if (value === null) {
-        return null;
-    }
+
     return {
         
-        'type': value.type,
-        'status': value.status,
-        'title': value.title,
-        'detail': value.detail,
-        'instance': value.instance,
-        'extensions': value.extensions,
-        'code': RpcCodeToJSON(value.code),
+        'type': value['type'],
+        'status': value['status'],
+        'title': value['title'],
+        'detail': value['detail'],
+        'instance': value['instance'],
+        'extensions': value['extensions'],
+        'code': RpcCodeToJSON(value['code']),
     };
 }
 

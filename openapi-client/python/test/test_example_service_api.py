@@ -15,14 +15,14 @@
 
 import unittest
 
-from openapi_client.api.example_service_api import ExampleServiceApi  # noqa: E501
+from openapi_client.api.example_service_api import ExampleServiceApi
 
 
 class TestExampleServiceApi(unittest.TestCase):
     """ExampleServiceApi unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ExampleServiceApi()  # noqa: E501
+        self.api = ExampleServiceApi()
 
     def tearDown(self) -> None:
         pass

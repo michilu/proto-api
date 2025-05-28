@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/check_response_serving_status.dart';
+import 'package:openapi/src/model/v1_serving_status.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -16,7 +16,7 @@ part 'v1_check_response.g.dart';
 @BuiltValue()
 abstract class V1CheckResponse implements Built<V1CheckResponse, V1CheckResponseBuilder> {
   @BuiltValueField(wireName: r'status')
-  CheckResponseServingStatus get status;
+  V1ServingStatus get status;
   // enum statusEnum {  SERVING_STATUS_UNKNOWN_UNSPECIFIED,  SERVING_STATUS_SERVING,  SERVING_STATUS_NOT_SERVING,  };
 
   V1CheckResponse._();
@@ -45,7 +45,7 @@ class _$V1CheckResponseSerializer implements PrimitiveSerializer<V1CheckResponse
     yield r'status';
     yield serializers.serialize(
       object.status,
-      specifiedType: const FullType(CheckResponseServingStatus),
+      specifiedType: const FullType(V1ServingStatus),
     );
   }
 
@@ -73,8 +73,8 @@ class _$V1CheckResponseSerializer implements PrimitiveSerializer<V1CheckResponse
         case r'status':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CheckResponseServingStatus),
-          ) as CheckResponseServingStatus;
+            specifiedType: const FullType(V1ServingStatus),
+          ) as V1ServingStatus;
           result.status = valueDes;
           break;
         default:

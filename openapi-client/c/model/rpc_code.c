@@ -22,7 +22,7 @@ an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e rpc_code_rpc_co
     return 0;
 }
 
-cJSON *rpc_code_rpc_code_convertToJSON(an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e rpc_code) {
+cJSON *rpc_code_convertToJSON(an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e rpc_code) {
     cJSON *item = cJSON_CreateObject();
     if(cJSON_AddStringToObject(item, "rpc_code", rpc_code_rpc_code_ToString(rpc_code)) == NULL) {
         goto fail;
@@ -33,15 +33,9 @@ fail:
     return NULL;
 }
 
-an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e rpc_code_rpc_code_parseFromJSON(cJSON *rpc_codeJSON) {
-    an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e *rpc_code = NULL;
-    an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e rpc_codeVariable;
-    cJSON *rpc_codeVar = cJSON_GetObjectItemCaseSensitive(rpc_codeJSON, "rpc_code");
-    if(!cJSON_IsString(rpc_codeVar) || (rpc_codeVar->valuestring == NULL)){
-        goto end;
+an_example_of_generating_swagger_via_grpc_ecosystem__rpc_code__e rpc_code_parseFromJSON(cJSON *rpc_codeJSON) {
+    if(!cJSON_IsString(rpc_codeJSON) || (rpc_codeJSON->valuestring == NULL)) {
+        return 0;
     }
-    rpc_codeVariable = rpc_code_rpc_code_FromString(rpc_codeVar->valuestring);
-    return rpc_codeVariable;
-end:
-    return 0;
+    return rpc_code_rpc_code_FromString(rpc_codeJSON->valuestring);
 }

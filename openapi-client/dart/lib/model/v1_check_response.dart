@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -16,7 +16,7 @@ class V1CheckResponse {
     required this.status,
   });
 
-  CheckResponseServingStatus status;
+  V1ServingStatus status;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is V1CheckResponse &&
@@ -55,7 +55,7 @@ class V1CheckResponse {
       }());
 
       return V1CheckResponse(
-        status: CheckResponseServingStatus.fromJson(json[r'status'])!,
+        status: V1ServingStatus.fromJson(json[r'status'])!,
       );
     }
     return null;

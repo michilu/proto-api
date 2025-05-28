@@ -4,6 +4,7 @@
 
 import 'dart:async';
 
+import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -22,7 +23,7 @@ class HealthServiceApi {
   /// 
   ///
   /// Parameters:
-  /// * [service] - The service name to check the health of.
+  /// * [service] - The service name as specified.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request

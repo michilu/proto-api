@@ -1,4 +1,4 @@
-# check_response_serving_status_t
+# V1ServingStatus
 
 ## Properties
 Name | Type | Description | Notes

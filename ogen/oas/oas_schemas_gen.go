@@ -20,55 +20,6 @@ func (s *ApiKeyAuth) SetAPIKey(val string) {
 	s.APIKey = val
 }
 
-// Ref: #/components/schemas/CheckResponseServingStatus
-type CheckResponseServingStatus string
-
-const (
-	CheckResponseServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED CheckResponseServingStatus = "SERVING_STATUS_UNKNOWN_UNSPECIFIED"
-	CheckResponseServingStatusSERVINGSTATUSSERVING            CheckResponseServingStatus = "SERVING_STATUS_SERVING"
-	CheckResponseServingStatusSERVINGSTATUSNOTSERVING         CheckResponseServingStatus = "SERVING_STATUS_NOT_SERVING"
-)
-
-// AllValues returns all CheckResponseServingStatus values.
-func (CheckResponseServingStatus) AllValues() []CheckResponseServingStatus {
-	return []CheckResponseServingStatus{
-		CheckResponseServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED,
-		CheckResponseServingStatusSERVINGSTATUSSERVING,
-		CheckResponseServingStatusSERVINGSTATUSNOTSERVING,
-	}
-}
-
-// MarshalText implements encoding.TextMarshaler.
-func (s CheckResponseServingStatus) MarshalText() ([]byte, error) {
-	switch s {
-	case CheckResponseServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED:
-		return []byte(s), nil
-	case CheckResponseServingStatusSERVINGSTATUSSERVING:
-		return []byte(s), nil
-	case CheckResponseServingStatusSERVINGSTATUSNOTSERVING:
-		return []byte(s), nil
-	default:
-		return nil, errors.Errorf("invalid value: %q", s)
-	}
-}
-
-// UnmarshalText implements encoding.TextUnmarshaler.
-func (s *CheckResponseServingStatus) UnmarshalText(data []byte) error {
-	switch CheckResponseServingStatus(data) {
-	case CheckResponseServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED:
-		*s = CheckResponseServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED
-		return nil
-	case CheckResponseServingStatusSERVINGSTATUSSERVING:
-		*s = CheckResponseServingStatusSERVINGSTATUSSERVING
-		return nil
-	case CheckResponseServingStatusSERVINGSTATUSNOTSERVING:
-		*s = CheckResponseServingStatusSERVINGSTATUSNOTSERVING
-		return nil
-	default:
-		return errors.Errorf("invalid value: %q", data)
-	}
-}
-
 // Ref: #/components/schemas/ExampleServiceQueryBody
 type ExampleServiceQueryBody struct{}
 
@@ -384,7 +335,7 @@ func (s *Protov1Status) SetCode(val OptRpcCode) {
 // the most specific error code that applies.  For example, prefer
 // `OUT_OF_RANGE` over `FAILED_PRECONDITION` if both codes apply.
 // Similarly prefer `NOT_FOUND` or `ALREADY_EXISTS` over `FAILED_PRECONDITION`.
-// - OK: Not an error; returned on success
+// - OK: Not an error; returned on success.
 // HTTP Mapping: 200 OK
 // - CANCELLED: The operation was cancelled, typically by the caller.
 // HTTP Mapping: 499 Client Closed Request
@@ -407,7 +358,7 @@ func (s *Protov1Status) SetCode(val OptRpcCode) {
 // HTTP Mapping: 504 Gateway Timeout
 // - NOT_FOUND: Some requested entity (e.g., file or directory) was not found.
 // Note to server developers: if a request is denied for an entire class
-// of users, such as gradual feature rollout or undocumented whitelist,
+// of users, such as gradual feature rollout or undocumented allowlist,
 // `NOT_FOUND` may be used. If a request is denied for some users within
 // a class of users, such as user-based access control, `PERMISSION_DENIED`
 // must be used.
@@ -437,11 +388,11 @@ func (s *Protov1Status) SetCode(val OptRpcCode) {
 // Service implementors can use the following guidelines to decide
 // between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:
 // (a) Use `UNAVAILABLE` if the client can retry just the failing call.
-// (b) Use `ABORTED` if the client should retry at a higher level
-// (e.g., when a client-specified test-and-set fails, indicating the
-// client should restart a read-modify-write sequence).
+// (b) Use `ABORTED` if the client should retry at a higher level. For
+// example, when a client-specified test-and-set fails, indicating the
+// client should restart a read-modify-write sequence.
 // (c) Use `FAILED_PRECONDITION` if the client should not retry until
-// the system state has been explicitly fixed.  E.g., if an "rmdir"
+// the system state has been explicitly fixed. For example, if an "rmdir"
 // fails because the directory is non-empty, `FAILED_PRECONDITION`
 // should be returned since the client should not retry unless
 // the files are deleted from the directory.
@@ -631,16 +582,16 @@ func (s *RpcCode) UnmarshalText(data []byte) error {
 // The response message containing the health status of the service.
 // Ref: #/components/schemas/v1CheckResponse
 type V1CheckResponse struct {
-	Status CheckResponseServingStatus `json:"status"`
+	Status V1ServingStatus `json:"status"`
 }
 
 // GetStatus returns the value of Status.
-func (s *V1CheckResponse) GetStatus() CheckResponseServingStatus {
+func (s *V1CheckResponse) GetStatus() V1ServingStatus {
 	return s.Status
 }
 
 // SetStatus sets the value of Status.
-func (s *V1CheckResponse) SetStatus(val CheckResponseServingStatus) {
+func (s *V1CheckResponse) SetStatus(val V1ServingStatus) {
 	s.Status = val
 }
 
@@ -657,4 +608,53 @@ func (s *V1ExampleServiceQueryResponse) GetStatus() OptProtov1Status {
 // SetStatus sets the value of Status.
 func (s *V1ExampleServiceQueryResponse) SetStatus(val OptProtov1Status) {
 	s.Status = val
+}
+
+// Ref: #/components/schemas/v1ServingStatus
+type V1ServingStatus string
+
+const (
+	V1ServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED V1ServingStatus = "SERVING_STATUS_UNKNOWN_UNSPECIFIED"
+	V1ServingStatusSERVINGSTATUSSERVING            V1ServingStatus = "SERVING_STATUS_SERVING"
+	V1ServingStatusSERVINGSTATUSNOTSERVING         V1ServingStatus = "SERVING_STATUS_NOT_SERVING"
+)
+
+// AllValues returns all V1ServingStatus values.
+func (V1ServingStatus) AllValues() []V1ServingStatus {
+	return []V1ServingStatus{
+		V1ServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED,
+		V1ServingStatusSERVINGSTATUSSERVING,
+		V1ServingStatusSERVINGSTATUSNOTSERVING,
+	}
+}
+
+// MarshalText implements encoding.TextMarshaler.
+func (s V1ServingStatus) MarshalText() ([]byte, error) {
+	switch s {
+	case V1ServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED:
+		return []byte(s), nil
+	case V1ServingStatusSERVINGSTATUSSERVING:
+		return []byte(s), nil
+	case V1ServingStatusSERVINGSTATUSNOTSERVING:
+		return []byte(s), nil
+	default:
+		return nil, errors.Errorf("invalid value: %q", s)
+	}
+}
+
+// UnmarshalText implements encoding.TextUnmarshaler.
+func (s *V1ServingStatus) UnmarshalText(data []byte) error {
+	switch V1ServingStatus(data) {
+	case V1ServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED:
+		*s = V1ServingStatusSERVINGSTATUSUNKNOWNUNSPECIFIED
+		return nil
+	case V1ServingStatusSERVINGSTATUSSERVING:
+		*s = V1ServingStatusSERVINGSTATUSSERVING
+		return nil
+	case V1ServingStatusSERVINGSTATUSNOTSERVING:
+		*s = V1ServingStatusSERVINGSTATUSNOTSERVING
+		return nil
+	default:
+		return errors.Errorf("invalid value: %q", data)
+	}
 }

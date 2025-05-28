@@ -15,7 +15,7 @@ class Protov1Status(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, type: str=None, status: int=None, title: str=None, detail: str=None, instance: str=None, extensions: List[str]=None, code: RpcCode=None):
+    def __init__(self, type: str=None, status: int=None, title: str=None, detail: str=None, instance: str=None, extensions: List[str]=None, code: RpcCode=RpcCode.OK):
         """Protov1Status - a model defined in OpenAPI
 
         :param type: The type of this Protov1Status.

@@ -1,5 +1,6 @@
 .openapi-generator-ignore
 CMakeLists.txt
+Config.cmake.in
 Packing.cmake
 README.md
 api/ExampleServiceAPI.c
@@ -8,11 +9,11 @@ api/HealthServiceAPI.c
 api/HealthServiceAPI.h
 docs/ExampleServiceAPI.md
 docs/HealthServiceAPI.md
-docs/check_response_serving_status.md
 docs/protov1_status.md
 docs/rpc_code.md
 docs/v1_check_response.md
 docs/v1_example_service_query_response.md
+docs/v1_serving_status.md
 external/cJSON.c
 external/cJSON.h
 external/cJSON.licence
@@ -21,8 +22,7 @@ include/binary.h
 include/keyValuePair.h
 include/list.h
 libcurl.licence
-model/check_response_serving_status.c
-model/check_response_serving_status.h
+model/any_type.h
 model/object.c
 model/object.h
 model/protov1_status.c
@@ -33,13 +33,15 @@ model/v1_check_response.c
 model/v1_check_response.h
 model/v1_example_service_query_response.c
 model/v1_example_service_query_response.h
+model/v1_serving_status.c
+model/v1_serving_status.h
 src/apiClient.c
 src/apiKey.c
 src/binary.c
 src/list.c
 uncrustify-rules.cfg
-unit-test/test_check_response_serving_status.c
 unit-test/test_protov1_status.c
 unit-test/test_rpc_code.c
 unit-test/test_v1_check_response.c
 unit-test/test_v1_example_service_query_response.c
+unit-test/test_v1_serving_status.c

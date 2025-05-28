@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **ExampleServiceAPI_exampleServiceQuery**
 ```c
-v1_example_service_query_response_t* ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id, object_t * body);
+v1_example_service_query_response_t* ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char *id, object_t *body);
 ```
 
 ### Parameters

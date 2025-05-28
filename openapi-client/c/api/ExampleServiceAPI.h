@@ -10,6 +10,6 @@
 
 
 v1_example_service_query_response_t*
-ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char * id , object_t * body );
+ExampleServiceAPI_exampleServiceQuery(apiClient_t *apiClient, char *id, object_t *body);
 
 

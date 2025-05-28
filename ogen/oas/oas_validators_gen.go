@@ -8,19 +8,6 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s CheckResponseServingStatus) Validate() error {
-	switch s {
-	case "SERVING_STATUS_UNKNOWN_UNSPECIFIED":
-		return nil
-	case "SERVING_STATUS_SERVING":
-		return nil
-	case "SERVING_STATUS_NOT_SERVING":
-		return nil
-	default:
-		return errors.Errorf("invalid value: %v", s)
-	}
-}
-
 func (s *Protov1Status) Validate() error {
 	if s == nil {
 		return validate.ErrNilPointer
@@ -143,4 +130,17 @@ func (s *V1ExampleServiceQueryResponse) Validate() error {
 		return &validate.Error{Fields: failures}
 	}
 	return nil
+}
+
+func (s V1ServingStatus) Validate() error {
+	switch s {
+	case "SERVING_STATUS_UNKNOWN_UNSPECIFIED":
+		return nil
+	case "SERVING_STATUS_SERVING":
+		return nil
+	case "SERVING_STATUS_NOT_SERVING":
+		return nil
+	default:
+		return errors.Errorf("invalid value: %v", s)
+	}
 }

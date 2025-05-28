@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The \&quot;type\&quot; member is a JSON string containing a URI reference [URI] that identifies the problem/response type. Consumers MUST use the \&quot;type\&quot; URI (after resolution, if necessary) as the problem/response type&#39;s primary identifier. When this member is not present, its value is assumed to be \&quot;about:blank\&quot;. | [optional] 
@@ -10,7 +11,7 @@ Name | Type | Description | Notes
 **detail** | **str** | The \&quot;detail\&quot; member is a JSON string containing a human-readable explanation specific to this occurrence of the problem/response. The \&quot;detail\&quot; string, if present, ought to focus on helping the client correct the problem/response, rather than giving debugging information. | [optional] 
 **instance** | **str** | The \&quot;instance\&quot; member is a JSON string containing a URI reference that identifies the specific occurrence of the problem/response. | [optional] 
 **extensions** | **List[str]** | Problem type definitions MAY extend the problem details object with additional members that are specific to that problem type. | [optional] 
-**code** | [**RpcCode**](RpcCode.md) |  | [optional] 
+**code** | [**RpcCode**](RpcCode.md) |  | [optional] [default to RpcCode.OK]
 
 ## Example
 
@@ -22,12 +23,12 @@ json = "{}"
 # create an instance of Protov1Status from a JSON string
 protov1_status_instance = Protov1Status.from_json(json)
 # print the JSON string representation of the object
-print Protov1Status.to_json()
+print(Protov1Status.to_json())
 
 # convert the object into a dict
 protov1_status_dict = protov1_status_instance.to_dict()
 # create an instance of Protov1Status from a dict
-protov1_status_form_dict = protov1_status.from_dict(protov1_status_dict)
+protov1_status_from_dict = Protov1Status.from_dict(protov1_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

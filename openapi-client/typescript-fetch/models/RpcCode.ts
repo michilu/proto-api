@@ -22,7 +22,7 @@
  * `OUT_OF_RANGE` over `FAILED_PRECONDITION` if both codes apply.
  * Similarly prefer `NOT_FOUND` or `ALREADY_EXISTS` over `FAILED_PRECONDITION`.
  * 
- *  - OK: Not an error; returned on success
+ *  - OK: Not an error; returned on success.
  * 
  * HTTP Mapping: 200 OK
  *  - CANCELLED: The operation was cancelled, typically by the caller.
@@ -51,7 +51,7 @@
  *  - NOT_FOUND: Some requested entity (e.g., file or directory) was not found.
  * 
  * Note to server developers: if a request is denied for an entire class
- * of users, such as gradual feature rollout or undocumented whitelist,
+ * of users, such as gradual feature rollout or undocumented allowlist,
  * `NOT_FOUND` may be used. If a request is denied for some users within
  * a class of users, such as user-based access control, `PERMISSION_DENIED`
  * must be used.
@@ -87,11 +87,11 @@
  * Service implementors can use the following guidelines to decide
  * between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:
  *  (a) Use `UNAVAILABLE` if the client can retry just the failing call.
- *  (b) Use `ABORTED` if the client should retry at a higher level
- *      (e.g., when a client-specified test-and-set fails, indicating the
- *      client should restart a read-modify-write sequence).
+ *  (b) Use `ABORTED` if the client should retry at a higher level. For
+ *      example, when a client-specified test-and-set fails, indicating the
+ *      client should restart a read-modify-write sequence.
  *  (c) Use `FAILED_PRECONDITION` if the client should not retry until
- *      the system state has been explicitly fixed.  E.g., if an "rmdir"
+ *      the system state has been explicitly fixed. For example, if an "rmdir"
  *      fails because the directory is non-empty, `FAILED_PRECONDITION`
  *      should be returned since the client should not retry unless
  *      the files are deleted from the directory.
@@ -166,6 +166,17 @@ export const RpcCode = {
 export type RpcCode = typeof RpcCode[keyof typeof RpcCode];
 
 
+export function instanceOfRpcCode(value: any): boolean {
+    for (const key in RpcCode) {
+        if (Object.prototype.hasOwnProperty.call(RpcCode, key)) {
+            if (RpcCode[key as keyof typeof RpcCode] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function RpcCodeFromJSON(json: any): RpcCode {
     return RpcCodeFromJSONTyped(json, false);
 }
@@ -176,5 +187,9 @@ export function RpcCodeFromJSONTyped(json: any, ignoreDiscriminator: boolean): R
 
 export function RpcCodeToJSON(value?: RpcCode | null): any {
     return value as any;
+}
+
+export function RpcCodeToJSONTyped(value: any, ignoreDiscriminator: boolean): RpcCode {
+    return value as RpcCode;
 }
 

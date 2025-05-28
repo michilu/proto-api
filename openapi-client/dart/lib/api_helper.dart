@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -55,11 +55,11 @@ String parameterToString(dynamic value) {
   if (value is DateTime) {
     return value.toUtc().toIso8601String();
   }
-  if (value is CheckResponseServingStatus) {
-    return CheckResponseServingStatusTypeTransformer().encode(value).toString();
-  }
   if (value is RpcCode) {
     return RpcCodeTypeTransformer().encode(value).toString();
+  }
+  if (value is V1ServingStatus) {
+    return V1ServingStatusTypeTransformer().encode(value).toString();
   }
   return value.toString();
 }
@@ -76,6 +76,9 @@ Future<String> _decodeBodyBytes(Response response) async {
 /// Returns a valid [T] value found at the specified Map [key], null otherwise.
 T? mapValueOfType<T>(dynamic map, String key) {
   final dynamic value = map is Map ? map[key] : null;
+  if (T == double && value is int) {
+    return value.toDouble() as T;
+  }
   return value is T ? value : null;
 }
 
