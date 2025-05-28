@@ -19,7 +19,7 @@ type Handler struct {
 func (h Handler) HealthServiceCheck(ctx context.Context, params oas.HealthServiceCheckParams) (*oas.V1CheckResponse, error) {
 	zctx.From(ctx).Info("HealthServiceCheck", zap.Any("params", params))
 	return &oas.V1CheckResponse{
-		Status: oas.CheckResponseServingStatusSERVINGSTATUSSERVING,
+		Status: oas.V1ServingStatusSERVINGSTATUSSERVING,
 	}, nil
 }
 

@@ -56,20 +56,14 @@ paths:
             $ref: '#/definitions/v1CheckResponse'
       parameters:
         - name: service
-          description: The service name to check the health of.
+          description: The service name as specified.
           in: query
           required: true
           type: string
+          pattern: ^proto$
       tags:
         - HealthService
 definitions:
-  CheckResponseServingStatus:
-    type: string
-    enum:
-      - SERVING_STATUS_UNKNOWN_UNSPECIFIED
-      - SERVING_STATUS_SERVING
-      - SERVING_STATUS_NOT_SERVING
-    default: SERVING_STATUS_UNKNOWN_UNSPECIFIED
   ExampleServiceQueryBody:
     type: object
   protov1Status:
@@ -138,7 +132,7 @@ definitions:
       `OUT_OF_RANGE` over `FAILED_PRECONDITION` if both codes apply.
       Similarly prefer `NOT_FOUND` or `ALREADY_EXISTS` over `FAILED_PRECONDITION`.
 
-       - OK: Not an error; returned on success
+       - OK: Not an error; returned on success.
 
       HTTP Mapping: 200 OK
        - CANCELLED: The operation was cancelled, typically by the caller.
@@ -167,7 +161,7 @@ definitions:
        - NOT_FOUND: Some requested entity (e.g., file or directory) was not found.
 
       Note to server developers: if a request is denied for an entire class
-      of users, such as gradual feature rollout or undocumented whitelist,
+      of users, such as gradual feature rollout or undocumented allowlist,
       `NOT_FOUND` may be used. If a request is denied for some users within
       a class of users, such as user-based access control, `PERMISSION_DENIED`
       must be used.
@@ -203,11 +197,11 @@ definitions:
       Service implementors can use the following guidelines to decide
       between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`:
        (a) Use `UNAVAILABLE` if the client can retry just the failing call.
-       (b) Use `ABORTED` if the client should retry at a higher level
-           (e.g., when a client-specified test-and-set fails, indicating the
-           client should restart a read-modify-write sequence).
+       (b) Use `ABORTED` if the client should retry at a higher level. For
+           example, when a client-specified test-and-set fails, indicating the
+           client should restart a read-modify-write sequence.
        (c) Use `FAILED_PRECONDITION` if the client should not retry until
-           the system state has been explicitly fixed.  E.g., if an "rmdir"
+           the system state has been explicitly fixed. For example, if an "rmdir"
            fails because the directory is non-empty, `FAILED_PRECONDITION`
            should be returned since the client should not retry unless
            the files are deleted from the directory.
@@ -262,7 +256,7 @@ definitions:
     type: object
     properties:
       status:
-        $ref: '#/definitions/CheckResponseServingStatus'
+        $ref: '#/definitions/v1ServingStatus'
         description: The serving status of the health check.
     description: The response message containing the health status of the service.
     title: CheckResponse
@@ -273,6 +267,13 @@ definitions:
     properties:
       status:
         $ref: '#/definitions/protov1Status'
+  v1ServingStatus:
+    type: string
+    enum:
+      - SERVING_STATUS_UNKNOWN_UNSPECIFIED
+      - SERVING_STATUS_SERVING
+      - SERVING_STATUS_NOT_SERVING
+    default: SERVING_STATUS_UNKNOWN_UNSPECIFIED
 securityDefinitions:
   ApiKeyAuth:
     type: apiKey
