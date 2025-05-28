@@ -5,22 +5,19 @@ model:
 models:
   CheckRequestInput:
     model:
-      - pb/proto/v1.CheckRequest
+      - api/proto/v1.CheckRequest
   CheckResponse:
     model:
-      - pb/proto/v1.CheckResponse
-  CheckResponse_ServingStatus:
-    model:
-      - pb/proto/v1.CheckResponse_ServingStatus
+      - api/proto/v1.CheckResponse
   Code:
     model:
       - google.golang.org/genproto/googleapis/rpc/code.Code
   ExampleServiceQueryRequestInput:
     model:
-      - pb/proto/v1.ExampleServiceQueryRequest
+      - api/proto/v1.ExampleServiceQueryRequest
   ExampleServiceQueryResponse:
     model:
-      - pb/proto/v1.ExampleServiceQueryResponse
+      - api/proto/v1.ExampleServiceQueryResponse
   Int32:
     model:
       - github.com/danielvladco/go-proto-gql/pb.Int32
@@ -29,5 +26,5 @@ models:
       - api/proto/v1.ServingStatus
   Status:
     model:
-      - pb/proto/v1.Status
+      - api/proto/v1.Status
 schema:

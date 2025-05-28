@@ -6,10 +6,10 @@ input CheckRequestInput {
 }
 
 type CheckResponse {
-	status: CheckResponse_ServingStatus 
+	status: ServingStatus 
 }
 
-enum CheckResponse_ServingStatus {
+enum ServingStatus {
 	SERVING_STATUS_UNKNOWN_UNSPECIFIED
 	SERVING_STATUS_SERVING
 	SERVING_STATUS_NOT_SERVING

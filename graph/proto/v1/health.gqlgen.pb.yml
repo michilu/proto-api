@@ -7,10 +7,10 @@ model:
 models:
   CheckRequestInput:
     model:
-    - pb/proto/v1.CheckRequest
+    - api/proto/v1.CheckRequest
   CheckResponse:
     model:
-    - pb/proto/v1.CheckResponse
-  CheckResponse_ServingStatus:
+    - api/proto/v1.CheckResponse
+  ServingStatus:
     model:
-    - pb/proto/v1.CheckResponse_ServingStatus
+    - api/proto/v1.ServingStatus
