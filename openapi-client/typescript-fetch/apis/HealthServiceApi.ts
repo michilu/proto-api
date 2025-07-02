@@ -58,8 +58,11 @@ export class HealthServiceApi extends runtime.BaseAPI {
             headerParameters["X-API-Key"] = await this.configuration.apiKey("X-API-Key"); // ApiKeyAuth authentication
         }
 
+
+        let urlPath = `/v1/healthCheck`;
+
         const response = await this.request({
-            path: `/v1/healthCheck`,
+            path: urlPath,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

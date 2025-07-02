@@ -1,7 +1,6 @@
 .github/workflows/python.yml
 .gitignore
 .gitlab-ci.yml
-.openapi-generator-ignore
 .travis.yml
 README.md
 docs/ExampleServiceApi.md
@@ -34,11 +33,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_example_service_api.py
-test/test_health_service_api.py
-test/test_protov1_status.py
-test/test_rpc_code.py
-test/test_v1_check_response.py
-test/test_v1_example_service_query_response.py
-test/test_v1_serving_status.py
 tox.ini

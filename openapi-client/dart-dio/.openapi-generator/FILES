@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 analysis_options.yaml
 doc/ExampleServiceApi.md
@@ -28,10 +27,3 @@ lib/src/model/v1_example_service_query_response.dart
 lib/src/model/v1_serving_status.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/example_service_api_test.dart
-test/health_service_api_test.dart
-test/protov1_status_test.dart
-test/rpc_code_test.dart
-test/v1_check_response_test.dart
-test/v1_example_service_query_response_test.dart
-test/v1_serving_status_test.dart

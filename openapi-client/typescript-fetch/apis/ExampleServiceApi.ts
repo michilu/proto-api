@@ -64,8 +64,12 @@ export class ExampleServiceApi extends runtime.BaseAPI {
             headerParameters["X-API-Key"] = await this.configuration.apiKey("X-API-Key"); // ApiKeyAuth authentication
         }
 
+
+        let urlPath = `/v1/example/{id}`;
+        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+
         const response = await this.request({
-            path: `/v1/example/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id']))),
+            path: urlPath,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,

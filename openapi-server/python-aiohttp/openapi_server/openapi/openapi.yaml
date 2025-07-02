@@ -36,7 +36,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExampleServiceQueryBody'
+              $ref: "#/components/schemas/ExampleServiceQueryBody"
         required: true
         x-body-name: body
       responses:
@@ -44,7 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1ExampleServiceQueryResponse'
+                $ref: "#/components/schemas/v1ExampleServiceQueryResponse"
           description: A successful response.
       security:
         - ApiKeyAuth: []
@@ -73,7 +73,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/v1CheckResponse'
+                $ref: "#/components/schemas/v1CheckResponse"
           description: A successful response.
       tags:
         - HealthService
@@ -128,7 +128,7 @@ components:
           title: extensions
           type: array
         code:
-          $ref: '#/components/schemas/rpcCode'
+          $ref: "#/components/schemas/rpcCode"
       title: |-
         Extends [RFC 9457] for API response.
         RFC 9457 - Problem Details for HTTP APIs https://datatracker.ietf.org/doc/html/rfc9457
@@ -290,7 +290,7 @@ components:
         status: SERVING_STATUS_UNKNOWN_UNSPECIFIED
       properties:
         status:
-          $ref: '#/components/schemas/v1ServingStatus'
+          $ref: "#/components/schemas/v1ServingStatus"
       required:
         - status
       title: CheckResponse
@@ -309,7 +309,7 @@ components:
           status: 0
       properties:
         status:
-          $ref: '#/components/schemas/protov1Status'
+          $ref: "#/components/schemas/protov1Status"
       title: v1ExampleServiceQueryResponse
       type: object
     v1ServingStatus:
