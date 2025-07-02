@@ -2,7 +2,7 @@
 An example of generating gRPC, GraphQL, and OpenAPI via proto ecosystem.
 
 # swagger
-https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-api/master/apidocs.swagger.json
+https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-api/main/apidocs.swagger.json
 
 # refs
 - [grpc-gateway/a_bit_of_everything.proto at master · grpc-ecosystem/grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway/blob/master/examples/internal/proto/examplepb/a_bit_of_everything.proto)

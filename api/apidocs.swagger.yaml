@@ -7,7 +7,7 @@ info:
     email: none@example.com
   license:
     name: Apache-2.0
-    url: https://github.com/michilu/proto-api/blob/master/LICENSE
+    url: https://github.com/michilu/proto-api/blob/main/LICENSE
 tags:
   - name: HealthService
   - name: ExampleService
