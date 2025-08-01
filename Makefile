@@ -12,6 +12,7 @@ OPENAPI_CLIENT?=\
 
 OPENAPI_SERVER?=\
  go-server\
+ go-gin-server\
  python-aiohttp\
  rust-server\
 
