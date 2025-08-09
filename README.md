@@ -23,11 +23,12 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
   - `$ go install github.com/danielvladco/go-proto-gql/protoc-gen-gogqlgen@v0.7.3`
   - `$ go install github.com/danielvladco/go-proto-gql/protoc-gen-gql@v0.7.3`
   - `$ go install github.com/danielvladco/go-proto-gql/protoc-gen-gqlgencfg@v0.7.3`
-  
+
 ## OpenAPI
 - [grpc-ecosystem/grpc-gateway/protoc-gen-openapiv2](https://github.com/grpc-ecosystem/grpc-gateway/tree/main/protoc-gen-openapiv2)
 - [oas-kit/packages/swagger2openapi/README.md at main · Mermade/oas-kit](https://github.com/Mermade/oas-kit/blob/main/packages/swagger2openapi/README.md)
 - [ogen-go/ogen: OpenAPI v3 code generator for go](https://github.com/ogen-go/ogen)
+- [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen)
 - [openapitools/openapi-generator-cli Tags - Docker Hub](https://hub.docker.com/r/openapitools/openapi-generator-cli/tags?ordering=name)
 
 ## YAML

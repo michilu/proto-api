@@ -96,6 +96,10 @@ ogen/.keep: $(GEN_GO) $(SRC_GO) ogen/oas/.keep ogen/Dockerfile
 	docker build --tag "$(shell dirname $@)" $(dir $@)
 	touch $@
 
+oapi-codegen/.keep: $(PROTO_DIR)/openapi.yaml tools-oapi-codegen.go
+	go generate tools-oapi-codegen.go
+	touch $@
+
 $(PROTO_DIR)/apidocs.swagger.json: $(BUF_IMAGE)
 	buf generate
 
