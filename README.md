@@ -35,6 +35,14 @@ https://editor.swagger.io/?url=https://raw.githubusercontent.com/michilu/proto-a
 - [google/yamlfmt: An extensible command line tool or library to format yaml files.](https://github.com/google/yamlfmt) `$ brew install yamlfmt`
 - [mikefarah/yq: yq is a portable command-line YAML processor](https://github.com/mikefarah/yq)
 
+# Commands
+
+## buf mod update
+
+```console
+buf mod update api
+```
+
 # sync subtree
 
 ## for proto
