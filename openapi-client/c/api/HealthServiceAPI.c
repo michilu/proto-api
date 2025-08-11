@@ -8,7 +8,7 @@
 
 
 v1_check_response_t*
-HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char *service)
+HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char *servingName)
 {
     list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
@@ -29,15 +29,15 @@ HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char *service)
 
 
     // query parameters
-    char *keyQuery_service = NULL;
-    char * valueQuery_service = NULL;
-    keyValuePair_t *keyPairQuery_service = 0;
-    if (service)
+    char *keyQuery_servingName = NULL;
+    char * valueQuery_servingName = NULL;
+    keyValuePair_t *keyPairQuery_servingName = 0;
+    if (servingName)
     {
-        keyQuery_service = strdup("service");
-        valueQuery_service = strdup((service));
-        keyPairQuery_service = keyValuePair_create(keyQuery_service, valueQuery_service);
-        list_addElement(localVarQueryParameters,keyPairQuery_service);
+        keyQuery_servingName = strdup("servingName");
+        valueQuery_servingName = strdup((servingName));
+        keyPairQuery_servingName = keyValuePair_create(keyQuery_servingName, valueQuery_servingName);
+        list_addElement(localVarQueryParameters,keyPairQuery_servingName);
     }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
@@ -78,17 +78,17 @@ HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char *service)
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
-    if(keyQuery_service){
-        free(keyQuery_service);
-        keyQuery_service = NULL;
+    if(keyQuery_servingName){
+        free(keyQuery_servingName);
+        keyQuery_servingName = NULL;
     }
-    if(valueQuery_service){
-        free(valueQuery_service);
-        valueQuery_service = NULL;
+    if(valueQuery_servingName){
+        free(valueQuery_servingName);
+        valueQuery_servingName = NULL;
     }
-    if(keyPairQuery_service){
-        keyValuePair_free(keyPairQuery_service);
-        keyPairQuery_service = NULL;
+    if(keyPairQuery_servingName){
+        keyValuePair_free(keyPairQuery_servingName);
+        keyPairQuery_servingName = NULL;
     }
     return elementToReturn;
 end:

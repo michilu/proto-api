@@ -14,7 +14,7 @@ To see how to make this your own, look here:
 [README]((https://openapi-generator.tech))
 
 - API version: 1.0
-- Build date: 2025-07-02T10:45:11.317550045Z[Etc/UTC]
+- Build date: 2025-08-11T01:38:43.127109430Z[Etc/UTC]
 - Generator version: 7.14.0
 
 For more information, please visit [https://github.com/michilu/proto-api](https://github.com/michilu/proto-api)

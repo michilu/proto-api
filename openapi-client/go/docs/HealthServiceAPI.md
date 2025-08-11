@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## HealthServiceCheck
 
-> V1CheckResponse HealthServiceCheck(ctx).Service(service).Execute()
+> V1CheckResponse HealthServiceCheck(ctx).ServingName(servingName).Execute()
 
 
 
@@ -27,11 +27,11 @@ import (
 )
 
 func main() {
-	service := "service_example" // string | The service name as specified.
+	servingName := "servingName_example" // string | The serving name as specified.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HealthServiceAPI.HealthServiceCheck(context.Background()).Service(service).Execute()
+	resp, r, err := apiClient.HealthServiceAPI.HealthServiceCheck(context.Background()).ServingName(servingName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `HealthServiceAPI.HealthServiceCheck``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -52,7 +52,7 @@ Other parameters are passed through a pointer to a apiHealthServiceCheckRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service** | **string** | The service name as specified. | 
+ **servingName** | **string** | The serving name as specified. | 
 
 ### Return type
 

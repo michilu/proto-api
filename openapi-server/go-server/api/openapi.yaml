@@ -56,10 +56,10 @@ paths:
     get:
       operationId: HealthService_Check
       parameters:
-        - description: The service name as specified.
+        - description: The serving name as specified.
           explode: true
           in: query
-          name: service
+          name: servingName
           required: true
           schema:
             pattern: ^proto$

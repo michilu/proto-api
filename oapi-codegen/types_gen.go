@@ -351,8 +351,8 @@ type V1ServingStatus string
 
 // HealthServiceCheckParams defines parameters for HealthServiceCheck.
 type HealthServiceCheckParams struct {
-	// Service The service name as specified.
-	Service string `form:"service" json:"service"`
+	// ServingName The serving name as specified.
+	ServingName string `form:"servingName" json:"servingName"`
 }
 
 // ExampleServiceQueryJSONRequestBody defines body for ExampleServiceQuery for application/json ContentType.

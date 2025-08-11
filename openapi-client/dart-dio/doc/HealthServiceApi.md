@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **healthServiceCheck**
-> V1CheckResponse healthServiceCheck(service)
+> V1CheckResponse healthServiceCheck(servingName)
 
 
 
@@ -28,10 +28,10 @@ import 'package:openapi/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ApiKeyAuth').apiKeyPrefix = 'Bearer';
 
 final api = Openapi().getHealthServiceApi();
-final String service = service_example; // String | The service name as specified.
+final String servingName = servingName_example; // String | The serving name as specified.
 
 try {
-    final response = api.healthServiceCheck(service);
+    final response = api.healthServiceCheck(servingName);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling HealthServiceApi->healthServiceCheck: $e\n');
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service** | **String**| The service name as specified. | 
+ **servingName** | **String**| The serving name as specified. | 
 
 ### Return type
 

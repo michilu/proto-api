@@ -29,7 +29,7 @@ func NewHealthServiceAPIService() *HealthServiceAPIService {
 }
 
 // HealthServiceCheck -
-func (s *HealthServiceAPIService) HealthServiceCheck(ctx context.Context, service string) (ImplResponse, error) {
+func (s *HealthServiceAPIService) HealthServiceCheck(ctx context.Context, servingName string) (ImplResponse, error) {
 	// TODO - update HealthServiceCheck with the required logic for this service method.
 	// Add api_health_service_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
 

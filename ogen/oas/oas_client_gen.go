@@ -270,15 +270,15 @@ func (c *Client) sendHealthServiceCheck(ctx context.Context, params HealthServic
 	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
-		// Encode "service" parameter.
+		// Encode "servingName" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "service",
+			Name:    "servingName",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			return e.EncodeValue(conv.StringToString(params.Service))
+			return e.EncodeValue(conv.StringToString(params.ServingName))
 		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}

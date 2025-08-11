@@ -2,7 +2,7 @@
 # source: proto/v1/health.proto
 
 input CheckRequestInput {
-	service: String  
+	servingName: String  
 }
 
 type CheckResponse {

@@ -50,7 +50,7 @@ pub trait Api<C: Send + Sync> {
 
     async fn health_service_check(
         &self,
-        service: String,
+        serving_name: String,
         context: &C) -> Result<HealthServiceCheckResponse, ApiError>;
 
 }
@@ -72,7 +72,7 @@ pub trait ApiNoContext<C: Send + Sync> {
 
     async fn health_service_check(
         &self,
-        service: String,
+        serving_name: String,
         ) -> Result<HealthServiceCheckResponse, ApiError>;
 
 }
@@ -112,11 +112,11 @@ impl<T: Api<C> + Send + Sync, C: Clone + Send + Sync> ApiNoContext<C> for Contex
 
     async fn health_service_check(
         &self,
-        service: String,
+        serving_name: String,
         ) -> Result<HealthServiceCheckResponse, ApiError>
     {
         let context = self.context().clone();
-        self.api().health_service_check(service, &context).await
+        self.api().health_service_check(serving_name, &context).await
     }
 
 }

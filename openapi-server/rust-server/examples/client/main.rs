@@ -119,7 +119,7 @@ fn main() {
         */
         Some("HealthServiceCheck") => {
             let result = rt.block_on(client.health_service_check(
-                  "service_example".to_string()
+                  "serving_name_example".to_string()
             ));
             info!("{:?} (X-Span-ID: {:?})", result, (client.context() as &dyn Has<XSpanIdString>).get().clone());
         },

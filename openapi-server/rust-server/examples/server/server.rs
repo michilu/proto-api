@@ -124,10 +124,10 @@ impl<C> Api<C> for Server<C> where C: Has<XSpanIdString> + Send + Sync
 
     async fn health_service_check(
         &self,
-        service: String,
+        serving_name: String,
         context: &C) -> Result<HealthServiceCheckResponse, ApiError>
     {
-        info!("health_service_check(\"{}\") - X-Span-ID: {:?}", service, context.get().0.clone());
+        info!("health_service_check(\"{}\") - X-Span-ID: {:?}", serving_name, context.get().0.clone());
         Err(ApiError("Api-Error: Operation is NOT implemented".into()))
     }
 

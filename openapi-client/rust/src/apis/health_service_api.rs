@@ -23,14 +23,14 @@ pub enum HealthServiceCheckError {
 }
 
 
-pub async fn health_service_check(configuration: &configuration::Configuration, service: &str) -> Result<models::V1CheckResponse, Error<HealthServiceCheckError>> {
+pub async fn health_service_check(configuration: &configuration::Configuration, serving_name: &str) -> Result<models::V1CheckResponse, Error<HealthServiceCheckError>> {
     // add a prefix to parameters to efficiently prevent name collisions
-    let p_service = service;
+    let p_serving_name = serving_name;
 
     let uri_str = format!("{}/v1/healthCheck", configuration.base_path);
     let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    req_builder = req_builder.query(&[("service", &p_service.to_string())]);
+    req_builder = req_builder.query(&[("servingName", &p_serving_name.to_string())]);
     if let Some(ref user_agent) = configuration.user_agent {
         req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }

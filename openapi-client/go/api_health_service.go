@@ -23,14 +23,14 @@ import (
 type HealthServiceAPIService service
 
 type ApiHealthServiceCheckRequest struct {
-	ctx        context.Context
-	ApiService *HealthServiceAPIService
-	service    *string
+	ctx         context.Context
+	ApiService  *HealthServiceAPIService
+	servingName *string
 }
 
-// The service name as specified.
-func (r ApiHealthServiceCheckRequest) Service(service string) ApiHealthServiceCheckRequest {
-	r.service = &service
+// The serving name as specified.
+func (r ApiHealthServiceCheckRequest) ServingName(servingName string) ApiHealthServiceCheckRequest {
+	r.servingName = &servingName
 	return r
 }
 
@@ -72,11 +72,11 @@ func (a *HealthServiceAPIService) HealthServiceCheckExecute(r ApiHealthServiceCh
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.service == nil {
-		return localVarReturnValue, nil, reportError("service is required and must be specified")
+	if r.servingName == nil {
+		return localVarReturnValue, nil, reportError("servingName is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "service", r.service, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "servingName", r.servingName, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

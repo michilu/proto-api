@@ -9,14 +9,14 @@ Method | HTTP request | Description
 
 # **HealthServiceAPI_healthServiceCheck**
 ```c
-v1_check_response_t* HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char *service);
+v1_check_response_t* HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char *servingName);
 ```
 
 ### Parameters
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **apiClient** | **apiClient_t \*** | context containing the client configuration |
-**service** | **char \*** | The service name as specified. | 
+**servingName** | **char \*** | The serving name as specified. | 
 
 ### Return type
 

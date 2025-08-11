@@ -324,33 +324,33 @@ impl<T, C> hyper::service::Service<(Request<Body>, C)> for Service<T, C> where
 
                 // Query parameters (note that non-required or collection query parameters will ignore garbage values, rather than causing a 400 response)
                 let query_params = form_urlencoded::parse(uri.query().unwrap_or_default().as_bytes()).collect::<Vec<_>>();
-                let param_service = query_params.iter().filter(|e| e.0 == "service").map(|e| e.1.clone())
+                let param_serving_name = query_params.iter().filter(|e| e.0 == "servingName").map(|e| e.1.clone())
                     .next();
-                let param_service = match param_service {
-                    Some(param_service) => {
-                        let param_service =
+                let param_serving_name = match param_serving_name {
+                    Some(param_serving_name) => {
+                        let param_serving_name =
                             <String as std::str::FromStr>::from_str
-                                (&param_service);
-                        match param_service {
-                            Ok(param_service) => Some(param_service),
+                                (&param_serving_name);
+                        match param_serving_name {
+                            Ok(param_serving_name) => Some(param_serving_name),
                             Err(e) => return Ok(Response::builder()
                                 .status(StatusCode::BAD_REQUEST)
-                                .body(Body::from(format!("Couldn't parse query parameter service - doesn't match schema: {}", e)))
-                                .expect("Unable to create Bad Request response for invalid query parameter service")),
+                                .body(Body::from(format!("Couldn't parse query parameter servingName - doesn't match schema: {}", e)))
+                                .expect("Unable to create Bad Request response for invalid query parameter servingName")),
                         }
                     },
                     None => None,
                 };
-                let param_service = match param_service {
-                    Some(param_service) => param_service,
+                let param_serving_name = match param_serving_name {
+                    Some(param_serving_name) => param_serving_name,
                     None => return Ok(Response::builder()
                         .status(StatusCode::BAD_REQUEST)
-                        .body(Body::from("Missing required query parameter service"))
-                        .expect("Unable to create Bad Request response for missing query parameter service")),
+                        .body(Body::from("Missing required query parameter servingName"))
+                        .expect("Unable to create Bad Request response for missing query parameter servingName")),
                 };
 
                                 let result = api_impl.health_service_check(
-                                            param_service,
+                                            param_serving_name,
                                         &context
                                     ).await;
                                 let mut response = Response::new(Body::empty());

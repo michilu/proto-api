@@ -28,7 +28,7 @@ from google.api import field_behavior_pb2 as google_dot_api_dot_field__behavior_
 from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15proto/v1/health.proto\x12\x08proto.v1\x1a\x1b\x62uf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"f\n\x0c\x43heckRequest\x12V\n\x07service\x18\x01 \x01(\tB<\x92\x41*2\x1eThe service name as specified.\x8a\x01\x07^proto$\xe0\x41\x02\xbaH\tr\x07\n\x05protoR\x07service\"\xdb\x01\n\rCheckResponse\x12h\n\x06status\x18\x01 \x01(\x0e\x32\x17.proto.v1.ServingStatusB7\x92\x41)2\'The serving status of the health check.\xe0\x41\x02\xbaH\x05\x82\x01\x02\x10\x01R\x06status:`\x92\x41]\n[*\rCheckResponse2AThe response message containing the health status of the service.\xd2\x01\x06status*s\n\rServingStatus\x12&\n\"SERVING_STATUS_UNKNOWN_UNSPECIFIED\x10\x00\x12\x1a\n\x16SERVING_STATUS_SERVING\x10\x01\x12\x1e\n\x1aSERVING_STATUS_NOT_SERVING\x10\x02\x32\x62\n\rHealthService\x12Q\n\x05\x43heck\x12\x16.proto.v1.CheckRequest\x1a\x17.proto.v1.CheckResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/v1/healthCheckBj\n\x0c\x63om.proto.v1B\x0bHealthProtoP\x01Z\x0c\x61pi/proto/v1\xa2\x02\x03PXX\xaa\x02\x08Proto.V1\xca\x02\x08Proto\\V1\xe2\x02\x14Proto\\V1\\GPBMetadata\xea\x02\tProto::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15proto/v1/health.proto\x12\x08proto.v1\x1a\x1b\x62uf/validate/validate.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"o\n\x0c\x43heckRequest\x12_\n\x0cserving_name\x18\x01 \x01(\tB<\x92\x41*2\x1eThe serving name as specified.\x8a\x01\x07^proto$\xe0\x41\x02\xbaH\tr\x07\n\x05protoR\x0bservingName\"\xdb\x01\n\rCheckResponse\x12h\n\x06status\x18\x01 \x01(\x0e\x32\x17.proto.v1.ServingStatusB7\x92\x41)2\'The serving status of the health check.\xe0\x41\x02\xbaH\x05\x82\x01\x02\x10\x01R\x06status:`\x92\x41]\n[*\rCheckResponse2AThe response message containing the health status of the service.\xd2\x01\x06status*s\n\rServingStatus\x12&\n\"SERVING_STATUS_UNKNOWN_UNSPECIFIED\x10\x00\x12\x1a\n\x16SERVING_STATUS_SERVING\x10\x01\x12\x1e\n\x1aSERVING_STATUS_NOT_SERVING\x10\x02\x32\x62\n\rHealthService\x12Q\n\x05\x43heck\x12\x16.proto.v1.CheckRequest\x1a\x17.proto.v1.CheckResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/v1/healthCheckBj\n\x0c\x63om.proto.v1B\x0bHealthProtoP\x01Z\x0c\x61pi/proto/v1\xa2\x02\x03PXX\xaa\x02\x08Proto.V1\xca\x02\x08Proto\\V1\xe2\x02\x14Proto\\V1\\GPBMetadata\xea\x02\tProto::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -36,20 +36,20 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'proto.v1.health_pb2', _glob
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\014com.proto.v1B\013HealthProtoP\001Z\014api/proto/v1\242\002\003PXX\252\002\010Proto.V1\312\002\010Proto\\V1\342\002\024Proto\\V1\\GPBMetadata\352\002\tProto::V1'
-  _globals['_CHECKREQUEST'].fields_by_name['service']._loaded_options = None
-  _globals['_CHECKREQUEST'].fields_by_name['service']._serialized_options = b'\222A*2\036The service name as specified.\212\001\007^proto$\340A\002\272H\tr\007\n\005proto'
+  _globals['_CHECKREQUEST'].fields_by_name['serving_name']._loaded_options = None
+  _globals['_CHECKREQUEST'].fields_by_name['serving_name']._serialized_options = b'\222A*2\036The serving name as specified.\212\001\007^proto$\340A\002\272H\tr\007\n\005proto'
   _globals['_CHECKRESPONSE'].fields_by_name['status']._loaded_options = None
   _globals['_CHECKRESPONSE'].fields_by_name['status']._serialized_options = b'\222A)2\'The serving status of the health check.\340A\002\272H\005\202\001\002\020\001'
   _globals['_CHECKRESPONSE']._loaded_options = None
   _globals['_CHECKRESPONSE']._serialized_options = b'\222A]\n[*\rCheckResponse2AThe response message containing the health status of the service.\322\001\006status'
   _globals['_HEALTHSERVICE'].methods_by_name['Check']._loaded_options = None
   _globals['_HEALTHSERVICE'].methods_by_name['Check']._serialized_options = b'\202\323\344\223\002\021\022\017/v1/healthCheck'
-  _globals['_SERVINGSTATUS']._serialized_start=501
-  _globals['_SERVINGSTATUS']._serialized_end=616
+  _globals['_SERVINGSTATUS']._serialized_start=510
+  _globals['_SERVINGSTATUS']._serialized_end=625
   _globals['_CHECKREQUEST']._serialized_start=175
-  _globals['_CHECKREQUEST']._serialized_end=277
-  _globals['_CHECKRESPONSE']._serialized_start=280
-  _globals['_CHECKRESPONSE']._serialized_end=499
-  _globals['_HEALTHSERVICE']._serialized_start=618
-  _globals['_HEALTHSERVICE']._serialized_end=716
+  _globals['_CHECKREQUEST']._serialized_end=286
+  _globals['_CHECKRESPONSE']._serialized_start=289
+  _globals['_CHECKRESPONSE']._serialized_end=508
+  _globals['_HEALTHSERVICE']._serialized_start=627
+  _globals['_HEALTHSERVICE']._serialized_end=725
 # @@protoc_insertion_point(module_scope)

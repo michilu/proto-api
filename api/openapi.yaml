@@ -53,8 +53,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/v1CheckResponse'
       parameters:
-        - name: service
-          description: The service name as specified.
+        - name: servingName
+          description: The serving name as specified.
           in: query
           required: true
           schema:

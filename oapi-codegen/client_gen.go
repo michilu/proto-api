@@ -204,7 +204,7 @@ func NewHealthServiceCheckRequest(server string, params *HealthServiceCheckParam
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "service", runtime.ParamLocationQuery, params.Service); err != nil {
+		if queryFrag, err := runtime.StyleParamWithLocation("form", true, "servingName", runtime.ParamLocationQuery, params.ServingName); err != nil {
 			return nil, err
 		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 			return nil, err

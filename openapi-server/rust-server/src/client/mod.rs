@@ -494,7 +494,7 @@ impl<S, C> Api<C> for Client<S, C> where
 
     async fn health_service_check(
         &self,
-        param_service: String,
+        param_serving_name: String,
         context: &C) -> Result<HealthServiceCheckResponse, ApiError>
     {
         let mut client_service = self.client_service.clone();
@@ -506,8 +506,8 @@ impl<S, C> Api<C> for Client<S, C> where
         // Query parameters
         let query_string = {
             let mut query_string = form_urlencoded::Serializer::new("".to_owned());
-                query_string.append_pair("service",
-                    &param_service);
+                query_string.append_pair("servingName",
+                    &param_serving_name);
             query_string.finish()
         };
         if !query_string.is_empty() {

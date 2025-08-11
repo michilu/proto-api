@@ -334,9 +334,9 @@ func (s *Server) handleHealthServiceCheckRequest(args [0]string, argsEscaped boo
 			Body:             nil,
 			Params: middleware.Parameters{
 				{
-					Name: "service",
+					Name: "servingName",
 					In:   "query",
-				}: params.Service,
+				}: params.ServingName,
 			},
 			Raw: r,
 		}

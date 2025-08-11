@@ -82,18 +82,18 @@ func (siw *ServerInterfaceWrapper) HealthServiceCheck(w http.ResponseWriter, r *
 	// Parameter object where we will unmarshal all parameters from the context
 	var params HealthServiceCheckParams
 
-	// ------------- Required query parameter "service" -------------
+	// ------------- Required query parameter "servingName" -------------
 
-	if paramValue := r.URL.Query().Get("service"); paramValue != "" {
+	if paramValue := r.URL.Query().Get("servingName"); paramValue != "" {
 
 	} else {
-		siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "service"})
+		siw.ErrorHandlerFunc(w, r, &RequiredParamError{ParamName: "servingName"})
 		return
 	}
 
-	err = runtime.BindQueryParameter("form", true, true, "service", r.URL.Query(), &params.Service)
+	err = runtime.BindQueryParameter("form", true, true, "servingName", r.URL.Query(), &params.ServingName)
 	if err != nil {
-		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "service", Err: err})
+		siw.ErrorHandlerFunc(w, r, &InvalidParamFormatError{ParamName: "servingName", Err: err})
 		return
 	}
 

@@ -69,8 +69,8 @@ enum Operation {
         body: models::ExampleServiceQueryBody,
     },
     HealthServiceCheck {
-        /// The service name as specified.
-        service: String,
+        /// The serving name as specified.
+        serving_name: String,
     },
 }
 
@@ -157,12 +157,12 @@ async fn main() -> Result<()> {
             }
         }
         Operation::HealthServiceCheck {
-            service,
+            serving_name,
         } => {
             info!("Performing a HealthServiceCheck request");
 
             let result = client.health_service_check(
-                service,
+                serving_name,
             ).await?;
             debug!("Result: {:?}", result);
 

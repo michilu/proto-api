@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## health_service_check
 
-> models::V1CheckResponse health_service_check(service)
+> models::V1CheckResponse health_service_check(serving_name)
 
 
 ### Parameters
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**service** | **String** | The service name as specified. | [required] |
+**serving_name** | **String** | The serving name as specified. | [required] |
 
 ### Return type
 

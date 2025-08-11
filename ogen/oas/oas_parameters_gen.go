@@ -83,27 +83,27 @@ func decodeExampleServiceQueryParams(args [1]string, argsEscaped bool, r *http.R
 
 // HealthServiceCheckParams is parameters of HealthService_Check operation.
 type HealthServiceCheckParams struct {
-	// The service name as specified.
-	Service string
+	// The serving name as specified.
+	ServingName string
 }
 
 func unpackHealthServiceCheckParams(packed middleware.Parameters) (params HealthServiceCheckParams) {
 	{
 		key := middleware.ParameterKey{
-			Name: "service",
+			Name: "servingName",
 			In:   "query",
 		}
-		params.Service = packed[key].(string)
+		params.ServingName = packed[key].(string)
 	}
 	return params
 }
 
 func decodeHealthServiceCheckParams(args [0]string, argsEscaped bool, r *http.Request) (params HealthServiceCheckParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
-	// Decode query: service.
+	// Decode query: servingName.
 	if err := func() error {
 		cfg := uri.QueryParameterDecodingConfig{
-			Name:    "service",
+			Name:    "servingName",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
 		}
@@ -120,7 +120,7 @@ func decodeHealthServiceCheckParams(args [0]string, argsEscaped bool, r *http.Re
 					return err
 				}
 
-				params.Service = c
+				params.ServingName = c
 				return nil
 			}); err != nil {
 				return err
@@ -134,7 +134,7 @@ func decodeHealthServiceCheckParams(args [0]string, argsEscaped bool, r *http.Re
 					Email:        false,
 					Hostname:     false,
 					Regex:        regexMap["^proto$"],
-				}).Validate(string(params.Service)); err != nil {
+				}).Validate(string(params.ServingName)); err != nil {
 					return errors.Wrap(err, "string")
 				}
 				return nil
@@ -147,7 +147,7 @@ func decodeHealthServiceCheckParams(args [0]string, argsEscaped bool, r *http.Re
 		return nil
 	}(); err != nil {
 		return params, &ogenerrors.DecodeParamError{
-			Name: "service",
+			Name: "servingName",
 			In:   "query",
 			Err:  err,
 		}

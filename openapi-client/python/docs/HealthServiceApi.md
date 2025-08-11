@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **health_service_check**
-> V1CheckResponse health_service_check(service)
+> V1CheckResponse health_service_check(serving_name)
 
 ### Example
 
@@ -44,10 +44,10 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.HealthServiceApi(api_client)
-    service = 'service_example' # str | The service name as specified.
+    serving_name = 'serving_name_example' # str | The serving name as specified.
 
     try:
-        api_response = api_instance.health_service_check(service)
+        api_response = api_instance.health_service_check(serving_name)
         print("The response of HealthServiceApi->health_service_check:\n")
         pprint(api_response)
     except Exception as e:
@@ -61,7 +61,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **service** | **str**| The service name as specified. | 
+ **serving_name** | **str**| The serving name as specified. | 
 
 ### Return type
 

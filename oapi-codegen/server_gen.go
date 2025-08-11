@@ -57,11 +57,11 @@ func (w *ServerInterfaceWrapper) HealthServiceCheck(ctx echo.Context) error {
 
 	// Parameter object where we will unmarshal all parameters from the context
 	var params HealthServiceCheckParams
-	// ------------- Required query parameter "service" -------------
+	// ------------- Required query parameter "servingName" -------------
 
-	err = runtime.BindQueryParameter("form", true, true, "service", ctx.QueryParams(), &params.Service)
+	err = runtime.BindQueryParameter("form", true, true, "servingName", ctx.QueryParams(), &params.ServingName)
 	if err != nil {
-		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter service: %s", err))
+		return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("Invalid format for parameter servingName: %s", err))
 	}
 
 	// Invoke the callback with all the unmarshaled arguments

@@ -77,16 +77,16 @@ func (c *HealthServiceAPIController) HealthServiceCheck(w http.ResponseWriter, r
 		c.errorHandler(w, r, &ParsingError{Err: err}, nil)
 		return
 	}
-	var serviceParam string
-	if query.Has("service") {
-		param := query.Get("service")
+	var servingNameParam string
+	if query.Has("servingName") {
+		param := query.Get("servingName")
 
-		serviceParam = param
+		servingNameParam = param
 	} else {
-		c.errorHandler(w, r, &RequiredError{Field: "service"}, nil)
+		c.errorHandler(w, r, &RequiredError{Field: "servingName"}, nil)
 		return
 	}
-	result, err := c.service.HealthServiceCheck(r.Context(), serviceParam)
+	result, err := c.service.HealthServiceCheck(r.Context(), servingNameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {
 		c.errorHandler(w, r, err, &result)

@@ -9,6 +9,6 @@
 
 
 v1_check_response_t*
-HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char *service);
+HealthServiceAPI_healthServiceCheck(apiClient_t *apiClient, char *servingName);
 
 

@@ -42,7 +42,7 @@ class HealthServiceApi:
     @validate_call
     def health_service_check(
         self,
-        service: Annotated[str, Field(strict=True, description="The service name as specified.")],
+        serving_name: Annotated[str, Field(strict=True, description="The serving name as specified.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,8 +59,8 @@ class HealthServiceApi:
         """health_service_check
 
 
-        :param service: The service name as specified. (required)
-        :type service: str
+        :param serving_name: The serving name as specified. (required)
+        :type serving_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +84,7 @@ class HealthServiceApi:
         """ # noqa: E501
 
         _param = self._health_service_check_serialize(
-            service=service,
+            serving_name=serving_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -108,7 +108,7 @@ class HealthServiceApi:
     @validate_call
     def health_service_check_with_http_info(
         self,
-        service: Annotated[str, Field(strict=True, description="The service name as specified.")],
+        serving_name: Annotated[str, Field(strict=True, description="The serving name as specified.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -125,8 +125,8 @@ class HealthServiceApi:
         """health_service_check
 
 
-        :param service: The service name as specified. (required)
-        :type service: str
+        :param serving_name: The serving name as specified. (required)
+        :type serving_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -150,7 +150,7 @@ class HealthServiceApi:
         """ # noqa: E501
 
         _param = self._health_service_check_serialize(
-            service=service,
+            serving_name=serving_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -174,7 +174,7 @@ class HealthServiceApi:
     @validate_call
     def health_service_check_without_preload_content(
         self,
-        service: Annotated[str, Field(strict=True, description="The service name as specified.")],
+        serving_name: Annotated[str, Field(strict=True, description="The serving name as specified.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -191,8 +191,8 @@ class HealthServiceApi:
         """health_service_check
 
 
-        :param service: The service name as specified. (required)
-        :type service: str
+        :param serving_name: The serving name as specified. (required)
+        :type serving_name: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -216,7 +216,7 @@ class HealthServiceApi:
         """ # noqa: E501
 
         _param = self._health_service_check_serialize(
-            service=service,
+            serving_name=serving_name,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -235,7 +235,7 @@ class HealthServiceApi:
 
     def _health_service_check_serialize(
         self,
-        service,
+        serving_name,
         _request_auth,
         _content_type,
         _headers,
@@ -258,9 +258,9 @@ class HealthServiceApi:
 
         # process the path parameters
         # process the query parameters
-        if service is not None:
+        if serving_name is not None:
             
-            _query_params.append(('service', service))
+            _query_params.append(('servingName', serving_name))
             
         # process the header parameters
         # process the form parameters

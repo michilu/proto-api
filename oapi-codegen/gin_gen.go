@@ -71,18 +71,18 @@ func (siw *ServerInterfaceWrapper) HealthServiceCheck(c *gin.Context) {
 	// Parameter object where we will unmarshal all parameters from the context
 	var params HealthServiceCheckParams
 
-	// ------------- Required query parameter "service" -------------
+	// ------------- Required query parameter "servingName" -------------
 
-	if paramValue := c.Query("service"); paramValue != "" {
+	if paramValue := c.Query("servingName"); paramValue != "" {
 
 	} else {
-		siw.ErrorHandler(c, fmt.Errorf("Query argument service is required, but not found"), http.StatusBadRequest)
+		siw.ErrorHandler(c, fmt.Errorf("Query argument servingName is required, but not found"), http.StatusBadRequest)
 		return
 	}
 
-	err = runtime.BindQueryParameter("form", true, true, "service", c.Request.URL.Query(), &params.Service)
+	err = runtime.BindQueryParameter("form", true, true, "servingName", c.Request.URL.Query(), &params.ServingName)
 	if err != nil {
-		siw.ErrorHandler(c, fmt.Errorf("Invalid format for parameter service: %w", err), http.StatusBadRequest)
+		siw.ErrorHandler(c, fmt.Errorf("Invalid format for parameter servingName: %w", err), http.StatusBadRequest)
 		return
 	}
 

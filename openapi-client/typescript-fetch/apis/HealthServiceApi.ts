@@ -23,7 +23,7 @@ import {
 } from '../models/index';
 
 export interface HealthServiceCheckRequest {
-    service: string;
+    servingName: string;
 }
 
 /**
@@ -34,17 +34,17 @@ export class HealthServiceApi extends runtime.BaseAPI {
     /**
      */
     async healthServiceCheckRaw(requestParameters: HealthServiceCheckRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<V1CheckResponse>> {
-        if (requestParameters['service'] == null) {
+        if (requestParameters['servingName'] == null) {
             throw new runtime.RequiredError(
-                'service',
-                'Required parameter "service" was null or undefined when calling healthServiceCheck().'
+                'servingName',
+                'Required parameter "servingName" was null or undefined when calling healthServiceCheck().'
             );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters['service'] != null) {
-            queryParameters['service'] = requestParameters['service'];
+        if (requestParameters['servingName'] != null) {
+            queryParameters['servingName'] = requestParameters['servingName'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

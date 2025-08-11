@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **HealthService_Check**
-> models::V1CheckResponse HealthService_Check(ctx, ctx, service)
+> models::V1CheckResponse HealthService_Check(ctx, ctx, serving_name)
 
 
 ### Required Parameters
@@ -17,7 +17,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **service** | **String**| The service name as specified. | 
+  **serving_name** | **String**| The serving name as specified. | 
 
 ### Return type
 
