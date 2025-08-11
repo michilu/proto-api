@@ -19,10 +19,10 @@ service HealthService {
 }
 
 message CheckRequest {
-  string service = 1 [
+  string serving_name = 1 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "The service name as specified.",
+      description: "The serving name as specified.",
       pattern: "^proto$",
     },
     (buf.validate.field).string.const = "proto"
